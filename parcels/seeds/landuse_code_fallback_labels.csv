@@ -1,0 +1,9 @@
+code,label,note
+0,"Multiple-use or unassigned","Local modification -- combined uses or unclassified data"
+9,"Unassigned, vacant or non-classifiable land","Undeveloped land, water areas or unclassified activities"
+10,"Residential","SLUCM group header (1x) -- single-family, apartments, short-term lodging"
+20,"Manufacturing (primary)","SLUCM group header (2x) -- food, textiles, apparel, lumber, chemicals"
+60,"Services","SLUCM group header (6x) -- finance, insurance, real estate, professional, government"
+70,"Cultural, entertainment and recreational","SLUCM group header (7x) -- parks, historic sites, stadiums, venues"
+80,"Resource production and extraction","SLUCM group header (8x) -- agriculture, forestry, fishing, mining"
+90,"Undeveloped land and water areas","SLUCM group header (9x) -- formal group name for category 9"

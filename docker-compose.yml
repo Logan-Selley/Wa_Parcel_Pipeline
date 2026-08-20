@@ -1,0 +1,31 @@
+# ${VAR} below is substituted from .env in this directory, which Compose reads
+# implicitly. See .env.example for the required keys. Note that this is
+# substitution only — these values reach the container via `environment:`, not
+# by injecting the whole file.
+services:
+  warehouse:
+    image: postgis/postgis:16-3.4
+    container_name: parcel_warehouse
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    ports:
+      # host:container — 5433 on the host avoids clashing with a native
+      # Postgres install. dbt/psql connect to localhost:5433
+      - "5433:5432"
+    volumes:
+      - warehouse_data:/var/lib/postgresql/data
+      # anything in initdb.d runs once, on first creation of the volume
+      - ./docker/initdb:/docker-entrypoint-initdb.d:ro
+    shm_size: 1gb  # spatial joins / large sorts will exhaust the 64mb default
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+volumes:
+  warehouse_data:

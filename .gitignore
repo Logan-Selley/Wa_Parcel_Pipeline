@@ -1,0 +1,27 @@
+# --- secrets -----------------------------------------------------------------
+# .env holds the real warehouse password. .env.example is the tracked template.
+.env
+.env.*
+!.env.example
+
+# --- python ------------------------------------------------------------------
+.venv/
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+
+# --- dbt ---------------------------------------------------------------------
+# these appear under parcels/, but match at any depth in case dbt is invoked
+# from a different working directory
+target/
+dbt_packages/
+logs/
+.user.yml
+
+# --- source data -------------------------------------------------------------
+# county downloads (shapefiles, FGDBs, geojson) are large and re-fetchable.
+# The pipeline must be able to reconstruct these from config, never from git.
+data/
+
+# --- os ----------------------------------------------------------------------
+.DS_Store

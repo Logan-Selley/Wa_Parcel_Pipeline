@@ -1,0 +1,44 @@
+[project]
+name = "parcel-pipeline"
+version = "0.1.0"
+description = "Reconciles Washington county parcel data into a conformed statewide schema."
+requires-python = ">=3.11,<3.13"
+
+# Direct dependencies only — uv.lock pins the full resolved tree.
+#
+# Deliberately NOT listed here: Airflow. Airflow pins its transitive
+# dependencies tightly enough that it fights dbt in a shared environment.
+# It runs in its own containers and invokes dbt as a subprocess, never as
+# a library import.
+dependencies = [
+    # transformation
+    "dbt-core>=1.12,<2",
+    "dbt-postgres>=1.11,<2",
+
+    # extraction — ArcGIS REST endpoints, shapefiles, file geodatabases
+    "requests>=2.32",
+    "geopandas>=1.0",
+    "pyogrio>=0.10",   # geopandas I/O engine; reads FGDB without a GDAL install
+    "shapely>=2.0",
+    "pyproj>=3.7",     # CRS reconciliation across county projections
+
+    # entity resolution across sources that disagree
+    "rapidfuzz>=3.0",
+
+    # loading — geopandas.to_postgis is implemented on top of SQLAlchemy and
+    # dispatches geometry columns through GeoAlchemy2. Both are hard
+    # requirements despite never being imported directly.
+    "sqlalchemy>=2.0",
+    "geoalchemy2>=0.15",
+
+    # config
+    "python-dotenv>=1.0",
+]
+
+[dependency-groups]
+dev = []
+
+[tool.uv]
+# No build backend: this is a workspace of scripts and a dbt project, not an
+# installable library. uv manages the environment without trying to build it.
+package = false

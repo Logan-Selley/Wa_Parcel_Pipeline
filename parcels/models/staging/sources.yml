@@ -1,0 +1,40 @@
+version: 2
+
+sources:
+  - name: raw
+    description: >-
+      Bronze. County and state data exactly as landed, with every source field
+      retained. Narrowing here would destroy the ability to answer "why does the
+      state say X" without re-downloading.
+    schema: raw
+    tables:
+      - name: parcels_king
+      - name: parcels_pierce
+      - name: parcels_snohomish
+      - name: parcels_spokane
+
+      - name: state_parcels
+        description: Statewide Current Parcels, layer 0. The reconciliation answer key.
+      - name: state_file_date
+        description: >-
+          Table 1. Per-county vintage of the state's copy. Counties are not the
+          same vintage, so every published comparison depends on this.
+      - name: state_landuse_lookup
+        description: Table 2. Per-county land use code to description, 1,931 rows.
+
+      - name: source_domains
+        description: >-
+          Coded-value domains published in each layer's own metadata, one row per
+          code. The statewide service is currently the only source carrying any,
+          and they are the authoritative reference for DOR land use labels (83),
+          the FIPS to county-name crosswalk (39), and county-unique land use
+          descriptions (2,193 across 11 counties -- a superset of the standalone
+          state_landuse_lookup table, which covers 10 and omits Snohomish).
+          Captured per run, so relabelled or newly defined codes are visible to
+          drift detection.
+
+      - name: source_field_snapshot
+        description: >-
+          Field list, type, CRS and maxRecordCount captured from each service's
+          ?f=json response at ingest. Drift detection compares this against the
+          manifest so a republished source fails loudly instead of silently.

@@ -1,0 +1,293 @@
+
+# Name your project! Project names should contain only lowercase characters
+# and underscores. A good package name should reflect your organization's
+# name or the intended use of these models
+name: 'parcels'
+version: '1.0.0'
+
+# This setting configures which "profile" dbt uses for this project.
+profile: 'parcels'
+
+# These configurations specify where dbt should look for different types of files.
+# The `model-paths` config, for example, states that models in this project can be
+# found in the "models/" directory. You probably won't need to change these!
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+clean-targets:         # directories to be removed by `dbt clean`
+  - "target"
+  - "dbt_packages"
+
+
+# Configuring models
+# Full documentation: https://docs.getdbt.com/docs/configuring-models
+#
+# Schema routing note: macros/generate_schema_name.sql overrides dbt's default
+# prefixing, so a model configured with `+schema: marts` lands in `marts`, not
+# `staging_marts`. The bare schemas are created by docker/initdb/01_init.sql.
+models:
+  parcels:
+    +materialized: view
+
+seeds:
+  parcels:
+    landuse_code_fallback_labels:
+      +column_types:
+        # text, not integer: source_domains.code is text so one column can hold
+        # both DOR's integer codes and the county-unique string codes ('11-10').
+        # Seeding these as int would make the join to it a silent type mismatch.
+        code: text
+
+
+# =============================================================================
+# SOURCE MANIFEST
+# =============================================================================
+# Single source of truth for both halves of the pipeline: the Python extractor
+# reads this file with yaml.safe_load, dbt reads it via var() at parse time.
+# Keeping it here rather than in a standalone manifest.yml is deliberate --
+# `dbt --vars "$(cat manifest.yml)"` would have to be repeated on every
+# invocation (run, test, build, docs generate, and every CI step), and omitting
+# it fails with an opaque "var not found".
+#
+# CONVENTIONS
+#   map values are SQL expressions, substituted verbatim. Quote them.
+#   YAML null (unquoted) means "this county does not publish the field" --
+#     it renders as SQL NULL and generates no not_null test.
+#   String literals need nested quotes: "'appraised'". A bare 'appraised' is
+#     stripped by the YAML parser and would be injected as a column reference.
+#   Equality expressions on nullable columns need coalesce(..., false), since
+#     SQL three-valued logic makes null = 'A' evaluate to NULL, not false.
+#   allow_null marks a field that IS mapped but is legitimately sparse.
+#     The reason string is mandatory and is documentation only -- it never
+#     reaches SQL.
+#
+# INGESTION CONTRACT
+#   The extractor must lowercase all source column names when landing into
+#   raw.*. Source field names below are written in their published casing for
+#   readability (TaxParcelNumber, ADDR_FULL); unquoted SQL identifiers fold to
+#   lowercase, so the two only agree if landing lowercases. If the loader
+#   preserves case, every mixed-case mapping breaks at once.
+#
+#   page size is deliberately absent -- it is read from maxRecordCount in the
+#   service metadata. See docs/design.md section 6.
+# =============================================================================
+
+vars:
+  target_crs: 2927
+
+  state_source:
+    name: WA State Current Parcels
+    item_id: null                 # OPEN: never resolved; only the fallback path is missing
+    service_url: https://services.arcgis.com/jsIt88o09Q0r1j8h/arcgis/rest/services/Current_Parcels/FeatureServer
+    portal_url: https://geo.wa.gov/datasets/current-parcels
+    source_crs: 2927
+    layers:
+      parcels: 0
+      file_date: 1                # per-county vintage of the state's copy
+      landuse_lookup: 2           # per-county land use code -> description
+
+  counties:
+
+    "033":
+      name: King
+      item_id: 203f285e0db44975abc96940345f1454
+      # NOTE: this is PARCEL_ADDRESS_PUB_AREA_3069 (69 fields), NOT
+      # PARCEL_AREA_439 (6 fields, geometry only). The names are similar and
+      # the wrong one costs every attribute. The two layers also disagree on
+      # parcel count by 2,563 -- see docs/design.md section 2.
+      service_url: https://services.arcgis.com/Ej0PsM5Aw677QF1W/arcgis/rest/services/PARCEL_ADDRESS_PUB_AREA_3069/FeatureServer
+      layer_id: 0
+      portal_url: https://gis-kingcounty.opendata.arcgis.com/maps/203f285e0db44975abc96940345f1454
+      source_crs: 2926
+      map:
+        parcel_id:            PIN
+        situs_address:        ADDR_FULL
+        sub_address:          UNIT_NUM
+        situs_city:           CTYNAME
+        situs_zip5:           ZIP5
+        situs_zip4:           PLUS4
+        landuse_code_source:  PREUSE_CODE
+        landuse_desc_source:  PREUSE_DESC
+        value_land_appraised: APPRLNDVAL
+        value_bldg_appraised: APPR_IMPR
+        value_basis:          "'appraised'"
+        acres_reported:       KCA_ACRES
+        is_active:            "true"
+      # Taxpayer name and mailing address. 625,745 mailing addresses (503,395
+      # distinct) and 524,786 attention lines. Never requested -- see the
+      # Snohomish entry for the full reasoning.
+      exclude:
+        - KCTP_ATTN
+        - KCTP_ADDR
+        - KCTP_CTYST
+        - KCTP_CITY
+        - KCTP_STATE
+        - KCTP_ZIP
+      allow_null:
+        sub_address: "UNIT_NUM is populated only for condo and multi-unit parcels"
+        situs_zip4:  "PLUS4 is frequently blank; King is the only county publishing it at all"
+      notes:
+        is_active: >-
+          ASSUMPTION, not a fact. This layer exposes no status or retirement
+          field. Whether it is pre-filtered to active parcels is unverified --
+          see the open questions in docs/design.md section 10.
+
+    "053":
+      name: Pierce
+      item_id: 81a83fb925654e92a544036d39a1f3f2
+      service_url: https://services2.arcgis.com/1UvBaQ5y1ubjUPmd/arcgis/rest/services/Tax_Parcels/FeatureServer
+      layer_id: 0
+      portal_url: https://gisdata-piercecowa.opendata.arcgis.com/datasets/81a83fb925654e92a544036d39a1f3f2_0
+      source_crs: 2927
+      map:
+        parcel_id:            TaxParcelNumber
+        situs_address:        Site_Address
+        sub_address:          TaxParcelUnit
+        situs_city:           "split_part(City_State, ',', 1)"
+        situs_zip5:           "substring(trim(Zipcode) from '^([0-9]{5})')"
+        situs_zip4:           "substring(trim(Zipcode) from '^[0-9]{5}-([0-9]{4})$')"
+        landuse_code_source:  Use_Code
+        landuse_desc_source:  Landuse_Description
+        value_land_appraised: Land_Value
+        value_bldg_appraised: Improvement_Value
+        value_basis:          "'appraised'"
+        acres_reported:       Land_Acres
+        is_active:            "RetiredDate is null"
+      allow_null:
+        sub_address: "TaxParcelUnit applies only to multi-unit tax parcels"
+        situs_zip4:  "Zipcode is mixed ZIP+4 and bare ZIP5; roughly 13% of sampled distinct values carry no +4"
+      notes:
+        is_active: "223 of 339,910 rows carry a RetiredDate."
+        situs_city: "City_State is a combined field; the state half is discarded (all WA)."
+        situs_zip:  >-
+          Zipcode holds both '98108-2743' and bare '98402'. The anchored regex
+          takes the leading 5 digits for zip5 and the +4 only when the whole
+          value is well-formed, so partial or malformed suffixes become null
+          rather than garbage.
+
+    "061":
+      name: Snohomish
+      item_id: a69c4dc383114f4a8a30b8d4cccf7823
+      service_url: https://services6.arcgis.com/z6WYi9VRHfgwgtyW/arcgis/rest/services/Parcels/FeatureServer
+      layer_id: 0
+      portal_url: https://snohomish-county-open-data-portal-snoco-gis.hub.arcgis.com/datasets/a69c4dc383114f4a8a30b8d4cccf7823_0
+      source_crs: 3857
+      map:
+        parcel_id:            PARCEL_ID
+        situs_address:        SITUSLINE1
+        sub_address:          SITUSUNIT
+        situs_city:           SITUSCITY
+        situs_zip5:           "substring(trim(SITUSZIP) from '^([0-9]{5})')"
+        situs_zip4:           "substring(trim(SITUSZIP) from '^[0-9]{5}-([0-9]{4})$')"
+        landuse_code_source:  USECODE
+        landuse_desc_source:  null
+        value_land_appraised: MKLND
+        value_bldg_appraised: MKIMP
+        value_basis:          "'market'"
+        acres_reported:       TAB_ACRES
+        is_active:            "coalesce(STATUS = 'A', false)"
+      # Owner and taxpayer name plus mailing address: 314,439 owner names
+      # (263,919 distinct) and 314,434 mailing addresses, same again for the
+      # taxpayer fields.
+      #
+      # These are lawfully published public record, and the county is entitled
+      # to serve them. Bulk-republishing them to a public GitHub repo and a
+      # public Tableau dashboard is a different act than the county making them
+      # individually queryable, and nothing downstream needs them -- no mapping
+      # references an owner field.
+      #
+      # Excluded at the REQUEST level, not dropped after landing: these columns
+      # are never fetched, never written to bronze, and never reach the
+      # GeoPackage cache. The field snapshot still records their names and types
+      # from the layer metadata (names are not personal data), so drift
+      # detection continues to see the full published schema.
+      exclude:
+        - OWNERNAME
+        - OWNERLINE1
+        - OWNERLINE2
+        - OWNERLINE3
+        - OWNERCITY
+        - OWNERSTATE
+        - OWNERZIP
+        - TAXPRNAME
+        - TAXPRLINE1
+        - TAXPRLINE2
+        - TAXPRLINE3
+        - TAXPRCITY
+        - TAXPRSTATE
+        - TAXPRZIP
+      allow_null:
+        parcel_id:   "4,595 rows publish a null PARCEL_ID; they survive staging and are quarantined downstream rather than dropped"
+        sub_address: "SITUSUNIT applies only to multi-unit parcels"
+        situs_zip4:  "SITUSZIP is predominantly ZIP+4 but a minority are bare ZIP5"
+      notes:
+        is_active: >-
+          Do NOT use RETIREDATE -- it is populated on all 319,265 rows and is
+          useless as an active flag. STATUS has values A, H, and null; the
+          coalesce is required or null-status rows yield a NULL is_active.
+        acres_reported: >-
+          TAB_ACRES, not GIS_ACRES. GIS_ACRES is computed from the geometry, so
+          validating geometry area against it would be circular. TAB_ACRES comes
+          off the tax roll and is independent.
+        situs_zip: >-
+          SITUSZIP mixes '98036-8437' and bare '98036'. At least one malformed
+          value exists ('982037-870' -- six digits before the hyphen); the
+          anchored regex yields 98203 for zip5 and null for zip4 rather than
+          propagating the corruption.
+        value_basis: >-
+          MKLND/MKIMP are market values. The county also publishes CULND/CUIMP
+          (current-use, for ag and forest land under WA current-use taxation).
+          There is no single correct mapping to the state's VALUE_LAND.
+
+    "063":
+      name: Spokane
+      item_id: 228db1be1d6940a3b5e3f2104e470134
+      service_url: https://services1.arcgis.com/ozNll27nt9ZtPWOn/arcgis/rest/services/Parcels/FeatureServer
+      layer_id: 0
+      portal_url: https://gisdatacatalog-spokanecounty.opendata.arcgis.com/datasets/228db1be1d6940a3b5e3f2104e470134_0
+      source_crs: 3857
+      map:
+        parcel_id:            PID_NUM
+        situs_address:        site_address
+        sub_address:          site_apartment
+        situs_city:           site_city
+        situs_zip5:           "substring(trim(site_zip) from '^([0-9]{5})')"
+        situs_zip4:           "substring(trim(site_zip) from '^[0-9]{5}-([0-9]{4})$')"
+        landuse_code_source:  prop_use_code
+        landuse_desc_source:  prop_use_desc
+        value_land_appraised: land_value
+        value_bldg_appraised: null
+        value_basis:          "'appraised'"
+        acres_reported:       acreage
+        is_active:            "true"
+      allow_null:
+        sub_address: "site_apartment applies only to multi-unit parcels"
+        situs_zip4:  "site_zip is the dirtiest of the four; many rows carry no usable +4"
+      notes:
+        situs_zip: >-
+          The dirtiest ZIP field of the four. Observed forms include '99001-9006',
+          bare '99001', trailing-hyphen '99000-', double-hyphen '99003--',
+          all-zero '00000', six-digit '599223', and four-digit '0000'. The
+          anchored regex handles the structural cases: '0000' yields null (too
+          short) and malformed suffixes yield null rather than partial garbage.
+          It does NOT judge plausibility -- '00000' survives as a literal zip5
+          and '599223' becomes '59922', a Montana prefix. Situs addresses are
+          physical WA locations, so anything outside 980xx-994xx is definitionally
+          wrong; that check belongs in the quality layer, not in conformance.
+        parcel_id: >-
+          PID_NUM and `parcel` both match the state's PARCEL_ID_NR exactly and
+          were identical across the sample. PIDMAP is a truncated map label
+          (3.9002 vs 01013.9002) and ACO_NUM is blank or unrelated. A test
+          asserting PID_NUM = parcel should surface any divergence.
+        value_bldg_appraised: >-
+          Not published. Derivable as assessed_amt - land_value, but that is our
+          inference rather than their figure, so it stays null.
+        landuse: >-
+          The state discarded ORIG_LANDUSE_CD for all 214,022 Spokane rows, so
+          no crosswalk to the state taxonomy is derivable. landuse_cd stays null
+          with landuse_cd_method = 'unmapped'.
+        is_active: "eff_to_date is null on all rows and seg_status has one distinct value (Active-Complete)."
