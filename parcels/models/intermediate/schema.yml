@@ -1,0 +1,50 @@
+version: 2
+
+models:
+  - name: int_parcels_conformed
+    description: >
+      Post-repair, post-validation parcels (rejection_reason is null), with the state land-use taxonomy
+      applied via int_landuse_crosswalk. One row per publishable parcel; The contract the gold layer reads
+    columns:
+      - name: parcel_uid
+        description: Zero-padded FIPS + county parcel ID. Joins to the answer key
+        data_tests:
+          - not_null
+      - name: county_fips
+        data_tests:
+          - not_null
+      - name: geom
+        data_tests:
+          - not_null
+      - name: source_file_date
+        data_tests:
+          - not_null
+      - name: landuse_cd_method
+        description: derived = matched the crosswalk, unmapped= state has no mapping
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ['derived','unmapped']
+
+  - name: int_parcels_validated
+    description: >
+      All staged rows post-repair with rejection verdicts and quality flags.
+      Superset of conformed and rejected
+    columns:
+      - name: rejection_reason
+        description: Registry code or null. CASE precedence lives in rejection_rules()
+
+  - name: int_landuse_crosswalk
+    description: >
+      (county, county land-use code) -> state DOR code, derived from the answer key.
+      Grain: one row per county_fips,orig_landuse_code, enforced by tests/orig_landuse_drift.sql
+    columns:
+      - name: county_fips
+        data_tests:
+          - not_null
+      - name: orig_landuse_cd
+        data_tests:
+          - not_null
+      - name: landuse_cd
+        data_tests:
+          - not_null

@@ -81,6 +81,7 @@ seeds:
 vars:
   target_crs: 2927
   area_tolerance: 0.1
+  max_reject_pct: 5
 
   state_source:
     name: WA State Current Parcels

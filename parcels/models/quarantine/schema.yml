@@ -1,0 +1,12 @@
+version: 2
+
+models:
+  - name: parcels_rejected
+    description: >
+      Rejected rows with reason and full source metadata. Complementary to
+      int_parcels_conformed by construction. The row_counts_match canary holds
+      the two to the reconciliation
+    columns:
+      - name: rejection_reason
+        data_tests:
+          - not_null
