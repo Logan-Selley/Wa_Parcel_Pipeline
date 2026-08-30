@@ -24,4 +24,4 @@ SELECT e.*,
         {% do flag_cols.append(f.predicate ~ ' as ' ~ f.rule_id) %}
     {% endfor %}
     {{ flag_cols | join(', ') }}
-FROM enriched e LEFT JOIN survivors d USING (parcel_uid)
+FROM enriched e LEFT JOIN survivors d ON (parcel_uid = duplicate_uid)

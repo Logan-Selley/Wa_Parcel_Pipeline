@@ -32,6 +32,8 @@ clean-targets:         # directories to be removed by `dbt clean`
 models:
   parcels:
     +materialized: view
+    quarantine:
+      +schema: quarantine
 
 seeds:
   parcels:
@@ -184,8 +186,8 @@ vars:
         situs_city:           SITUSCITY
         situs_zip5:           "substring(trim(SITUSZIP) from '^([0-9]{5})')"
         situs_zip4:           "substring(trim(SITUSZIP) from '^[0-9]{5}-([0-9]{4})$')"
-        landuse_code_source:  USECODE
-        landuse_desc_source:  null
+        landuse_code_source:  "substring(trim(USECODE) from '^[0-9]+')"
+        landuse_desc_source:  "substring(trim(USECODE) from '^[0-9]+[ -]+(.+)$')"
         value_land_appraised: MKLND
         value_bldg_appraised: MKIMP
         value_basis:          "'market'"
@@ -246,6 +248,10 @@ vars:
           MKLND/MKIMP are market values. The county also publishes CULND/CUIMP
           (current-use, for ag and forest land under WA current-use taxation).
           There is no single correct mapping to the state's VALUE_LAND.
+        landuse_code_source: >-
+          USECODE combines the raw code value with a prose description. Mostly space
+          separated but 178 rows use a hyphen pattern. Anchored regex used to extract
+          and separate the values similar to SITUSZIP
 
     "063":
       name: Spokane
