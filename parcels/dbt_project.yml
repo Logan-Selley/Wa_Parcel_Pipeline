@@ -78,6 +78,7 @@ seeds:
 
 vars:
   target_crs: 2927
+  area_tolerance: 0.1
 
   state_source:
     name: WA State Current Parcels
@@ -230,9 +231,12 @@ vars:
           useless as an active flag. STATUS has values A, H, and null; the
           coalesce is required or null-status rows yield a NULL is_active.
         acres_reported: >-
-          TAB_ACRES, not GIS_ACRES. GIS_ACRES is computed from the geometry, so
-          validating geometry area against it would be circular. TAB_ACRES comes
-          off the tax roll and is independent.
+          TAB_ACRES, not GIS_ACRES (circular). MEASURED: 50,515 ACTIVE rows
+          (15.8%) report tab_acres = 0 while gis_acres is populated (median 3.0 ac)
+          and matches geometry-derived area to 0.1% -- i.e. gis_acres carries no
+          independent information. Coalescing would turn 50.5k "not measurable"
+          rows into false passes. The zero-acre class (exempt/ROW parcels?) is a
+          source finding for the scorecard, not a gap to paper over.
         situs_zip: >-
           SITUSZIP mixes '98036-8437' and bare '98036'. At least one malformed
           value exists ('982037-870' -- six digits before the hyphen); the
