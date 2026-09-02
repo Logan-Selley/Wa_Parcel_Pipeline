@@ -34,6 +34,9 @@ models:
     +materialized: view
     quarantine:
       +schema: quarantine
+    marts:
+      +schema: marts
+      +materialized: table
 
 seeds:
   parcels:
@@ -107,8 +110,19 @@ vars:
       layer_id: 0
       portal_url: https://gis-kingcounty.opendata.arcgis.com/maps/203f285e0db44975abc96940345f1454
       source_crs: 2926
+      # Record identity (docs/build-plan.md A3). record_key.fields are the
+      # source's own distinguishing fields, appended to parcel_uid to form the
+      # record grain; King needs none -- PIN is unique once case is preserved.
+      # identity_exclude keeps system row ids and geometry-derived metadata
+      # out of record_signature, so geometry-distinct records of one parcel
+      # can still union. Measured: proptype's 9,043 nulls match the value-less
+      # class exactly.
+      record_key:
+        fields: []
+      identity_exclude: [objectid, lat, lon, point_x, point_y, shape__area, shape__length]
       map:
         parcel_id:            PIN
+        parcel_id_raw:        PIN
         situs_address:        ADDR_FULL
         sub_address:          UNIT_NUM
         situs_city:           CTYNAME
@@ -121,6 +135,11 @@ vars:
         value_basis:          "'appraised'"
         acres_reported:       KCA_ACRES
         is_active:            "true"
+        # King publishes no stacking indicator. Blanket false is SAFE here only
+        # because is_stacked explains overlaps rather than gating them -- the
+        # overlap classifier keys on geometry ratio, so King's condo stacks
+        # still land in the 'coincident' bucket, just annotated as unflagged.
+        is_stacked:           "false"
       # Taxpayer name and mailing address. 625,745 mailing addresses (503,395
       # distinct) and 524,786 attention lines. Never requested -- see the
       # Snohomish entry for the full reasoning.
@@ -147,31 +166,65 @@ vars:
       layer_id: 0
       portal_url: https://gisdata-piercecowa.opendata.arcgis.com/datasets/81a83fb925654e92a544036d39a1f3f2_0
       source_crs: 2927
+      # Record identity (docs/build-plan.md A3). Pierce's hierarchy is
+      # parcel -> unit -> unit_type -> level: one tax parcel publishes a
+      # Residence plus its Parking Space / Storage / Garage components, values
+      # living on the Residence, zeros on the rest, so nothing double-counts.
+      # taxparcellevel = -1 is the county's below-grade sentinel (975 rows --
+      # basement components, 236 of them geometrically contained in their
+      # unit's level-1 record). Measured: declaring these three fields took
+      # key collisions from 6,763 groups to 460.
+      record_key:
+        fields: [taxparcelunit, taxparcelunittype, taxparcellevel]
+      identity_exclude: [objectid, editdate, x_coordinate, y_coordinate, longitude, latitude, maplegend, shape__area, shape__length]
       map:
         parcel_id:            TaxParcelNumber
+        parcel_id_raw:        TaxParcelNumber
         situs_address:        Site_Address
         sub_address:          TaxParcelUnit
-        situs_city:           "split_part(City_State, ',', 1)"
-        situs_zip5:           "substring(trim(Zipcode) from '^([0-9]{5})')"
-        situs_zip4:           "substring(trim(Zipcode) from '^[0-9]{5}-([0-9]{4})$')"
+        # NOT City_State / Zipcode. Those belong to the Delivery_Address group,
+        # which is the TAXPAYER MAILING address, not the situs. Evidence: PO
+        # boxes and out-of-state values (TIMNATH CO, GEARHART OR, KNOXVILLE TN)
+        # on parcels physically in Pierce County, and Site_Address differs from
+        # Delivery_Address on 133,983 of 339,910 rows. Mapping them here put
+        # 17,208 non-Washington ZIPs into situs_zip5, which the zip_implausible
+        # flag caught.
+        #
+        # Pierce publishes a situs street address and nothing else locational --
+        # no situs city, no situs ZIP. The statewide layer leaves both null for
+        # Pierce, which is correct rather than a defect on their part.
+        situs_city:           null
+        situs_zip5:           null
+        situs_zip4:           null
         landuse_code_source:  Use_Code
         landuse_desc_source:  Landuse_Description
         value_land_appraised: Land_Value
         value_bldg_appraised: Improvement_Value
         value_basis:          "'appraised'"
         acres_reported:       Land_Acres
+        # Pierce's analogue of Snohomish's STACKED. taxparcellevel is 0 for base
+        # parcels (313,701 rows, ~1 per tax parcel) and non-zero for vertical
+        # components -- 26,243 records across levels -1 (below grade), 1, 1.5,
+        # 2, 2.5, 3 -- which tracks its 26,269 unit-bearing records almost
+        # exactly. Numeric, not integer: 1.5 and 2.5 both occur.
+        is_stacked:           "coalesce(taxparcellevel, 0) <> 0"
         is_active:            "RetiredDate is null"
+      # Taxpayer mailing address. Same class as King's KCTP_* and Snohomish's
+      # TAXPR_* fields: a street address (often a PO box) plus city, state and
+      # ZIP identifying where the owner receives mail, on 39% of rows somewhere
+      # other than the parcel.
+      exclude:
+        - Delivery_Address
+        - City_State
+        - Zipcode
       allow_null:
         sub_address: "TaxParcelUnit applies only to multi-unit tax parcels"
-        situs_zip4:  "Zipcode is mixed ZIP+4 and bare ZIP5; roughly 13% of sampled distinct values carry no +4"
       notes:
         is_active: "223 of 339,910 rows carry a RetiredDate."
-        situs_city: "City_State is a combined field; the state half is discarded (all WA)."
-        situs_zip:  >-
-          Zipcode holds both '98108-2743' and bare '98402'. The anchored regex
-          takes the leading 5 digits for zip5 and the +4 only when the whole
-          value is well-formed, so partial or malformed suffixes become null
-          rather than garbage.
+        situs_city: >-
+          Not published. City_State belongs to the mailing address group and is
+          excluded; mapping it here was an error corrected after the
+          zip_implausible flag surfaced 17,208 out-of-state ZIPs.
 
     "061":
       name: Snohomish
@@ -180,8 +233,16 @@ vars:
       layer_id: 0
       portal_url: https://snohomish-county-open-data-portal-snoco-gis.hub.arcgis.com/datasets/a69c4dc383114f4a8a30b8d4cccf7823_0
       source_crs: 3857
+      # Record identity (docs/build-plan.md A3). Measured: Snohomish publishes
+      # no duplicate PARCEL_IDs once the 4,595 null-uid voids are excluded, so
+      # the key needs no extra fields; STACKED/FLATTEN are attributes, not
+      # identity.
+      record_key:
+        fields: []
+      identity_exclude: [objectid, x_coord, y_coord, shape__area, shape__length]
       map:
         parcel_id:            PARCEL_ID
+        parcel_id_raw:        PARCEL_ID
         situs_address:        SITUSLINE1
         sub_address:          SITUSUNIT
         situs_city:           SITUSCITY
@@ -194,6 +255,11 @@ vars:
         value_basis:          "'market'"
         acres_reported:       TAB_ACRES
         is_active:            "coalesce(STATUS = 'A', false)"
+        # The county's own flag: 42,204 records. Vertically stacked units, each
+        # its own tax parcel with its own PARCEL_ID -- which is why Snohomish
+        # needs no record_key fields (the county already disambiguated) while
+        # its stacking is invisible in the keys and shows only in geometry.
+        is_stacked:           "coalesce(STACKED, '') = 'Y'"
       # Owner and taxpayer name plus mailing address: 314,439 owner names
       # (263,919 distinct) and 314,434 mailing addresses, same again for the
       # taxpayer fields.
@@ -261,8 +327,17 @@ vars:
       layer_id: 0
       portal_url: https://gisdatacatalog-spokanecounty.opendata.arcgis.com/datasets/228db1be1d6940a3b5e3f2104e470134_0
       source_crs: 3857
+      # Record identity (docs/build-plan.md A3). site_apartment is the unit
+      # designator; measured: the only pid_num collisions are two pairs of
+      # signature-identical rows (multipart parcels published as two pieces)
+      # that the integration step unions, plus the 3 UNKNOWN sentinel rows
+      # which quarantine out first.
+      record_key:
+        fields: [site_apartment]
+      identity_exclude: [objectid, shape__area, shape__length]
       map:
-        parcel_id:            PID_NUM
+        parcel_id:            "nullif(trim(PID_NUM), 'UNKNOWN')"
+        parcel_id_raw:        "trim(PID_NUM)::text"   # raw value preserved, 'UNKNOWN' included
         situs_address:        site_address
         sub_address:          site_apartment
         situs_city:           site_city
@@ -275,6 +350,8 @@ vars:
         value_basis:          "'appraised'"
         acres_reported:       acreage
         is_active:            "true"
+        # No stacking indicator published. See the King note.
+        is_stacked:           "false"
       allow_null:
         sub_address: "site_apartment applies only to multi-unit parcels"
         situs_zip4:  "site_zip is the dirtiest of the four; many rows carry no usable +4"
@@ -293,7 +370,8 @@ vars:
           PID_NUM and `parcel` both match the state's PARCEL_ID_NR exactly and
           were identical across the sample. PIDMAP is a truncated map label
           (3.9002 vs 01013.9002) and ACO_NUM is blank or unrelated. A test
-          asserting PID_NUM = parcel should surface any divergence.
+          asserting PID_NUM = parcel should surface any divergence. Nulling rows
+          where the PID_NUM is UNKNOWN as they appear to be genuine, empty placeholders
         value_bldg_appraised: >-
           Not published. Derivable as assessed_amt - land_value, but that is our
           inference rather than their figure, so it stays null.

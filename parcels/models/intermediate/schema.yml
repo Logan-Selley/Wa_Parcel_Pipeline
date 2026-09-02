@@ -4,10 +4,39 @@ models:
   - name: int_parcels_conformed
     description: >
       Post-repair, post-validation parcels (rejection_reason is null), with the state land-use taxonomy
-      applied via int_landuse_crosswalk. One row per publishable parcel; The contract the gold layer reads
+      applied via int_landuse_crosswalk. One row per publishable record.
+
+      NOT the gold contract -- dim_parcel is. Row-level quality that can be
+      expressed as a per-row predicate lives here via flag_rules(), but
+      overlap is a PAIR-level fact requiring a self-join, so it cannot be a
+      flag_rules() entry and is computed downstream in int_parcel_overlaps.
+      That model reads this one because this is the first materialized,
+      GiST-indexed relation in the chain and because rejected rows (null and
+      unrepairable geometry) are already filtered out here.
+
+      The flag cannot be written back onto this model -- conformed ->
+      overlaps -> conformed is a DAG cycle -- so dim_parcel joins the two and
+      is what the gold layer and dashboards read.
     columns:
+      - name: record_key_uid
+        description: >
+          A3b grain. parcel_uid plus the county's declared record_key fields
+          (Pierce: unit|unit_type|level, Spokane: apartment, King/Snohomish:
+          none), so one row per published record in the county's own hierarchy.
+          Unique by construction after the A3b merge -- this test is the drift
+          guard: a county adding a record dimension, or a record_key going
+          stale, shows up here rather than as silent double-counting downstream.
+        data_tests:
+          - not_null
+          - unique
       - name: parcel_uid
-        description: Zero-padded FIPS + county parcel ID. Joins to the answer key
+        description: >
+          Zero-padded FIPS + county parcel ID. Joins to the answer key, and is
+          INTENTIONALLY NOT UNIQUE -- Pierce publishes multiple unit records per
+          tax parcel, and the state carries the same duplicates (6,769 groups
+          their side vs 6,763 ours). Testing it for uniqueness asserts something
+          neither source claims; the dup-group count is a scorecard metric
+          instead. Uniqueness is enforced on record_key_uid above.
         data_tests:
           - not_null
       - name: county_fips

@@ -26,6 +26,62 @@
 {%- set src        = 'parcels_' ~ cfg['name'] | lower -%}
 {%- set target_crs = var('target_crs', 2927) -%}
 
+{#
+    Record identity (docs/build-plan.md A3). Two ids, each with one job:
+
+    record_key_uid = parcel_uid + the county's declared record_key fields,
+    legibly encoded ('053-123456|A|2' = parcel + unit + unit_type + level).
+    Declares, per county, what makes two published records the same record.
+    Null-safe: a null field encodes as '~', and a null parcel_uid (the
+    quarantine path) yields a null record_key_uid.
+
+    record_signature = md5 over every raw column NOT in the county's
+    identity_exclude list. It discriminates variants the declared key does
+    not (attribute differences) without putting volatile data in the key --
+    values in a key would churn identity on every assessment update.
+
+    identity_exclude reasons:
+      system row ids / volatile timestamps: objectid, globalid, editdate
+      geometry-derived metadata (functions of geom; excluding them lets
+        geometry-distinct records of one parcel union):
+        shape__area, shape__length, x/y/long/lat, maplegend
+      geom is always excluded implicitly.
+
+    The column set comes from the live source relation minus the county's
+    identity_exclude, so a column the county adds later is absorbed on the
+    next run (and the drift test flags the change loudly).
+#}
+{%- set identity_exclude = cfg.get('identity_exclude', []) + ['geom'] -%}
+{%- set key_fields = cfg.get('record_key', {}).get('fields', []) -%}
+
+{#  NOTE: key parts are accumulated via list append, NOT by re-binding a set
+    variable inside the loop -- Jinja for-loops are scoped, and a `set` inside
+    a loop resets when the loop exits (the loop-scoped-set gotcha from
+    docs/design.md). sig_parts below works the same way. #}
+{%- set key_parts = [] -%}
+{%- for f in key_fields -%}
+    {%- do key_parts.append("'|' || coalesce(nullif(trim(" ~ f ~ "::text), ''), '~')") -%}
+{%- endfor -%}
+{%- if key_parts | length > 0 -%}
+    {%- set key_suffix = ' || ' ~ (key_parts | join(' || ')) -%}
+{%- else -%}
+    {%- set key_suffix = '' -%}
+{%- endif -%}
+
+{%- set sig_expr = 'cast(null as text)' -%}
+{%- if execute -%}
+    {%- set raw_cols = adapter.get_columns_in_relation(source('raw', src)) -%}
+    {%- set sig_parts = [] -%}
+    {%- for c in raw_cols -%}
+        {%- if c.name not in identity_exclude -%}
+            {%- do sig_parts.append("coalesce(nullif(trim(" ~ c.name ~ "::text), ''), '~')") -%}
+        {%- endif -%}
+    {%- endfor -%}
+    {%- if sig_parts | length > 0 -%}
+        {%- set sig_expr = "md5(concat_ws('|', " ~ sig_parts | join(', ') ~ "))" -%}
+    {%- endif -%}
+{%- endif -%}
+
 with source as (
 
     select * from {{ source('raw', src) }}
@@ -54,7 +110,7 @@ prepared as (
         -- Normalized once here so parcel_uid can be built from it below rather
         -- than repeating the expression. Blank-to-null matters: Spokane
         -- publishes whitespace-only values in identifier-shaped columns.
-        nullif(upper(trim({{ map['parcel_id'] }}::text)), '') as parcel_id_norm
+        nullif(trim({{ map['parcel_id'] }}::text), '') as parcel_id_norm
 
     from source
 
@@ -69,11 +125,35 @@ select
         else '{{ fips }}' || '-' || parcel_id_norm
     end                                                     as parcel_uid,
 
+    -- Record identity: record_key_uid declares the county's own record grain;
+    -- record_signature fingerprints the full published record. See the macro
+    -- header. Null parcel_id (quarantine path) nulls both.
+    case
+        when parcel_id_norm is null then null
+        else '{{ fips }}' || '-' || parcel_id_norm{{ key_suffix }}
+    end                                                     as record_key_uid,
+
+    {{ sig_expr }}                                          as record_signature,
+
     '{{ fips }}'::char(3)                                   as county_fips,
     '{{ cfg["name"] }}'::text                               as county_name,
     parcel_id_norm                                          as parcel_id,
-    {{ map['parcel_id'] }}::text                            as parcel_id_raw,
-    {{ field(map, 'is_active', 'true') }}::boolean          as is_active,
+    {{ map['parcel_id_raw'] }}::text                            as parcel_id_raw,
+    ({{ field(map, 'is_active', 'true') }})::boolean          as is_active,
+
+    {#  Whether this record is a vertical component sharing a plan-view
+        footprint with siblings. Counties encode the same physical structure
+        incompatibly -- Pierce by taxparcellevel on a shared parcel number,
+        Snohomish by a STACKED flag on records that each carry their own
+        PARCEL_ID -- so this normalises the concept, not the encoding.
+
+        Explanatory, never a gate: int_parcel_overlaps classifies pairs by
+        geometry overlap RATIO (>=0.8 coincident, <0.8 encroachment), because
+        measurement showed stacking implies coincidence but coincidence does
+        not imply a stacking flag (588 fully-contained pairs in one sample box
+        had neither record flagged). Gating on this column would have reported
+        those as errors; annotating with it makes them a named anomaly. #}
+    ({{ field(map, 'is_stacked', 'false') }})::boolean        as is_stacked,
 
     nullif(trim({{ field(map, 'situs_address') }}), '')::text        as situs_address,
     nullif(trim({{ field(map, 'sub_address')   }}), '')::text        as sub_address,
@@ -81,17 +161,17 @@ select
     nullif(trim({{ field(map, 'situs_zip5')    }}), '')::text        as situs_zip5,
     nullif(trim({{ field(map, 'situs_zip4')    }}), '')::text        as situs_zip4,
 
-    nullif(trim({{ field(map, 'landuse_code_source') }}::text), '')::text as landuse_code_source,
-    nullif(trim({{ field(map, 'landuse_desc_source') }}::text), '')::text as landuse_desc_source,
+    nullif(trim(({{ field(map, 'landuse_code_source') }})::text), '')::text as landuse_code_source,
+    nullif(trim(({{ field(map, 'landuse_desc_source') }})::text), '')::text as landuse_desc_source,
 
     -- landuse_cd and landuse_cd_method are deliberately absent: the crosswalk
     -- is derived from the state layer, so it is applied in int_landuse_crosswalk
     -- rather than here.
 
-    {{ field(map, 'value_land_appraised') }}::bigint         as value_land_appraised,
-    {{ field(map, 'value_bldg_appraised') }}::bigint         as value_bldg_appraised,
-    {{ field(map, 'value_basis') }}::text                    as value_basis,
-    {{ field(map, 'acres_reported') }}::numeric              as acres_reported,
+    ({{ field(map, 'value_land_appraised') }})::bigint         as value_land_appraised,
+    ({{ field(map, 'value_bldg_appraised') }})::bigint         as value_bldg_appraised,
+    ({{ field(map, 'value_basis') }})::text                    as value_basis,
+    ({{ field(map, 'acres_reported') }})::numeric              as acres_reported,
 
     geom_conformed                                           as geom,
 

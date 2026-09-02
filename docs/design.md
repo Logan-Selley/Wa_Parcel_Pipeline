@@ -62,6 +62,7 @@ county_name           text        not null,  -- a real name, unlike the state's 
 parcel_id             text        not null,  -- normalized; TEXT always
 parcel_id_raw         text,                  -- exactly as published
 is_active             boolean     not null,
+is_stacked            boolean     not null,  -- vertical component; see 5.6
 
 situs_address         text,
 sub_address           text,                  -- unit / condo designator
@@ -103,16 +104,19 @@ cast silently destroys leading zeros.
 **Geometry is `MultiPolygon`.** Pierce publishes `TaxParcelMultiPartCount`; a `Polygon`
 column will reject multipart parcels.
 
-**Stored in 2927 to match the state**, but 2927 is the *South* zone and only Pierce is
-genuinely in it — King, Snohomish, and Spokane are North-zone counties. Match the state for
-comparison fidelity; do **not** treat area computed in 2927 as authoritative. Validate
-against `acres_reported` instead (§5.4).
+**Stored in 2927 to match the state.** 2927 is the *South* zone and only Pierce is genuinely
+in it — King, Snohomish and Spokane are North-zone counties — so this was expected to cost
+some area accuracy. Measured against all 1.5M parcels, it does not: the ratio of
+geometry-derived acreage to county-reported acreage has a median of 1.0001–1.0007 per county
+with p25–p75 inside ±1.7%, including the three northern counties. Area computed in 2927 is
+trustworthy here, and the `area_mismatch` flags are genuine outliers rather than projection
+artefacts.
 
 **`(county_fips, parcel_id)` uniqueness is expected to fail on first run** — multipart
 parcels (Pierce), stacked condos (Snohomish `STACKED`/`FLATTEN`), and retired records all
 threaten it. Write the test, let it fail, investigate. The failure is a deliverable.
 
-**Owner and taxpayer fields are never ingested.** Two counties publish them:
+**Owner and taxpayer fields are never ingested.** Three of the four counties publish them:
 
 | County | Fields | Populated | Distinct |
 |---|---|---|---|
@@ -120,9 +124,13 @@ threaten it. Write the test, let it fail, investigate. The failure is a delivera
 | King | `KCTP_ATTN` + `KCTP_CITY/STATE/ZIP/CTYST` | 524,786 | 11,558 |
 | Snohomish | `OWNERNAME`, `TAXPRNAME` | 314,439 each | ~263,000 |
 | Snohomish | `OWNERLINE1-3`, `TAXPRLINE1-3` + city/state/zip | 314,434 | 247,145 |
+| Pierce | `Delivery_Address`, `City_State`, `Zipcode` | 339,910 | — |
 
-Roughly 940,000 mailing addresses and 578,000 personal names — King is the larger exposure,
-despite Snohomish being the more obvious one from field names alone.
+Roughly 1.28M mailing addresses and 578,000 personal names. King is the largest by volume,
+and **Pierce was the easiest to miss** — its mailing fields carry no `OWNER`/`TAXPR` prefix
+to signal what they are, and were initially mapped as situs city and ZIP. Only the
+`zip_implausible` flag catching 17,208 out-of-state ZIPs revealed it. A field name that does
+not announce itself as PII is still PII.
 
 All lawfully published public record. But bulk-republishing it to a public GitHub repo and a
 public Tableau dashboard is a different act than the county making it individually queryable,
@@ -151,9 +159,9 @@ non-uniform sources.
 | `parcel_id` | `PIN` | `TaxParcelNumber` | `PARCEL_ID` | `PID_NUM` |
 | `situs_address` | `ADDR_FULL` | `Site_Address` | `SITUSLINE1` | `site_address` |
 | `sub_address` | `UNIT_NUM` | `TaxParcelUnit` | `SITUSUNIT` | `site_apartment` |
-| `situs_city` | `CTYNAME` | `split_part(City_State, ',', 1)` | `SITUSCITY` | `site_city` |
-| `situs_zip5` | `ZIP5` | regex, §5.4 | regex, §5.4 | regex, §5.4 |
-| `situs_zip4` | `PLUS4` | regex, §5.4 | regex, §5.4 | regex, §5.4 |
+| `situs_city` | `CTYNAME` | **null** — not published; `City_State` is the mailing address | `SITUSCITY` | `site_city` |
+| `situs_zip5` | `ZIP5` | **null** — `Zipcode` is the mailing ZIP | regex, §5.4 | regex, §5.4 |
+| `situs_zip4` | `PLUS4` | **null** | regex, §5.4 | regex, §5.4 |
 | `landuse_code_source` | `PREUSE_CODE` | `Use_Code` | `USECODE` | `prop_use_code` |
 | `landuse_desc_source` | `PREUSE_DESC` | `Landuse_Description` | `null` | `prop_use_desc` |
 | `value_land_appraised` | `APPRLNDVAL` | `Land_Value` | `MKLND` | `land_value` |
@@ -370,6 +378,90 @@ Web Mercator area — inflated roughly 2× at Washington's latitude and unusable
 Snohomish use **`TAB_ACRES`**, not `GIS_ACRES`: `GIS_ACRES` is computed from the geometry, so
 comparing it to geometry-derived area is circular. `TAB_ACRES` comes off the tax roll and is
 independent.
+
+
+### 5.6 Parcel overlap — detected and classified, never repaired
+
+**The decision: overlaps are reported, not fixed.** This is a deliberate scope
+boundary, and worth stating explicitly because declining is the defensible call.
+
+Three reasons:
+
+1. **Repairing would invent boundaries.** Resolving an overlap means deciding
+   which parcel is authoritative and clipping the other. That is a cadastral
+   judgment made from deeds and surveys by the county assessor. Nothing in the
+   published attributes says which edge is correct, so any automated fix
+   fabricates a boundary no source asserts.
+2. **It would manufacture a false `ours_better`.** The state carries the
+   identical overlaps — 356,489 against our 356,470 in a sampled 5-mile box of
+   Snohomish, a 0.005% difference attributable to vintage. Clipping them would
+   create a systematic divergence from the answer key that we would then have to
+   defend as an improvement, when it is invention. Same failure mode as the
+   Pierce `City_State` retraction (§9).
+3. **Some overlaps are correct.** Easements, air rights, tidelands, PLSS
+   discrepancies and vertical stacks are all legitimate. Distinguishing those
+   from errors requires the deed.
+
+**The line this draws against geometry repair**, which the pipeline *does*
+perform: `ST_MakeValid` fixes a malformed **representation of a known intent** —
+a self-intersecting ring has one obviously-intended shape and repair recovers it
+deterministically. An overlap is a **semantic disagreement between two records**,
+each individually valid. There is no intent to recover, only a conflict to
+report. The pipeline repairs representation errors and reports semantic
+conflicts.
+
+#### Classification is by geometry ratio, not by the stacking flag
+
+`is_stacked` normalizes a concept the counties encode incompatibly: Pierce marks
+vertical components with `taxparcellevel <> 0` on a **shared** parcel number
+(25,642 records), Snohomish with a `STACKED` flag on records that each carry
+their **own** `PARCEL_ID` (42,204 records). King and Spokane publish no indicator
+and are blanket false.
+
+That same physical structure therefore surfaces two different ways, and the state
+inherits both without reconciling: Pierce's stacking is visible in **duplicate
+keys** (6,769 groups, which the state also carries), Snohomish's only in
+**overlapping geometry**. A schema normalized on field names does not normalize
+this.
+
+Measured in a 5-mile sample box, ratio = intersection ÷ smaller area:
+
+| pair kind | partial (<0.8) | 0.8–1.0 | contained (1.0) |
+|---|---|---|---|
+| both stacked | **0** | 138,341 | 213,940 |
+| one stacked | 563 | 732 | 1,674 |
+| neither | 355 | 277 | **588** |
+
+Stacking implies coincidence with **zero exceptions** across 352,281 pairs — but
+coincidence does not imply a stacking flag, as the 588 unflagged fully-contained
+pairs show. So the classifier keys on ratio and `is_stacked` explains rather than
+gates:
+
+- `coincident` (ratio ≥ 0.8) — co-located records; not a boundary defect.
+  `unflagged_coincident` isolates the 588-class as its own finding.
+- `encroachment` (ratio < 0.8) — the quality signal; 918 pairs in the box.
+
+**This is what keeps a stacked parcel comparable to its neighbours.** A blanket
+`NOT (a.is_stacked OR b.is_stacked)` exclusion would have discarded all 563
+one-stacked encroachments and reported the 588 unflagged pairs as errors. Same
+principle as `value_basis` and `landuse_cd_method`: carry the provenance column,
+do not filter on it.
+
+#### Cost
+
+`int_parcel_overlaps` is the project's expensive model, tagged `expensive` so
+routine builds run `--exclude tag:expensive`. Snohomish dominates: 13.75 average
+acres against King's 2.20 means larger bounding boxes and ~9.0M candidate pairs
+from half the rows (King ~1.7M, completing in ~5 min). Two remedies were tested
+and **rejected**, with measurements in build-plan A6: `ST_Subdivide` (splits on
+vertex count, but Snohomish is large not complex — forcing it expanded 314,670
+records into 3,031,020 pieces and made the join worse) and 1-mile spatial tiling
+(**26× worse** — 237,892,264 intra-cell pairs against 9,001,941 from the GiST
+index, because joining on cell equality short-circuits the spatial index).
+
+The `ST_Relate 'T********'` predicate — interior-interior intersection, so a
+shared lot line does not qualify — removes ~40% of candidates before the far more
+expensive `ST_Intersection`.
 
 ---
 
@@ -603,12 +695,21 @@ Running list. This section will do more for the README than the architecture dia
 8. **8 of the 89 `LANDUSE_CD` values in use are absent from the layer's own
    `DOR_Land_Use_Codes` domain** — `[0, 9, 10, 20, 60, 70, 80, 90]`. Roughly 9% of the
    values in their normalized column fall outside their own declared vocabulary.
-9. **Situs city and ZIP are entirely null for Pierce** — 0 of 339,590 rows, while
-   `SITUS_ADDRESS` is populated on 339,589. Pierce publishes city as a combined
-   `City_State` field (`'TACOMA, WA'`) and ZIP separately as `Zipcode`; the state's
-   conformance evidently could not parse either and dropped both. We recover
-   **339,860 cities and 339,739 ZIPs** (233,289 of them with ZIP+4) that the answer key
-   does not carry. Their largest single gap, and our largest `ours_better` entry.
+**Investigated and dismissed as a defect:** the state's `SITUS_CITY_NM` and `SITUS_ZIP_NR`
+are null for all of Pierce. That looked like their largest single gap and our largest
+`ours_better` entry — until the `zip_implausible` flag surfaced 17,208 non-Washington ZIPs in
+our own Pierce output. Pierce's `City_State` and `Zipcode` belong to the `Delivery_Address`
+group, which is the **taxpayer mailing address**: PO boxes and out-of-state values
+(TIMNATH CO, GEARHART OR, KNOXVILLE TN) on parcels physically in Pierce County, differing
+from `Site_Address` on 133,983 of 339,910 rows.
+
+Pierce publishes a situs street address and nothing else locational. The state leaving city
+and ZIP null is **correct**, and mapping the mailing fields into situs columns was our error.
+Corrected in §4; the fields are now excluded as PII alongside King's `KCTP_*` and Snohomish's
+`TAXPR_*`.
+
+The lesson generalises: a field named for a place is not necessarily the *parcel's* place.
+Check whether an address group is situs or mailing before mapping any part of it.
 
 Also worth noting, in our sources rather than the state's: **Snohomish has 4,595 rows with a
 null `PARCEL_ID`**. Measured against the full conformed load, these are not scattered bad

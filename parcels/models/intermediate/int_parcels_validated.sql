@@ -3,10 +3,14 @@ WITH classified AS (
         CASE {% for r in rejection_rules() %}
             when {{ r.predicate }} then '{{ r.rule_id }}'
         {% endfor %} END AS rejection_reason,
-        to_timestamp(f.file_date / 1000.0)::date as source_file_date
-    FROM {{ ref('int_parcels_repaired') }} r
-    LEFT JOIN {{ source('raw', 'state_file_date')}} f
-    ON lpad(f.county_nm, 3, '0') = r.county_fips
+        f.source_file_date
+    FROM {{ ref('int_parcels_records') }} r
+    {# int_county_vintage rather than state_file_date directly: File_Date's
+       county_nm mixes unpadded FIPS codes with four bare county names, so a
+       plain lpad silently drops vintage for Grays Harbor, Pend Oreille, San
+       Juan and Walla Walla. See docs/design.md defect 7. #}
+    LEFT JOIN {{ ref('int_county_vintage') }} f
+    ON f.county_fips = r.county_fips
 ),
 survivors as (
     SELECT parcel_uid as duplicate_uid
