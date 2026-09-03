@@ -530,6 +530,12 @@ def record_field_snapshot(
             "field_type": str(field_type),
             "crs": f"EPSG:{metadata.native_wkid}" if metadata.native_wkid else "UNKNOWN",
             "max_record_count": metadata.max_record_count,
+            "source_last_edit": (
+                datetime.datetime.fromtimestamp(
+                    metadata.last_edit_epoch_ms / 1000, datetime.timezone.utc
+                ).date()
+                if metadata.last_edit_epoch_ms else None
+            ),
             "captured_at": captured_at,
         }
         for field_name, field_type in metadata.field_types.items()
@@ -550,6 +556,7 @@ def record_field_snapshot(
                 field_type TEXT NOT NULL,
                 crs TEXT,
                 max_record_count INTEGER,
+                source_last_edit DATE,
                 captured_at TIMESTAMP WITH TIME ZONE NOT NULL
             );
         """
@@ -559,9 +566,11 @@ def record_field_snapshot(
             text(
                 f"""
             INSERT INTO {RAW_SCHEMA}.{snapshot_table} (
-                fips, layer_url, field_name, field_type, crs, max_record_count, captured_at
+                fips, layer_url, field_name, field_type, crs, max_record_count,
+                source_last_edit, captured_at
             ) VALUES (
-                :fips, :layer_url, :field_name, :field_type, :crs, :max_record_count, :captured_at
+                :fips, :layer_url, :field_name, :field_type, :crs, :max_record_count,
+                :source_last_edit, :captured_at
             );
         """
             ),

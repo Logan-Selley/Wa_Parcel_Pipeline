@@ -41,6 +41,12 @@ class CountySource:
     # names and mailing addresses. Enforced at the request level so they never
     # cross the wire; see the manifest entries for the reasoning.
     exclude: list[str] = field(default_factory=list)
+    # Consumed by conform_parcels on the dbt side (record identity, A3). The
+    # extractor does not use them, but the dataclass must accept them: this
+    # file and dbt read the SAME manifest, so any key one side adds must at
+    # least parse on the other.
+    record_key: dict = field(default_factory=dict)
+    identity_exclude: list[str] = field(default_factory=list)
 
     @property
     def layer_url(self) -> str:

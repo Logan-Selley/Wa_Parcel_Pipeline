@@ -84,6 +84,12 @@ class LayerMetadata:
     # the wild. Assuming it would break deterministic paging, not just the
     # uniqueness check.
     oid_field: str
+    # The publisher's own last-edit date, epoch ms, from editingInfo. This is
+    # the county's analogue of the state's File_Date: when the SOURCE was last
+    # published, not when we happened to fetch it. Using ingest time as a proxy
+    # would make any staleness metric a function of our run schedule rather
+    # than a property of the data.
+    last_edit_epoch_ms: int | None
     # Coded-value domains, keyed by field name:
     #   {field: {"domain_name": str, "coded_values": {code: label}}}
     #
@@ -182,6 +188,7 @@ def fetch_layer_metadata(layer_url: str) -> LayerMetadata:
         field_names=[f["name"] for f in fields],
         field_types={f["name"]: f["type"] for f in fields},
         oid_field=payload.get("objectIdField") or "OBJECTID",
+        last_edit_epoch_ms=(payload.get("editingInfo") or {}).get("lastEditDate"),
         domains={
             f["name"]: {
                 "domain_name": (f.get("domain") or {}).get("name") or "",

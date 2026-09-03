@@ -24,7 +24,7 @@
     non-stacked NEIGHBOUR still appears (563 such encroachments in the sample
     box), because only both-stacked pairs are skipped.
 
-    EXECUTION SHAPE -- see docs/design.md 5.6. Direct table references, never
+    EXECUTION SHAPE -- see docs/design.md 5.8. Direct table references, never
     a CTE over conformed: a CTE referenced twice will not inline, materializes,
     and the GiST index becomes unreachable (verified: Nested Loop + Index Scan
     becomes Hash Join with the spatial predicates demoted to a filter). The
