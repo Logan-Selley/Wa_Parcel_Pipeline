@@ -262,6 +262,100 @@ checks as (
     left join {{ ref('dim_parcel') }} d on d.county_fips = v.county_fips
     group by 1, 2, 4
 
+    union all
+
+    {# --------------------------------------------------- reconciliation #
+        THE headline check: how our conformed parcels compare to the answer
+        key, per class. both_differ is the unexplained-delta count this whole
+        build exists to produce -- differences that survive after case
+        normalisation and after excluding fields the stale answer key is
+        EXPECTED to disagree on (design.md 5.5, 5.6).
+
+        Added here rather than joined straight into agg_scorecard_wide so the
+        wide view stays a pure projection of this table: one definition per
+        check, no second implementation to keep honest. #}
+    select
+        f.county_fips,
+        'reconciliation'                            as check_name,
+        'comparison against the state answer key per parcel_uid; both_differ is the unexplained delta after case normalisation and drift exclusion' as check_description,
+        f.reconciliation_class                      as outcome,
+        count(*)                                    as parcels
+    from {{ ref('fct_parcel_reconciliation') }} f
+    group by 1, 2, 4
+
+    union all
+
+    {# ------------------------------------------------------- value drift #
+        Parcels whose assessed values differ. NOT counted as disagreement --
+        the answer key is 166-216 days stale and WA counties revalue annually,
+        so a delta is expected. Published so the expectation is visible rather
+        than silently suppressed. #}
+    select
+        f.county_fips,
+        'value_drift'                               as check_name,
+        'parcels whose assessed value differs from the answer key; expected given the vintage gap, so excluded from reconciliation_class (design.md 5.5)' as check_description,
+        'drifted'                                   as outcome,
+        count(*)                                    as parcels
+    from {{ ref('fct_parcel_reconciliation') }} f
+    where f.value_drift
+    group by 1, 2
+
+    union all
+
+    {# --------------------------------------------- county source vintage #
+        The county's OWN publish date (editingInfo.lastEditDate), the
+        counterpart to state_copy_vintage above. Both are publisher
+        statements, so the gap between them is a property of the two sources
+        rather than of when we happened to run -- see int_source_vintage. #}
+    select
+        sv.county_fips,
+        'county_source_vintage'                     as check_name,
+        'the county''s own last-publish date per editingInfo.lastEditDate; paired with state_copy_vintage this gives a run-independent staleness measure' as check_description,
+        sv.source_published_at::text                as outcome,
+        count(distinct d.record_key_uid)            as parcels
+    from {{ ref('int_source_vintage') }} sv
+    left join {{ ref('dim_parcel') }} d on d.county_fips = sv.county_fips
+    group by 1, 2, 4
+
+    union all
+
+    {# ------------------------------------------------- field coverage #
+        Coverage advantage and deficit against the answer key, per field --
+        the measurable half of the ours_better / theirs_better ledger.
+
+        theirs_absent = we publish a value they do not (Pierce ZIP+4, which
+        their conformance dropped). ours_absent = they publish one we do not
+        (King situs_city on 42,659 parcels, Spokane landuse_cd where no
+        crosswalk is derivable). Both are coverage, NOT disagreement -- which
+        is exactly why field_status() is four-way rather than boolean. #}
+    {%- for f in comparable_fields() %}
+    select
+        f.county_fips,
+        'field_coverage'                            as check_name,
+        'per-field coverage against the answer key; ours_only means we publish a value the state lacks, theirs_only the reverse' as check_description,
+        '{{ f.field }}:' || f.{{ f.field }}_status  as outcome,
+        count(*)                                    as parcels
+    from {{ ref('fct_parcel_reconciliation') }} f
+    where f.{{ f.field }}_status in ('ours_absent', 'theirs_absent')
+    group by 1, 2, 4
+    union all
+    {%- endfor %}
+
+    {# ------------------------------------------------ geometry repaired #
+        Geometry we FIXED rather than merely flagged: invalid on arrival,
+        resolved by ST_MakeValid into a valid polygon. The state publishes no
+        validity assessment at all, so every one of these is a defect we
+        corrected and they carry uncorrected. #}
+    select
+        d.county_fips,
+        'geometry_repaired'                         as check_name,
+        'geometry invalid as published and repaired by ST_MakeValid; the answer key publishes no validity assessment' as check_description,
+        'repaired'                                  as outcome,
+        count(*)                                    as parcels
+    from {{ ref('dim_parcel') }} d
+    where d.geometry_repaired
+    group by 1, 2
+
 )
 
 select

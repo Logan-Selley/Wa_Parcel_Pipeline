@@ -26,6 +26,15 @@
                   that to 8,175 real differences. Raw values are still carried
                   in the fact -- normalise for the COMPARISON, preserve for the
                   EVIDENCE, as with label/label_short on int_landuse_labels.
+          incomp  true when the two columns do not hold the same information,
+                  so a disagreement says nothing. sub_address is the only one:
+                  ours is the unit designator ('39 A', '3'), theirs is the
+                  CONDOMINIUM COMPLEX NAME ('WEST MEEKER CONDO'). Measured on
+                  Pierce, 98.4% of the state's values start with a letter
+                  against 75.6% of ours starting with a digit. It accounted for
+                  13,142 of Pierce's 14,493 differences -- 91% -- every one of
+                  them an artifact of comparing two different fields. Both
+                  values are still carried; only the classification excludes it.
           drift   true when a disagreement is EXPECTED rather than a finding.
                   The answer key is 166-216 days behind the counties (measured
                   publisher-to-publisher, see int_source_vintage), and WA
@@ -42,7 +51,7 @@
     #}
     {% set fields = [
         {'field': 'situs_address',        'ours': 'situs_address',        'theirs': 'situs_address',   'agg': 'mode', 'kind': 'text'},
-        {'field': 'sub_address',          'ours': 'sub_address',          'theirs': 'sub_address',     'agg': 'mode', 'kind': 'text'},
+        {'field': 'sub_address',          'ours': 'sub_address',          'theirs': 'sub_address',     'agg': 'mode', 'kind': 'text', 'incomp': true},
         {'field': 'situs_city',           'ours': 'situs_city',           'theirs': 'situs_city',      'agg': 'mode', 'kind': 'text'},
         {'field': 'situs_zip5',           'ours': 'situs_zip5',           'theirs': 'situs_zip5',      'agg': 'mode', 'kind': 'text'},
         {'field': 'situs_zip4',           'ours': 'situs_zip4',           'theirs': 'situs_zip4',      'agg': 'mode', 'kind': 'text'},
@@ -107,12 +116,14 @@
 
 
 {% macro classifying_fields() %}
-    {#- Fields whose disagreement means something. Drift fields are excluded:
+    {#- Fields whose disagreement means something. Two exclusions, for
+        different documented reasons -- `incomp` fields are not measuring the
+        same thing at all, `drift` fields are. Drift fields are excluded:
         a stale answer key must disagree on assessed values, so letting them
         drive reconciliation_class would mark nearly every parcel both_differ
         and bury the differences that are actually findings. -#}
     {%- set out = [] -%}
-    {%- for f in comparable_fields() if not f.get('drift', false) -%}
+    {%- for f in comparable_fields() if not f.get('drift', false) and not f.get('incomp', false) -%}
         {%- do out.append(f) -%}
     {%- endfor -%}
     {%- do return(out) -%}

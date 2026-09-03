@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WA Parcel Reconciliation</title>
+<link href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" rel="stylesheet">
+<script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+<script src="https://unpkg.com/pmtiles@3.2.0/dist/pmtiles.js"></script>
+<style>
+  :root { --bg:#10141a; --panel:#171d26; --line:#2a3340; --ink:#dbe2ec; --dim:#8b97a8; --accent:#4da3ff; }
+  * { box-sizing:border-box; margin:0; }
+  body { background:var(--bg); color:var(--ink); font:14px/1.5 system-ui, sans-serif; }
+  header { padding:20px 28px; border-bottom:1px solid var(--line, #2a3340); }
+  h1 { font-size:20px; margin:0; }
+  header p { color:var(--dim); margin:4px 0 0; }
+  #map { width:100%; height:56vh; }
+  main { max-width:1100px; margin:0 auto; padding:24px; }
+  table { border-collapse:collapse; width:100%; margin-top:12px; font-size:13px; }
+  th, td { padding:6px 10px; border-bottom:1px solid var(--line,#2a3340); text-align:right; }
+  th { color:var(--dim); font-weight:500; text-align:right; }
+  td:first-child, th:first-child, td:nth-child(2), th:nth-child(2) { text-align:left; }
+  tr:hover td { background:#1c242f; }
+  .kpi { display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:12px; margin:18px 0 8px; }
+  .card { background:var(--panel); border:1px solid var(--line,#2a3340); border-radius:8px; padding:14px 16px; }
+  .card h3 { margin:0 0 6px; font-size:12px; color:var(--dim); font-weight:500; text-transform:uppercase; letter-spacing:.04em; }
+  .card div { font-size:18px; }
+  h2 { font-size:15px; margin:28px 0 4px; }
+  .note { color:var(--dim); font-size:12px; }
+  .maplibregl-popup-content { color:#1a1a1a; }
+</style>
+</head>
+<body>
+<header>
+  <h1>WA Parcel Reconciliation</h1>
+  <p>Four Washington counties conformed and reconciled against the statewide answer key.
+     King · Pierce · Snohomish · Spokane — 1,504,693 published records.</p>
+</header>
+<div id="map"></div>
+<main>
+  <div class="kpi" id="kpi"></div>
+  <h2>Quality scorecard</h2>
+  <p class="note" style="color:var(--dim)">Rates computed from the long-format scorecard; see the repo for definitions of every check.</p>
+  <table id="scorecard"></table>
+</main>
+
+<script>
+// Map: a single static PMTiles archive — no server, no tile host. The browser
+// issues range requests straight at the file (GitHub Pages / any static host).
+const protocol = new pmtiles.Protocol();
+maplibregl.addProtocol('pmtiles', protocol.tile);
+
+const COUNTY_COLORS = {
+  '033': '#4da3ff', '053': '#ffb14d', '061': '#6ee7b7', '063': '#f472b6'
+};
+
+const map = new maplibregl.Map({
+  container: 'map',
+  style: {
+    version: 8,
+    sources: {},
+    layers: [{ id: 'bg', type: 'background', paint: { 'background-color': '#1a2029' } }]
+  },
+  center: [-120.6, 47.45],
+  zoom: 6.4
+});
+
+map.on('load', async () => {
+  const resp = await fetch('data/pmtiles/wa_parcels.pmtiles');
+  if (!resp.ok) { console.warn('pmtiles not built yet — run make pmtiles'); return; }
+  map.addSource('parcels', {
+    type: 'vector',
+    url: 'pmtiles://data/pmtiles/wa_parcels.pmtiles'
+  });
+  map.addLayer({
+    id: 'parcels-fill', type: 'fill', source: 'parcels', 'source-layer': 'parcels',
+    paint: {
+      'fill-color': ['match', ['get', 'county_fips'],
+        '033', '#4da3ff', '053', '#ffb14d', '061', '#6ee7b7', '#f472b6'],
+      'fill-opacity': 0.55
+    }
+  });
+  map.on('click', 'parcels-fill', e => {
+    const p = e.features[0].properties;
+    new maplibregl.Popup({ maxWidth: '320px' })
+      .setLngLat(e.lngLat)
+      .setHTML(`<strong>${p.county_name} ${p.parcel_uid ?? ''}</strong><br>
+        ${p.situs_address ?? '(no address)'}<br>
+        land: ${p.value_land_appraised ?? '—'} · bldg: ${p.value_bldg_appraised ?? '—'}<br>
+        ${p.landuse_cd_method ?? ''} ${p.landuse_cd ?? ''} · ${p.source_record_count} published row(s)`)
+      .addTo(map);
+  });
+});
+
+// --- scorecard table + headline KPIs from the exported JSON -----------------
+async function loadScorecard() {
+  const resp = await fetch('data/agg_scorecard_wide.json');
+  if (!resp.ok) return;
+  const rows = await resp.json();
+
+  const kpi = document.getElementById('kpi');
+  const total = rows.reduce((s, r) => s + Number(r.total_records || 0), 0);
+  const encro = rows.reduce((s, r) => s + Number(r.encroachment_pairs || 0), 0);
+  const unflagged = rows.reduce((s, r) => s + Number(r.unflagged_coincident_pairs || 0), 0);
+  const stateDups = rows.reduce((s, r) => s + Number(r.state_duplicate_groups || 0), 0);
+  const mergedRows = rows.reduce((s, r) => s + Number(r.merged_source_rows || 0), 0);
+  const cards = [
+    ['Published records', total.toLocaleString()],
+    ['Boundary encroachments', encro.toLocaleString()],
+    ['Unflagged coincident pairs', unflagged.toLocaleString()],
+    ['State duplicate groups', stateDups.toLocaleString()],
+    ['Rows merged into records', mergedRows.toLocaleString()],
+  ];
+  kpi.innerHTML = cards.map(([label, value]) =>
+    `<div class="card"><h3>${label}</h3><div>${value}</div></div>`).join('');
+
+  const cols = Object.keys(rows[0]);
+  const table = document.getElementById('scorecard');
+  table.innerHTML =
+    '<tr>' + cols.map(c => `<th>${c}</th>`).join('') + '</tr>' +
+    rows.map(r => '<tr>' + cols.map(c => `<td>${r[c] ?? '—'}</td>`).join('') + '</tr>').join('');
+}
+loadScorecard();
+</script>
+</body>
+</html>

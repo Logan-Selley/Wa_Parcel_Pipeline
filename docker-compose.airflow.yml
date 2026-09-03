@@ -1,0 +1,76 @@
+# Airflow, in its OWN environment and its OWN metadata database.
+#
+# Two separations that are deliberate:
+#
+#   1. Airflow never shares a Python environment with dbt. Tasks run the
+#      pipeline image as sibling containers via DockerOperator.
+#   2. Airflow's metadata lives in its own Postgres, not in the warehouse.
+#      Mixing scheduler state into an analytics database makes both harder to
+#      reason about and couples their backup/restore stories.
+#
+# Started separately from the warehouse:  make airflow-up
+
+name: parcel_airflow
+
+x-airflow-env: &airflow-env
+  AIRFLOW__CORE__EXECUTOR: LocalExecutor
+  AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@airflow-db:5432/airflow
+  AIRFLOW__CORE__LOAD_EXAMPLES: "false"
+  AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: "true"
+  # The DAG passes the warehouse DSN through to each task container.
+  WAREHOUSE_HOST: ${WAREHOUSE_HOST}
+  WAREHOUSE_PORT: ${WAREHOUSE_PORT}
+  POSTGRES_USER: ${POSTGRES_USER}
+  POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+  POSTGRES_DB: ${POSTGRES_DB}
+  # Absolute host path, needed because DockerOperator asks the HOST daemon to
+  # mount volumes -- a path inside the Airflow container would be meaningless
+  # to it. See the DAG header.
+  PIPELINE_HOST_ROOT: ${PWD}
+
+services:
+  airflow-db:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: airflow
+      POSTGRES_PASSWORD: airflow
+      POSTGRES_DB: airflow
+    volumes:
+      - airflow_meta:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "airflow"]
+      interval: 5s
+      retries: 10
+
+  airflow:
+    image: apache/airflow:2.10.5
+    depends_on:
+      airflow-db:
+        condition: service_healthy
+    environment:
+      <<: *airflow-env
+      _PIP_ADDITIONAL_REQUIREMENTS: apache-airflow-providers-docker
+    user: "50000:${DOCKER_GID:-999}"
+    volumes:
+      - ./airflow/dags:/opt/airflow/dags
+      - ./airflow/logs:/opt/airflow/logs
+      # The host Docker socket: DockerOperator does not run containers inside
+      # Airflow, it asks the host daemon to run SIBLINGS. This is the mount
+      # that makes that possible, and the reason for the group id above.
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - "8080:8080"
+    command: >
+      bash -c "airflow db migrate &&
+               airflow users create --role Admin --username admin --password admin
+                 --email admin@example.com --firstname a --lastname b || true &&
+               airflow standalone"
+
+volumes:
+  airflow_meta:
+
+# Join the warehouse's network so task containers can reach it by service name.
+networks:
+  default:
+    name: parcel_pipeline_default
+    external: true

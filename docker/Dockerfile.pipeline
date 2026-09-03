@@ -1,0 +1,34 @@
+# The PIPELINE image: ingest + dbt + export, and nothing else.
+#
+# Deliberately separate from the Airflow image. Airflow pins its transitive
+# dependencies tightly enough to fight dbt-core, so the two never share an
+# environment: Airflow orchestrates by RUNNING this image, never by importing
+# from it. That boundary is the reason this Dockerfile exists at all.
+
+FROM python:3.11-slim
+
+# No apt layer, deliberately. Every native dependency here arrives as a
+# manylinux wheel with its libraries bundled: pyogrio carries GDAL, shapely
+# carries GEOS, pyproj carries PROJ, psycopg2-binary carries libpq, duckdb is
+# self-contained. Installing system GDAL alongside them risks two copies
+# disagreeing, and the package name is Debian-release-specific anyway
+# (libgdal32 does not exist on trixie -- the first build failed on exactly
+# that). The DAG invokes python and dbt directly, so make is not needed either.
+
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /usr/local/bin/uv
+
+WORKDIR /opt/pipeline
+
+# Dependency layer first so source edits do not invalidate the install.
+COPY pyproject.toml uv.lock ./
+RUN uv sync --frozen --no-dev
+
+COPY ingest/   ./ingest/
+COPY parcels/  ./parcels/
+COPY scripts/  ./scripts/
+
+ENV PATH="/opt/pipeline/.venv/bin:$PATH" \
+    PYTHONUNBUFFERED=1 \
+    DBT_PROFILES_DIR=/opt/pipeline/parcels
+
+ENTRYPOINT []

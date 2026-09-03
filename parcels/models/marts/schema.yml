@@ -1,0 +1,65 @@
+version: 2
+
+models:
+  - name: dim_parcel
+    description: >
+      The published parcel dimension: one row per published record
+      (record_key_uid = parcel + unit + unit_type + level, A3b grain).
+      Nearly a projection of int_parcels_conformed BY DESIGN — this is the
+      consumer-facing contract, not the computation.
+    columns:
+      - name: record_key_uid
+        description: Primary key. The county's own record hierarchy.
+        data_tests:
+          - not_null:
+              config:
+                severity: error
+          - unique
+      - name: parcel_uid
+        description: >
+          State-format join key (state PARCEL_ID_NR format). INTENTIONALLY
+          NOT UNIQUE — Pierce publishes multiple unit records per tax parcel;
+          the state carries the same duplicates. Duplication is confined to
+          Pierce by tests/dup_parcel_uids_confined_to_pierce.sql.
+        data_tests:
+          - not_null
+
+  - name: fct_parcel_reconciliation
+    description: >
+      Parcel-grain reconciliation against the answer key. Both sides
+      aggregated to parcel_uid (symmetric sums; corr 0.9548 measured on
+      Pierce). Value fields carry drift:true in comparable_fields() — their
+      disagreement is expected against a 166-216 day stale key and surfaces
+      as value_drift, not as class.
+    columns:
+      - name: parcel_uid
+        description: The join grain. Null only for theirs_unidentified rows,
+          which are excluded upstream and counted in agg_quality_scorecard.
+        data_tests:
+          - not_null
+      - name: reconciliation_class
+        description: >
+          both_match / both_differ / ours_only / theirs_only.
+          theirs_unidentified is deliberately absent (null-uid state rows are
+          counted in the scorecard's state_unidentified check, not joined).
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ['both_match', 'both_differ', 'ours_only', 'theirs_only']
+
+  - name: bi_parcel_extract
+    description: >
+      The map-facing extract: dim reprojected to WGS84 and simplified
+      (~1 m tolerance, topology-preserving). A presentation projection of
+      dim — droppable and rebuildable at any time. Geometry contract is
+      asserted in tests/bi_extract_contract.sql; the known simplification
+      artifact in tests/bi_geom_validity.sql (warn).
+    columns:
+      - name: record_key_uid
+        data_tests:
+          - not_null
+          - unique
+      - name: geom
+        data_tests:
+          - not_null

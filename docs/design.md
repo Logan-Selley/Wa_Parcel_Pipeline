@@ -62,7 +62,7 @@ county_name           text        not null,  -- a real name, unlike the state's 
 parcel_id             text        not null,  -- normalized; TEXT always
 parcel_id_raw         text,                  -- exactly as published
 is_active             boolean     not null,
-is_stacked            boolean     not null,  -- vertical component; see 5.6
+is_stacked            boolean     not null,  -- vertical component; see 5.8
 
 situs_address         text,
 sub_address           text,                  -- unit / condo designator
@@ -368,7 +368,108 @@ layer and the quarantine report, not in the mapping. Keeping the two separate is
 what lets the scorecard *count* bad ZIPs per county instead of silently erasing
 them.
 
-### 5.5 Area validation
+### 5.5 Value comparison — drift, and the King condominium grain split
+
+`value_land` / `value_bldg` disagree with the answer key on a large share of
+parcels. Two distinct causes, separated by measurement, and only one is a
+finding.
+
+**Expected drift (Pierce, Snohomish, Spokane).** The answer key is 166–216 days
+behind the counties (measured publisher-to-publisher, `int_source_vintage` vs
+`int_county_vintage`), and WA counties revalue annually, so assessed values
+*must* differ. The ratio of ours/theirs on disagreeing parcels is tight and
+directional — Pierce median 0.977, Snohomish 1.098, Spokane 1.083 — which is
+what ~200 days of appreciation looks like, not a basis mismatch. These fields
+carry `drift: true` in `comparable_fields()`, so they receive a per-field status
+but do not force `both_differ`. Letting them classify would mark nearly every
+parcel as differing and bury the real findings: 1,204,678 `both_differ` before,
+42,790 after (the rest of that drop is city casing, below).
+
+**A real finding (King).** King's ratio does not fit drift at all — median
+**0.193** on the 1.1% of parcels that disagree. Broken out by `PROPTYPE`:
+
+| proptype | disagree | total | % | median ratio |
+|---|---|---|---|---|
+| **K** | **5,095** | 5,242 | **97.2%** | **0.143** |
+| R | 1,088 | 572,891 | 0.19% | 0.572 |
+| C | 822 | 43,043 | 1.91% | 0.601 |
+
+**73% of King's value disagreements are one property class.** `PROPTYPE = 'K'`
+is condominium — 4,681 `Condominium(Residential)`, 332 `Condominium(Mixed Use)`,
+plus apartments. The 5,746 K parcels carry 5,746 *distinct* MAJORs, average 1.24
+acres and $612,818 land value: these are **complex-level** records, not units.
+
+So this is an **aggregation-grain** difference, not a valuation-basis one. King
+publishes the whole condominium's land value; the state carries something
+unit-scaled, and 0.143 ≈ 1/7 is a plausible average units-per-complex divisor.
+That matters for how the B3 gate is framed: for King the question is not "which
+basis is `VALUE_LAND`" but "at what grain". Snohomish's and Spokane's systematic
++8–10% remains a separate, open question.
+
+Residential agreeing 99.81% of the time is the control that makes the K class
+legible as an anomaly rather than as general noise.
+
+### 5.6 Text comparison is case-insensitive
+
+`situs_city` "disagreed" on 489,880 King parcels — `Bellevue` vs `BELLEVUE`.
+King publishes `CTYNAME` in title case and the state upper-cases it. Normalising
+drops that to **8,175** real differences.
+
+`compare_expr()` upper-cases and trims text fields for the equality test only;
+the fact stores and displays the raw values from both sides. Normalise for the
+comparison, preserve for the evidence — the same split as `label` /
+`label_short` on `int_landuse_labels`.
+
+### 5.6b Two fields that are not the same field
+
+Two of the largest apparent disagreement classes turned out to be comparisons
+between columns that never measured the same thing. Both were found by looking
+at the values rather than the counts.
+
+**`sub_address` — unit designator vs complex name.** Ours holds the unit
+(`39 A`, `3`); the state's holds the **condominium complex name**
+(`WEST MEEKER CONDO`, `MAYFAIR PLACE CONDO`). Measured on Pierce: 98.4% of the
+state's values begin with a letter against 75.6% of ours beginning with a digit.
+This accounted for **13,142 of Pierce's 14,493 differences — 91%**, every one an
+artifact. Marked `incomp: true` in `comparable_fields()`; both values are still
+carried, only the classification excludes it. Pierce agreement moved 95.19% →
+**99.13%**.
+
+**`situs_city` — postal city vs incorporated jurisdiction.** King's `CTYNAME` is
+the jurisdiction; the state's `SITUS_CITY_NM` is the USPS postal city:
+
+| ours | theirs | parcels |
+|---|---|---|
+| Burien | SEATTLE | 4,347 |
+| Covington | KENT | 663 |
+| Tukwila | SEATTLE | 435 |
+| Newcastle | RENTON | 280 |
+
+Burien, Tukwila and Newcastle are their own cities carrying Seattle/Renton
+postal addresses. The 42,659 parcels where we are null and they are populated
+are **unincorporated** King County with postal cities of Redmond, Woodinville
+and Vashon — Vashon is not a city at all.
+
+**This is why the 83,867-parcel `situs_city` coverage deficit must NOT be
+closed.** Our null is correct: an unincorporated parcel has no jurisdiction
+city. Deriving one would mean adopting postal semantics, which would then
+disagree with the jurisdiction values on the 8,175 where the two genuinely
+differ — trading a documented gap for a correctness problem.
+
+Unlike `sub_address` the field is not wholly incomparable: where a parcel IS
+incorporated the two usually coincide, and they agree on ~98.5% of King parcels
+carrying both. So it stays classifying, and the postal-vs-jurisdiction split is
+a **declared deviation** rather than an unexplained delta.
+
+**The scalable lesson.** A county-specific fix — parsing King's `ADDR_FULL` for
+a city — would close 42,659 gaps and be worthless at county #5. The
+metadata-driven question is not "how do we populate city" but "**which concept
+does each source publish**", which belongs in the manifest as a per-field
+semantic declaration, exactly as `value_basis` already declares
+appraised-vs-market. Comparing two fields that share a name but not a definition
+is the failure mode; a name is not a semantic.
+
+### 5.7 Area validation
 
 All four counties publish their own acreage, which gives a free geometry check: reproject,
 compute area, compare to `acres_reported`.
@@ -380,7 +481,7 @@ comparing it to geometry-derived area is circular. `TAB_ACRES` comes off the tax
 independent.
 
 
-### 5.6 Parcel overlap — detected and classified, never repaired
+### 5.8 Parcel overlap — detected and classified, never repaired
 
 **The decision: overlaps are reported, not fixed.** This is a deliberate scope
 boundary, and worth stating explicitly because declining is the defensible call.
@@ -666,8 +767,17 @@ being mistaken for real disagreement.
 
 Running list. This section will do more for the README than the architecture diagram.
 
-1. **13,629 rows have a null `FIPS_NR`** — parcels belonging to no county. They cannot be
-   joined to our output at all and need an explicit bucket, not an inner join that drops them.
+1. **`FIPS_NR` is null for 100% of one county.** All 13,629 null-FIPS rows are Asotin:
+   every one carries a populated `PARCEL_ID_NR` prefixed `003-` and `COUNTY_NM` `'3'`, and
+   the layer holds **zero** rows with `FIPS_NR = '003'`. These are not parcels belonging to
+   no county — they are one county whose FIPS column was never populated, recoverable from
+   two other columns the state does fill. It is also why the layer reports 38 FIPS groups
+   rather than 39.
+
+   `stg_state_parcels` recovers the value before applying the manifest scope. Filtering on
+   the raw column drops all 13,629 silently, since SQL `NULL` never matches `IN` — and the
+   reconciliation's `theirs_unidentified` bucket would then hold only the null-`PARCEL_ID_NR`
+   rows inside our counties (4,587), not the class the ledger accounts for.
 2. **Null `PARCEL_ID_NR`** — found in a 3-row Pierce sample, so not rare. Our schema makes
    this column `NOT NULL` and routes violations to quarantine. Being stricter than the
    authoritative source is a finding, not a deviation to apologise for.

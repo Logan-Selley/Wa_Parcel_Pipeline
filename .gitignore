@@ -30,3 +30,14 @@ data/
 .idea/
 .vscode/
 *.swp
+
+# --- generated exports --------------------------------------------------------
+# `make export` writes 3.2 GB here (2.2G csv, 590M fgb, 414M parquet) and every
+# byte is reproducible from the warehouse. The small JSON the static site reads
+# is the exception: it is what makes site/ servable without a build step.
+#
+# NOTE the trailing /* -- `exports/` alone would stop git descending into the
+# directory at all, so the negation below could never re-include anything.
+exports/*
+!exports/json/
+site/data/

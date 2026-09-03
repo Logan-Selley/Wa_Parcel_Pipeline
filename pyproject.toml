@@ -33,6 +33,11 @@ dependencies = [
 
     # config
     "python-dotenv>=1.0",
+
+    # export — warehouse -> parquet/csv/json for the static site and Tableau.
+    # duckdb scans Postgres directly (postgres extension) and writes parquet;
+    # this is the entire `make export` toolchain.
+    "duckdb>=1.0",
 ]
 
 [dependency-groups]

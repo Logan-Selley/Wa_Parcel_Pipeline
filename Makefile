@@ -26,6 +26,55 @@ ENV := set -a; . $(ROOT)/.env; set +a;
 .DEFAULT_GOAL := help
 .PHONY: help build build-all test overlaps docs ingest ingest-state ingest-all list check
 
+# --- export / static site ----------------------------------------------------
+# The warehouse is a build tool, not a service: gold tables export to static
+# artifacts (parquet for analysis, csv for Tableau, fgb -> pmtiles for the
+# map). Nothing needs to be hosted for the outputs to exist.
+
+export:  ## Export gold tables to parquet/csv/json + FlatGeobuf (exports/)
+	@$(ENV) cd $(ROOT) && $(PY) scripts/export.py
+
+pmtiles:  ## Build the map tile archive from the FlatGeobuf export
+	@mkdir -p $(ROOT)/exports/pmtiles
+	@docker run --rm -v $(ROOT)/exports:/data klokantech/tippecanoe \
+	  tippecanoe -o /data/pmtiles/wa_parcels.pmtiles --force \
+	  --layer=parcels --read-parallel -Z6 -Z13 \
+	  --drop-densest-as-needed --extend-zooms-if-still-dropping \
+	  -T is_stacked:boolean -T is_active:boolean \
+	  /data/fgb/wa_parcels.fgb
+	@echo "exports/pmtiles/wa_parcels.pmtiles ready"
+
+site:  ## Assemble the static site (data into site/data/)
+	@mkdir -p $(ROOT)/site/data
+	@cp $(ROOT)/exports/json/*.json $(ROOT)/site/data/
+	@mkdir -p $(ROOT)/site/data/pmtiles
+	@cp $(ROOT)/exports/pmtiles/wa_parcels.pmtiles $(ROOT)/site/data/
+	@echo "site/ ready — serve with any static file server"
+
+.PHONY: export pmtiles site
+
+# --- orchestration -----------------------------------------------------------
+# Airflow runs in its OWN containers and its OWN metadata database, and invokes
+# the pipeline image as sibling containers. It never shares a Python
+# environment with dbt -- see airflow/dags/parcel_pipeline.py.
+
+pipeline-image:  ## Build the pipeline image the DAG runs (ingest + dbt + export)
+	@docker build -f $(ROOT)/docker/Dockerfile.pipeline -t parcel-pipeline:latest $(ROOT)
+
+airflow-up: pipeline-image  ## Start Airflow (http://localhost:8080, admin/admin)
+	@$(ENV) DOCKER_GID=$$(getent group docker | cut -d: -f3) PWD=$(ROOT) 	  docker compose -f $(ROOT)/docker-compose.airflow.yml up -d
+	@echo "Airflow starting -> http://localhost:8080  (admin/admin)"
+	@echo "The DAG is paused by default; unpause it in the UI to schedule."
+
+airflow-down:  ## Stop Airflow (metadata volume is preserved)
+	@$(ENV) PWD=$(ROOT) docker compose -f $(ROOT)/docker-compose.airflow.yml down
+
+airflow-logs:  ## Tail the Airflow scheduler/webserver logs
+	@$(ENV) PWD=$(ROOT) docker compose -f $(ROOT)/docker-compose.airflow.yml logs -f airflow
+
+.PHONY: pipeline-image airflow-up airflow-down airflow-logs
+
+
 help:  ## Show available targets
 	@grep -hE '^[a-zA-Z_-]+:.*?## ' $(MAKEFILE_LIST) \
 	  | awk 'BEGIN{FS=":.*?## "}{printf "  \033[36m%-14s\033[0m %s\n", $$1, $$2}'

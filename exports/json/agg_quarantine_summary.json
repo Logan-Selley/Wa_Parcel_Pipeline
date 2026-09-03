@@ -1,0 +1,18 @@
+[
+ {
+  "county_fips": "061",
+  "county_name": "Snohomish",
+  "rejection_reason": "missing_parcel_uid",
+  "rejection_description": "No Parcel ID provided. Unable to join to answer key or be referenced downstream",
+  "rejected_records": 4595,
+  "rejected_source_rows": 4595.0
+ },
+ {
+  "county_fips": "063",
+  "county_name": "Spokane",
+  "rejection_reason": "missing_parcel_uid",
+  "rejection_description": "No Parcel ID provided. Unable to join to answer key or be referenced downstream",
+  "rejected_records": 2,
+  "rejected_source_rows": 3.0
+ }
+]
