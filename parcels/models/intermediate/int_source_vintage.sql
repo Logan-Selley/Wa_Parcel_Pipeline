@@ -7,11 +7,11 @@
     about the data changing -- so any staleness metric built on it measures us,
     not the sources.
 
-    editingInfo.lastEditDate is the county's own analogue of the state's
-    File_Date: the publisher's statement of when the layer last changed.
+    editingInfo.lastEditDate is the county’s own analogue of the state’s
+    File_Date: the publisher’s statement of when the layer last changed.
     Captured from the same ?f=json payload the extractor already fetches for
     CRS, field list and maxRecordCount, and stored per run on the field
-    snapshot (constant across that run's field rows, hence max()).
+    snapshot (constant across that run’s field rows, hence max()).
 
     Latest capture only -- the snapshot is append-only so drift stays visible
     as history.

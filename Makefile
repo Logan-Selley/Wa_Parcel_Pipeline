@@ -24,7 +24,7 @@ PY    := $(ROOT)/.venv/bin/python
 ENV := set -a; . $(ROOT)/.env; set +a;
 
 .DEFAULT_GOAL := help
-.PHONY: help build build-all test overlaps docs ingest ingest-state ingest-all list check
+.PHONY: help build test overlaps docs ingest ingest-state ingest-all list check freshness
 
 # --- export / static site ----------------------------------------------------
 # The warehouse is a build tool, not a service: gold tables export to static
@@ -61,9 +61,9 @@ site:  ## Assemble the static site (data into site/data/)
 pipeline-image:  ## Build the pipeline image the DAG runs (ingest + dbt + export)
 	@docker build -f $(ROOT)/docker/Dockerfile.pipeline -t parcel-pipeline:latest $(ROOT)
 
-airflow-up: pipeline-image  ## Start Airflow (http://localhost:8080, admin/admin)
+airflow-up: pipeline-image  ## Start Airflow (http://localhost:8080)
 	@$(ENV) DOCKER_GID=$$(getent group docker | cut -d: -f3) PWD=$(ROOT) 	  docker compose -f $(ROOT)/docker-compose.airflow.yml up -d
-	@echo "Airflow starting -> http://localhost:8080  (admin/admin)"
+	@echo "Airflow starting -> http://localhost:8080"
 	@echo "The DAG is paused by default; unpause it in the UI to schedule."
 
 airflow-down:  ## Stop Airflow (metadata volume is preserved)
@@ -79,17 +79,36 @@ help:  ## Show available targets
 	@grep -hE '^[a-zA-Z_-]+:.*?## ' $(MAKEFILE_LIST) \
 	  | awk 'BEGIN{FS=":.*?## "}{printf "  \033[36m%-14s\033[0m %s\n", $$1, $$2}'
 
-build:  ## Routine build — everything except the expensive overlap models
-	@$(ENV) cd $(ROOT)/parcels && $(DBT) build --exclude tag:expensive
+# There is no longer a "routine" build distinct from a full one. `build` and
+# `test` used to pass --exclude tag:expensive to skip the overlap models; both
+# the cost and the correctness argument for that are gone.
+#
+#   cost         overlaps are 32.55s for all four counties on 4 threads
+#                (snohomish 32.0, king 26.8, pierce 15.0, spokane 14.9) against
+#                119s for int_parcels_repaired alone. The tag dated from a build
+#                that ran over an hour, which was the missing GiST index on
+#                int_parcels_conformed, not these models.
+#
+#   correctness  agg_quality_scorecard refs the per-county overlap tables
+#                directly, so excluding the overlap models never excluded their
+#                consumer. The scorecard rebuilt against whatever those tables
+#                last held and published encroachment counts quietly older than
+#                every other number beside them.
+#
+# tag:overlaps stays, for iterating on the overlap logic alone.
 
-build-all:  ## Full build including overlap models (~81s extra)
+build:  ## Full build — every model and test (~8m20s, 64 nodes, 4 threads)
 	@$(ENV) cd $(ROOT)/parcels && $(DBT) build
 
 test:  ## Run tests only
-	@$(ENV) cd $(ROOT)/parcels && $(DBT) test --exclude tag:expensive
+	@$(ENV) cd $(ROOT)/parcels && $(DBT) test
 
-overlaps:  ## Rebuild only the per-county overlap models
+overlaps:  ## Rebuild only the per-county overlap models (~33s)
 	@$(ENV) cd $(ROOT)/parcels && $(DBT) build --select tag:overlaps
+
+freshness:  ## Check whether any source has republished since the last ingest
+	@$(ENV) cd $(ROOT) && $(PY) -m ingest.freshness --all; \
+	  $(ENV) cd $(ROOT) && $(PY) -m ingest.freshness --state
 
 docs:  ## Generate and serve dbt docs
 	@$(ENV) cd $(ROOT)/parcels && $(DBT) docs generate && $(DBT) docs serve

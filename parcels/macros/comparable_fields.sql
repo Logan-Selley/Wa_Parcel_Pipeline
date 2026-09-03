@@ -1,5 +1,5 @@
 {% macro comparable_fields() %}
-    {#  Fields compared between our conformed parcels and the state's answer
+    {#  Fields compared between our conformed parcels and the state’s answer
         key. One registry, read by fct_parcel_reconciliation and by
         agg_quality_scorecard -- the fourth consumer of the pattern already
         used by rejection_rules(), flag_rules() and the manifest.
@@ -9,30 +9,30 @@
           ours    column in the parcel-grain aggregate of int_parcels_conformed
           theirs  column in the parcel-grain aggregate of stg_state_parcels
           agg     how to collapse a multi-row parcel:
-                    'sum'  additive measures. Both sides carry one value per
+                    ’sum’  additive measures. Both sides carry one value per
                            record, so a parcel total is the sum -- verified for
                            our side by A3b (single value-holder per record
                            group) and for theirs by their duplicates differing
                            in value_land on 6,740 of 6,769 Pierce groups.
-                    'mode' identity-ish attributes. min() picks a representative
+                    ’mode’ identity-ish attributes. min() picks a representative
                            and a companion count(distinct) reports whether the
                            parcel was multi-valued, so "we have one address,
                            they have three" stays visible rather than being
                            silently collapsed.
           kind    text | integer. text comparisons are CASE-INSENSITIVE:
                   King publishes CTYNAME in title case and the state
-                  upper-cases it, so 489,880 of King's situs_city values
+                  upper-cases it, so 489,880 of King’s situs_city values
                   "disagreed" on Bellevue vs BELLEVUE alone. Normalising drops
                   that to 8,175 real differences. Raw values are still carried
                   in the fact -- normalise for the COMPARISON, preserve for the
                   EVIDENCE, as with label/label_short on int_landuse_labels.
           incomp  true when the two columns do not hold the same information,
                   so a disagreement says nothing. sub_address is the only one:
-                  ours is the unit designator ('39 A', '3'), theirs is the
-                  CONDOMINIUM COMPLEX NAME ('WEST MEEKER CONDO'). Measured on
-                  Pierce, 98.4% of the state's values start with a letter
+                  ours is the unit designator (’39 A’, ’3’), theirs is the
+                  CONDOMINIUM COMPLEX NAME (’WEST MEEKER CONDO’). Measured on
+                  Pierce, 98.4% of the state’s values start with a letter
                   against 75.6% of ours starting with a digit. It accounted for
-                  13,142 of Pierce's 14,493 differences -- 91% -- every one of
+                  13,142 of Pierce’s 14,493 differences -- 91% -- every one of
                   them an artifact of comparing two different fields. Both
                   values are still carried; only the classification excludes it.
           drift   true when a disagreement is EXPECTED rather than a finding.
@@ -47,7 +47,7 @@
 
                   NOT settled for King, whose median ratio is 0.193 on the 1.1%
                   of parcels that disagree. That is not drift and is tracked
-                  separately -- see docs/build-plan.md B3.
+                  separately -- see docs/design-history.md B3.
     #}
     {% set fields = [
         {'field': 'situs_address',        'ours': 'situs_address',        'theirs': 'situs_address',   'agg': 'mode', 'kind': 'text'},
@@ -66,14 +66,14 @@
 {% macro field_status(f, ours_alias='o', theirs_alias='t') %}
     {#  Four-way per-field status, NOT a boolean.
 
-        A boolean 'matched' would be useless here: most real findings are
-        COVERAGE differences, not value disagreements. Pierce's situs city and
+        A boolean ’matched’ would be useless here: most real findings are
+        COVERAGE differences, not value disagreements. Pierce’s situs city and
         ZIP are null on the state side (correctly -- the county publishes no
-        situs city, see design.md 9) and King's situs_city is null on OUR side
+        situs city, see design.md 9) and King’s situs_city is null on OUR side
         for 42,659 parcels the state does populate. Those are opposite
         findings; a boolean collapses both to "mismatch".
 
-        'both_null' is deliberately distinct from 'agree'. Spokane's landuse_cd
+        ’both_null’ is deliberately distinct from ’agree’. Spokane’s landuse_cd
         is null on our side by design (no derivable crosswalk) -- absence
         matching absence is NOT APPLICABLE, not agreement, and counting it as
         agreement would inflate the headline number with non-comparisons.

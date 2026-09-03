@@ -49,8 +49,27 @@ services:
         condition: service_healthy
     environment:
       <<: *airflow-env
-      _PIP_ADDITIONAL_REQUIREMENTS: apache-airflow-providers-docker
-    user: "50000:${DOCKER_GID:-999}"
+    # NO _PIP_ADDITIONAL_REQUIREMENTS. apache/airflow:2.10.5 already ships
+    # apache-airflow-providers-docker 4.0.0, so the image TAG is the pin -- and
+    # a better one than a pip pin, because it fixes the entire dependency set
+    # rather than one package. Installing at container start would also mean a
+    # DAG could break on a morning when nothing in git had changed.
+    #
+    # 4.0.0 carries both features this DAG depends on: skip_on_exit_code and
+    # the string form of auto_remove.
+
+    # 50000 is the image's airflow user. THE GROUP MUST BE 0, not the docker
+    # group: /opt/airflow and everything the image creates is owned by root
+    # group and made group-writable, which is how the image supports running
+    # under an arbitrary UID. Passing the docker gid here instead drops GID 0
+    # and airflow cannot write its own logs -- it fails inside `db migrate`,
+    # before the scheduler ever starts.
+    #
+    # Socket access comes from group_add, which is additive: the process gets
+    # GID 0 *and* membership in the docker group.
+    user: "50000:0"
+    group_add:
+      - "${DOCKER_GID:-999}"
     volumes:
       - ./airflow/dags:/opt/airflow/dags
       - ./airflow/logs:/opt/airflow/logs
@@ -60,6 +79,9 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
     ports:
       - "8080:8080"
+    # admin/admin on the UI is deliberate: LAN-only instance, and the UI holds
+    # nothing but scheduler state -- the warehouse password lives in .env, not
+    # here. Revisit auth before this ever becomes reachable off-host.
     command: >
       bash -c "airflow db migrate &&
                airflow users create --role Admin --username admin --password admin

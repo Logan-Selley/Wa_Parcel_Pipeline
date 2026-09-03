@@ -18,12 +18,12 @@ with ours as (
         count(*)                                as ours_records,
         min(county_fips)                        as county_fips,
         {#  Carried for provenance only -- the vintage gap is measured between
-            the two SOURCES' publish dates, not against our run time. See the
+            the two SOURCES’ publish dates, not against our run time. See the
             `dated` CTE.
 
             Historical note: this was briefly source_file_date. Our source_file_date IS the
-            state's File_Date -- int_parcels_validated joins int_county_vintage
-            to populate it -- so differencing the two sides' file dates
+            state’s File_Date -- int_parcels_validated joins int_county_vintage
+            to populate it -- so differencing the two sides’ file dates
             compares the table to itself and yields a constant zero for every
             parcel. Verified: all four counties match exactly (033 2026-02-26,
             053 2026-02-13, 061 2026-01-21, 063 2026-03-20).
@@ -94,9 +94,9 @@ dated as (
         holds a bare name rather than a FIPS code (design.md defect 7). #}
     select
         p.*,
-        {#  The state's own per-county File_Date. #}
+        {#  The state’s own per-county File_Date. #}
         sv.source_file_date                     as state_published_at,
-        {#  The county's own editingInfo.lastEditDate. #}
+        {#  The county’s own editingInfo.lastEditDate. #}
         cv.source_published_at                  as county_published_at,
         {#  How far behind the county the ANSWER KEY is -- a property of the two
             sources, stable regardless of when we run. Measuring against

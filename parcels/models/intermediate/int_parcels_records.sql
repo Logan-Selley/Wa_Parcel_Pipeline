@@ -8,10 +8,10 @@
       1. collapses rows the county published more than once with identical
          attributes (true duplicates), and
       2. unions the geometry of rows published as multiple pieces of one
-         record (multipart parcels -- King's own 439 layer ships 012605TR-A
+         record (multipart parcels -- King’s own 439 layer ships 012605TR-A
          as three features).
 
-    A3b: the grain is record_key_uid ALONE -- the county's own record
+    A3b: the grain is record_key_uid ALONE -- the county’s own record
     hierarchy (parcel, unit, unit_type, level). record_signature is retained
     as provenance but is out of the grain, so the 234 residual key-groups
     that differ only by signature now merge.
@@ -72,7 +72,7 @@ unioned as (
 
         {#  sum(), not min(): exactly one record per group holds values and the
             rest are zero-valued shells (measured, zero exceptions), so the sum
-            IS the holders figure. sum() of all-nulls stays null, which is the
+            IS the holder’s figure. sum() of all-nulls stays null, which is the
             correct answer for the 5 value-less groups. #}
         sum(value_land_appraised)  as value_land_appraised,
         sum(value_bldg_appraised)  as value_bldg_appraised,
@@ -82,7 +82,7 @@ unioned as (
             record, while the unioned geometry covers only the built components.
             Summing recovers the parcel figure; the resulting acres-vs-area
             mismatch on merged records is a grain difference, not a defect --
-            see docs/build-plan.md A3b. #}
+            see docs/design-history.md A3b. #}
         sum(acres_reported)        as acres_reported,
         min(source_layer_url)      as source_layer_url,
         min(source_crs)            as source_crs,

@@ -1,4 +1,4 @@
-{#  Quarantine roll-up: reason x county, with the registry's own descriptions.
+{#  Quarantine roll-up: reason x county, with the registry’s own descriptions.
 
     Labels come from rejection_rules() rather than being restated here, so the
     registry stays the single source of truth for the CASE in
@@ -30,7 +30,7 @@ select
     count(*)                        as rejected_records,
 
     {#  Not the same number as rejected_records. A quarantined row is a merged
-        record, so it can stand for several source rows -- Spokane's 2 rejected
+        record, so it can stand for several source rows -- Spokane’s 2 rejected
         rows represent 3 UNKNOWN source records. Counting rows alone
         under-reports the failures, and this is the figure the A4 canary
         reconciles through. #}

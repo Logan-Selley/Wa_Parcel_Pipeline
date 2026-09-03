@@ -22,9 +22,6 @@ dependencies = [
     "shapely>=2.0",
     "pyproj>=3.7",     # CRS reconciliation across county projections
 
-    # entity resolution across sources that disagree
-    "rapidfuzz>=3.0",
-
     # loading — geopandas.to_postgis is implemented on top of SQLAlchemy and
     # dispatches geometry columns through GeoAlchemy2. Both are hard
     # requirements despite never being imported directly.

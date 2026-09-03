@@ -129,12 +129,8 @@ def _get_with_retry(url: str, params: dict[str, Any], session: Optional[requests
                 return payload
             except requests.exceptions.HTTPError as e:
                 status_code = e.response.status_code if e.response is not None else 0
-                
-                # If it's a permanent client error (like 400, 401, 403, 404), fail immediately
                 if status_code not in TRANSIENT_STATUS_CODES:
                     raise ArcGISError(f"Permanent HTTP Client Error {status_code}: {e}") from e
-                
-                # Otherwise, allow it to fall through to the retry logic below
                 if attempt == MAX_RETRIES:
                     raise ArcGISError(f"HTTP Error {status_code} persisted after {MAX_RETRIES} retries.") from e
                     
@@ -150,13 +146,12 @@ def _get_with_retry(url: str, params: dict[str, Any], session: Optional[requests
                 # Generic in-body failures -- see _TransientPayloadError.
                 _TransientPayloadError,
             ) as e:
-                # Pure network/transport issues are always safe to retry
                 if attempt == MAX_RETRIES:
                     raise ArcGISError(f"Transient failure persisted after {MAX_RETRIES} retries. Error: {e}") from e
                 log.warning("transient failure (attempt %d/%d): %s", attempt + 1, MAX_RETRIES, e)
 
             except requests.exceptions.RequestException as e:
-                # Catch-all for any other unexpected requests anomalies (fail immediately to be safe)
+                # Anything else: not obviously transient, so fail rather than retry blind.
                 raise ArcGISError(f"Unrecoverable request anomaly encountered: {e}") from e
 
             sleep_time = BACKOFF_FACTOR ** (attempt + 1)
@@ -362,6 +357,7 @@ def iter_feature_pages(
 
     if actual_feature_count != total_features:
         raise ArcGISError(
-            f"Data drift or download mismatch detected! Expected {total_features} "
-            f"features from metadata, but successfully fetched {actual_feature_count} features."
+            f"feature count mismatch: the service reported {total_features} features "
+            f"but {actual_feature_count} arrived in the pages. Refusing to land a "
+            f"partial load -- re-run the ingest."
         )

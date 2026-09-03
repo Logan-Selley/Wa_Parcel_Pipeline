@@ -1,16 +1,10 @@
-
-# Name your project! Project names should contain only lowercase characters
-# and underscores. A good package name should reflect your organization's
-# name or the intended use of these models
+# Parcels warehouse. The source manifest under vars: below is read by BOTH the
+# Python extractor (yaml.safe_load) and dbt (var()) -- read the conventions
+# block above the manifest before adding a county, and docs/design.md section 6
+# for the model shape.
 name: 'parcels'
 version: '1.0.0'
-
-# This setting configures which "profile" dbt uses for this project.
 profile: 'parcels'
-
-# These configurations specify where dbt should look for different types of files.
-# The `model-paths` config, for example, states that models in this project can be
-# found in the "models/" directory. You probably won't need to change these!
 model-paths: ["models"]
 analysis-paths: ["analyses"]
 test-paths: ["tests"]
@@ -88,7 +82,7 @@ vars:
 
   state_source:
     name: WA State Current Parcels
-    item_id: null                 # OPEN: never resolved; only the fallback path is missing
+    item_id: null                 # OPEN: item-id fallback re-resolution (design.md section 6) is designed, not implemented
     service_url: https://services.arcgis.com/jsIt88o09Q0r1j8h/arcgis/rest/services/Current_Parcels/FeatureServer
     portal_url: https://geo.wa.gov/datasets/current-parcels
     source_crs: 2927
@@ -110,7 +104,7 @@ vars:
       layer_id: 0
       portal_url: https://gis-kingcounty.opendata.arcgis.com/maps/203f285e0db44975abc96940345f1454
       source_crs: 2926
-      # Record identity (docs/build-plan.md A3). record_key.fields are the
+      # Record identity (docs/design-history.md A3). record_key.fields are the
       # source's own distinguishing fields, appended to parcel_uid to form the
       # record grain; King needs none -- PIN is unique once case is preserved.
       # identity_exclude keeps system row ids and geometry-derived metadata
@@ -166,7 +160,7 @@ vars:
       layer_id: 0
       portal_url: https://gisdata-piercecowa.opendata.arcgis.com/datasets/81a83fb925654e92a544036d39a1f3f2_0
       source_crs: 2927
-      # Record identity (docs/build-plan.md A3). Pierce's hierarchy is
+      # Record identity (docs/design-history.md A3). Pierce's hierarchy is
       # parcel -> unit -> unit_type -> level: one tax parcel publishes a
       # Residence plus its Parking Space / Storage / Garage components, values
       # living on the Residence, zeros on the rest, so nothing double-counts.
@@ -233,7 +227,7 @@ vars:
       layer_id: 0
       portal_url: https://snohomish-county-open-data-portal-snoco-gis.hub.arcgis.com/datasets/a69c4dc383114f4a8a30b8d4cccf7823_0
       source_crs: 3857
-      # Record identity (docs/build-plan.md A3). Measured: Snohomish publishes
+      # Record identity (docs/design-history.md A3). Measured: Snohomish publishes
       # no duplicate PARCEL_IDs once the 4,595 null-uid voids are excluded, so
       # the key needs no extra fields; STACKED/FLATTEN are attributes, not
       # identity.
@@ -317,8 +311,8 @@ vars:
           There is no single correct mapping to the state's VALUE_LAND.
         landuse_code_source: >-
           USECODE combines the raw code value with a prose description. Mostly space
-          separated but 178 rows use a hyphen pattern. Anchored regex used to extract
-          and separate the values similar to SITUSZIP
+          separated but 178 rows use a hyphen pattern. The anchored regex extracts
+          and separates the two, as with SITUSZIP.
 
     "063":
       name: Spokane
@@ -327,7 +321,7 @@ vars:
       layer_id: 0
       portal_url: https://gisdatacatalog-spokanecounty.opendata.arcgis.com/datasets/228db1be1d6940a3b5e3f2104e470134_0
       source_crs: 3857
-      # Record identity (docs/build-plan.md A3). site_apartment is the unit
+      # Record identity (docs/design-history.md A3). site_apartment is the unit
       # designator; measured: the only pid_num collisions are two pairs of
       # signature-identical rows (multipart parcels published as two pieces)
       # that the integration step unions, plus the 3 UNKNOWN sentinel rows
@@ -370,8 +364,10 @@ vars:
           PID_NUM and `parcel` both match the state's PARCEL_ID_NR exactly and
           were identical across the sample. PIDMAP is a truncated map label
           (3.9002 vs 01013.9002) and ACO_NUM is blank or unrelated. A test
-          asserting PID_NUM = parcel should surface any divergence. Nulling rows
-          where the PID_NUM is UNKNOWN as they appear to be genuine, empty placeholders
+          asserting PID_NUM = parcel should surface any divergence. PID_NUM comes
+          through as 'UNKNOWN' on three rows -- genuine empty placeholders rather
+          than missing values -- so the sentinel nulls them and they quarantine
+          out on the missing id.
         value_bldg_appraised: >-
           Not published. Derivable as assessed_amt - land_value, but that is our
           inference rather than their figure, so it stays null.

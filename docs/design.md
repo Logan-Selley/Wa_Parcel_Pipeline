@@ -1,6 +1,6 @@
 # WA Parcel Reconciliation — Target Schema & Model Design
 
-*Draft. Every field list, count, and CRS below was read from the live services on
+*Every field list, count, and CRS below was read from the live services on
 2026-08-16; nothing here is assumed. Items still unresolved are marked **OPEN**.*
 
 ---
@@ -34,12 +34,11 @@ Scope for v1: **King, Pierce, Snohomish, Spokane** — 1.51M parcels, 45% of the
 All five support `Query,Extract`, pagination, and GeoJSON/JSON/PBF. One extraction code
 path covers all of them; only the parameters differ.
 
-**Two companion tables on the state service, both load-bearing:**
-
-- `File_Date` (39 rows) — per-county vintage of the state's copy. Counties are **not** the
-  same vintage; sampled rows spanned 2026-01-09 to 2026-02-18. Every published comparison
-  must state the vintage gap.
-- `County_Unique_Land_Use_Codes` (1,931 rows) — per-county land use code → description.
+**Two companion tables on the state service, both load-bearing:** `File_Date` (39 rows —
+per-county vintage of the state's copy; counties are **not** the same vintage, so every
+published comparison must state the gap) and `County_Unique_Land_Use_Codes` (1,931 rows —
+per-county land use code → description). Section 6 covers the pagination properties both
+ingestion paths rely on.
 
 **King publishes two parcel layers that disagree.** `PARCEL_AREA_439` (geometry only, 6
 fields) has 638,886 parcels; `PARCEL_ADDRESS_PUB_AREA_3069` (69 fields) has 636,323. We use
@@ -55,8 +54,7 @@ second column recording which meaning applies.** `value_basis`, `landuse_cd_meth
 looks uniform and quietly isn't.
 
 ```sql
--- marts.dim_parcel
-parcel_uid            text        not null,  -- '033-9906000100'; matches state PARCEL_ID_NR
+parcel_uid            text        not null,  -- '033-[PHONE]'; matches state PARCEL_ID_NR
 county_fips           char(3)     not null,
 county_name           text        not null,  -- a real name, unlike the state's COUNTY_NM
 parcel_id             text        not null,  -- normalized; TEXT always
@@ -550,11 +548,28 @@ do not filter on it.
 
 #### Cost
 
-`int_parcel_overlaps` is the project's expensive model, tagged `expensive` so
-routine builds run `--exclude tag:expensive`. Snohomish dominates: 13.75 average
-acres against King's 2.20 means larger bounding boxes and ~9.0M candidate pairs
-from half the rows (King ~1.7M, completing in ~5 min). Two remedies were tested
-and **rejected**, with measurements in build-plan A6: `ST_Subdivide` (splits on
+**Measured after the index fix: 32.55s for all four counties on four threads**
+— Snohomish 32.0, King 26.8, Pierce 15.0, Spokane 14.9 — against 119s for
+`int_parcels_repaired` alone. Overlaps are no longer the expensive model, or
+an expensive model.
+
+They were once tagged `expensive` so routine builds could run
+`--exclude tag:expensive`. The tag has been **removed**, for two reasons:
+
+- The cost it named was never these models. A build running over an hour was
+  the missing GiST index on `int_parcels_conformed` (§5.8); the tag was added
+  while that was misattributed, and it outlived the fix by weeks.
+- Excluding them was not even a saving. `agg_quality_scorecard` refs the four
+  per-county overlap tables **directly**, so it rebuilt regardless and read
+  whatever those tables last held — publishing encroachment counts quietly
+  older than every other figure in the same row.
+
+The `overlaps` tag stays, for iterating on the overlap logic alone
+(`make overlaps`).
+
+Snohomish still dominates: 13.75 average acres against King's 2.20 means larger
+bounding boxes and ~9.0M candidate pairs from half the rows. Two remedies were tested
+and **rejected**, with measurements in design-history.md A6: `ST_Subdivide` (splits on
 vertex count, but Snohomish is large not complex — forcing it expanded 314,670
 records into 3,031,020 pieces and made the join worse) and 1-mile spatial tiling
 (**26× worse** — 237,892,264 intra-cell pairs against 9,001,941 from the GiST

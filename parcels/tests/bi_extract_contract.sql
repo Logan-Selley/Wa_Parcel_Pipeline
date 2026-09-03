@@ -1,4 +1,4 @@
-{#  The bi extract's geometry contract: no nulls, no empties, WGS84 only.
+{#  The bi extract’s geometry contract: no nulls, no empties, WGS84 only.
     All three are hard failures -- this is the table the map binds to, and a
     null or misprojected geometry renders as a missing or misplaced parcel
     with no error anywhere else.

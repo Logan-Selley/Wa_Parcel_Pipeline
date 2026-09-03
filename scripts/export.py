@@ -55,7 +55,7 @@ def main() -> None:
 
     # Single-snapshot semantics: a rerun REPLACES the previous snapshot. The
     # four subdirectories are wiped first, so a table dropped or renamed in
-    # TABLES cannot leave its stale export behind — everything here reflects
+    # TABLES cannot leave its stale export behind -- everything here reflects
     # exactly one warehouse state, and any file present after a run was
     # produced by that run.
     import shutil
@@ -97,11 +97,11 @@ def main() -> None:
             jf.write_text(json.dumps(data, default=str, indent=1))
             print(f"  {table}: {jf.stat().st_size / 1e3:.0f} kB json ({len(data)} rows)")
 
-    # FlatGeobuf of the map extract — tippecanoe's input. bi_parcel_extract is
+    # FlatGeobuf of the map extract -- tippecanoe's input. bi_parcel_extract is
     # ALREADY in WGS84 (the dbt model transforms), and the postgres extension
     # hands PostGIS geometry columns across as WKB blobs, so no spatial
     # functions are needed here: the blob is rehydrated with shapely directly.
-    # (st_transform / st_aswkb would fail — duckdb only knows them via the
+    # (st_transform / st_aswkb would fail -- duckdb only knows them via the
     # spatial extension, which this export deliberately does not require.)
     print("exporting bi_parcel_extract -> FlatGeobuf")
     df = conn.execute(

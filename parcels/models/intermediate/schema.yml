@@ -49,7 +49,7 @@ models:
         data_tests:
           - not_null
       - name: landuse_cd_method
-        description: derived = matched the crosswalk, unmapped= state has no mapping
+        description: derived = matched via the crosswalk; unmapped = the state publishes no mapping
         data_tests:
           - accepted_values:
               arguments:

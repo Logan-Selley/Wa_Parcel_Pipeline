@@ -1,4 +1,7 @@
 -- models/staging/stg_parcels.sql
+-- The union of every county in the manifest. Everything downstream reads this
+-- model rather than the per-county files, so adding a county needs no edits
+-- below staging.
 {% set counties = var('counties').keys() | list %}
 
 {% for fips in counties %}

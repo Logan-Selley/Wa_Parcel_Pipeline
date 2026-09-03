@@ -1,4 +1,4 @@
-{#  Per-county balance: the fact's presence counts reconcile to the
+{#  Per-county balance: the fact’s presence counts reconcile to the
     underlying relations.
 
       ours-present rows  = distinct parcel_uids in dim_parcel
@@ -6,7 +6,7 @@
 
     The full outer join cannot create or destroy rows on either side, so any
     mismatch means the join grain drifted (e.g. a key expression changed on
-    one side only). The third assertion is the join's own guard: a row absent
+    one side only). The third assertion is the join’s own guard: a row absent
     from BOTH sides cannot exist in a full outer join -- its presence would
     mean the join key collapsed (nulls matching nulls). #}
 

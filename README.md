@@ -12,7 +12,7 @@ conformance layer independently, then diff against theirs and explain every
 difference in both directions.
 
 **1,509,907 source rows → 1,504,693 published records → 95–99% agreement with
-the answer key**, with every remaining difference classified and 9 documented
+the answer key**, with every remaining difference classified and eight documented
 defects found in the answer key itself.
 
 ---
@@ -47,7 +47,7 @@ differences were an artifact of comparing two different fields. Pierce went
 
 ## What we found in the answer key
 
-Nine defects, each measured rather than asserted. The full list is in
+Eight defects, each measured rather than asserted. The full list is in
 [docs/design.md §9](docs/design.md); the ones worth reading:
 
 - **`FIPS_NR` is null for 100% of one county.** All 13,629 null-FIPS rows are
@@ -181,6 +181,48 @@ timestamp would grow it by a day every day with nothing having changed.
 
 ---
 
+## Orchestration
+
+Airflow runs ingest → dbt → export on a daily schedule, in **its own containers
+and its own metadata database**. It never shares a Python environment with dbt:
+tasks run the pipeline image as sibling containers via `DockerOperator`, so
+Airflow decides *what* runs and *when*, and the image owns *how*. Swapping it
+for Dagster or cron would touch no pipeline code — which is the property that
+makes orchestration worth adding rather than a place for logic to accumulate.
+Every step is still runnable from a shell.
+
+**The DAG does nothing on days when nothing published.** The sources republish
+every few weeks, so a daily schedule would otherwise re-fetch 1.5M unchanged
+parcels to regenerate yesterday's bytes — and put that load on public services
+we don't own. Each ingest is gated by a check comparing the publisher's
+`editingInfo.lastEditDate` against the last one recorded in
+`raw.source_field_snapshot`. Both values already existed; the gate is one HTTP
+call and an indexed `max()`, with no new state to maintain.
+
+The skip composes out of two ordinary Airflow behaviours rather than a branching
+operator: `skip_on_exit_code` turns the gate's exit 99 into a *skipped* task,
+skips propagate to its ingest, and `dbt_build` uses
+`none_failed_min_one_success` so **one** county publishing rebuilds everything —
+correct, because the reconciliation is cross-county and the scorecard is
+comparative. All five unchanged → zero successful ingests → the whole run costs
+five metadata calls.
+
+The gate **skips only on proof**. No snapshot, no recorded value, a publisher
+that doesn't populate `editingInfo`, an unreachable service — all mean "cannot
+prove unchanged", and all do the work (an unreachable service *fails*, since
+that and "no new data" look alike from a distance and are opposite conditions).
+Redundant work is visible and cheap; a pipeline that skips because it cannot
+see, reports success, and publishes last month's numbers is neither.
+
+Its known gap is stated rather than papered over: the gate keys on the *source*,
+not on whether our own run succeeded, so an ingest that lands before a dbt
+failure leaves the next scheduled run skipping. The remedies are ordinary — clear
+the failed task, or trigger with `force` — and closing it properly would mean
+recording pipeline outcomes in the orchestrator and reading them back here,
+which is exactly the coupling the container boundary exists to prevent.
+
+---
+
 ## Outputs
 
 The warehouse is a build tool, not a service. Everything downstream is a static
@@ -212,20 +254,31 @@ tolerance.
 
 ```bash
 make check       # verify env before blaming a query: index, disk, active queries
+make freshness   # has any source republished since the last ingest?
 make ingest-all  # all four counties
 make ingest-state
-make build       # dbt, excluding the expensive overlap models
-make build-all   # including them (~81s)
+make build       # every model and test
 make export      # gold tables -> parquet/csv/json/fgb
 make pmtiles     # fgb -> map tiles
 make site        # assemble site/data/
 ```
+
+Or `make airflow-up` and let the DAG run all of it in order.
 
 `make check` exists because a routine rebuild once silently dropped a GiST
 index, and the next 90 minutes of performance conclusions were drawn against an
 unindexed table — including two that were confidently wrong in opposite
 directions. Verifying the environment before attributing a performance change to
 a query change is now a build step, not a habit.
+
+**There is no longer a fast build and a slow one.** `build` used to pass
+`--exclude tag:expensive` to skip the overlap models; the tag is gone. It was
+added while an hour-long build was blamed on those models rather than on the
+missing index above, and it never saved the work anyway —
+`agg_quality_scorecard` refs the per-county overlap tables directly, so
+excluding them only meant publishing encroachment counts older than the parcels
+beside them. Measured now: 32.55s for all four counties, against 119s for
+`int_parcels_repaired` alone.
 
 **Do not invoke a bare `dbt`.** On this machine it resolves to dbt Fusion, which
 has no Postgres adapter. Every target pins `.venv/bin/dbt`.
@@ -234,7 +287,7 @@ has no Postgres adapter. Every target pins `.venv/bin/dbt`.
 
 ## Testing
 
-57 dbt tests, all structural — they fail when the *code* is wrong, not when the
+37 dbt tests, all structural — they fail when the *code* is wrong, not when the
 source data changes.
 
 The pipeline had one permanently-red test (`parcel_uid` uniqueness) and one

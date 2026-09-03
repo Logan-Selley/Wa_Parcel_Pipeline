@@ -27,15 +27,15 @@
 {%- set target_crs = var('target_crs', 2927) -%}
 
 {#
-    Record identity (docs/build-plan.md A3). Two ids, each with one job:
+    Record identity (docs/design-history.md A3). Two ids, each with one job:
 
-    record_key_uid = parcel_uid + the county's declared record_key fields,
-    legibly encoded ('053-123456|A|2' = parcel + unit + unit_type + level).
+    record_key_uid = parcel_uid + the county’s declared record_key fields,
+    legibly encoded (’053-123456|A|2’ = parcel + unit + unit_type + level).
     Declares, per county, what makes two published records the same record.
-    Null-safe: a null field encodes as '~', and a null parcel_uid (the
+    Null-safe: a null field encodes as ’~’, and a null parcel_uid (the
     quarantine path) yields a null record_key_uid.
 
-    record_signature = md5 over every raw column NOT in the county's
+    record_signature = md5 over every raw column NOT in the county’s
     identity_exclude list. It discriminates variants the declared key does
     not (attribute differences) without putting volatile data in the key --
     values in a key would churn identity on every assessment update.
@@ -47,9 +47,10 @@
         shape__area, shape__length, x/y/long/lat, maplegend
       geom is always excluded implicitly.
 
-    The column set comes from the live source relation minus the county's
+    The column set comes from the live source relation minus the county’s
     identity_exclude, so a column the county adds later is absorbed on the
-    next run (and the drift test flags the change loudly).
+    next run; raw.source_field_snapshot keeps the per-run history that makes
+    the change visible.
 #}
 {%- set identity_exclude = cfg.get('identity_exclude', []) + ['geom'] -%}
 {%- set key_fields = cfg.get('record_key', {}).get('fields', []) -%}

@@ -24,16 +24,16 @@
     SEMANTICS before querying:
 
       * `parcels` is the row count for that (county, check, outcome);
-        `total_parcels` is the county's conformed row count. Rates are
+        `total_parcels` is the county’s conformed row count. Rates are
         parcels / total_parcels -- EXCEPT the state_copy_vintage row (a
         county-level fact) and the rejection/overlap rows, whose
         denominators are the rejected/overlap universes described in their
         check_description.
       * area_mismatch on MERGED records (source_record_count > 1) is the
         explained parcel-vs-component grain class, not a defect -- see
-        docs/build-plan.md A3b and the merge_provenance check below.
-      * state_duplicate groups use the recovered county (Asotin's 13,629
-        rows carry no FIPS_NR but well-formed '003-' prefixed ids).
+        docs/design-history.md A3b and the merge_provenance check below.
+      * state_duplicate groups use the recovered county (Asotin’s 13,629
+        rows carry no FIPS_NR but well-formed ’003-’ prefixed ids).
 #}
 
 {%- set flags = flag_rules() -%}
@@ -134,7 +134,7 @@ checks as (
     union all
 
     {# ------------------------------------------------ merge provenance #
-        How many published rows each record absorbed (A3b). Pierce's merged
+        How many published rows each record absorbed (A3b). Pierce’s merged
         records are the condo component groups; their area_ratio is the
         explained parcel-vs-component grain class. #}
     select
@@ -211,7 +211,7 @@ checks as (
     union all
 
     {# ------------------------------------- state duplicate uid groups #
-        The state's own duplicate PARCEL_ID_NR groups per recovered county --
+        The state’s own duplicate PARCEL_ID_NR groups per recovered county --
         the symmetric counterpart of our merge ledger. The state carries
         49,426 such groups with no explanation; ours are all classified. #}
     select
@@ -247,10 +247,10 @@ checks as (
     union all
 
     {# ------------------------------------------------ state copy vintage #
-        County-level fact: the vintage of the state's copy of this county
+        County-level fact: the vintage of the state’s copy of this county
         (File_Date, resolved for all 39 counties by int_county_vintage).
         Span measured 2026-01-09 to 2026-03-20 -- stale by up to ten weeks
-        relative to our pull. parcels carries the county's dim row count for
+        relative to our pull. parcels carries the county’s dim row count for
         join convenience; the outcome IS the vintage date. #}
     select
         v.county_fips,
@@ -303,7 +303,7 @@ checks as (
     union all
 
     {# --------------------------------------------- county source vintage #
-        The county's OWN publish date (editingInfo.lastEditDate), the
+        The county’s OWN publish date (editingInfo.lastEditDate), the
         counterpart to state_copy_vintage above. Both are publisher
         statements, so the gap between them is a property of the two sources
         rather than of when we happened to run -- see int_source_vintage. #}

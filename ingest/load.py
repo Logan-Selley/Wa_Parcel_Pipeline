@@ -129,8 +129,8 @@ class BronzeLoader:
     The schema is declared explicitly rather than inferred by the first page.
     GeoDataFrame.from_features types each page independently, so a column that
     happens to be entirely null early on (King's sparse PLUS4, for instance)
-    would be inferred as float64, and appending later string values into the
-    column that created would fail -- 40 minutes into the largest county.
+    would be inferred as float64, and appending later string values into
+    that column would fail -- 40 minutes into the largest county.
     """
 
     def __init__(
@@ -512,10 +512,34 @@ def record_field_snapshot(
 
     The DDL lives here rather than in docker/initdb/01_init.sql because that
     script only runs on first creation of the volume, so adding it there would
-    not reach an existing warehouse.
+    not reach an existing warehouse. For the same reason a new column arrives
+    as an idempotent ALTER below rather than by editing the CREATE alone --
+    the CREATE is a no-op against a warehouse that already has the table.
+
+    source_last_edit and source_last_edit_at hold the same instant at different
+    precisions, deliberately:
+
+      * source_last_edit (DATE) is the VINTAGE. int_source_vintage subtracts it
+        from the state's File_Date to get vintage_gap_days, and the state
+        publishes only a date, so matching precisions keeps that arithmetic
+        honest.
+      * source_last_edit_at (TIMESTAMPTZ) is the CHANGE DETECTOR that
+        ingest.freshness compares against. A date cannot serve here: publish at
+        09:00, ingest at 10:00, republish a correction at 16:00, and every
+        later run sees remote_date <= recorded_date and skips FOREVER. Not a
+        delayed pickup -- a permanent miss. Full precision is what makes the
+        comparison safe.
     """
     snapshot_table = "source_field_snapshot"
     captured_at = datetime.datetime.now(datetime.timezone.utc)
+
+    last_edit_at = (
+        datetime.datetime.fromtimestamp(
+            metadata.last_edit_epoch_ms / 1000, datetime.timezone.utc
+        )
+        if metadata.last_edit_epoch_ms
+        else None
+    )
 
     if not metadata.field_types:
         log.warning("no fields found in metadata snapshot for FIPS %s", fips)
@@ -530,12 +554,8 @@ def record_field_snapshot(
             "field_type": str(field_type),
             "crs": f"EPSG:{metadata.native_wkid}" if metadata.native_wkid else "UNKNOWN",
             "max_record_count": metadata.max_record_count,
-            "source_last_edit": (
-                datetime.datetime.fromtimestamp(
-                    metadata.last_edit_epoch_ms / 1000, datetime.timezone.utc
-                ).date()
-                if metadata.last_edit_epoch_ms else None
-            ),
+            "source_last_edit": last_edit_at.date() if last_edit_at else None,
+            "source_last_edit_at": last_edit_at,
             "captured_at": captured_at,
         }
         for field_name, field_type in metadata.field_types.items()
@@ -557,8 +577,31 @@ def record_field_snapshot(
                 crs TEXT,
                 max_record_count INTEGER,
                 source_last_edit DATE,
+                source_last_edit_at TIMESTAMP WITH TIME ZONE,
                 captured_at TIMESTAMP WITH TIME ZONE NOT NULL
             );
+        """
+            )
+        )
+        # The CREATE above is a no-op on an existing warehouse, so the column
+        # has to be added separately. Nullable with no default, which makes it
+        # a catalog-only change -- no table rewrite.
+        connection.execute(
+            text(
+                f"""
+            ALTER TABLE {RAW_SCHEMA}.{snapshot_table}
+                ADD COLUMN IF NOT EXISTS source_last_edit_at TIMESTAMP WITH TIME ZONE;
+        """
+            )
+        )
+        # ingest.freshness reads max(source_last_edit_at) per layer_url on every
+        # gate check, and this table grows by one row per FIELD per run -- 69
+        # for King alone. Cheap to index now, annoying to diagnose later.
+        connection.execute(
+            text(
+                f"""
+            CREATE INDEX IF NOT EXISTS idx_snapshot_layer_edit
+                ON {RAW_SCHEMA}.{snapshot_table} (layer_url, source_last_edit_at DESC);
         """
             )
         )
@@ -567,10 +610,10 @@ def record_field_snapshot(
                 f"""
             INSERT INTO {RAW_SCHEMA}.{snapshot_table} (
                 fips, layer_url, field_name, field_type, crs, max_record_count,
-                source_last_edit, captured_at
+                source_last_edit, source_last_edit_at, captured_at
             ) VALUES (
                 :fips, :layer_url, :field_name, :field_type, :crs, :max_record_count,
-                :source_last_edit, :captured_at
+                :source_last_edit, :source_last_edit_at, :captured_at
             );
         """
             ),

@@ -1,6 +1,6 @@
 # ${VAR} below is substituted from .env in this directory, which Compose reads
 # implicitly. See .env.example for the required keys. Note that this is
-# substitution only — these values reach the container via `environment:`, not
+# substitution only -- these values reach the container via `environment:`, not
 # by injecting the whole file.
 services:
   warehouse:
@@ -12,11 +12,30 @@ services:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
       POSTGRES_DB: ${POSTGRES_DB}
     ports:
-      # host:container — 5433 on the host avoids clashing with a native
+      # host:container -- 5433 on the host avoids clashing with a native
       # Postgres install. dbt/psql connect to localhost:5433
       - "5433:5432"
     volumes:
-      - warehouse_data:/var/lib/postgresql/data
+      # A HOST BIND MOUNT, not a named volume. Named volumes live under
+      # /var/lib/docker on the root filesystem, which is a 293G btrfs partition
+      # that was at 98% -- and this directory is the thing that grows, 12.08 GB
+      # of the 12.3 GB Docker was holding, larger after every ingest. /mnt/F is
+      # 3.6T of ext4 with room to spare.
+      #
+      # Only THIS volume moved, not Docker's data-root. Relocating the daemon's
+      # whole storage would have meant dropping nosuid,nodev from /mnt/F in
+      # fstab -- nodev breaks image extraction for images shipping device nodes
+      # -- and loosening that on the drive holding every project is a poor
+      # trade for reclaiming a few GB of image layers. A Postgres data
+      # directory needs neither setuid binaries nor device nodes, so it moves
+      # without touching the mount.
+      #
+      # The directory is chown 999:999 chmod 700 to match what postgres expects
+      # of PGDATA; the container refuses to start otherwise. Parent directory
+      # permissions do not matter -- a bind mount attaches the directory into
+      # the container's namespace directly, so /mnt/F being 0700 logan:logan is
+      # not in the container's path resolution.
+      - /mnt/F/docker-data/warehouse:/var/lib/postgresql/data
       # anything in initdb.d runs once, on first creation of the volume
       - ./docker/initdb:/docker-entrypoint-initdb.d:ro
     shm_size: 1gb  # spatial joins / large sorts will exhaust the 64mb default
@@ -27,5 +46,6 @@ services:
       retries: 5
       start_period: 10s
 
-volumes:
-  warehouse_data:
+
+# No named volumes. warehouse_data was migrated to the bind mount above; the
+# old volume is still on disk until it is explicitly removed.

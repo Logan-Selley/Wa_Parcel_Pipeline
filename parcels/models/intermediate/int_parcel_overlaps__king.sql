@@ -1,3 +1,4 @@
 -- models/intermediate/int_parcel_overlaps__king.sql
-{{ config(materialized='table', tags=['expensive','overlaps']) }}
+-- All per-county logic lives in macros/parcel_overlaps.sql; fips is the only argument.
+{{ config(materialized='table', tags=['overlaps']) }}
 {{ parcel_overlaps('033') }}

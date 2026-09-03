@@ -1,7 +1,7 @@
-{#  The parcel-partition checks must each sum to the county's total: their
+{#  The parcel-partition checks must each sum to the county’s total: their
     outcomes partition conformed rows exhaustively. If a future edit adds an
     unhandled outcome to any block (or drops rows from one), the sums stop
-    closing and this fails -- the scorecard's equivalent of the A4 canary.
+    closing and this fails -- the scorecard’s equivalent of the A4 canary.
 
     Two checks with a different universe are deliberately absent here:
       * rejection rows -- universe is parcels_rejected, not conformed (their
@@ -51,7 +51,7 @@ where o.outcome_sum <> t.total_parcels
 
 union all
 
-{#  State-side: the scorecard's state_duplicate_groups count must equal the
+{#  State-side: the scorecard’s state_duplicate_groups count must equal the
     collision groups recomputed from stg_state_parcels. #}
 select
     'state_duplicate_groups does not match recomputation' as violation,
@@ -80,7 +80,7 @@ where coalesce(s.groups, 0) <> coalesce(sc.parcels, 0)
 
 union all
 
-{#  State-side: the scorecard's state_unidentified count must equal the
+{#  State-side: the scorecard’s state_unidentified count must equal the
     null-uid rows recomputed per county. #}
 select
     'state_unidentified does not match recomputation' as violation,

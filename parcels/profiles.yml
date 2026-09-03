@@ -1,3 +1,7 @@
+# dbt connection for the parcel warehouse. Values come from the process
+# environment via env_var() -- dbt does not read .env; the Makefile exports it.
+# schema: staging is the default target, and generate_schema_name maps any
+# +schema: config to the bare medallion schemas rather than prefixing.
 parcels:
   target: dev
   outputs:

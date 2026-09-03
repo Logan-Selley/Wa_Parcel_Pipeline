@@ -1,7 +1,7 @@
 {#
-    Override dbt's default schema naming.
+    Override dbt’s default schema naming.
 
-    dbt's built-in generate_schema_name concatenates the target schema onto any
+    dbt’s built-in generate_schema_name concatenates the target schema onto any
     custom schema, so a model configured with `+schema: marts` against a target
     schema of `staging` materializes into `staging_marts`. That behaviour exists
     to keep developers from colliding in a shared warehouse.
@@ -12,7 +12,7 @@
     empty and build a parallel set beside them.
 
     So: use the custom schema verbatim when one is declared, and fall back to
-    the target schema when one isn't.
+    the target schema when one isn’t.
 #}
 
 {% macro generate_schema_name(custom_schema_name, node) -%}

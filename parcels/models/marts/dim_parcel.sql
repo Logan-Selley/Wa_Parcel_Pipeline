@@ -1,5 +1,5 @@
 {# The published parcel dimension. One row per published record #}
-SELECT
+select
     record_key_uid,
     parcel_uid,
     county_fips,
@@ -22,11 +22,11 @@ SELECT
     value_basis,
     acres_reported,
     source_record_count,
-    geom::geometry(MultiPolygon,2927),
+    geom::geometry(MultiPolygon, 2927),
     source_layer_url,
     source_crs,
     source_file_date,
     ingested_at,
     geometry_valid,
     geometry_repaired
-FROM {{ ref('int_parcels_conformed') }}
+from {{ ref('int_parcels_conformed') }}

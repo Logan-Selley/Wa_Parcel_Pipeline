@@ -1,5 +1,5 @@
 {#  The fact must carry no null parcel_uid and no null class. A null uid in
-    the fact means a null key leaked through the join (the state's 4,587
+    the fact means a null key leaked through the join (the state’s 4,587
     unidentified rows are filtered upstream; ours are quarantined); a null
     class means the CASE lost its ELSE -- both silent-corruption shapes, not
     data findings. #}

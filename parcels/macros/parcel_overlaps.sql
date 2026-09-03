@@ -1,7 +1,7 @@
 {% macro parcel_overlaps(fips) %}
 
 {#  Per-county overlap detection. One model per county (the stg_parcels__*
-    pattern) so a slow county cannot hide a fast one's result and each gets
+    pattern) so a slow county cannot hide a fast one’s result and each gets
     its own timing in dbt output -- Snohomish costs ~5x King and bundling
     them meant no partial progress.
 

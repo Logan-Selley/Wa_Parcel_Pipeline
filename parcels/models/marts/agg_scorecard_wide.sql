@@ -2,22 +2,22 @@
 
 {#  The WIDE scorecard: one row per county, headline rates as columns.
 
-    A pure PROJECTION of agg_quality_scorecard — every number here is
+    A pure PROJECTION of agg_quality_scorecard -- every number here is
     computed FROM the long-format table, not recomputed from base relations.
-    The long table stays the single source of truth; if a check's definition
+    The long table stays the single source of truth; if a check’s definition
     changes, this view follows it without a second implementation to keep
     honest.
 
     The pivot uses max(case when outcome = X then parcels end) because the
-    long table holds several outcomes per (county, check) — this shape picks
-    the outcome each headline wants. Any check NOT named here simply doesn't
+    long table holds several outcomes per (county, check) -- this shape picks
+    the outcome each headline wants. Any check NOT named here simply doesn’t
     appear in the wide view; adding one means adding its columns here, which
     is the deliberate cost of a fixed contract for BI.
 
-    One wrinkle: merge_provenance's merged_source_rows needs the source rows
-    summed per merge class, which the long table does not carry — so it is
+    One wrinkle: merge_provenance’s merged_source_rows needs the source rows
+    summed per merge class, which the long table does not carry -- so it is
     pulled from the conformed relation directly (the only number in this
-    model that does not come from the long table, and it is the A4 canary's
+    model that does not come from the long table, and it is the A4 canary’s
     own arithmetic: conformed expansion = staged - rejected expansion).
 #}
 
@@ -114,7 +114,7 @@ with pivoted as (
 rejected_rows as (
 
     {#  Quarantine in SOURCE rows, not quarantine rows. A rejected row is a
-        merged record and can stand for several published rows -- Spokane's 2
+        merged record and can stand for several published rows -- Spokane’s 2
         rejected rows represent 3 UNKNOWN source records -- so a row count
         under-reports the failures and does not tie to the A4 canary. #}
     select county_fips, sum(rejected_source_rows) as rejected_source_rows
@@ -180,7 +180,7 @@ select
     coalesce(p.state_unidentified, 0)                   as state_unidentified_parcels,
 
     {# ---------------------------------------------- answer-key comparison #
-        The project's headline, and the reason this table exists. parcels_differ
+        The project’s headline, and the reason this table exists. parcels_differ
         is the UNEXPLAINED delta: what survives case normalisation (design.md
         5.6) and the exclusion of fields a 166-216 day stale answer key is
         expected to disagree on (5.5). Reporting raw disagreement instead would
@@ -203,8 +203,8 @@ select
     coalesce(p.coverage_ours_only, 0)                   as coverage_fields_ours_only,
     coalesce(p.coverage_theirs_only, 0)                 as coverage_fields_theirs_only,
 
-    {#  Both dates are publisher statements -- the county's
-        editingInfo.lastEditDate against the state's File_Date -- so the gap is
+    {#  Both dates are publisher statements -- the county’s
+        editingInfo.lastEditDate against the state’s File_Date -- so the gap is
         a property of the two SOURCES and does not move when we re-run.
         Measuring against our ingest time instead would grow it by a day every
         day with nothing about the data having changed. #}
