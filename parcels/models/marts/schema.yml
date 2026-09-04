@@ -29,7 +29,7 @@ models:
       Parcel-grain reconciliation against the answer key. Both sides
       aggregated to parcel_uid (symmetric sums; corr 0.9548 measured on
       Pierce). Value fields carry drift:true in comparable_fields() — their
-      disagreement is expected against a 166-216 day stale key and surfaces
+      disagreement is expected against a 167-216 day stale key and surfaces
       as value_drift, not as class.
     columns:
       - name: parcel_uid
@@ -48,18 +48,44 @@ models:
               arguments:
                 values: ['both_match', 'both_differ', 'ours_only', 'theirs_only']
 
-  - name: bi_parcel_extract
+  - name: bi_findings_extract
     description: >
-      The map-facing extract: dim reprojected to WGS84 and simplified
-      (~1 m tolerance, topology-preserving). A presentation projection of
-      dim — droppable and rebuildable at any time. Geometry contract is
-      asserted in tests/bi_extract_contract.sql; the known simplification
-      artifact in tests/bi_geom_validity.sql (warn).
+      The map-facing extract: only records this pipeline has a finding about —
+      about — encroachments, unflagged coincident pairs, coverage gaps in either
+      direction, attribute disagreements with the answer key, repaired
+      geometry, and quarantined shapes. 55,589 features against dim's 1.5M,
+      because the state already publishes a statewide parcel map and
+      re-publishing it asserts nothing. Reprojected to WGS84 and simplified
+      (~1 m, topology-preserving). A presentation projection — droppable and
+      rebuildable at any time. Geometry contract in
+      tests/bi_extract_contract.sql; the known simplification artifact in
+      tests/bi_geom_validity.sql (warn).
     columns:
-      - name: record_key_uid
+      - name: feature_id
+        description: >
+          Source-prefixed stable id. NOT record_key_uid: theirs_only rows have
+          none, and quarantined rows have neither record_key_uid nor
+          parcel_uid — being unidentifiable is why they were rejected. Falls
+          back to record_signature for those, verified distinct on all 4,598.
         data_tests:
           - not_null
           - unique
+      - name: geom_source
+        description: Which layer the geometry came from, declared rather than implied.
+        data_tests:
+          - not_null
+          - accepted_values:
+              values: ['county', 'state', 'quarantine']
+      - name: finding_primary
+        description: >
+          The single finding to colour by. A feature may carry several; the
+          boolean flags preserve all of them.
+        data_tests:
+          - not_null
+          - accepted_values:
+              values: ['quarantined', 'encroachment', 'unflagged_coincident',
+                       'theirs_only', 'ours_only', 'attribute_disagreement',
+                       'geometry_repaired']
       - name: geom
         data_tests:
           - not_null

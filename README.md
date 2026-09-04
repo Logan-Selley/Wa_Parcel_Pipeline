@@ -11,9 +11,14 @@ counties with normalized attributes, which makes it an **answer key**: build a
 conformance layer independently, then diff against theirs and explain every
 difference in both directions.
 
-**1,509,907 source rows → 1,504,693 published records → 95–99% agreement with
+**1,510,306 source rows → 1,505,091 published records → 96–99% agreement with
 the answer key**, with every remaining difference classified and eight documented
 defects found in the answer key itself.
+
+**[Interactive dashboard on Tableau Public](https://public.tableau.com/app/profile/logan.selley7453/viz/WaParcelPipeline/Dashboard1)** — agreement, answer-key
+staleness, coverage in both directions, and the per-check quality scorecard.
+Built from `exports/csv/`, which `make export` regenerates; the numbers below
+are the same run.
 
 ---
 
@@ -21,18 +26,18 @@ defects found in the answer key itself.
 
 | County | Records | Agreement | Unexplained differences | Answer key stale by | Encroachments | Geometry repaired |
 |---|---|---|---|---|---|---|
-| King | 636,323 | **96.38%** | 20,606 | 188 days | 2,331 | 100 |
+| King | 636,536 | **96.25%** | 21,171 | 188 days | 2,340 | 100 |
 | Pierce | 339,330 | **99.13%** | 1,481 | 196 days | 3,653 | 60 |
-| Snohomish | 314,670 | **97.30%** | 7,460 | 216 days | 398 | 77 |
-| Spokane | 214,370 | **99.38%** | 231 | 166 days | 18 | 31 |
+| Snohomish | 314,827 | **97.18%** | 7,648 | 216 days | 398 | 77 |
+| Spokane | 214,398 | **99.33%** | 256 | 167 days | 18 | 31 |
 
 "Unexplained" is doing real work in that column. Raw disagreement was
-**1,204,678**. Two corrections took it to 42,790 — and neither was a bug fix,
+**1,204,678**. Two corrections took it to 30,556 — and neither was a bug fix,
 both were the discovery that a comparison was meaningless:
 
 - **Case normalization.** King publishes `Bellevue`, the state publishes
   `BELLEVUE`. 489,880 city "disagreements" → 8,175 real ones.
-- **Expected drift.** The answer key is 166–216 days behind the counties, and
+- **Expected drift.** The answer key is 167–216 days behind the counties, and
   WA counties revalue annually, so assessed values *must* differ. Value fields
   are declared `drift: true`: they still get a per-field status and a
   `value_drift` count, they just don't count as disagreement.
@@ -111,7 +116,9 @@ Field *names* are still snapshotted so drift detection sees the full published
 schema.
 
 **Quarantine, don't drop.** 4,598 source rows fail validation and are kept with
-a reason. A canary asserts `staged = Σ source_record_count over published +
+a reason — every one for `missing_parcel_uid`: a valid shape with no usable
+identifier. They appear on the map, since a parcel the county drew but could not
+name is a finding. A canary asserts `staged = Σ source_record_count over published +
 quarantined` — relational, so it survives source drift that would rot a
 hardcoded count.
 
@@ -231,19 +238,27 @@ artifact, so nothing needs hosting for the outputs to exist.
 | Artifact | Contents | Consumer |
 |---|---|---|
 | `exports/parquet/` | fct, dim, three scorecards (zstd) | analysis |
-| `exports/csv/` | same tables | **Tableau Public** workbook input |
-| `exports/json/` | three scorecard tables (68 kB) | static site, committed |
-| `exports/fgb/` | 1,504,693 records as FlatGeobuf | tippecanoe → PMTiles |
+| `exports/csv/` | same tables | [**Tableau Public dashboards**](https://public.tableau.com/app/profile/logan.selley7453/viz/WaParcelPipeline/Dashboard1) |
+| `exports/json/` | three scorecard tables (56 kB) | `make site` input; the committed copies live in `site/data/` |
+| `exports/fgb/` | 55,589 findings as FlatGeobuf (31 MB) | tippecanoe → PMTiles |
+| `site/data/` | scorecard JSON + findings tile archive (~18 MB) | MapLibre, committed |
 | `site/index.html` | MapLibre + PMTiles, KPI cards, scorecard | zero-build static page |
 
 Export reads the gold tables through **duckdb's postgres extension** — no
-intermediate service, no ORM. `bi_parcel_extract` is already WGS84 from dbt, so
+intermediate service, no ORM. `bi_findings_extract` is already WGS84 from dbt, so
 geometry crosses as WKB and is rehydrated with shapely; the export deliberately
 avoids duckdb's spatial extension.
 
-The map extract keeps **everything** — attribute-less components, stacked units,
-zero-value allocation records. A public map that silently omitted 9,231 King
-records would be making an editorial choice the pipeline shouldn't make for it.
+**The map publishes findings, not parcels.** 55,589 features against dim's 1.5M
+— every polygon on it is a claim this project is making. Washington already
+publishes a statewide parcel map, so re-publishing 1.5M polygons would duplicate
+their work and assert nothing; it also produced a tile archive too large for
+git. Colour encodes the finding, and the geometry comes from whichever side has
+it — `dim_parcel` for our findings, `stg_state_parcels` for the 1,816 parcels
+the answer key has and we don't, `parcels_rejected` for the 4,598 valid shapes
+with no usable id. `geom_source` says which, because a map that draws their
+geometry without saying so is making a claim it hasn't earned.
+
 Simplification uses `ST_SimplifyPreserveTopology`: plain `ST_Simplify` silently
 erased 1,060 tiny parcels (6–261 sqft) whose vertices all fell inside the
 tolerance.
@@ -287,7 +302,7 @@ has no Postgres adapter. Every target pins `.venv/bin/dbt`.
 
 ## Testing
 
-37 dbt tests, all structural — they fail when the *code* is wrong, not when the
+41 dbt tests, all structural — they fail when the *code* is wrong, not when the
 source data changes.
 
 The pipeline had one permanently-red test (`parcel_uid` uniqueness) and one
@@ -302,3 +317,35 @@ replaced them asserts relationships:
 - eight overlap invariants, including "no both-stacked pair present", which
   guards the 98.8% computation skip
 - geometry index existence, because its silent absence already cost 90 minutes
+
+---
+
+## Data sources and attribution
+
+Every record here is public data, retrieved from the publishers' own ArcGIS
+REST endpoints. Nothing is redistributed that was not already published, and
+the manifest records the exact service URL and layer id for each.
+
+| Publisher | Layer |
+|---|---|
+| Washington State (DNR / Geospatial Open Data) | [Current Parcels](https://geo.wa.gov/datasets/current-parcels) + `File_Date`, `County_Unique_Land_Use_Codes` |
+| King County | `PARCEL_ADDRESS_PUB_AREA_3069` |
+| Pierce County | `Tax_Parcels` |
+| Snohomish County | `Parcels` |
+| Spokane County | `Parcels` |
+
+**Owner and taxpayer data is excluded at the request level** — roughly 1.28M
+mailing addresses and 578,000 names are never fetched, never stored, and never
+exported. Lawfully published, but bulk-republishing it to a public repository
+is a different act than a county making it individually queryable. See
+[design.md §3](docs/design.md).
+
+Findings about the state layer are stated as measurements against a specific
+retrieval date, not as claims about the agency. Where this project was wrong —
+[the Pierce situs retraction](#what-we-found-in-the-answer-key) — the
+retraction is documented rather than deleted.
+
+## License
+
+Code is [MIT](LICENSE). The data is not this project's to license and remains
+subject to its publishers' terms.

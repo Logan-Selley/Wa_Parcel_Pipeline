@@ -205,9 +205,15 @@ settled into the drift bucket.
 vocabulary tests, the quarantine summary and the scorecard — one definition
 per rule, five consumers.
 
-### B6. `bi_parcel_extract`
+### B6. `bi_findings_extract`
 
-Everything included, simplification conservative:
+Replaced the full-parcel map extract. A map of 1.5M polygons duplicated a
+statewide map the state already publishes, could not be read, and produced a
+tile archive over GitHub's 100 MB file limit. This extract carries only the
+55,589 records the pipeline has a finding about — encroachments, unflagged
+coincident pairs, coverage gaps in either direction, attribute disagreements,
+repaired geometry, quarantined shapes — with geometry drawn from whichever
+side has it and `geom_source` saying which. Simplification conservative:
 `ST_SimplifyPreserveTopology` — plain `ST_Simplify` silently erased 1,060 tiny
 parcels (6–261 sqft) on the first build, returning null for rings whose
 vertices all fell inside the tolerance.

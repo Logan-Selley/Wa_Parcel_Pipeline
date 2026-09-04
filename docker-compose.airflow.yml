@@ -17,6 +17,16 @@ x-airflow-env: &airflow-env
   AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@airflow-db:5432/airflow
   AIRFLOW__CORE__LOAD_EXAMPLES: "false"
   AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: "true"
+  # PINNED, because airflow.cfg is NOT on a volume -- only dags/ and logs/ are
+  # mounted, so the file is regenerated inside the container on every recreate
+  # with a fresh random secret_key. That silently invalidates every browser
+  # session, and a tab left open across `make airflow-up` renders as a logged-in
+  # page with nothing in it rather than redirecting to the login form. Pinning
+  # the key makes restarts survivable.
+  #
+  # From .env (gitignored), not a literal here: a checked-in secret is a bad
+  # habit to model even when the instance is localhost-only.
+  AIRFLOW__WEBSERVER__SECRET_KEY: ${AIRFLOW_SECRET_KEY:?set AIRFLOW_SECRET_KEY in .env}
   # The DAG passes the warehouse DSN through to each task container.
   WAREHOUSE_HOST: ${WAREHOUSE_HOST}
   WAREHOUSE_PORT: ${WAREHOUSE_PORT}
@@ -27,6 +37,13 @@ x-airflow-env: &airflow-env
   # mount volumes -- a path inside the Airflow container would be meaningless
   # to it. See the DAG header.
   PIPELINE_HOST_ROOT: ${PWD}
+  # The host user the export task writes as. The pipeline image has no USER
+  # directive, so it runs as root, and a task bind-mounting exports/ wrote
+  # root-owned files into a directory git tracks -- after which `make export`
+  # on the host could not overwrite its own outputs without sudo. Passing the
+  # real uid/gid through makes the container write files their owner can edit.
+  PIPELINE_HOST_UID: ${HOST_UID:-1000}
+  PIPELINE_HOST_GID: ${HOST_GID:-1000}
 
 services:
   airflow-db:
@@ -73,6 +90,12 @@ services:
     volumes:
       - ./airflow/dags:/opt/airflow/dags
       - ./airflow/logs:/opt/airflow/logs
+      # THE MANIFEST, read-only. The DAG derives its county list from the same
+      # vars: block the extractor and dbt read, so adding a county is one
+      # manifest edit rather than one edit plus a matching list in the DAG that
+      # nothing would catch if it drifted. Read-only because the DAG reads it
+      # on every parse and must never be able to write it.
+      - ./parcels/dbt_project.yml:/opt/airflow/manifest/dbt_project.yml:ro
       # The host Docker socket: DockerOperator does not run containers inside
       # Airflow, it asks the host daemon to run SIBLINGS. This is the mount
       # that makes that possible, and the reason for the group id above.
@@ -82,11 +105,26 @@ services:
     # admin/admin on the UI is deliberate: LAN-only instance, and the UI holds
     # nothing but scheduler state -- the warehouse password lives in .env, not
     # here. Revisit auth before this ever becomes reachable off-host.
-    command: >
-      bash -c "airflow db migrate &&
-               airflow users create --role Admin --username admin --password admin
-                 --email admin@example.com --firstname a --lastname b || true &&
-               airflow standalone"
+    # A LITERAL block (|), not a folded one (>). In a folded scalar YAML only
+    # joins lines at the SAME indentation -- more-indented lines keep their
+    # newlines. The previous version wrapped the `users create` arguments onto
+    # an indented continuation line, so bash received a multi-line script:
+    # `users create` ended at the newline without --email/--firstname/--lastname
+    # and failed, `|| true` hid it, and the next line tried to run `--email` as
+    # a command. `airflow standalone` then created its own admin with a random
+    # password that was never printed or written, so the UI was unreachable.
+    #
+    # Here every line is a complete command and the one wrapped line uses an
+    # explicit backslash, so what bash runs is what it reads like.
+    command:
+      - bash
+      - -c
+      - |
+        airflow db migrate
+        # || true so a restart, where the user already exists, is not fatal.
+        airflow users create --role Admin --username admin --password admin \
+          --email admin@example.com --firstname Admin --lastname User || true
+        exec airflow standalone
 
 volumes:
   airflow_meta:

@@ -21,27 +21,77 @@
   th { color:var(--dim); font-weight:500; text-align:right; }
   td:first-child, th:first-child, td:nth-child(2), th:nth-child(2) { text-align:left; }
   tr:hover td { background:#1c242f; }
-  .kpi { display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:12px; margin:18px 0 8px; }
+  .kpi { display:grid; grid-template-columns:repeat(auto-fit,minmax(185px,1fr)); gap:12px; margin:18px 0 8px; }
+  /* The table scrolls INSIDE this box. Without it a wide table stretches the
+     page's scroll width, and `main { margin:0 auto }` then centres against a
+     box wider than the viewport -- which is why the content read as
+     off-centre rather than as overflowing. */
+  .table-wrap { overflow-x:auto; margin-top:12px; }
+  .table-wrap table { margin-top:0; }
   .card { background:var(--panel); border:1px solid var(--line,#2a3340); border-radius:8px; padding:14px 16px; }
   .card h3 { margin:0 0 6px; font-size:12px; color:var(--dim); font-weight:500; text-transform:uppercase; letter-spacing:.04em; }
   .card div { font-size:18px; }
   h2 { font-size:15px; margin:28px 0 4px; }
   .note { color:var(--dim); font-size:12px; }
-  .maplibregl-popup-content { color:#1a1a1a; }
+  /* A file path is one unbreakable token. Left alone it set the page's scroll
+     width on a narrow screen -- the only element actually overflowing once the
+     table was contained. */
+  code { overflow-wrap:anywhere; font-size:11px; }
+  .maplibregl-popup-content { color:#1a1a1a; max-height:320px; overflow-y:auto; }
+  .pf + .pf { border-top:1px solid #d6dbe2; margin-top:8px; padding-top:8px; }
+  .pf-h { font-weight:600; display:flex; align-items:center; gap:6px; margin-bottom:2px; }
+  .pf-h span { width:10px; height:10px; border-radius:2px; flex:none; }
+  .pf-n { font-size:11px; text-transform:uppercase; letter-spacing:.04em;
+          color:#5b6675; margin-bottom:6px; }
+  /* ours ≠ theirs, one field per line. Monospace so the ≠ and the two values
+     line up rather than drifting with proportional glyph widths. */
+  .pf-d { margin:4px 0; font-size:11.5px; font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+          background:#eef1f5; border-radius:4px; padding:5px 7px; }
+  .pf-d div + div { margin-top:2px; }
+  .pf-d b { color:#334; font-weight:600; }
+  /* Counterpart list. Tinted differently from the disagreement block so the
+     two kinds of evidence are distinguishable at a glance in one popup. */
+  .pf-o { margin:4px 0; font-size:11.5px; font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+          background:#fdf0e6; border-radius:4px; padding:5px 7px; }
+  .pf-o div + div { margin-top:2px; }
+  .pf-lbl { font-family:system-ui,sans-serif; font-size:10.5px; text-transform:uppercase;
+            letter-spacing:.04em; color:#8a5a2b; margin-bottom:3px; }
+  /* The map shows only findings, so the legend is not decoration -- it is the
+     key to what every polygon means. Overlaid on the map rather than below it
+     so it is readable without scrolling away from what it describes. */
+  #map-wrap { position:relative; }
+  /* Top-left, not bottom-right: MapLibre puts its attribution bottom-left and
+     the zoom control top-right, and at narrow widths a bottom-right legend
+     collided with the attribution and clipped its last two rows. This corner
+     is the only one the map's own chrome does not use. */
+  #legend { position:absolute; left:12px; top:12px; background:rgba(23,29,38,.92);
+            border:1px solid var(--line); border-radius:8px; padding:10px 12px;
+            font-size:12px; display:grid; gap:5px; max-width:240px;
+            backdrop-filter:blur(2px); }
+  #legend div { display:flex; align-items:center; gap:8px; color:var(--ink); }
+  #legend span { width:12px; height:12px; border-radius:3px; flex:none; }
 </style>
 </head>
 <body>
 <header>
   <h1>WA Parcel Reconciliation</h1>
   <p>Four Washington counties conformed and reconciled against the statewide answer key.
-     King · Pierce · Snohomish · Spokane — 1,504,693 published records.</p>
+     King · Pierce · Snohomish · Spokane.</p>
+  <p class="note">The map shows only records with a <strong>finding</strong> — not every
+     parcel. Washington already publishes a statewide parcel map; this one shows
+     what reconciliation surfaced.</p>
 </header>
-<div id="map"></div>
+<div id="map-wrap">
+  <div id="map"></div>
+  <div id="legend"></div>
+</div>
 <main>
   <div class="kpi" id="kpi"></div>
   <h2>Quality scorecard</h2>
-  <p class="note" style="color:var(--dim)">Rates computed from the long-format scorecard; see the repo for definitions of every check.</p>
-  <table id="scorecard"></table>
+  <p class="note">A summary. The full scorecard is 33 columns across 19 checks —
+     see <code>exports/csv/agg_quality_scorecard.csv</code> in the repo, and the
+     definition of every check with it.</p>
+  <div class="table-wrap"><table id="scorecard"></table></div>
 </main>
 
 <script>
@@ -50,49 +100,242 @@
 const protocol = new pmtiles.Protocol();
 maplibregl.addProtocol('pmtiles', protocol.tile);
 
-const COUNTY_COLORS = {
-  '033': '#4da3ff', '053': '#ffb14d', '061': '#6ee7b7', '063': '#f472b6'
-};
-
+// A basemap is not decoration here: findings are ~55k small polygons scattered
+// across four counties, and without streets and coastlines underneath there is
+// no way to tell whether an encroachment is in downtown Seattle or on a rural
+// section line.
+//
+// NOT CARTO. Their dark_all endpoint still serves tiles without a key, but
+// stamps "API KEY REQUIRED" diagonally across every one -- it looks like a
+// working basemap until you actually look at it. Every other no-key dark
+// basemap now wants a key too (Stadia, Esri, Mapbox).
+//
+// So: standard OSM raster, darkened client-side with MapLibre's raster paint
+// properties rather than by finding a pre-darkened tile service. Desaturate to
+// grey, cap the brightness, and the result sits under the finding colours
+// without competing with them. No key, no watermark, no third-party account.
+//
+// The honest caveat: OSM's tile usage policy is for light use, which a
+// portfolio page is. Anything with real traffic should self-host tiles or pay
+// a provider -- the swap is this one `tiles:` array.
 const map = new maplibregl.Map({
   container: 'map',
   style: {
     version: 8,
-    sources: {},
-    layers: [{ id: 'bg', type: 'background', paint: { 'background-color': '#1a2029' } }]
+    sources: {
+      basemap: {
+        type: 'raster',
+        tiles: ['https://tile.openstreetmap.org/{z}/{x}/{y}.png'],
+        tileSize: 256,
+        maxzoom: 19,
+        attribution:
+          '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      }
+    },
+    layers: [
+      // The background still exists: it is what shows while tiles are in
+      // flight, and if OSM is unreachable the findings render over a sane
+      // colour rather than white.
+      { id: 'bg', type: 'background', paint: { 'background-color': '#1a2029' } },
+      {
+        id: 'basemap', type: 'raster', source: 'basemap',
+        paint: {
+          'raster-saturation': -0.95,   // to grey; colour belongs to the findings
+          'raster-brightness-max': 0.42,
+          'raster-contrast': -0.15,
+          'raster-opacity': 0.85
+        }
+      }
+    ]
   },
-  center: [-120.6, 47.45],
-  zoom: 6.4
+  center: [-121.6, 47.6],
+  zoom: 7.2,
+  // The map spans the top of the page with the scorecard below it, so a plain
+  // scroll wheel over the map would zoom instead of scrolling past -- the
+  // reader gets trapped. cooperativeGestures requires ctrl/cmd + wheel to
+  // zoom and lets an ordinary scroll continue down the page.
+  cooperativeGestures: true
 });
 
+map.addControl(new maplibregl.NavigationControl({ showCompass: false }), 'top-right');
+map.addControl(new maplibregl.ScaleControl({ maxWidth: 100, unit: 'imperial' }));
+
+// Every polygon on this map is a finding — a claim the pipeline is making.
+// It is deliberately NOT a statewide parcel map: the state already publishes
+// one, and ~54k features is a map you can read against 1.5M that you cannot.
+// Colour therefore encodes the FINDING, not the county; county is one click away.
+const FINDINGS = [
+  ['quarantined',            '#ef4444', 'Valid shape, no usable parcel id'],
+  ['encroachment',           '#f97316', 'Partial overlap with a neighbour'],
+  ['unflagged_coincident',   '#f59e0b', 'Duplicate footprint, neither flagged'],
+  ['theirs_only',            '#a78bfa', 'In the state layer, absent from ours'],
+  ['ours_only',              '#22d3ee', 'In ours, absent from the state layer'],
+  ['attribute_disagreement', '#60a5fa', 'Attributes differ from the answer key'],
+  ['geometry_repaired',      '#34d399', 'Geometry was invalid and repaired'],
+];
+
 map.on('load', async () => {
-  const resp = await fetch('data/pmtiles/wa_parcels.pmtiles');
+  const resp = await fetch('data/pmtiles/wa_findings.pmtiles');
   if (!resp.ok) { console.warn('pmtiles not built yet — run make pmtiles'); return; }
-  map.addSource('parcels', {
+  map.addSource('findings', {
     type: 'vector',
-    url: 'pmtiles://data/pmtiles/wa_parcels.pmtiles'
+    url: 'pmtiles://data/pmtiles/wa_findings.pmtiles'
   });
   map.addLayer({
-    id: 'parcels-fill', type: 'fill', source: 'parcels', 'source-layer': 'parcels',
+    id: 'findings-fill', type: 'fill', source: 'findings', 'source-layer': 'findings',
     paint: {
-      'fill-color': ['match', ['get', 'county_fips'],
-        '033', '#4da3ff', '053', '#ffb14d', '061', '#6ee7b7', '#f472b6'],
-      'fill-opacity': 0.55
+      'fill-color': ['match', ['get', 'finding_primary'],
+        ...FINDINGS.flatMap(([k, c]) => [k, c]), '#94a3b8'],
+      // Encroachments get the MOST transparent fill, not the least. An
+      // encroachment is a relationship between two parcels -- an opaque fill
+      // hides the neighbour it overlaps, which is the half of the finding a
+      // reader actually needs to see. The outline carries the identity
+      // instead. Everything else is a property of one parcel, so a fill reads
+      // fine.
+      //
+      // Matched on finding_primary, not is_encroachment: tippecanoe omits
+      // false booleans from tiles, so ['get','is_encroachment'] is null rather
+      // than false on most features and would not behave as a boolean here.
+      'fill-opacity': ['case', ['==', ['get', 'finding_primary'], 'encroachment'], 0.2, 0.4]
     }
   });
-  map.on('click', 'parcels-fill', e => {
-    const p = e.features[0].properties;
-    new maplibregl.Popup({ maxWidth: '320px' })
+  // Findings are small and sparse; at statewide zoom a fill alone is invisible,
+  // so an outline keeps them locatable before you zoom in.
+  map.addLayer({
+    id: 'findings-line', type: 'line', source: 'findings', 'source-layer': 'findings',
+    paint: {
+      'line-color': ['match', ['get', 'finding_primary'],
+        ...FINDINGS.flatMap(([k, c]) => [k, c]), '#94a3b8'],
+      // Wide at low zoom so a speck is still locatable, narrower once the
+      // polygon itself carries the shape -- but never below ~1px, or the
+      // border disappears exactly when you have zoomed in to inspect it.
+      'line-width': ['interpolate', ['linear'], ['zoom'], 6, 1.4, 13, 1],
+      'line-opacity': 0.8
+    }
+  });
+
+  // Encroachments again, on TOP and heavier. Two reasons this is its own layer
+  // rather than a wider line-width on the layer above:
+  //
+  //   * draw order. One layer paints features in tile order, so an encroachment
+  //     could be drawn under the 30,374 attribute_disagreement polygons that
+  //     outnumber it 4:1. A later layer always paints over an earlier one.
+  //   * an encroachment is the finding most worth clicking -- a boundary
+  //     dispute between two real parcels -- and it was the least visible.
+  map.addLayer({
+    id: 'findings-encroachment-line', type: 'line',
+    source: 'findings', 'source-layer': 'findings',
+    filter: ['==', ['get', 'finding_primary'], 'encroachment'],
+    paint: {
+      'line-color': '#f97316',
+      'line-width': ['interpolate', ['linear'], ['zoom'], 6, 2.2, 13, 1.8],
+      'line-opacity': 1
+    }
+  });
+
+  const legend = document.getElementById('legend');
+  if (legend) legend.innerHTML = FINDINGS.map(([k, c, d]) =>
+    `<div title="${d}"><span style="background:${c}"></span>${k.replace(/_/g, ' ')}</div>`
+  ).join('');
+
+  // ONE POPUP, EVERY FEATURE UNDER THE CURSOR.
+  //
+  // e.features[0] was wrong here, and wrong in a way specific to this map:
+  // the single most interesting finding is an ENCROACHMENT, which by
+  // definition means two parcels occupy the same ground. Showing only the
+  // first meant the one class of finding you most want to inspect was the one
+  // the map could never fully describe -- and worse, it looked like it had
+  // answered you. Coincident pairs and stacked units have the same shape of
+  // problem.
+  //
+  // Deduped by feature_id because a polygon crossing a tile boundary is
+  // returned once per tile it touches.
+  const money = v => v == null || v === '' ? '—' : '$' + Number(v).toLocaleString();
+  const esc = v => String(v).replace(/[&<>"]/g, c =>
+    ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;' }[c]));
+
+  // "attribute disagreement" names a category; this names the finding. The
+  // model emits 'field: ours ≠ theirs' joined by '; ' -- split it back out so
+  // each disagreeing field gets its own line and long addresses do not run
+  // together into an unreadable paragraph.
+  function dis(v) {
+    if (!v) return '';
+    return '<div class="pf-d">' + String(v).split('; ')
+      .map(d => {
+        const i = d.indexOf(': ');
+        const field = i < 0 ? d : d.slice(0, i);
+        const rest  = i < 0 ? '' : d.slice(i + 2);
+        return `<div><b>${esc(field)}</b> ${esc(rest)}</div>`;
+      }).join('') + '</div>';
+  }
+
+  // The counterpart. An encroachment is a relationship, so naming only one
+  // side describes half a finding -- and unlike the multi-feature popup, this
+  // works even when the other parcel is not under the cursor (a thin sliver at
+  // the edge, or a neighbour off screen).
+  //
+  // The model caps the list at the 5 largest by area and reports the true
+  // total separately, so a parcel overlapping 73 neighbours says so rather
+  // than silently showing 5.
+  function ovl(list, count) {
+    if (!list) return '';
+    const items = String(list).split('; ');
+    const n = Number(count) || items.length;
+    const more = n > items.length ? ` — largest ${items.length}` : '';
+    return `<div class="pf-o"><div class="pf-lbl">overlaps ${n} parcel${n === 1 ? '' : 's'}${more}</div>`
+      + items.map(i => `<div>${esc(i)}</div>`).join('') + '</div>';
+  }
+
+  function featureHTML(p) {
+    // county_name is null on state-sourced features -- they are parcels we do
+    // not carry, so we have no county record to name them from.
+    const who = p.county_name ?? `FIPS ${p.county_fips}`;
+    const id = p.parcel_uid ?? '(no parcel id)';
+    const colour = (FINDINGS.find(([k]) => k === p.finding_primary) || [, '#94a3b8'])[1];
+    return `<div class="pf">
+      <div class="pf-h"><span style="background:${colour}"></span>
+        ${p.finding_primary.replace(/_/g, ' ')}</div>
+      ${esc(who)} · ${esc(id)}<br>
+      ${p.situs_address ? esc(p.situs_address) : '(no address)'}${p.situs_city ? ', ' + esc(p.situs_city) : ''}<br>
+      land: ${money(p.value_land_appraised)} · bldg: ${money(p.value_bldg_appraised)}<br>
+      ${dis(p.disagreements)}
+      ${ovl(p.overlaps_with, p.overlap_count)}
+      ${p.rejection_reason ? 'rejected: ' + p.rejection_reason + '<br>' : ''}
+      ${p.state_duplicate_id ? '<strong>the state publishes this id twice, with different shapes</strong><br>' : ''}
+      <em>geometry from: ${p.geom_source}</em>
+    </div>`;
+  }
+
+  map.on('click', 'findings-fill', e => {
+    const seen = new Set();
+    const feats = e.features.filter(f => {
+      const k = f.properties.feature_id;
+      if (!k || seen.has(k)) return false;
+      seen.add(k);
+      return true;
+    });
+    if (!feats.length) return;
+
+    // Overlapping parcels are the point, but a click in a dense block can
+    // still catch a dozen. Cap the popup and say what was left out rather
+    // than silently truncating.
+    const shown = feats.slice(0, 6);
+    const header = feats.length > 1
+      ? `<div class="pf-n">${feats.length} findings at this point${
+           feats.length > shown.length ? ` — showing ${shown.length}` : ''}</div>`
+      : '';
+
+    new maplibregl.Popup({ maxWidth: '360px' })
       .setLngLat(e.lngLat)
-      .setHTML(`<strong>${p.county_name} ${p.parcel_uid ?? ''}</strong><br>
-        ${p.situs_address ?? '(no address)'}<br>
-        land: ${p.value_land_appraised ?? '—'} · bldg: ${p.value_bldg_appraised ?? '—'}<br>
-        ${p.landuse_cd_method ?? ''} ${p.landuse_cd ?? ''} · ${p.source_record_count} published row(s)`)
+      .setHTML(header + shown.map(f => featureHTML(f.properties)).join(''))
       .addTo(map);
   });
 });
 
 // --- scorecard table + headline KPIs from the exported JSON -----------------
+const n   = v => v == null ? '—' : Number(v).toLocaleString();
+const pct = v => v == null ? '—' : `${Number(v).toFixed(2)}%`;
+
 async function loadScorecard() {
   const resp = await fetch('data/agg_scorecard_wide.json');
   if (!resp.ok) return;
@@ -114,11 +357,28 @@ async function loadScorecard() {
   kpi.innerHTML = cards.map(([label, value]) =>
     `<div class="card"><h3>${label}</h3><div>${value}</div></div>`).join('');
 
-  const cols = Object.keys(rows[0]);
+  // A CURATED subset, not Object.keys(rows[0]). agg_scorecard_wide has 33
+  // columns; rendering all of them produced a table wider than the viewport
+  // that no one could read and that broke the page's centring. The full width
+  // is in exports/csv and exports/json for anyone who wants it -- this is the
+  // summary, and choosing what to show is the job.
+  //   [key, header, formatter]
+  const COLS = [
+    ['county_name',                'County',              v => v],
+    ['total_records',              'Records',             n],
+    ['pct_agreement',              'Agreement',           v => pct(v)],
+    ['parcels_differ',             'Unexplained',         n],
+    ['encroachment_pairs',         'Encroachments',       n],
+    ['unflagged_coincident_pairs', 'Unflagged coincident', n],
+    ['geometry_repaired',          'Geometry repaired',   n],
+    ['pct_landuse_unmapped',       'Land use unmapped',   v => pct(v)],
+    ['vintage_gap_days',           'Answer key stale',    v => v == null ? '—' : `${v} d`],
+  ];
+
   const table = document.getElementById('scorecard');
   table.innerHTML =
-    '<tr>' + cols.map(c => `<th>${c}</th>`).join('') + '</tr>' +
-    rows.map(r => '<tr>' + cols.map(c => `<td>${r[c] ?? '—'}</td>`).join('') + '</tr>').join('');
+    '<tr>' + COLS.map(([, h]) => `<th>${h}</th>`).join('') + '</tr>' +
+    rows.map(r => '<tr>' + COLS.map(([k, , f]) => `<td>${f(r[k])}</td>`).join('') + '</tr>').join('');
 }
 loadScorecard();
 </script>

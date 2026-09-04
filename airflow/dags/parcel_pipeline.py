@@ -62,7 +62,9 @@ from __future__ import annotations
 
 import os
 from datetime import datetime, timedelta
+from pathlib import Path
 
+import yaml
 from airflow import DAG
 from airflow.providers.docker.operators.docker import DockerOperator
 from airflow.utils.trigger_rule import TriggerRule
@@ -77,8 +79,41 @@ HOST_ROOT = os.environ["PIPELINE_HOST_ROOT"]
 # different Python environments by design and cannot import each other.
 SKIP_UNCHANGED = 99
 
-COUNTIES = [("033", "king"), ("053", "pierce"),
-            ("061", "snohomish"), ("063", "spokane")]
+# The host user the export task writes as -- see the export task below.
+#
+# .get(), NOT os.environ[...]. These arrive from compose, which means they only
+# reach a RUNNING container on recreate; editing the DAG is instant but editing
+# compose is not. Requiring them turned a missing ownership hint into
+# `KeyError: PIPELINE_HOST_UID` at parse time, which takes down the WHOLE dag --
+# ingest, dbt and export all stop because file ownership is unset. That trade is
+# backwards. Absent, the export task runs as root exactly as it did before this
+# was added: worse file ownership, still a working pipeline.
+HOST_UID = os.environ.get("PIPELINE_HOST_UID")
+HOST_GID = os.environ.get("PIPELINE_HOST_GID")
+EXPORT_USER = f"{HOST_UID}:{HOST_GID}" if HOST_UID and HOST_GID else None
+
+# THE COUNTY LIST COMES FROM THE MANIFEST, NOT FROM HERE.
+#
+# parcels/dbt_project.yml is mounted read-only by compose. The same vars: block
+# is read by ingest/manifest.py (yaml.safe_load) and by dbt (var()), and now by
+# this DAG -- one file, three consumers, no codegen. A hardcoded list here would
+# be a second source of truth, and its failure mode is quiet: add a county to
+# the manifest and forget the DAG, and the pipeline conforms four counties while
+# stg_state_parcels scopes the answer key to five. Nothing would turn red.
+#
+# Parsed at DAG-parse time, so a malformed manifest surfaces as an import error
+# in the UI rather than as a task failure an hour into a run. That is the right
+# place for it to break.
+MANIFEST = Path(
+    os.environ.get("PIPELINE_MANIFEST", "/opt/airflow/manifest/dbt_project.yml")
+)
+_vars = yaml.safe_load(MANIFEST.read_text())["vars"]
+
+# (fips, name) with the lowercased name used for task ids and raw table names --
+# the same 'parcels_' ~ name|lower rule conform_parcels.sql applies.
+COUNTIES = sorted(
+    (fips, cfg["name"].lower()) for fips, cfg in _vars["counties"].items()
+)
 
 # Inside the shared docker network the warehouse is reachable by service name on
 # its internal port. See the module docstring.
@@ -98,7 +133,8 @@ EXPORT_MOUNT = Mount(
 
 def pipeline_task(task_id: str, command: str, *, timeout_min: int,
                   retries: int = 0, mounts=None, skip_on_exit_code=None,
-                  trigger_rule=TriggerRule.ALL_SUCCESS) -> DockerOperator:
+                  trigger_rule=TriggerRule.ALL_SUCCESS,
+                  user: str | None = None) -> DockerOperator:
     """One pipeline step as a sibling container.
 
     execution_timeout values come from measured runtimes, not guesses -- a
@@ -121,6 +157,7 @@ def pipeline_task(task_id: str, command: str, *, timeout_min: int,
         execution_timeout=timedelta(minutes=timeout_min),
         skip_on_exit_code=skip_on_exit_code,
         trigger_rule=trigger_rule,
+        user=user,
     )
 
 
@@ -242,11 +279,18 @@ with DAG(
     # models and tests together, so a failed assertion fails this task and the
     # export never runs. Publishing artifacts from a warehouse that just failed
     # its own tests is the thing this ordering exists to prevent.
+    # RUNS AS THE HOST USER, not root. The pipeline image has no USER directive,
+    # so every other task runs as root -- harmless, because they only touch the
+    # warehouse. This one bind-mounts exports/, which git tracks, and a root-
+    # owned exports/json/*.json left `make export` on the host unable to
+    # overwrite its own outputs without sudo. Only this task needs it: the
+    # container writes nothing else the host reads back.
     export = pipeline_task(
         "export",
         "python scripts/export.py",
         timeout_min=30,
         mounts=[EXPORT_MOUNT],
+        user=EXPORT_USER,
     )
 
     [*ingest_counties, ingest_state] >> dbt_build >> export

@@ -1,0 +1,36 @@
+# tippecanoe, built from source, because no usable prebuilt image exists.
+#
+# klokantech/tippecanoe -- the image this project first reached for, and the one
+# most tutorials still name -- is v1.24.1. It cannot do either half of the job:
+#
+#   * it does not read FlatGeobuf, and fails by parsing the binary as text
+#     ("Found unexpected character"), which reads like a corrupt file rather
+#     than an unsupported format
+#   * it has no PMTiles output at all -- `tippecanoe --help | grep -c pmtiles`
+#     returns 0. PMTiles arrived in the felt fork, well after klokantech stopped
+#     updating.
+#
+# ghcr.io/felt/tippecanoe is not publicly pullable ("denied"), so the fork gets
+# built here. Pinned to a tag: an unpinned clone would rebuild differently on a
+# morning when nothing in this repo changed.
+
+FROM debian:bookworm-slim AS build
+
+ARG TIPPECANOE_VERSION=2.78.0
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+      build-essential libsqlite3-dev zlib1g-dev ca-certificates git \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN git clone --depth 1 --branch ${TIPPECANOE_VERSION} \
+      https://github.com/felt/tippecanoe.git /src
+WORKDIR /src
+RUN make -j"$(nproc)" && make install
+
+# Runtime stage: the toolchain is ~400 MB and none of it is needed to run.
+FROM debian:bookworm-slim
+RUN apt-get update && apt-get install -y --no-install-recommends \
+      libsqlite3-0 zlib1g \
+    && rm -rf /var/lib/apt/lists/*
+COPY --from=build /usr/local/bin/tippecanoe* /usr/local/bin/
+ENTRYPOINT []

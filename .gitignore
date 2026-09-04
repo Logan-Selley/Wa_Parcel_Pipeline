@@ -21,7 +21,8 @@ logs/
 # --- source data -------------------------------------------------------------
 # county downloads (shapefiles, FGDBs, geojson) are large and re-fetchable.
 # The pipeline must be able to reconstruct these from config, never from git.
-data/
+# Anchored: unanchored, this pattern also matches site/data, which IS tracked.
+/data/
 
 # --- os ----------------------------------------------------------------------
 .DS_Store
@@ -37,7 +38,20 @@ data/
 # is the exception: it is what makes site/ servable without a build step.
 #
 # NOTE the trailing /* -- `exports/` alone would stop git descending into the
-# directory at all, so the negation below could never re-include anything.
+# directory at all. Nothing under exports/ is committed; the site's copies of
+# the JSON live under site/data/.
 exports/*
-!exports/json/
-site/data/
+
+# site/data IS tracked -- it is what makes site/ a self-contained publishable
+# directory. index.html fetches data/*.json and data/pmtiles/*.pmtiles by
+# relative path, so ignoring this directory meant GitHub Pages would serve the
+# page and 404 every request it made.
+#
+# Only viable because the map was cut to findings: the old full-parcel archive
+# would have been 150-400 MB against GitHub's hard 100 MB file limit. The
+# findings archive is ~18 MB.
+#
+# The cost is real and worth knowing: the .pmtiles is a binary that changes
+# wholesale on every rebuild, so each committed refresh adds its full size to
+# git history permanently. Commit it when publishing, not on every run --
+# which is also why the DAG generates artifacts but never commits them.

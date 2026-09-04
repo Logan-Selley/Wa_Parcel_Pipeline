@@ -14,7 +14,7 @@ select
         else 'srid ' || st_srid(geom)::text
     end as violation,
     count(*) as rows
-from {{ ref('bi_parcel_extract') }}
+from {{ ref('bi_findings_extract') }}
 where geom is null
    or st_isempty(geom)
    or st_srid(geom) <> 4326

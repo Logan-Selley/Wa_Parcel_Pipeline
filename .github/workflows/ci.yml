@@ -1,0 +1,87 @@
+# What CI can honestly check without a warehouse.
+#
+# There is no Postgres here and no attempt to fake one. Spinning up an empty
+# PostGIS service would let `dbt build` run against zero rows and report
+# success, which is worse than not running it: every assertion in this project
+# is about relationships between real counts, and all of them pass trivially on
+# an empty database. A green check that means nothing is a liability.
+#
+# So this validates the things that are true independently of data, and which
+# have each already broken at least once during development:
+#
+#   * the manifest parses into the dataclasses the extractor expects
+#   * every dbt ref/source/macro resolves and every Jinja block compiles
+#   * the DAG's county list matches the manifest's
+#   * Python imports
+#
+# Anything requiring the warehouse belongs in `make build`, which runs 37
+# structural tests against real volumes.
+
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+
+      - name: Install (locked)
+        # --frozen, so a pyproject.toml edited without re-locking FAILS here.
+        # That drift already shipped an image missing duckdb once.
+        run: uv sync --frozen
+
+      - name: Manifest parses
+        # Catches a malformed county block, an unknown key, or a missing
+        # required field -- the extractor and dbt read this same file, so a
+        # parse failure here is a parse failure everywhere.
+        run: |
+          uv run python -c "
+          from ingest.manifest import load_manifest
+          m = load_manifest()
+          print(f'target CRS: EPSG:{m.target_crs}')
+          for fips, c in sorted(m.counties.items()):
+              print(f'  {fips} {c.name:11} EPSG:{c.source_crs} -> raw.{c.raw_table}')
+          print(f'state: {m.state.name} ({len(m.state.layers)} layers)')
+          assert m.counties, 'manifest declares no counties'
+          "
+
+      - name: dbt project parses
+        # Resolves every ref(), source() and macro call and compiles every
+        # Jinja block. No connection is opened -- `parse` builds the manifest
+        # and stops, which is exactly the part that does not need data.
+        env:
+          WAREHOUSE_HOST: localhost
+          WAREHOUSE_PORT: "5432"
+          POSTGRES_USER: ci
+          POSTGRES_PASSWORD: ci
+          POSTGRES_DB: ci
+        run: uv run dbt parse --project-dir parcels --profiles-dir parcels
+
+      - name: DAG county list matches the manifest
+        # The DAG derives COUNTIES from the manifest at parse time, but it does
+        # so inside the Airflow image, which is not installed here. This
+        # reproduces the derivation and asserts it against the extractor's --
+        # so the two readings of one file cannot silently disagree.
+        run: |
+          uv run python -c "
+          import yaml
+          from ingest.manifest import load_manifest
+          v = yaml.safe_load(open('parcels/dbt_project.yml'))['vars']
+          dag = sorted((f, c['name'].lower()) for f, c in v['counties'].items())
+          extractor = sorted((f, c.name.lower()) for f, c in load_manifest().counties.items())
+          assert dag == extractor, f'DAG {dag} != extractor {extractor}'
+          print(f'{len(dag)} counties agree:', ', '.join(n for _, n in dag))
+          "
+
+      - name: Python compiles
+        run: uv run python -m compileall -q ingest scripts airflow/dags

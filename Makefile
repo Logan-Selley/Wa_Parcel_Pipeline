@@ -34,24 +34,45 @@ ENV := set -a; . $(ROOT)/.env; set +a;
 export:  ## Export gold tables to parquet/csv/json + FlatGeobuf (exports/)
 	@$(ENV) cd $(ROOT) && $(PY) scripts/export.py
 
-pmtiles:  ## Build the map tile archive from the FlatGeobuf export
-	@mkdir -p $(ROOT)/exports/pmtiles
-	@docker run --rm -v $(ROOT)/exports:/data klokantech/tippecanoe \
-	  tippecanoe -o /data/pmtiles/wa_parcels.pmtiles --force \
-	  --layer=parcels --read-parallel -Z6 -Z13 \
-	  --drop-densest-as-needed --extend-zooms-if-still-dropping \
-	  -T is_stacked:boolean -T is_active:boolean \
-	  /data/fgb/wa_parcels.fgb
-	@echo "exports/pmtiles/wa_parcels.pmtiles ready"
+# tippecanoe is BUILT, not pulled. klokantech/tippecanoe -- the image every
+# tutorial names -- is v1.24.1: it cannot read FlatGeobuf (it parses the binary
+# as text and reports "Found unexpected character") and has no PMTiles output
+# whatsoever. ghcr.io/felt/tippecanoe is not publicly pullable. See
+# docker/Dockerfile.tippecanoe.
+tippecanoe-image:  ## Build the tippecanoe image (felt fork, pinned)
+	@docker image inspect parcel-tippecanoe:latest >/dev/null 2>&1 || \
+	  docker build -f $(ROOT)/docker/Dockerfile.tippecanoe -t parcel-tippecanoe:latest $(ROOT)
 
+# -Z is MINIMUM zoom, -z is MAXIMUM zoom. They are different flags and the
+# casing is the only thing distinguishing them. This read `-Z6 -Z13`, which
+# sets the minimum twice -- last wins, so minzoom became 13 and maxzoom fell
+# back to the default. The archive would have held nothing below z13: blank at
+# every zoom a visitor actually lands on, and larger than intended because
+# everything rendered at full detail.
+pmtiles: tippecanoe-image  ## Build the map tile archive from the FlatGeobuf export
+	@mkdir -p $(ROOT)/exports/pmtiles
+	@docker run --rm --user $$(id -u):$$(id -g) -v $(ROOT)/exports:/data parcel-tippecanoe:latest \
+	  tippecanoe -o /data/pmtiles/wa_findings.pmtiles --force \
+	  --layer=findings --read-parallel -Z6 -z13 \
+	  --drop-densest-as-needed --extend-zooms-if-still-dropping \
+	  -T is_encroachment:bool -T is_unflagged_coincident:bool \
+	  -T disagrees_with_state:bool -T absent_from_state:bool \
+	  -T absent_from_ours:bool -T geometry_repaired:bool \
+	  -T is_quarantined:bool -T state_duplicate_id:bool \
+	  /data/fgb/wa_findings.fgb
+	@echo "exports/pmtiles/wa_findings.pmtiles ready"
+	@du -h $(ROOT)/exports/pmtiles/wa_findings.pmtiles
+
+# site/index.html requests `data/pmtiles/wa_findings.pmtiles`. The previous
+# recipe created that directory and then copied into site/data/ instead, one
+# level up, so the map 404'd on a file that was present under a different name.
 site:  ## Assemble the static site (data into site/data/)
-	@mkdir -p $(ROOT)/site/data
-	@cp $(ROOT)/exports/json/*.json $(ROOT)/site/data/
 	@mkdir -p $(ROOT)/site/data/pmtiles
-	@cp $(ROOT)/exports/pmtiles/wa_parcels.pmtiles $(ROOT)/site/data/
+	@cp $(ROOT)/exports/json/*.json $(ROOT)/site/data/
+	@cp $(ROOT)/exports/pmtiles/wa_findings.pmtiles $(ROOT)/site/data/pmtiles/
 	@echo "site/ ready — serve with any static file server"
 
-.PHONY: export pmtiles site
+.PHONY: export pmtiles site tippecanoe-image
 
 # --- orchestration -----------------------------------------------------------
 # Airflow runs in its OWN containers and its OWN metadata database, and invokes
@@ -62,7 +83,9 @@ pipeline-image:  ## Build the pipeline image the DAG runs (ingest + dbt + export
 	@docker build -f $(ROOT)/docker/Dockerfile.pipeline -t parcel-pipeline:latest $(ROOT)
 
 airflow-up: pipeline-image  ## Start Airflow (http://localhost:8080)
-	@$(ENV) DOCKER_GID=$$(getent group docker | cut -d: -f3) PWD=$(ROOT) 	  docker compose -f $(ROOT)/docker-compose.airflow.yml up -d
+	@$(ENV) DOCKER_GID=$$(getent group docker | cut -d: -f3) \
+	  HOST_UID=$$(id -u) HOST_GID=$$(id -g) PWD=$(ROOT) \
+	  docker compose -f $(ROOT)/docker-compose.airflow.yml up -d
 	@echo "Airflow starting -> http://localhost:8080"
 	@echo "The DAG is paused by default; unpause it in the UI to schedule."
 

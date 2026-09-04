@@ -5,8 +5,8 @@
   "check_name": "area_check_coverage",
   "check_description": "parcel carries an independent county acreage (roll figure > 0) to validate geometry against",
   "outcome": "measurable",
-  "parcels": 627128,
-  "total_parcels": 636323
+  "parcels": 627358,
+  "total_parcels": 636536
  },
  {
   "county_fips": "033",
@@ -14,35 +14,35 @@
   "check_name": "area_check_coverage",
   "check_description": "parcel carries an independent county acreage (roll figure > 0) to validate geometry against",
   "outcome": "no_roll_figure",
-  "parcels": 9195,
-  "total_parcels": 636323
+  "parcels": 9178,
+  "total_parcels": 636536
  },
  {
   "county_fips": "033",
   "county_name": "King",
   "check_name": "area_mismatch",
-  "check_description": "geometric area in acres does not match source reported acreage (within tolerance for projection)",
+  "check_description": "geometry-derived acreage differs from the county-reported figure beyond the projection tolerance",
   "outcome": "clear",
-  "parcels": 612594,
-  "total_parcels": 636323
+  "parcels": 612818,
+  "total_parcels": 636536
  },
  {
   "county_fips": "033",
   "county_name": "King",
   "check_name": "area_mismatch",
-  "check_description": "geometric area in acres does not match source reported acreage (within tolerance for projection)",
+  "check_description": "geometry-derived acreage differs from the county-reported figure beyond the projection tolerance",
   "outcome": "flagged",
-  "parcels": 14534,
-  "total_parcels": 636323
+  "parcels": 14540,
+  "total_parcels": 636536
  },
  {
   "county_fips": "033",
   "county_name": "King",
   "check_name": "area_mismatch",
-  "check_description": "geometric area in acres does not match source reported acreage (within tolerance for projection)",
+  "check_description": "geometry-derived acreage differs from the county-reported figure beyond the projection tolerance",
   "outcome": "not_measurable",
-  "parcels": 9195,
-  "total_parcels": 636323
+  "parcels": 9178,
+  "total_parcels": 636536
  },
  {
   "county_fips": "033",
@@ -50,8 +50,8 @@
   "check_name": "attribute_completeness",
   "check_description": "complete = at least one of situs address, land value, building value present; sparse records are the zero-value component and tract classes",
   "outcome": "attribute_sparse",
-  "parcels": 9231,
-  "total_parcels": 636323
+  "parcels": 9239,
+  "total_parcels": 636536
  },
  {
   "county_fips": "033",
@@ -59,8 +59,8 @@
   "check_name": "attribute_completeness",
   "check_description": "complete = at least one of situs address, land value, building value present; sparse records are the zero-value component and tract classes",
   "outcome": "complete",
-  "parcels": 627092,
-  "total_parcels": 636323
+  "parcels": 627297,
+  "total_parcels": 636536
  },
  {
   "county_fips": "033",
@@ -68,17 +68,17 @@
   "check_name": "county_source_vintage",
   "check_description": "the county's own last-publish date per editingInfo.lastEditDate; paired with state_copy_vintage this gives a run-independent staleness measure",
   "outcome": "2026-09-02",
-  "parcels": 636323,
-  "total_parcels": 636323
+  "parcels": 636536,
+  "total_parcels": 636536
  },
  {
   "county_fips": "033",
   "county_name": "King",
   "check_name": "duplicate_uid",
-  "check_description": "parcel uid appears more than once",
+  "check_description": "the same parcel_uid passed validation on more than one record",
   "outcome": "clear",
-  "parcels": 636323,
-  "total_parcels": 636323
+  "parcels": 636536,
+  "total_parcels": 636536
  },
  {
   "county_fips": "033",
@@ -86,8 +86,8 @@
   "check_name": "field_coverage",
   "check_description": "per-field coverage against the answer key; ours_only means we publish a value the state lacks, theirs_only the reverse",
   "outcome": "landuse_cd:ours_absent",
-  "parcels": 639,
-  "total_parcels": 636323
+  "parcels": 668,
+  "total_parcels": 636536
  },
  {
   "county_fips": "033",
@@ -95,8 +95,8 @@
   "check_name": "field_coverage",
   "check_description": "per-field coverage against the answer key; ours_only means we publish a value the state lacks, theirs_only the reverse",
   "outcome": "landuse_cd:theirs_absent",
-  "parcels": 1469,
-  "total_parcels": 636323
+  "parcels": 1884,
+  "total_parcels": 636536
  },
  {
   "county_fips": "033",
@@ -104,8 +104,8 @@
   "check_name": "field_coverage",
   "check_description": "per-field coverage against the answer key; ours_only means we publish a value the state lacks, theirs_only the reverse",
   "outcome": "situs_address:ours_absent",
-  "parcels": 556,
-  "total_parcels": 636323
+  "parcels": 572,
+  "total_parcels": 636536
  },
  {
   "county_fips": "033",
@@ -113,8 +113,8 @@
   "check_name": "field_coverage",
   "check_description": "per-field coverage against the answer key; ours_only means we publish a value the state lacks, theirs_only the reverse",
   "outcome": "situs_address:theirs_absent",
-  "parcels": 1752,
-  "total_parcels": 636323
+  "parcels": 2029,
+  "total_parcels": 636536
  },
  {
   "county_fips": "033",
@@ -122,8 +122,8 @@
   "check_name": "field_coverage",
   "check_description": "per-field coverage against the answer key; ours_only means we publish a value the state lacks, theirs_only the reverse",
   "outcome": "situs_city:ours_absent",
-  "parcels": 83239,
-  "total_parcels": 636323
+  "parcels": 83248,
+  "total_parcels": 636536
  },
  {
   "county_fips": "033",
@@ -131,8 +131,8 @@
   "check_name": "field_coverage",
   "check_description": "per-field coverage against the answer key; ours_only means we publish a value the state lacks, theirs_only the reverse",
   "outcome": "situs_city:theirs_absent",
-  "parcels": 40580,
-  "total_parcels": 636323
+  "parcels": 40798,
+  "total_parcels": 636536
  },
  {
   "county_fips": "033",
@@ -140,8 +140,8 @@
   "check_name": "field_coverage",
   "check_description": "per-field coverage against the answer key; ours_only means we publish a value the state lacks, theirs_only the reverse",
   "outcome": "situs_zip4:ours_absent",
-  "parcels": 597,
-  "total_parcels": 636323
+  "parcels": 611,
+  "total_parcels": 636536
  },
  {
   "county_fips": "033",
@@ -149,8 +149,8 @@
   "check_name": "field_coverage",
   "check_description": "per-field coverage against the answer key; ours_only means we publish a value the state lacks, theirs_only the reverse",
   "outcome": "situs_zip4:theirs_absent",
-  "parcels": 1199,
-  "total_parcels": 636323
+  "parcels": 1259,
+  "total_parcels": 636536
  },
  {
   "county_fips": "033",
@@ -158,8 +158,8 @@
   "check_name": "field_coverage",
   "check_description": "per-field coverage against the answer key; ours_only means we publish a value the state lacks, theirs_only the reverse",
   "outcome": "situs_zip5:ours_absent",
-  "parcels": 649,
-  "total_parcels": 636323
+  "parcels": 682,
+  "total_parcels": 636536
  },
  {
   "county_fips": "033",
@@ -167,8 +167,8 @@
   "check_name": "field_coverage",
   "check_description": "per-field coverage against the answer key; ours_only means we publish a value the state lacks, theirs_only the reverse",
   "outcome": "situs_zip5:theirs_absent",
-  "parcels": 1568,
-  "total_parcels": 636323
+  "parcels": 1822,
+  "total_parcels": 636536
  },
  {
   "county_fips": "033",
@@ -176,8 +176,8 @@
   "check_name": "field_coverage",
   "check_description": "per-field coverage against the answer key; ours_only means we publish a value the state lacks, theirs_only the reverse",
   "outcome": "sub_address:theirs_absent",
-  "parcels": 5748,
-  "total_parcels": 636323
+  "parcels": 5753,
+  "total_parcels": 636536
  },
  {
   "county_fips": "033",
@@ -185,8 +185,8 @@
   "check_name": "field_coverage",
   "check_description": "per-field coverage against the answer key; ours_only means we publish a value the state lacks, theirs_only the reverse",
   "outcome": "value_bldg:ours_absent",
-  "parcels": 636,
-  "total_parcels": 636323
+  "parcels": 663,
+  "total_parcels": 636536
  },
  {
   "county_fips": "033",
@@ -194,8 +194,8 @@
   "check_name": "field_coverage",
   "check_description": "per-field coverage against the answer key; ours_only means we publish a value the state lacks, theirs_only the reverse",
   "outcome": "value_bldg:theirs_absent",
-  "parcels": 2550,
-  "total_parcels": 636323
+  "parcels": 2622,
+  "total_parcels": 636536
  },
  {
   "county_fips": "033",
@@ -203,8 +203,8 @@
   "check_name": "field_coverage",
   "check_description": "per-field coverage against the answer key; ours_only means we publish a value the state lacks, theirs_only the reverse",
   "outcome": "value_land:ours_absent",
-  "parcels": 636,
-  "total_parcels": 636323
+  "parcels": 663,
+  "total_parcels": 636536
  },
  {
   "county_fips": "033",
@@ -212,8 +212,8 @@
   "check_name": "field_coverage",
   "check_description": "per-field coverage against the answer key; ours_only means we publish a value the state lacks, theirs_only the reverse",
   "outcome": "value_land:theirs_absent",
-  "parcels": 2550,
-  "total_parcels": 636323
+  "parcels": 2622,
+  "total_parcels": 636536
  },
  {
   "county_fips": "033",
@@ -222,7 +222,7 @@
   "check_description": "pairs of distinct parcels whose geometries intersect by more than the minimum area; both-stacked pairs excluded (measured always-coincident)",
   "outcome": "coincident_unflagged",
   "parcels": 330,
-  "total_parcels": 636323
+  "total_parcels": 636536
  },
  {
   "county_fips": "033",
@@ -230,8 +230,8 @@
   "check_name": "geometry_overlap",
   "check_description": "pairs of distinct parcels whose geometries intersect by more than the minimum area; both-stacked pairs excluded (measured always-coincident)",
   "outcome": "encroachment",
-  "parcels": 2331,
-  "total_parcels": 636323
+  "parcels": 2340,
+  "total_parcels": 636536
  },
  {
   "county_fips": "033",
@@ -240,7 +240,7 @@
   "check_description": "geometry invalid as published and repaired by ST_MakeValid; the answer key publishes no validity assessment",
   "outcome": "repaired",
   "parcels": 100,
-  "total_parcels": 636323
+  "total_parcels": 636536
  },
  {
   "county_fips": "033",
@@ -248,8 +248,8 @@
   "check_name": "geometry_valid",
   "check_description": "stored geometry passes st_isvalid (post-repair, post-union)",
   "outcome": "valid",
-  "parcels": 636323,
-  "total_parcels": 636323
+  "parcels": 636536,
+  "total_parcels": 636536
  },
  {
   "county_fips": "033",
@@ -257,8 +257,8 @@
   "check_name": "landuse_coverage",
   "check_description": "state landuse taxonomy derived via the crosswalk (unmapped = the state publishes no mapping for this code; Spokane has none at all)",
   "outcome": "derived",
-  "parcels": 621982,
-  "total_parcels": 636323
+  "parcels": 622368,
+  "total_parcels": 636536
  },
  {
   "county_fips": "033",
@@ -266,8 +266,8 @@
   "check_name": "landuse_coverage",
   "check_description": "state landuse taxonomy derived via the crosswalk (unmapped = the state publishes no mapping for this code; Spokane has none at all)",
   "outcome": "unmapped",
-  "parcels": 14341,
-  "total_parcels": 636323
+  "parcels": 14168,
+  "total_parcels": 636536
  },
  {
   "county_fips": "033",
@@ -275,8 +275,8 @@
   "check_name": "merge_provenance",
   "check_description": "merged = record absorbed >1 published row (A3b record-integration); single = published as one row",
   "outcome": "single",
-  "parcels": 636323,
-  "total_parcels": 636323
+  "parcels": 636536,
+  "total_parcels": 636536
  },
  {
   "county_fips": "033",
@@ -284,8 +284,8 @@
   "check_name": "reconciliation",
   "check_description": "comparison against the state answer key per parcel_uid; both_differ is the unexplained delta after case normalisation and drift exclusion",
   "outcome": "both_differ",
-  "parcels": 20606,
-  "total_parcels": 636323
+  "parcels": 21171,
+  "total_parcels": 636536
  },
  {
   "county_fips": "033",
@@ -293,8 +293,8 @@
   "check_name": "reconciliation",
   "check_description": "comparison against the state answer key per parcel_uid; both_differ is the unexplained delta after case normalisation and drift exclusion",
   "outcome": "both_match",
-  "parcels": 613920,
-  "total_parcels": 636323
+  "parcels": 613322,
+  "total_parcels": 636536
  },
  {
   "county_fips": "033",
@@ -302,8 +302,8 @@
   "check_name": "reconciliation",
   "check_description": "comparison against the state answer key per parcel_uid; both_differ is the unexplained delta after case normalisation and drift exclusion",
   "outcome": "ours_only",
-  "parcels": 1797,
-  "total_parcels": 636323
+  "parcels": 2043,
+  "total_parcels": 636536
  },
  {
   "county_fips": "033",
@@ -311,8 +311,8 @@
   "check_name": "reconciliation",
   "check_description": "comparison against the state answer key per parcel_uid; both_differ is the unexplained delta after case normalisation and drift exclusion",
   "outcome": "theirs_only",
-  "parcels": 660,
-  "total_parcels": 636323
+  "parcels": 693,
+  "total_parcels": 636536
  },
  {
   "county_fips": "033",
@@ -320,8 +320,8 @@
   "check_name": "stacked_components",
   "check_description": "records flagged by the county as vertically stacked components (Snohomish STACKED, Pierce level <> 0)",
   "outcome": "not_stacked",
-  "parcels": 636323,
-  "total_parcels": 636323
+  "parcels": 636536,
+  "total_parcels": 636536
  },
  {
   "county_fips": "033",
@@ -329,8 +329,8 @@
   "check_name": "state_copy_vintage",
   "check_description": "vintage of the state's copy of this county per File_Date; counties are NOT the same vintage (design.md defect list)",
   "outcome": "2026-02-26",
-  "parcels": 636323,
-  "total_parcels": 636323
+  "parcels": 636536,
+  "total_parcels": 636536
  },
  {
   "county_fips": "033",
@@ -339,7 +339,7 @@
   "check_description": "distinct PARCEL_ID_NR groups carrying multiple rows in the state answer key, WITHIN THE INGESTED COUNTIES only -- the in-scope slice of 49,426 statewide. Unlike ours, the state discards the fields that would resolve them: across 6,769 Pierce groups, zero are distinguished by sub_address or situs_address",
   "outcome": "state_collision_groups",
   "parcels": 6,
-  "total_parcels": 636323
+  "total_parcels": 636536
  },
  {
   "county_fips": "033",
@@ -347,17 +347,17 @@
   "check_name": "value_drift",
   "check_description": "parcels whose assessed value differs from the answer key; expected given the vintage gap, so excluded from reconciliation_class (design.md 5.5)",
   "outcome": "drifted",
-  "parcels": 8122,
-  "total_parcels": 636323
+  "parcels": 8265,
+  "total_parcels": 636536
  },
  {
   "county_fips": "033",
   "county_name": "King",
   "check_name": "zip_implausible",
-  "check_description": "Zip5 is not valid for Washington State",
+  "check_description": "situs_zip5 falls outside the Washington range (98000-99499)",
   "outcome": "clear",
-  "parcels": 636323,
-  "total_parcels": 636323
+  "parcels": 636536,
+  "total_parcels": 636536
  },
  {
   "county_fips": "053",
@@ -381,7 +381,7 @@
   "county_fips": "053",
   "county_name": "Pierce",
   "check_name": "area_mismatch",
-  "check_description": "geometric area in acres does not match source reported acreage (within tolerance for projection)",
+  "check_description": "geometry-derived acreage differs from the county-reported figure beyond the projection tolerance",
   "outcome": "clear",
   "parcels": 288345,
   "total_parcels": 339330
@@ -390,7 +390,7 @@
   "county_fips": "053",
   "county_name": "Pierce",
   "check_name": "area_mismatch",
-  "check_description": "geometric area in acres does not match source reported acreage (within tolerance for projection)",
+  "check_description": "geometry-derived acreage differs from the county-reported figure beyond the projection tolerance",
   "outcome": "flagged",
   "parcels": 36699,
   "total_parcels": 339330
@@ -399,7 +399,7 @@
   "county_fips": "053",
   "county_name": "Pierce",
   "check_name": "area_mismatch",
-  "check_description": "geometric area in acres does not match source reported acreage (within tolerance for projection)",
+  "check_description": "geometry-derived acreage differs from the county-reported figure beyond the projection tolerance",
   "outcome": "not_measurable",
   "parcels": 14286,
   "total_parcels": 339330
@@ -426,7 +426,7 @@
   "county_fips": "053",
   "county_name": "Pierce",
   "check_name": "duplicate_uid",
-  "check_description": "parcel uid appears more than once",
+  "check_description": "the same parcel_uid passed validation on more than one record",
   "outcome": "clear",
   "parcels": 322554,
   "total_parcels": 339330
@@ -435,7 +435,7 @@
   "county_fips": "053",
   "county_name": "Pierce",
   "check_name": "duplicate_uid",
-  "check_description": "parcel uid appears more than once",
+  "check_description": "the same parcel_uid passed validation on more than one record",
   "outcome": "flagged",
   "parcels": 16776,
   "total_parcels": 339330
@@ -705,7 +705,7 @@
   "county_fips": "053",
   "county_name": "Pierce",
   "check_name": "zip_implausible",
-  "check_description": "Zip5 is not valid for Washington State",
+  "check_description": "situs_zip5 falls outside the Washington range (98000-99499)",
   "outcome": "clear",
   "parcels": 339330,
   "total_parcels": 339330
@@ -716,8 +716,8 @@
   "check_name": "area_check_coverage",
   "check_description": "parcel carries an independent county acreage (roll figure > 0) to validate geometry against",
   "outcome": "measurable",
-  "parcels": 263924,
-  "total_parcels": 314670
+  "parcels": 263996,
+  "total_parcels": 314827
  },
  {
   "county_fips": "061",
@@ -725,35 +725,35 @@
   "check_name": "area_check_coverage",
   "check_description": "parcel carries an independent county acreage (roll figure > 0) to validate geometry against",
   "outcome": "no_roll_figure",
-  "parcels": 50746,
-  "total_parcels": 314670
+  "parcels": 50831,
+  "total_parcels": 314827
  },
  {
   "county_fips": "061",
   "county_name": "Snohomish",
   "check_name": "area_mismatch",
-  "check_description": "geometric area in acres does not match source reported acreage (within tolerance for projection)",
+  "check_description": "geometry-derived acreage differs from the county-reported figure beyond the projection tolerance",
   "outcome": "clear",
-  "parcels": 235346,
-  "total_parcels": 314670
+  "parcels": 235427,
+  "total_parcels": 314827
  },
  {
   "county_fips": "061",
   "county_name": "Snohomish",
   "check_name": "area_mismatch",
-  "check_description": "geometric area in acres does not match source reported acreage (within tolerance for projection)",
+  "check_description": "geometry-derived acreage differs from the county-reported figure beyond the projection tolerance",
   "outcome": "flagged",
-  "parcels": 28578,
-  "total_parcels": 314670
+  "parcels": 28569,
+  "total_parcels": 314827
  },
  {
   "county_fips": "061",
   "county_name": "Snohomish",
   "check_name": "area_mismatch",
-  "check_description": "geometric area in acres does not match source reported acreage (within tolerance for projection)",
+  "check_description": "geometry-derived acreage differs from the county-reported figure beyond the projection tolerance",
   "outcome": "not_measurable",
-  "parcels": 50746,
-  "total_parcels": 314670
+  "parcels": 50831,
+  "total_parcels": 314827
  },
  {
   "county_fips": "061",
@@ -761,8 +761,8 @@
   "check_name": "attribute_completeness",
   "check_description": "complete = at least one of situs address, land value, building value present; sparse records are the zero-value component and tract classes",
   "outcome": "attribute_sparse",
-  "parcels": 231,
-  "total_parcels": 314670
+  "parcels": 320,
+  "total_parcels": 314827
  },
  {
   "county_fips": "061",
@@ -770,8 +770,8 @@
   "check_name": "attribute_completeness",
   "check_description": "complete = at least one of situs address, land value, building value present; sparse records are the zero-value component and tract classes",
   "outcome": "complete",
-  "parcels": 314439,
-  "total_parcels": 314670
+  "parcels": 314507,
+  "total_parcels": 314827
  },
  {
   "county_fips": "061",
@@ -779,17 +779,17 @@
   "check_name": "county_source_vintage",
   "check_description": "the county's own last-publish date per editingInfo.lastEditDate; paired with state_copy_vintage this gives a run-independent staleness measure",
   "outcome": "2026-08-25",
-  "parcels": 314670,
-  "total_parcels": 314670
+  "parcels": 314827,
+  "total_parcels": 314827
  },
  {
   "county_fips": "061",
   "county_name": "Snohomish",
   "check_name": "duplicate_uid",
-  "check_description": "parcel uid appears more than once",
+  "check_description": "the same parcel_uid passed validation on more than one record",
   "outcome": "clear",
-  "parcels": 314670,
-  "total_parcels": 314670
+  "parcels": 314827,
+  "total_parcels": 314827
  },
  {
   "county_fips": "061",
@@ -797,8 +797,8 @@
   "check_name": "field_coverage",
   "check_description": "per-field coverage against the answer key; ours_only means we publish a value the state lacks, theirs_only the reverse",
   "outcome": "landuse_cd:ours_absent",
-  "parcels": 217,
-  "total_parcels": 314670
+  "parcels": 234,
+  "total_parcels": 314827
  },
  {
   "county_fips": "061",
@@ -806,8 +806,8 @@
   "check_name": "field_coverage",
   "check_description": "per-field coverage against the answer key; ours_only means we publish a value the state lacks, theirs_only the reverse",
   "outcome": "landuse_cd:theirs_absent",
-  "parcels": 659,
-  "total_parcels": 314670
+  "parcels": 744,
+  "total_parcels": 314827
  },
  {
   "county_fips": "061",
@@ -815,8 +815,8 @@
   "check_name": "field_coverage",
   "check_description": "per-field coverage against the answer key; ours_only means we publish a value the state lacks, theirs_only the reverse",
   "outcome": "situs_address:ours_absent",
-  "parcels": 264,
-  "total_parcels": 314670
+  "parcels": 284,
+  "total_parcels": 314827
  },
  {
   "county_fips": "061",
@@ -825,7 +825,7 @@
   "check_description": "per-field coverage against the answer key; ours_only means we publish a value the state lacks, theirs_only the reverse",
   "outcome": "situs_address:theirs_absent",
   "parcels": 634,
-  "total_parcels": 314670
+  "total_parcels": 314827
  },
  {
   "county_fips": "061",
@@ -833,8 +833,8 @@
   "check_name": "field_coverage",
   "check_description": "per-field coverage against the answer key; ours_only means we publish a value the state lacks, theirs_only the reverse",
   "outcome": "situs_city:ours_absent",
-  "parcels": 245,
-  "total_parcels": 314670
+  "parcels": 265,
+  "total_parcels": 314827
  },
  {
   "county_fips": "061",
@@ -842,8 +842,8 @@
   "check_name": "field_coverage",
   "check_description": "per-field coverage against the answer key; ours_only means we publish a value the state lacks, theirs_only the reverse",
   "outcome": "situs_city:theirs_absent",
-  "parcels": 620,
-  "total_parcels": 314670
+  "parcels": 621,
+  "total_parcels": 314827
  },
  {
   "county_fips": "061",
@@ -851,8 +851,8 @@
   "check_name": "field_coverage",
   "check_description": "per-field coverage against the answer key; ours_only means we publish a value the state lacks, theirs_only the reverse",
   "outcome": "situs_zip4:ours_absent",
-  "parcels": 182,
-  "total_parcels": 314670
+  "parcels": 187,
+  "total_parcels": 314827
  },
  {
   "county_fips": "061",
@@ -861,7 +861,7 @@
   "check_description": "per-field coverage against the answer key; ours_only means we publish a value the state lacks, theirs_only the reverse",
   "outcome": "situs_zip4:theirs_absent",
   "parcels": 240,
-  "total_parcels": 314670
+  "total_parcels": 314827
  },
  {
   "county_fips": "061",
@@ -869,8 +869,8 @@
   "check_name": "field_coverage",
   "check_description": "per-field coverage against the answer key; ours_only means we publish a value the state lacks, theirs_only the reverse",
   "outcome": "situs_zip5:ours_absent",
-  "parcels": 207,
-  "total_parcels": 314670
+  "parcels": 221,
+  "total_parcels": 314827
  },
  {
   "county_fips": "061",
@@ -878,8 +878,8 @@
   "check_name": "field_coverage",
   "check_description": "per-field coverage against the answer key; ours_only means we publish a value the state lacks, theirs_only the reverse",
   "outcome": "situs_zip5:theirs_absent",
-  "parcels": 696,
-  "total_parcels": 314670
+  "parcels": 697,
+  "total_parcels": 314827
  },
  {
   "county_fips": "061",
@@ -887,8 +887,8 @@
   "check_name": "field_coverage",
   "check_description": "per-field coverage against the answer key; ours_only means we publish a value the state lacks, theirs_only the reverse",
   "outcome": "sub_address:theirs_absent",
-  "parcels": 36361,
-  "total_parcels": 314670
+  "parcels": 36376,
+  "total_parcels": 314827
  },
  {
   "county_fips": "061",
@@ -896,8 +896,8 @@
   "check_name": "field_coverage",
   "check_description": "per-field coverage against the answer key; ours_only means we publish a value the state lacks, theirs_only the reverse",
   "outcome": "value_bldg:ours_absent",
-  "parcels": 219,
-  "total_parcels": 314670
+  "parcels": 236,
+  "total_parcels": 314827
  },
  {
   "county_fips": "061",
@@ -905,8 +905,8 @@
   "check_name": "field_coverage",
   "check_description": "per-field coverage against the answer key; ours_only means we publish a value the state lacks, theirs_only the reverse",
   "outcome": "value_bldg:theirs_absent",
-  "parcels": 647,
-  "total_parcels": 314670
+  "parcels": 732,
+  "total_parcels": 314827
  },
  {
   "county_fips": "061",
@@ -914,8 +914,8 @@
   "check_name": "field_coverage",
   "check_description": "per-field coverage against the answer key; ours_only means we publish a value the state lacks, theirs_only the reverse",
   "outcome": "value_land:ours_absent",
-  "parcels": 219,
-  "total_parcels": 314670
+  "parcels": 236,
+  "total_parcels": 314827
  },
  {
   "county_fips": "061",
@@ -923,8 +923,8 @@
   "check_name": "field_coverage",
   "check_description": "per-field coverage against the answer key; ours_only means we publish a value the state lacks, theirs_only the reverse",
   "outcome": "value_land:theirs_absent",
-  "parcels": 647,
-  "total_parcels": 314670
+  "parcels": 732,
+  "total_parcels": 314827
  },
  {
   "county_fips": "061",
@@ -933,7 +933,7 @@
   "check_description": "pairs of distinct parcels whose geometries intersect by more than the minimum area; both-stacked pairs excluded (measured always-coincident)",
   "outcome": "coincident",
   "parcels": 40135,
-  "total_parcels": 314670
+  "total_parcels": 314827
  },
  {
   "county_fips": "061",
@@ -942,7 +942,7 @@
   "check_description": "pairs of distinct parcels whose geometries intersect by more than the minimum area; both-stacked pairs excluded (measured always-coincident)",
   "outcome": "coincident_unflagged",
   "parcels": 4121,
-  "total_parcels": 314670
+  "total_parcels": 314827
  },
  {
   "county_fips": "061",
@@ -951,7 +951,7 @@
   "check_description": "pairs of distinct parcels whose geometries intersect by more than the minimum area; both-stacked pairs excluded (measured always-coincident)",
   "outcome": "encroachment",
   "parcels": 398,
-  "total_parcels": 314670
+  "total_parcels": 314827
  },
  {
   "county_fips": "061",
@@ -960,7 +960,7 @@
   "check_description": "geometry invalid as published and repaired by ST_MakeValid; the answer key publishes no validity assessment",
   "outcome": "repaired",
   "parcels": 77,
-  "total_parcels": 314670
+  "total_parcels": 314827
  },
  {
   "county_fips": "061",
@@ -968,8 +968,8 @@
   "check_name": "geometry_valid",
   "check_description": "stored geometry passes st_isvalid (post-repair, post-union)",
   "outcome": "valid",
-  "parcels": 314670,
-  "total_parcels": 314670
+  "parcels": 314827,
+  "total_parcels": 314827
  },
  {
   "county_fips": "061",
@@ -977,8 +977,8 @@
   "check_name": "landuse_coverage",
   "check_description": "state landuse taxonomy derived via the crosswalk (unmapped = the state publishes no mapping for this code; Spokane has none at all)",
   "outcome": "derived",
-  "parcels": 314439,
-  "total_parcels": 314670
+  "parcels": 314507,
+  "total_parcels": 314827
  },
  {
   "county_fips": "061",
@@ -986,8 +986,8 @@
   "check_name": "landuse_coverage",
   "check_description": "state landuse taxonomy derived via the crosswalk (unmapped = the state publishes no mapping for this code; Spokane has none at all)",
   "outcome": "unmapped",
-  "parcels": 231,
-  "total_parcels": 314670
+  "parcels": 320,
+  "total_parcels": 314827
  },
  {
   "county_fips": "061",
@@ -995,8 +995,8 @@
   "check_name": "merge_provenance",
   "check_description": "merged = record absorbed >1 published row (A3b record-integration); single = published as one row",
   "outcome": "single",
-  "parcels": 314670,
-  "total_parcels": 314670
+  "parcels": 314827,
+  "total_parcels": 314827
  },
  {
   "county_fips": "061",
@@ -1004,8 +1004,8 @@
   "check_name": "reconciliation",
   "check_description": "comparison against the state answer key per parcel_uid; both_differ is the unexplained delta after case normalisation and drift exclusion",
   "outcome": "both_differ",
-  "parcels": 7460,
-  "total_parcels": 314670
+  "parcels": 7648,
+  "total_parcels": 314827
  },
  {
   "county_fips": "061",
@@ -1013,8 +1013,8 @@
   "check_name": "reconciliation",
   "check_description": "comparison against the state answer key per parcel_uid; both_differ is the unexplained delta after case normalisation and drift exclusion",
   "outcome": "both_match",
-  "parcels": 306355,
-  "total_parcels": 314670
+  "parcels": 306149,
+  "total_parcels": 314827
  },
  {
   "county_fips": "061",
@@ -1022,8 +1022,8 @@
   "check_name": "reconciliation",
   "check_description": "comparison against the state answer key per parcel_uid; both_differ is the unexplained delta after case normalisation and drift exclusion",
   "outcome": "ours_only",
-  "parcels": 855,
-  "total_parcels": 314670
+  "parcels": 1030,
+  "total_parcels": 314827
  },
  {
   "county_fips": "061",
@@ -1031,17 +1031,17 @@
   "check_name": "reconciliation",
   "check_description": "comparison against the state answer key per parcel_uid; both_differ is the unexplained delta after case normalisation and drift exclusion",
   "outcome": "theirs_only",
-  "parcels": 196,
-  "total_parcels": 314670
+  "parcels": 214,
+  "total_parcels": 314827
  },
  {
   "county_fips": "061",
   "county_name": "Snohomish",
   "check_name": "rejection",
-  "check_description": "No Parcel ID provided. Unable to join to answer key or be referenced downstream",
+  "check_description": "No parcel ID published; cannot join to the answer key or be referenced downstream",
   "outcome": "missing_parcel_uid",
-  "parcels": 4595,
-  "total_parcels": 314670
+  "parcels": 4596,
+  "total_parcels": 314827
  },
  {
   "county_fips": "061",
@@ -1049,8 +1049,8 @@
   "check_name": "stacked_components",
   "check_description": "records flagged by the county as vertically stacked components (Snohomish STACKED, Pierce level <> 0)",
   "outcome": "not_stacked",
-  "parcels": 272466,
-  "total_parcels": 314670
+  "parcels": 272633,
+  "total_parcels": 314827
  },
  {
   "county_fips": "061",
@@ -1058,8 +1058,8 @@
   "check_name": "stacked_components",
   "check_description": "records flagged by the county as vertically stacked components (Snohomish STACKED, Pierce level <> 0)",
   "outcome": "stacked",
-  "parcels": 42204,
-  "total_parcels": 314670
+  "parcels": 42194,
+  "total_parcels": 314827
  },
  {
   "county_fips": "061",
@@ -1067,8 +1067,8 @@
   "check_name": "state_copy_vintage",
   "check_description": "vintage of the state's copy of this county per File_Date; counties are NOT the same vintage (design.md defect list)",
   "outcome": "2026-01-21",
-  "parcels": 314670,
-  "total_parcels": 314670
+  "parcels": 314827,
+  "total_parcels": 314827
  },
  {
   "county_fips": "061",
@@ -1077,7 +1077,7 @@
   "check_description": "state rows with no PARCEL_ID_NR; unjoinable to any county parcel (theirs_unidentified in the fact)",
   "outcome": "no_parcel_id",
   "parcels": 4583,
-  "total_parcels": 314670
+  "total_parcels": 314827
  },
  {
   "county_fips": "061",
@@ -1085,26 +1085,26 @@
   "check_name": "value_drift",
   "check_description": "parcels whose assessed value differs from the answer key; expected given the vintage gap, so excluded from reconciliation_class (design.md 5.5)",
   "outcome": "drifted",
-  "parcels": 287696,
-  "total_parcels": 314670
+  "parcels": 287684,
+  "total_parcels": 314827
  },
  {
   "county_fips": "061",
   "county_name": "Snohomish",
   "check_name": "zip_implausible",
-  "check_description": "Zip5 is not valid for Washington State",
+  "check_description": "situs_zip5 falls outside the Washington range (98000-99499)",
   "outcome": "clear",
-  "parcels": 314662,
-  "total_parcels": 314670
+  "parcels": 314819,
+  "total_parcels": 314827
  },
  {
   "county_fips": "061",
   "county_name": "Snohomish",
   "check_name": "zip_implausible",
-  "check_description": "Zip5 is not valid for Washington State",
+  "check_description": "situs_zip5 falls outside the Washington range (98000-99499)",
   "outcome": "flagged",
   "parcels": 8,
-  "total_parcels": 314670
+  "total_parcels": 314827
  },
  {
   "county_fips": "063",
@@ -1112,8 +1112,8 @@
   "check_name": "area_check_coverage",
   "check_description": "parcel carries an independent county acreage (roll figure > 0) to validate geometry against",
   "outcome": "measurable",
-  "parcels": 213910,
-  "total_parcels": 214370
+  "parcels": 213938,
+  "total_parcels": 214398
  },
  {
   "county_fips": "063",
@@ -1122,34 +1122,34 @@
   "check_description": "parcel carries an independent county acreage (roll figure > 0) to validate geometry against",
   "outcome": "no_roll_figure",
   "parcels": 460,
-  "total_parcels": 214370
+  "total_parcels": 214398
  },
  {
   "county_fips": "063",
   "county_name": "Spokane",
   "check_name": "area_mismatch",
-  "check_description": "geometric area in acres does not match source reported acreage (within tolerance for projection)",
+  "check_description": "geometry-derived acreage differs from the county-reported figure beyond the projection tolerance",
   "outcome": "clear",
-  "parcels": 204984,
-  "total_parcels": 214370
+  "parcels": 205015,
+  "total_parcels": 214398
  },
  {
   "county_fips": "063",
   "county_name": "Spokane",
   "check_name": "area_mismatch",
-  "check_description": "geometric area in acres does not match source reported acreage (within tolerance for projection)",
+  "check_description": "geometry-derived acreage differs from the county-reported figure beyond the projection tolerance",
   "outcome": "flagged",
-  "parcels": 8926,
-  "total_parcels": 214370
+  "parcels": 8923,
+  "total_parcels": 214398
  },
  {
   "county_fips": "063",
   "county_name": "Spokane",
   "check_name": "area_mismatch",
-  "check_description": "geometric area in acres does not match source reported acreage (within tolerance for projection)",
+  "check_description": "geometry-derived acreage differs from the county-reported figure beyond the projection tolerance",
   "outcome": "not_measurable",
   "parcels": 460,
-  "total_parcels": 214370
+  "total_parcels": 214398
  },
  {
   "county_fips": "063",
@@ -1158,7 +1158,7 @@
   "check_description": "complete = at least one of situs address, land value, building value present; sparse records are the zero-value component and tract classes",
   "outcome": "attribute_sparse",
   "parcels": 4,
-  "total_parcels": 214370
+  "total_parcels": 214398
  },
  {
   "county_fips": "063",
@@ -1166,26 +1166,26 @@
   "check_name": "attribute_completeness",
   "check_description": "complete = at least one of situs address, land value, building value present; sparse records are the zero-value component and tract classes",
   "outcome": "complete",
-  "parcels": 214366,
-  "total_parcels": 214370
+  "parcels": 214394,
+  "total_parcels": 214398
  },
  {
   "county_fips": "063",
   "county_name": "Spokane",
   "check_name": "county_source_vintage",
   "check_description": "the county's own last-publish date per editingInfo.lastEditDate; paired with state_copy_vintage this gives a run-independent staleness measure",
-  "outcome": "2026-09-02",
-  "parcels": 214370,
-  "total_parcels": 214370
+  "outcome": "2026-09-03",
+  "parcels": 214398,
+  "total_parcels": 214398
  },
  {
   "county_fips": "063",
   "county_name": "Spokane",
   "check_name": "duplicate_uid",
-  "check_description": "parcel uid appears more than once",
+  "check_description": "the same parcel_uid passed validation on more than one record",
   "outcome": "clear",
-  "parcels": 214370,
-  "total_parcels": 214370
+  "parcels": 214398,
+  "total_parcels": 214398
  },
  {
   "county_fips": "063",
@@ -1194,7 +1194,7 @@
   "check_description": "per-field coverage against the answer key; ours_only means we publish a value the state lacks, theirs_only the reverse",
   "outcome": "landuse_cd:ours_absent",
   "parcels": 213919,
-  "total_parcels": 214370
+  "total_parcels": 214398
  },
  {
   "county_fips": "063",
@@ -1202,8 +1202,8 @@
   "check_name": "field_coverage",
   "check_description": "per-field coverage against the answer key; ours_only means we publish a value the state lacks, theirs_only the reverse",
   "outcome": "situs_address:ours_absent",
-  "parcels": 282,
-  "total_parcels": 214370
+  "parcels": 303,
+  "total_parcels": 214398
  },
  {
   "county_fips": "063",
@@ -1211,8 +1211,8 @@
   "check_name": "field_coverage",
   "check_description": "per-field coverage against the answer key; ours_only means we publish a value the state lacks, theirs_only the reverse",
   "outcome": "situs_address:theirs_absent",
-  "parcels": 24569,
-  "total_parcels": 214370
+  "parcels": 24618,
+  "total_parcels": 214398
  },
  {
   "county_fips": "063",
@@ -1220,8 +1220,8 @@
   "check_name": "field_coverage",
   "check_description": "per-field coverage against the answer key; ours_only means we publish a value the state lacks, theirs_only the reverse",
   "outcome": "situs_city:ours_absent",
-  "parcels": 383,
-  "total_parcels": 214370
+  "parcels": 408,
+  "total_parcels": 214398
  },
  {
   "county_fips": "063",
@@ -1229,8 +1229,8 @@
   "check_name": "field_coverage",
   "check_description": "per-field coverage against the answer key; ours_only means we publish a value the state lacks, theirs_only the reverse",
   "outcome": "situs_city:theirs_absent",
-  "parcels": 806,
-  "total_parcels": 214370
+  "parcels": 861,
+  "total_parcels": 214398
  },
  {
   "county_fips": "063",
@@ -1239,7 +1239,7 @@
   "check_description": "per-field coverage against the answer key; ours_only means we publish a value the state lacks, theirs_only the reverse",
   "outcome": "situs_zip4:ours_absent",
   "parcels": 4,
-  "total_parcels": 214370
+  "total_parcels": 214398
  },
  {
   "county_fips": "063",
@@ -1248,7 +1248,7 @@
   "check_description": "per-field coverage against the answer key; ours_only means we publish a value the state lacks, theirs_only the reverse",
   "outcome": "situs_zip4:theirs_absent",
   "parcels": 5,
-  "total_parcels": 214370
+  "total_parcels": 214398
  },
  {
   "county_fips": "063",
@@ -1256,8 +1256,8 @@
   "check_name": "field_coverage",
   "check_description": "per-field coverage against the answer key; ours_only means we publish a value the state lacks, theirs_only the reverse",
   "outcome": "situs_zip5:ours_absent",
-  "parcels": 179,
-  "total_parcels": 214370
+  "parcels": 190,
+  "total_parcels": 214398
  },
  {
   "county_fips": "063",
@@ -1265,8 +1265,8 @@
   "check_name": "field_coverage",
   "check_description": "per-field coverage against the answer key; ours_only means we publish a value the state lacks, theirs_only the reverse",
   "outcome": "situs_zip5:theirs_absent",
-  "parcels": 749,
-  "total_parcels": 214370
+  "parcels": 863,
+  "total_parcels": 214398
  },
  {
   "county_fips": "063",
@@ -1275,7 +1275,7 @@
   "check_description": "per-field coverage against the answer key; ours_only means we publish a value the state lacks, theirs_only the reverse",
   "outcome": "sub_address:theirs_absent",
   "parcels": 684,
-  "total_parcels": 214370
+  "total_parcels": 214398
  },
  {
   "county_fips": "063",
@@ -1284,7 +1284,7 @@
   "check_description": "per-field coverage against the answer key; ours_only means we publish a value the state lacks, theirs_only the reverse",
   "outcome": "value_bldg:ours_absent",
   "parcels": 213919,
-  "total_parcels": 214370
+  "total_parcels": 214398
  },
  {
   "county_fips": "063",
@@ -1292,8 +1292,8 @@
   "check_name": "field_coverage",
   "check_description": "per-field coverage against the answer key; ours_only means we publish a value the state lacks, theirs_only the reverse",
   "outcome": "value_land:ours_absent",
-  "parcels": 378,
-  "total_parcels": 214370
+  "parcels": 402,
+  "total_parcels": 214398
  },
  {
   "county_fips": "063",
@@ -1301,8 +1301,8 @@
   "check_name": "field_coverage",
   "check_description": "per-field coverage against the answer key; ours_only means we publish a value the state lacks, theirs_only the reverse",
   "outcome": "value_land:theirs_absent",
-  "parcels": 825,
-  "total_parcels": 214370
+  "parcels": 877,
+  "total_parcels": 214398
  },
  {
   "county_fips": "063",
@@ -1311,7 +1311,7 @@
   "check_description": "pairs of distinct parcels whose geometries intersect by more than the minimum area; both-stacked pairs excluded (measured always-coincident)",
   "outcome": "coincident_unflagged",
   "parcels": 115,
-  "total_parcels": 214370
+  "total_parcels": 214398
  },
  {
   "county_fips": "063",
@@ -1320,7 +1320,7 @@
   "check_description": "pairs of distinct parcels whose geometries intersect by more than the minimum area; both-stacked pairs excluded (measured always-coincident)",
   "outcome": "encroachment",
   "parcels": 18,
-  "total_parcels": 214370
+  "total_parcels": 214398
  },
  {
   "county_fips": "063",
@@ -1329,7 +1329,7 @@
   "check_description": "geometry invalid as published and repaired by ST_MakeValid; the answer key publishes no validity assessment",
   "outcome": "repaired",
   "parcels": 31,
-  "total_parcels": 214370
+  "total_parcels": 214398
  },
  {
   "county_fips": "063",
@@ -1337,8 +1337,8 @@
   "check_name": "geometry_valid",
   "check_description": "stored geometry passes st_isvalid (post-repair, post-union)",
   "outcome": "valid",
-  "parcels": 214370,
-  "total_parcels": 214370
+  "parcels": 214398,
+  "total_parcels": 214398
  },
  {
   "county_fips": "063",
@@ -1346,8 +1346,8 @@
   "check_name": "landuse_coverage",
   "check_description": "state landuse taxonomy derived via the crosswalk (unmapped = the state publishes no mapping for this code; Spokane has none at all)",
   "outcome": "unmapped",
-  "parcels": 214370,
-  "total_parcels": 214370
+  "parcels": 214398,
+  "total_parcels": 214398
  },
  {
   "county_fips": "063",
@@ -1356,7 +1356,7 @@
   "check_description": "merged = record absorbed >1 published row (A3b record-integration); single = published as one row",
   "outcome": "merged",
   "parcels": 2,
-  "total_parcels": 214370
+  "total_parcels": 214398
  },
  {
   "county_fips": "063",
@@ -1364,8 +1364,8 @@
   "check_name": "merge_provenance",
   "check_description": "merged = record absorbed >1 published row (A3b record-integration); single = published as one row",
   "outcome": "single",
-  "parcels": 214368,
-  "total_parcels": 214370
+  "parcels": 214396,
+  "total_parcels": 214398
  },
  {
   "county_fips": "063",
@@ -1373,8 +1373,8 @@
   "check_name": "reconciliation",
   "check_description": "comparison against the state answer key per parcel_uid; both_differ is the unexplained delta after case normalisation and drift exclusion",
   "outcome": "both_differ",
-  "parcels": 231,
-  "total_parcels": 214370
+  "parcels": 256,
+  "total_parcels": 214398
  },
  {
   "county_fips": "063",
@@ -1382,8 +1382,8 @@
   "check_name": "reconciliation",
   "check_description": "comparison against the state answer key per parcel_uid; both_differ is the unexplained delta after case normalisation and drift exclusion",
   "outcome": "both_match",
-  "parcels": 213409,
-  "total_parcels": 214370
+  "parcels": 213360,
+  "total_parcels": 214398
  },
  {
   "county_fips": "063",
@@ -1391,8 +1391,8 @@
   "check_name": "reconciliation",
   "check_description": "comparison against the state answer key per parcel_uid; both_differ is the unexplained delta after case normalisation and drift exclusion",
   "outcome": "ours_only",
-  "parcels": 730,
-  "total_parcels": 214370
+  "parcels": 782,
+  "total_parcels": 214398
  },
  {
   "county_fips": "063",
@@ -1400,17 +1400,17 @@
   "check_name": "reconciliation",
   "check_description": "comparison against the state answer key per parcel_uid; both_differ is the unexplained delta after case normalisation and drift exclusion",
   "outcome": "theirs_only",
-  "parcels": 379,
-  "total_parcels": 214370
+  "parcels": 403,
+  "total_parcels": 214398
  },
  {
   "county_fips": "063",
   "county_name": "Spokane",
   "check_name": "rejection",
-  "check_description": "No Parcel ID provided. Unable to join to answer key or be referenced downstream",
+  "check_description": "No parcel ID published; cannot join to the answer key or be referenced downstream",
   "outcome": "missing_parcel_uid",
   "parcels": 2,
-  "total_parcels": 214370
+  "total_parcels": 214398
  },
  {
   "county_fips": "063",
@@ -1418,8 +1418,8 @@
   "check_name": "stacked_components",
   "check_description": "records flagged by the county as vertically stacked components (Snohomish STACKED, Pierce level <> 0)",
   "outcome": "not_stacked",
-  "parcels": 214370,
-  "total_parcels": 214370
+  "parcels": 214398,
+  "total_parcels": 214398
  },
  {
   "county_fips": "063",
@@ -1427,8 +1427,8 @@
   "check_name": "state_copy_vintage",
   "check_description": "vintage of the state's copy of this county per File_Date; counties are NOT the same vintage (design.md defect list)",
   "outcome": "2026-03-20",
-  "parcels": 214370,
-  "total_parcels": 214370
+  "parcels": 214398,
+  "total_parcels": 214398
  },
  {
   "county_fips": "063",
@@ -1437,7 +1437,7 @@
   "check_description": "state rows with no PARCEL_ID_NR; unjoinable to any county parcel (theirs_unidentified in the fact)",
   "outcome": "no_parcel_id",
   "parcels": 3,
-  "total_parcels": 214370
+  "total_parcels": 214398
  },
  {
   "county_fips": "063",
@@ -1445,25 +1445,25 @@
   "check_name": "value_drift",
   "check_description": "parcels whose assessed value differs from the answer key; expected given the vintage gap, so excluded from reconciliation_class (design.md 5.5)",
   "outcome": "drifted",
-  "parcels": 105978,
-  "total_parcels": 214370
+  "parcels": 105968,
+  "total_parcels": 214398
  },
  {
   "county_fips": "063",
   "county_name": "Spokane",
   "check_name": "zip_implausible",
-  "check_description": "Zip5 is not valid for Washington State",
+  "check_description": "situs_zip5 falls outside the Washington range (98000-99499)",
   "outcome": "clear",
-  "parcels": 213463,
-  "total_parcels": 214370
+  "parcels": 213491,
+  "total_parcels": 214398
  },
  {
   "county_fips": "063",
   "county_name": "Spokane",
   "check_name": "zip_implausible",
-  "check_description": "Zip5 is not valid for Washington State",
+  "check_description": "situs_zip5 falls outside the Washington range (98000-99499)",
   "outcome": "flagged",
   "parcels": 907,
-  "total_parcels": 214370
+  "total_parcels": 214398
  }
 ]

@@ -287,7 +287,7 @@ checks as (
 
     {# ------------------------------------------------------- value drift #
         Parcels whose assessed values differ. NOT counted as disagreement --
-        the answer key is 166-216 days stale and WA counties revalue annually,
+        the answer key is 167-216 days stale and WA counties revalue annually,
         so a delta is expected. Published so the expectation is visible rather
         than silently suppressed. #}
     select
@@ -365,7 +365,40 @@ select
     ch.check_description,
     ch.outcome,
     ch.parcels,
-    t.total_parcels
+    t.total_parcels,
+
+    {#  WHICH OUTCOME IS THE BAD ONE -- stated here, not inferred downstream.
+
+        Every check has its own outcome vocabulary: 'flagged' for the
+        flag_rules() checks, but 'no_roll_figure', 'attribute_sparse',
+        'unmapped' and 'missing_parcel_uid' elsewhere. Without this column a
+        BI tool cannot build "adverse rate by check" without re-encoding that
+        vocabulary in its own CASE statement -- a second source of truth that
+        goes stale silently the first time a check is added or an outcome
+        renamed, and that nothing in this repo would turn red about.
+
+        Deliberately FALSE for outcomes that are properties or resolutions
+        rather than defects:
+          repaired    geometry we FIXED. A correction, not a fault.
+          merged      records resolved by a declared record key -- the A3b
+                      merge working as designed.
+          stacked     a vertical component. The shape of condominium data.
+          drifted     assessed values differing from a 167-216 day stale
+                      answer key, which they MUST. Excluded from disagreement
+                      for the same reason.
+          both_match  agreement.
+
+        Also FALSE for the two state-side checks: state_collision_groups and
+        no_parcel_id are defects in the ANSWER KEY, not in our conformance,
+        and colouring them on a heatmap of our quality would misattribute
+        them. They have their own place in the scorecard. #}
+    ch.outcome in (
+        'flagged',              {#- area_mismatch, duplicate_uid, zip_implausible -#}
+        'no_roll_figure',       {#- area_check_coverage: no independent acreage to check against -#}
+        'attribute_sparse',     {#- attribute_completeness -#}
+        'unmapped',             {#- landuse_coverage: no derivable crosswalk -#}
+        'missing_parcel_uid'    {#- rejection: quarantined -#}
+    )                                               as is_adverse
 from checks ch
 join county_totals t on t.county_fips = ch.county_fips
 order by ch.county_fips, ch.check_name, ch.outcome

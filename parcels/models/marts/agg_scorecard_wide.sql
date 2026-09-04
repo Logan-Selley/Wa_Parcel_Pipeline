@@ -182,7 +182,7 @@ select
     {# ---------------------------------------------- answer-key comparison #
         The project’s headline, and the reason this table exists. parcels_differ
         is the UNEXPLAINED delta: what survives case normalisation (design.md
-        5.6) and the exclusion of fields a 166-216 day stale answer key is
+        5.6) and the exclusion of fields a 167-216 day stale answer key is
         expected to disagree on (5.5). Reporting raw disagreement instead would
         be true and useless -- it was 1,204,678 before those two corrections. #}
     coalesce(p.parcels_matched, 0)                      as parcels_matched,

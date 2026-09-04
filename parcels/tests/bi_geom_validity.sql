@@ -9,5 +9,5 @@
 select
     'invalid geometry after simplify+transform' as violation,
     count(*) as rows
-from {{ ref('bi_parcel_extract') }}
+from {{ ref('bi_findings_extract') }}
 where not st_isvalid(geom)

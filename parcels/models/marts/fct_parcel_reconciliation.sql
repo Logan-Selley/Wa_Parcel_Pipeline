@@ -118,7 +118,7 @@ select
         when ours_absent                   then 'theirs_only'
         when theirs_absent                 then 'ours_only'
         {#  classifying_fields(), not fields: assessed values are expected to
-            differ against a 166-216 day stale answer key, so including them
+            differ against a 167-216 day stale answer key, so including them
             would mark nearly every parcel both_differ and hide the
             differences that are real findings. They are reported separately
             below. #}

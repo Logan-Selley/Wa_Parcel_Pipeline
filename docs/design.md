@@ -372,7 +372,7 @@ them.
 parcels. Two distinct causes, separated by measurement, and only one is a
 finding.
 
-**Expected drift (Pierce, Snohomish, Spokane).** The answer key is 166–216 days
+**Expected drift (Pierce, Snohomish, Spokane).** The answer key is 167–216 days
 behind the counties (measured publisher-to-publisher, `int_source_vintage` vs
 `int_county_vintage`), and WA counties revalue annually, so assessed values
 *must* differ. The ratio of ours/theirs on disagreeing parcels is tight and
@@ -602,7 +602,7 @@ marts (gold)          dim_parcel                 one row per parcel
                       fct_parcel_reconciliation  parcel × source, ours vs theirs, delta
                       agg_quality_scorecard      county × rule × pass/fail  → Tableau
                       agg_quarantine_summary     reason × county × count
-                      bi_parcel_extract          simplified 4326 geometry, denormalized
+                      bi_findings_extract        findings only, simplified 4326 geometry
         │
 quarantine            quarantine.parcels_rejected  rejected rows + reason + source metadata
 ```

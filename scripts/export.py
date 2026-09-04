@@ -4,7 +4,7 @@
 #   exports/parquet/   fct, dim, the three scorecard tables (zstd parquet)
 #   exports/csv/       the same tables as CSV (Tableau build input)
 #   exports/json/      the three scorecard tables as JSON (static site data)
-#   exports/fgb/       bi_parcel_extract as FlatGeobuf (tippecanoe input)
+#   exports/fgb/       bi_findings_extract as FlatGeobuf (tippecanoe input)
 #
 # Everything here is regenerable from the warehouse; nothing is hand-edited.
 # Run via `make export`.
@@ -97,30 +97,41 @@ def main() -> None:
             jf.write_text(json.dumps(data, default=str, indent=1))
             print(f"  {table}: {jf.stat().st_size / 1e3:.0f} kB json ({len(data)} rows)")
 
-    # FlatGeobuf of the map extract -- tippecanoe's input. bi_parcel_extract is
-    # ALREADY in WGS84 (the dbt model transforms), and the postgres extension
+    # FlatGeobuf of the map extract -- tippecanoe's input. bi_findings_extract
+    # is ALREADY in WGS84 (the dbt model transforms), and the postgres extension
     # hands PostGIS geometry columns across as WKB blobs, so no spatial
     # functions are needed here: the blob is rehydrated with shapely directly.
     # (st_transform / st_aswkb would fail -- duckdb only knows them via the
     # spatial extension, which this export deliberately does not require.)
-    print("exporting bi_parcel_extract -> FlatGeobuf")
+    #
+    # Findings only, not every parcel. The full 1.5M-record extract produced a
+    # 590 MB FlatGeobuf whose tile archive exceeded GitHub's 100 MB file limit,
+    # and duplicated a statewide map the state already publishes. See the
+    # bi_findings_extract header.
+    print("exporting bi_findings_extract -> FlatGeobuf")
+    # SELECT * EXCLUDE, not a hand-written column list. The previous version
+    # enumerated every column, and adding one to the dbt model without adding
+    # it here dropped it silently -- no error, just a property the map never
+    # received. It had already happened three times (acres_reported,
+    # state_duplicate_id, disagreements) before anyone noticed, and the failure
+    # is invisible: the map renders, the popup just quietly says less.
+    #
+    # The model is now the single source of truth for what the map gets. geom
+    # is renamed because it crosses as a WKB blob, not because it is special.
     df = conn.execute(
-        "select record_key_uid, parcel_uid, county_fips, county_name, is_active, "
-        "is_stacked, situs_address, sub_address, situs_city, situs_zip5, "
-        "landuse_cd, landuse_cd_method, value_land_appraised, value_bldg_appraised, "
-        "geom as geom_wkb "
-        "from wh.marts.bi_parcel_extract"
+        "select * exclude (geom), geom as geom_wkb "
+        "from wh.marts.bi_findings_extract"
     ).df()
     gdf = gpd.GeoDataFrame(
         df.drop(columns=["geom_wkb"]),
         geometry=gpd.GeoSeries.from_wkb(df["geom_wkb"].map(bytes)),
         crs="EPSG:4326",
     )
-    fgb = OUT / "fgb" / "wa_parcels.fgb"
+    fgb = OUT / "fgb" / "wa_findings.fgb"
     if fgb.exists():
         fgb.unlink()  # GDAL FlatGeobuf overwrite is version-dependent; replace explicitly
     gdf.to_file(fgb, driver="FlatGeobuf")
-    print(f"  bi_parcel_extract: {fgb.stat().st_size / 1e6:.1f} MB fgb ({len(gdf)} rows)")
+    print(f"  bi_findings_extract: {fgb.stat().st_size / 1e6:.1f} MB fgb ({len(gdf)} rows)")
 
     conn.close()
 

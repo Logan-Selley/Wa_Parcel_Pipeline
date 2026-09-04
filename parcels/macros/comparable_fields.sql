@@ -36,7 +36,7 @@
                   them an artifact of comparing two different fields. Both
                   values are still carried; only the classification excludes it.
           drift   true when a disagreement is EXPECTED rather than a finding.
-                  The answer key is 166-216 days behind the counties (measured
+                  The answer key is 167-216 days behind the counties (measured
                   publisher-to-publisher, see int_source_vintage), and WA
                   counties revalue annually, so assessed values must differ.
                   Measured ratio of ours/theirs on disagreeing parcels: Pierce
