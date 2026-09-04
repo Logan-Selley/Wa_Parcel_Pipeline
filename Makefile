@@ -43,36 +43,48 @@ tippecanoe-image:  ## Build the tippecanoe image (felt fork, pinned)
 	@docker image inspect parcel-tippecanoe:latest >/dev/null 2>&1 || \
 	  docker build -f $(ROOT)/docker/Dockerfile.tippecanoe -t parcel-tippecanoe:latest $(ROOT)
 
+# A TILE DIRECTORY, NOT A .pmtiles ARCHIVE.
+#
+# PMTiles is one file read with HTTP range requests, which is elegant and does
+# not work here: GitHub Pages advertises `accept-ranges: bytes` and then answers
+# a Range request with 200 and the whole 17.8 MB body (verified, on a cache
+# HIT). pmtiles.js rejects that, so the map renders a basemap and nothing else.
+#
+# A directory of z/x/y.pbf needs no byte-serving -- every tile is its own GET.
+# Costs 4,522 files and 52 MB against the archive's single 17 MB, and a rebuild
+# rewrites most of them, which is the price of the host not byte-serving.
+#
 # -Z is MINIMUM zoom, -z is MAXIMUM zoom. They are different flags and the
-# casing is the only thing distinguishing them. This read `-Z6 -Z13`, which
-# sets the minimum twice -- last wins, so minzoom became 13 and maxzoom fell
-# back to the default. The archive would have held nothing below z13: blank at
-# every zoom a visitor actually lands on, and larger than intended because
-# everything rendered at full detail.
-pmtiles: tippecanoe-image  ## Build the map tile archive from the FlatGeobuf export
-	@mkdir -p $(ROOT)/exports/pmtiles
-	@docker run --rm --user $$(id -u):$$(id -g) -v $(ROOT)/exports:/data parcel-tippecanoe:latest \
-	  tippecanoe -o /data/pmtiles/wa_findings.pmtiles --force \
+# casing is the only thing distinguishing them. This once read `-Z6 -Z13`,
+# setting the minimum twice, so the archive held nothing below z13.
+#
+# --no-tile-compression is REQUIRED for static hosting. Tippecanoe gzips tiles
+# by default, and the browser only inflates them if the server sends
+# Content-Encoding: gzip -- which Pages does not do for .pbf. Without this flag
+# MapLibre receives gzip bytes and fails to parse every tile.
+tiles: tippecanoe-image  ## Build the map tiles from the FlatGeobuf export
+	@rm -rf $(ROOT)/site/data/tiles
+	@mkdir -p $(ROOT)/site/data
+	@docker run --rm --user $$(id -u):$$(id -g) \
+	  -v $(ROOT)/exports:/data -v $(ROOT)/site/data:/out parcel-tippecanoe:latest \
+	  tippecanoe -e /out/tiles --force \
 	  --layer=findings --read-parallel -Z6 -z13 \
 	  --drop-densest-as-needed --extend-zooms-if-still-dropping \
+	  --no-tile-compression \
 	  -T is_encroachment:bool -T is_unflagged_coincident:bool \
 	  -T disagrees_with_state:bool -T absent_from_state:bool \
 	  -T absent_from_ours:bool -T geometry_repaired:bool \
 	  -T is_quarantined:bool -T state_duplicate_id:bool \
 	  /data/fgb/wa_findings.fgb
-	@echo "exports/pmtiles/wa_findings.pmtiles ready"
-	@du -h $(ROOT)/exports/pmtiles/wa_findings.pmtiles
+	@echo "site/data/tiles: $$(find $(ROOT)/site/data/tiles -name '*.pbf' | wc -l) tiles, $$(du -sh $(ROOT)/site/data/tiles | cut -f1)"
 
-# site/index.html requests `data/pmtiles/wa_findings.pmtiles`. The previous
-# recipe created that directory and then copied into site/data/ instead, one
-# level up, so the map 404'd on a file that was present under a different name.
-site:  ## Assemble the static site (data into site/data/)
-	@mkdir -p $(ROOT)/site/data/pmtiles
+# site/index.html requests data/*.json and data/tiles/{z}/{x}/{y}.pbf by
+# relative path, so site/ is served as the Pages root exactly as assembled.
+site: tiles  ## Assemble the static site (data into site/data/)
 	@cp $(ROOT)/exports/json/*.json $(ROOT)/site/data/
-	@cp $(ROOT)/exports/pmtiles/wa_findings.pmtiles $(ROOT)/site/data/pmtiles/
-	@echo "site/ ready — serve with any static file server"
+	@echo "site/ ready -- serve with any static file server"
 
-.PHONY: export pmtiles site tippecanoe-image
+.PHONY: export tiles site tippecanoe-image
 
 # --- orchestration -----------------------------------------------------------
 # Airflow runs in its OWN containers and its OWN metadata database, and invokes

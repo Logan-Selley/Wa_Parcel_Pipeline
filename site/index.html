@@ -6,7 +6,6 @@
 <title>WA Parcel Reconciliation</title>
 <link href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" rel="stylesheet">
 <script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
-<script src="https://unpkg.com/pmtiles@3.2.0/dist/pmtiles.js"></script>
 <style>
   :root { --bg:#10141a; --panel:#171d26; --line:#2a3340; --ink:#dbe2ec; --dim:#8b97a8; --accent:#4da3ff; }
   * { box-sizing:border-box; margin:0; }
@@ -95,10 +94,14 @@
 </main>
 
 <script>
-// Map: a single static PMTiles archive — no server, no tile host. The browser
-// issues range requests straight at the file (GitHub Pages / any static host).
-const protocol = new pmtiles.Protocol();
-maplibregl.addProtocol('pmtiles', protocol.tile);
+// Map: a plain z/x/y tile directory — no server, no tile host, no build step.
+//
+// This was a single .pmtiles archive, which is the tidier artifact but does not
+// work on GitHub Pages: Pages advertises `accept-ranges: bytes` and then answers
+// a Range request with 200 and the entire 17.8 MB body. PMTiles is built on byte
+// serving, so pmtiles.js refuses it and the map renders a basemap and nothing
+// else. A tile directory needs no range requests at all — every tile is its own
+// ordinary GET — at the cost of 4,522 files instead of one.
 
 // A basemap is not decoration here: findings are ~55k small polygons scattered
 // across four counties, and without streets and coastlines underneath there is
@@ -174,12 +177,32 @@ const FINDINGS = [
   ['geometry_repaired',      '#34d399', 'Geometry was invalid and repaired'],
 ];
 
-map.on('load', async () => {
-  const resp = await fetch('data/pmtiles/wa_findings.pmtiles');
-  if (!resp.ok) { console.warn('pmtiles not built yet — run make pmtiles'); return; }
+map.on('load', () => {
   map.addSource('findings', {
     type: 'vector',
-    url: 'pmtiles://data/pmtiles/wa_findings.pmtiles'
+    // ABSOLUTE BASE + LITERAL TEMPLATE. Both halves are load-bearing and each
+    // fails differently:
+    //
+    //   'data/tiles/{z}/{x}/{y}.pbf'                 -> MapLibre fetches tiles in
+    //     a Web Worker, which has no document base, so a relative URL throws
+    //     "Failed to parse URL" and nothing renders.
+    //   new URL('data/tiles/{z}/...', location.href) -> the URL constructor
+    //     percent-encodes the braces ({z} -> %7Bz%7D), so the placeholders are
+    //     never substituted and every tile 404s -- while the source still
+    //     reports isSourceLoaded() === true, which makes it look like a data
+    //     problem rather than a URL one.
+    //
+    // Absolutise the DIRECTORY (no braces in it to mangle), then concatenate
+    // the template as a plain string. Works unchanged at localhost and under
+    // the /Wa_Parcel_Pipeline/ sub-path on Pages.
+    tiles: [new URL('.', window.location.href).href + 'data/tiles/{z}/{x}/{y}.pbf'],
+    // Must match tippecanoe's -Z/-z. maxzoom is 14 because
+    // --extend-zooms-if-still-dropping added a level past the -z13 cap rather
+    // than drop features; setting 13 here would stop overzooming at 13 and
+    // discard the deepest detail that was generated.
+    minzoom: 6,
+    maxzoom: 14,
+    attribution: 'Parcel data: WA counties &amp; WA DNR'
   });
   map.addLayer({
     id: 'findings-fill', type: 'fill', source: 'findings', 'source-layer': 'findings',

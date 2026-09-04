@@ -1,0 +1,1679 @@
+°Åx
+findings(Ä 
+feature_idcounty_fipscounty_namegeom_sourceis_encroachmentis_unflagged_coincidentdisagrees_with_stateabsent_from_stateabsent_from_oursgeometry_repairedis_quarantinedstate_duplicate_idrejection_reasonfinding_primaryrecord_key_uid
+parcel_uidsitus_address
+situs_city
+landuse_cdvalue_land_appraisedvalue_bldg_appraisedacres_reporteddisagreementsoverlaps_withoverlap_count"
+1"
+2"
+3"
+4"
+11"
+12"
+13"
+14"
+17"
+18"
+24"
+41"
+42"
+44"
+45"
+46"
+48"
+49"
+50"
+51"
+52"
+53"
+54"
+55"
+58"
+59"
+62"
+63"
+64"
+65"
+69"
+74"
+76"
+85"
+91"
+93"
+99"
+061"
+state"
+county"	
+EVERETT"	
+UNKNOWN"
+
+UNKNOWN,"
+	Snohomish"
+	ours_only"
+
+5512 S 1ST"
+
+quarantine"
+4601 ELM ST"
+BROADWAY SE"
+quarantined"
+theirs_only"
+1441 MADRONA"
+2309 74TH ST"
+2420 38TH ST"
+2815 25TH ST"
+3821 26TH PL"
+6527 TYEE RD"
+encroachment"
+104 FOREST CT"
+106 FOREST CT"
+110 FOREST CT"
+113 FOREST CT"
+114 FOREST CT"
+117 FOREST CT"
+120 FOREST CT"
+122 FOREST CT"
+124 FOREST CT"
+126 FOREST CT"
+2216 BROADWAY"
+2415 CEDAR ST"
+260 GRAND AVE"
+2620 BROADWAY"
+2812 CEDAR ST"
+3415 HOYT AVE"
+3702 HOYT AVE"
+3826 HOYT AVE"
+4932 DOVER ST"
+5613 BROADWAY"
+602 MORGAN CT"
+614 MORGAN CT"
+1005 B LANE PL"
+102 E BEECH ST"
+2028 ADAMS AVE"
+2106 FULTON ST"
+2115 GRAND AVE"
+2300 WALNUT ST"
+2912 NASSAU ST"
+3114 OAKES AVE"
+327 42ND ST SW"
+3402 COLBY AVE"
+3520 PAINE AVE"
+3721 COLBY AVE"
+4017 GRAND AVE"
+4812 S 2ND AVE"
+506 MADISON ST"
+510 MADISON ST"
+525 75TH ST SE"
+5501 COLBY AVE"
+5724 LOWELL RD"
+6028 OAKES AVE"
+6100 COLBY AVE"
+6304 OAKES AVE"
+6407 A CADY RD"
+6407 B CADY RD"
+6917 MORGAN RD"
+7209 6TH AVE W"
+1103 HEWITT AVE"
+1110 HEWITT AVE"
+1406 TTEREVE SE"
+2005 HEWITT AVE"
+2113 44TH ST SE"
+2117 LINCOLN ST"
+2312 75TH ST SE"
+2405 B STATE ST"
+2505 MADISON ST"
+2914 RUCKER AVE"
+3200 RUCKER AVE"
+3211 NORTON AVE"
+3804 FRIDAY AVE"
+4117 RUCKER AVE"
+5024 RUCKER AVE"
+5811 HIGHWAY PL"
+5815 HIGHWAY PL"
+6405 W BEECH ST"
+6525 OLYMPIC CT"
+7408 OLYMPIC DR"
+7530 CASCADE DR"
+UNKNOWN UNKNOWN"
+1001 SHUKSAN WAY"
+1210 MADRONA AVE"
+1325 MADRONA AVE"
+1433 MADRONA AVE"
+2025 FAIRFAX AVE"
+2120 PACIFIC AVE"
+2320 RAILWAY AVE"
+2609 WETMORE AVE"
+3111 WETMORE AVE"
+3302 LOMBARD AVE"
+3331 WETMORE AVE"
+3703 RAILWAY AVE"
+3731 FEDERAL AVE"
+4015 RAILWAY AVE"
+4401 THOMSON AVE"
+4407 FEDERAL AVE"
+4804 COLLEGE AVE"
+4818 43RD AVE SE"
+5401 BROADWAY SE"
+5431 BROADWAY SE"
+5520 WETMORE AVE"
+5610 BROADWAY SE"
+5627 WETMORE AVE"
+5721 BROADWAY SE"
+5831 BROADWAY SE"
+5904 BROADWAY SE"
+5912 BROADWAY SE"
+6504 HIGHLAND DR"
+6520 GATEWAY TER"
+6610 GATEWAY TER"
+6626 GATEWAY TER"
+6627 GATEWAY TER"
+6628 GATEWAY TER"
+6901 COLUMBIA CT"
+6902 COLUMBIA CT"
+6907 COLUMBIA CT"
+7018 WETMORE AVE"
+UNKNOWN, UNKNOWN"
+1612 HOLBROOK AVE"
+1722 HOLBROOK AVE"
+2132 HIGHLAND AVE"
+2230 HIGHLAND AVE"
+2318 HIGHLAND AVE"
+2514 HARRISON AVE"
+2517 VIRGINIA AVE"
+3500 TERMINAL AVE"
+4531 CRESCENT AVE"
+4629 WEST VIEW DR"
+5009 SEAHURST AVE"
+5117 WEST VIEW DR"
+5525 GLENWOOD AVE"
+6321 BROADWAY AVE"
+geometry_repaired"
+061-00371400001301"
+061-00371400002000"
+061-00392000003701"
+061-00392800900704"
+061-00392900800300"
+061-00392901000501"
+061-00393000001900"
+061-00393000002600"
+061-00393200100100"
+061-00393200302100"
+061-00393201002000"
+061-00393300001503"
+061-00393300001603"
+061-00393300003802"
+061-00393700101202"
+061-00394000003700"
+061-00394000006500"
+061-00394600000200"
+061-00394600000300"
+061-00394600000400"
+061-00394600000500"
+061-00394600000700"
+061-00394600000800"
+061-00398700200402"
+061-00400000000201"
+061-00400000000203"
+061-00400000001900"
+061-00407801700800"
+061-00410200013601"
+061-00411300401900"
+061-00417100000100"
+061-00436800001501"
+061-00436979201500"
+061-00436982300800"
+061-00436982303100"
+061-00437167200900"
+061-00437167703400"
+061-00437167800100"
+061-00437577002700"
+061-00437577100500"
+061-00437857000900"
+061-00439073901700"
+061-00439074202100"
+061-00439079403200"
+061-00439079700101"
+061-00439079700102"
+061-00439143200800"
+061-00439143201700"
+061-00439147502500"
+061-00439160801600"
+061-00439161500302"
+061-00439161602700"
+061-00439166300900"
+061-00439167803200"
+061-00439168003200"
+061-00439173800300"
+061-00439173800800"
+061-00439900900000"
+061-00439901000002"
+061-00439901000006"
+061-00449500011700"
+061-00451402500900"
+061-00451402501200"
+061-00451500300200"
+061-00453350602300"
+061-00453445303100"
+061-00470700200100"
+061-00477000600100"
+061-00477001400100"
+061-00480100200102"
+061-00480100200901"
+061-00480100301400"
+061-00480100301403"
+061-00495000101700"
+061-00495000202000"
+061-00495000503000"
+061-00495800200100"
+061-00495800201600"
+061-00495800401000"
+061-00495800500900"
+061-00495800801002"
+061-00500303100300"
+061-00500303300600"
+061-00500400701700"
+061-00500600002100"
+061-00500600004001"
+061-00500600004501"
+061-00505700001601"
+061-00505700003001"
+061-00505700003401"
+061-00505800000401"
+061-00516858002300"
+061-00517600000901"
+061-00530900000000"
+061-00531600002802"
+061-00531600002803"
+061-00531700500801"
+061-00544700304101"
+061-00544701300800"
+061-00544801300701"
+061-00544900601200"
+061-00545002000900"
+061-00545002601200"
+061-00545204201000"
+061-00549400101500"
+061-00549401000700"
+061-00553101700200"
+061-00556400005300"
+061-00561900202300"
+061-00562461100500"
+061-00562564502203"
+061-00563245900000"
+061-00576002600002"
+061-00578800300005"
+061-00580300000100"
+061-00580300001002"
+061-00580300001200"
+061-00581900000102"
+061-00581900008100"
+061-00582101500900"
+061-00591000201700"
+061-00593570100000"
+061-00593665702600"
+061-00602700702100"
+061-00605000301002"
+061-00605501400604"
+061-00605502400402"
+061-00605800001900"
+061-00605800003800"
+061-00605800006200"
+061-00606200002701"
+061-00606900200100"
+061-00612000003403"
+061-00612000003800"
+061-00612000003900"
+061-00612000004000"
+061-00612000004500"
+061-00612000008000"
+061-00620800000001"
+061-00638200000800"
+061-00661100010600"
+061-00664800030200"
+061-00670600200300"
+061-00682600000200"
+061-00683000102100"
+061-00684100100200"
+061-00685400100300"
+061-00693200720800"
+061-00694500100200"
+061-00697500110200"
+061-00702100100600"
+061-00708000004400"
+061-00727100101100"
+061-00733800000600"
+061-00767500000200"
+061-00767900001802"
+061-00797200300200"
+061-00807200000600"
+061-00814700000100"
+061-00827900010200"
+061-00829600020100"
+061-00832000000300"
+061-00847702400200"
+061-00850300000200"
+061-00850300000300"
+061-00850300000400"
+061-00850300000500"
+061-00850300000800"
+061-00850300001000"
+061-00850300001500"
+061-00850300001700"
+061-00867200000100"
+061-00924600000400"
+061-00984007564500"
+061-00984050103100"
+061-01086800000200"
+061-01161300095300"
+061-01162800098300"
+061-01168800000100"
+061-01168800000300"
+061-01175300000100"
+061-01184800095100"
+061-01229700000200"
+061-01236400000200"
+061-01237100000200"
+061-01238700000200"
+061-01241100000200"
+061-01246000000100"
+061-01248100000200"
+061-01251600000200"
+061-01254300000300"
+061-01254600000100"
+061-01255000000100"
+061-01255200000200"
+061-01255300000200"
+061-01255500000300"
+061-01255900000100"
+061-01256300000100"
+061-01256300000500"
+061-01256900000100"
+061-28040100300200"
+061-28040100304100"
+061-28050400100600"
+061-28050400400800"
+061-28050400401400"
+061-28050500202100"
+061-28050500202800"
+061-28050500203300"
+061-28050500203900"
+061-28050500205500"
+061-28050500206700"
+061-28050500403200"
+061-28050600400200"
+061-28050700104900"
+061-28050700202500"
+061-28050700203900"
+061-28050700306700"
+061-29043500403500"
+061-29043500404000"
+061-29043500404501"
+061-29043600310000"
+061-29043600408900"
+061-29051900201300"
+061-29052000105800"
+061-29052100200900"
+061-29052100201000"
+061-29052100201100"
+061-29052800101000"
+061-29052800300300"
+061-29052900200800"
+061-29052900201300"
+061-29053000201800"
+061-29053000203400"
+061-29053000301500"
+061-29053100201400"
+061-29053100201500"
+061-29053200402900"
+061-29053200403300"
+1005 HARBORVIEW LN"
+1902 MUKILTEO BLVD"
+2407 A LOMBARD AVE"
+3409 MCDOUGALL AVE"
+4727 EVERGREEN WAY"
+4815 EVERGREEN WAY"
+5201 EVERGREEN WAY"
+5612 EVERGREEN WAY"
+6600 EVERGREEN WAY"
+6604 B WETMORE AVE"
+6604 C WETMORE AVE"
+710 75TH ST UNIT 8"
+missing_parcel_uid"
+1127 74TH ST UNIT 3"
+1506 26TH ST UNIT 6"
+1605 36TH ST UNIT 2"
+2720 34TH ST UNIT 6"
+3414 CALIFORNIA AVE"
+500 SHARON CREST ST"
+6110 COMMERCIAL AVE"
+6223 CADY RD UNIT A"
+7104 LOWER RIDGE RD"
+901 WESTMINSTER CIR"
+902 WESTMINSTER CIR"
+904 WESTMINSTER CIR"
+905 WESTMINSTER CIR"
+906 WESTMINSTER CIR"
+907 WESTMINSTER CIR"
+1202 A 26TH ST STE 4"
+4319 HOYT AVE UNIT 3"
+5607 ROCKEFELLER AVE"
+unflagged_coincident"
+1612 33RD ST UNIT 106"
+2325 GRAND AVE UNIT 1"
+2922 W MARINE VIEW DR"
+3401 OAKES AVE UNIT 2"
+4724 W VIEW DR UNIT A"
+6100 COLBY AVE UNIT B"
+6100 COLBY AVE UNIT C"
+820 CADY RD UNIT G208"
+landuse_cd: 11 ‚â† 12"
+landuse_cd: 11 ‚â† 18"
+landuse_cd: 11 ‚â† 83"
+landuse_cd: 11 ‚â† 91"
+landuse_cd: 12 ‚â† 11"
+landuse_cd: 12 ‚â† 14"
+landuse_cd: 12 ‚â† 65"
+landuse_cd: 12 ‚â† 91"
+landuse_cd: 13 ‚â† 65"
+landuse_cd: 13 ‚â† 91"
+landuse_cd: 17 ‚â† 63"
+landuse_cd: 18 ‚â† 11"
+landuse_cd: 51 ‚â† 39"
+landuse_cd: 51 ‚â† 63"
+landuse_cd: 52 ‚â† 69"
+landuse_cd: 53 ‚â† 46"
+landuse_cd: 53 ‚â† 55"
+landuse_cd: 54 ‚â† 56"
+landuse_cd: 55 ‚â† 61"
+landuse_cd: 58 ‚â† 13"
+landuse_cd: 59 ‚â† 55"
+landuse_cd: 59 ‚â† 58"
+landuse_cd: 63 ‚â† 53"
+landuse_cd: 64 ‚â† 39"
+landuse_cd: 65 ‚â† 55"
+landuse_cd: 65 ‚â† 91"
+landuse_cd: 69 ‚â† 46"
+landuse_cd: 69 ‚â† 62"
+landuse_cd: 91 ‚â† 11"
+landuse_cd: 91 ‚â† 14"
+landuse_cd: 91 ‚â† 59"
+landuse_cd: 91 ‚â† 65"
+landuse_cd: 91 ‚â† 68"
+landuse_cd: 99 ‚â† 91"
+2130 RUCKER AVE UNIT 4"
+2209 MONROE AVE UNIT B"
+2210 73RD ST SE UNIT A"
+3209 HOYT AVE UNIT 302"
+5230 FLEMING ST UNIT A"
+6310 OLYMPIC DR UNIT A"
+7216 BEVERLY LN UNIT B"
+7414 CASCADE DR UNIT B"
+815 SIEVERS-DUECY BLVD"
+attribute_disagreement"
+1317 57TH ST SW UNIT X2"
+2619 RUCKER AVE UNIT 11"
+3428 BELL AVE UNIT 3426"
+5120 BEAUMONT DR UNIT B"
+5301 COLBY AVE UNIT 102"
+5620 WETMORE AVE UNIT B"
+6024 ROCKEFELLER AVE SE"
+2219 RUCKER AVE UNIT 102"
+3326 LOMBARD AVE UNIT 21"
+4510 OLYMPIC BLVD UNIT 2"
+4514 OLYMPIC BLVD UNIT 3"
+6307 BERKSHIRE DR UNIT B"
+7405 BEVERLY LN UNIT 201"
+state:061-00544700304101"
+state:061-00544801300701"
+state:061-00767900001802"
+state:061-28050600400200"
+5722 FLEMING ST UNIT A &B"
+7705 EVERGREEN WAY STE G9"
+county:061-00371400001301"
+county:061-00371400002000"
+county:061-00392000003701"
+county:061-00392800900704"
+county:061-00392900800300"
+county:061-00392901000501"
+county:061-00393000001900"
+county:061-00393000002600"
+county:061-00393200100100"
+county:061-00393200302100"
+county:061-00393201002000"
+county:061-00393300001503"
+county:061-00393300001603"
+county:061-00393300003802"
+county:061-00393700101202"
+county:061-00394000003700"
+county:061-00394000006500"
+county:061-00394600000200"
+county:061-00394600000300"
+county:061-00394600000400"
+county:061-00394600000500"
+county:061-00394600000700"
+county:061-00394600000800"
+county:061-00398700200402"
+county:061-00400000000201"
+county:061-00400000000203"
+county:061-00400000001900"
+county:061-00407801700800"
+county:061-00410200013601"
+county:061-00411300401900"
+county:061-00417100000100"
+county:061-00436800001501"
+county:061-00436979201500"
+county:061-00436982300800"
+county:061-00436982303100"
+county:061-00437167200900"
+county:061-00437167703400"
+county:061-00437167800100"
+county:061-00437577002700"
+county:061-00437577100500"
+county:061-00437857000900"
+county:061-00439073901700"
+county:061-00439074202100"
+county:061-00439079403200"
+county:061-00439079700101"
+county:061-00439079700102"
+county:061-00439143200800"
+county:061-00439143201700"
+county:061-00439147502500"
+county:061-00439160801600"
+county:061-00439161500302"
+county:061-00439161602700"
+county:061-00439166300900"
+county:061-00439167803200"
+county:061-00439168003200"
+county:061-00439173800300"
+county:061-00439173800800"
+county:061-00439900900000"
+county:061-00439901000002"
+county:061-00439901000006"
+county:061-00449500011700"
+county:061-00451402500900"
+county:061-00451402501200"
+county:061-00451500300200"
+county:061-00453350602300"
+county:061-00453445303100"
+county:061-00470700200100"
+county:061-00477000600100"
+county:061-00477001400100"
+county:061-00480100200102"
+county:061-00480100200901"
+county:061-00480100301400"
+county:061-00480100301403"
+county:061-00495000101700"
+county:061-00495000202000"
+county:061-00495000503000"
+county:061-00495800200100"
+county:061-00495800201600"
+county:061-00495800401000"
+county:061-00495800500900"
+county:061-00495800801002"
+county:061-00500303100300"
+county:061-00500303300600"
+county:061-00500400701700"
+county:061-00500600002100"
+county:061-00500600004001"
+county:061-00500600004501"
+county:061-00505700001601"
+county:061-00505700003001"
+county:061-00505700003401"
+county:061-00505800000401"
+county:061-00516858002300"
+county:061-00517600000901"
+county:061-00530900000000"
+county:061-00531600002802"
+county:061-00531600002803"
+county:061-00531700500801"
+county:061-00544701300800"
+county:061-00544900601200"
+county:061-00545002000900"
+county:061-00545002601200"
+county:061-00545204201000"
+county:061-00549400101500"
+county:061-00549401000700"
+county:061-00553101700200"
+county:061-00556400005300"
+county:061-00561900202300"
+county:061-00562461100500"
+county:061-00562564502203"
+county:061-00563245900000"
+county:061-00576002600002"
+county:061-00578800300005"
+county:061-00580300000100"
+county:061-00580300001002"
+county:061-00580300001200"
+county:061-00581900000102"
+county:061-00581900008100"
+county:061-00582101500900"
+county:061-00591000201700"
+county:061-00593570100000"
+county:061-00593665702600"
+county:061-00602700702100"
+county:061-00605000301002"
+county:061-00605501400604"
+county:061-00605502400402"
+county:061-00605800001900"
+county:061-00605800003800"
+county:061-00605800006200"
+county:061-00606200002701"
+county:061-00606900200100"
+county:061-00612000003403"
+county:061-00612000003800"
+county:061-00612000003900"
+county:061-00612000004000"
+county:061-00612000004500"
+county:061-00612000008000"
+county:061-00620800000001"
+county:061-00638200000800"
+county:061-00661100010600"
+county:061-00664800030200"
+county:061-00670600200300"
+county:061-00682600000200"
+county:061-00683000102100"
+county:061-00684100100200"
+county:061-00685400100300"
+county:061-00693200720800"
+county:061-00694500100200"
+county:061-00697500110200"
+county:061-00702100100600"
+county:061-00708000004400"
+county:061-00727100101100"
+county:061-00733800000600"
+county:061-00767500000200"
+county:061-00797200300200"
+county:061-00807200000600"
+county:061-00814700000100"
+county:061-00827900010200"
+county:061-00829600020100"
+county:061-00832000000300"
+county:061-00847702400200"
+county:061-00850300000200"
+county:061-00850300000300"
+county:061-00850300000400"
+county:061-00850300000500"
+county:061-00850300000800"
+county:061-00850300001000"
+county:061-00850300001500"
+county:061-00850300001700"
+county:061-00867200000100"
+county:061-00924600000400"
+county:061-00984007564500"
+county:061-00984050103100"
+county:061-01086800000200"
+county:061-01161300095300"
+county:061-01162800098300"
+county:061-01168800000100"
+county:061-01168800000300"
+county:061-01175300000100"
+county:061-01184800095100"
+county:061-01229700000200"
+county:061-01236400000200"
+county:061-01237100000200"
+county:061-01238700000200"
+county:061-01241100000200"
+county:061-01246000000100"
+county:061-01248100000200"
+county:061-01251600000200"
+county:061-01254300000300"
+county:061-01254600000100"
+county:061-01255000000100"
+county:061-01255200000200"
+county:061-01255300000200"
+county:061-01255500000300"
+county:061-01255900000100"
+county:061-01256300000100"
+county:061-01256300000500"
+county:061-01256900000100"
+county:061-28040100300200"
+county:061-28040100304100"
+county:061-28050400100600"
+county:061-28050400400800"
+county:061-28050400401400"
+county:061-28050500202100"
+county:061-28050500202800"
+county:061-28050500203300"
+county:061-28050500203900"
+county:061-28050500205500"
+county:061-28050500206700"
+county:061-28050500403200"
+county:061-28050700104900"
+county:061-28050700202500"
+county:061-28050700203900"
+county:061-28050700306700"
+county:061-29043500403500"
+county:061-29043500404000"
+county:061-29043500404501"
+county:061-29043600310000"
+county:061-29043600408900"
+county:061-29051900201300"
+county:061-29052000105800"
+county:061-29052100200900"
+county:061-29052100201000"
+county:061-29052100201100"
+county:061-29052800101000"
+county:061-29052800300300"
+county:061-29052900200800"
+county:061-29052900201300"
+county:061-29053000201800"
+county:061-29053000203400"
+county:061-29053000301500"
+county:061-29053100201400"
+county:061-29053100201500"
+county:061-29053200402900"
+county:061-29053200403300"
+7030 LOWER RIDGE RD UNIT A"
+2200 W MARINE VIEW DR BLDG A"
+6901 COMMERCIAL AVE UNIT 6903"!
+061-00393300001503 (3 sqft, 0%)"!
+061-00393300001603 (3 sqft, 0%)"!
+061-00495000201700 (9 sqft, 0%)"!
+061-29052800101000 (8 sqft, 0%)"!
+061-29052800300300 (8 sqft, 0%)"!
+061-29053200402900 (2 sqft, 0%)"!
+061-29053200403300 (2 sqft, 0%)""
+ 061-00392000003701 (54 sqft, 0%)""
+ 061-00439900900000 (17 sqft, 0%)""
+ 061-00530900000000 (15 sqft, 0%)""
+ 061-00620800000001 (15 sqft, 0%)""
+ 061-01175300000100 (54 sqft, 0%)"$
+"061-00516864404800 (112 sqft, 13%)"%
+#061-00393200102701 (924 sqft, 100%)"&
+$061-00393200102701 (1005 sqft, 100%)"&
+$061-00480100301400 (11177 sqft, 13%)"&
+$061-29043500404501 (10669 sqft, 48%)"&
+$061-29043500404501 (16413 sqft, 61%)"&
+$061-29052100201100 (18229 sqft, 13%)"&
+$061-29052100201100 (41333 sqft, 30%)"&
+$061-29052100201100 (71324 sqft, 51%)"&
+$061-29052900303300 (2583 sqft, 100%)"'
+%061-00437577002701 (17986 sqft, 100%)"'
+%061-00439079700101 (42274 sqft, 100%)"'
+%061-00439079700101 (57988 sqft, 100%)"'
+%061-00439901000001 (22555 sqft, 100%)"'
+%061-00480100301400 (44812 sqft, 100%)"'
+%061-00984050103100 (92589 sqft, 100%)"'
+%061-28050400400800 (76619 sqft, 100%)"'
+%061-28050400401400 (76619 sqft, 100%)"'
+%061-29052900201300 (92589 sqft, 100%)")
+'061-29053000201800 (1661958 sqft, 100%)")
+'061-29053000203400 (1661958 sqft, 100%)",
+*situs_address: 2312 75TH ST SE ‚â† UNKNOWN"-
++quarantine:0163d168c1da1b00e01d6d10d9f9e4cf"-
++quarantine:0498faecbb1ba8753ea4fe2b2e44d9a9"-
++quarantine:05a0980d2573a263bbd0f3628a38e6ad"-
++quarantine:0fed51ae3c907b4132e5798f69e43d4c"-
++quarantine:1844b5fa786cefbe73fb630fb1a236bd"-
++quarantine:1b481b6c442812a8e3845d63084db032"-
++quarantine:1b81dbf3c145bc4b70087e69d49f475f"-
++quarantine:1c754a3efa84ae741a281d1f33087186"-
++quarantine:1e2e73332c8c0093e1a8dc4f5ebe9ec8"-
++quarantine:205d07ccb7e9039948d935621cedb8d1"-
++quarantine:21d72189e2d373f603319901d38d67dd"-
++quarantine:2539698ccc56d5d7b216439622de13cd"-
++quarantine:2b0d28e6435df71d70e964d845e19f97"-
++quarantine:2d42ee6f17c38c63c3ff713d24db6f4b"-
++quarantine:2d4f78cf0b1389044023e4b2dc1e96c6"-
++quarantine:2ec89496cad386e58d2dbf9d896e80d0"-
++quarantine:30e068f088dae26b037931150cafd95e"-
++quarantine:3161ba9b1626690123ff0d32ea6e98ed"-
++quarantine:37f4695260b23908a60426342bbef85c"-
++quarantine:3c2c40ee2131949960082df38394212a"-
++quarantine:3c4acc4ec73ddf095f296224dd6ffed7"-
++quarantine:409ae9bf3a22479baee15ef06de69d67"-
++quarantine:41a6e29482204afe078d24896033b109"-
++quarantine:4309d8575342c5fdc0313fa8c6783205"-
++quarantine:441f73516cf7251dd39daf6524a6f885"-
++quarantine:471b02ed7cc22368f8d8ba47c38e771d"-
++quarantine:48090420fa8de8e2c98a50c5fc5c089c"-
++quarantine:49d0d3745cda8f209d4e97584e3fba7b"-
++quarantine:4adf33fac45024139662a2eb3ba4ff69"-
++quarantine:4c0a537524aa600ae2ee2196397e3dd8"-
++quarantine:4d52dc7905969b7eb479380b8627b7a3"-
++quarantine:4e349b22992e698d32dc3724d6383198"-
++quarantine:4ecca9c2c81572a6be8d4c788515fba4"-
++quarantine:4f7d6b5b404a195e0406ba859a70f678"-
++quarantine:5094721ff4ee711d988751c35bdb31f5"-
++quarantine:513aaf80d0a62f47de80c61738f3b7ce"-
++quarantine:54f0c7b0a15083893e67646e0cd5ee70"-
++quarantine:55482f202f7aa71daa1fe322e829a52a"-
++quarantine:56b5213edb944fe930f0786e14c74615"-
++quarantine:57e674871bca6744a2b33172e1a10dd2"-
++quarantine:59de80be64a73db7c94d44efa6e6e658"-
++quarantine:5a2457a743278a64193df27e33a7d7b1"-
++quarantine:5a381022484e41e103168997ead27f19"-
++quarantine:5da7d41be5ba0e0db5844a8fe01e9023"-
++quarantine:5e3f13e81b32188dde1c5abf6cbb5cef"-
++quarantine:60d2be83746fa27567dbe42b658fc682"-
++quarantine:6195e592bea1c1fb64a80fb8e8f5fc24"-
++quarantine:61b7e35393742a2bf29e720c2abccd25"-
++quarantine:636db8579a7f341f658084549c449ad2"-
++quarantine:6629622f95085b992482526bd00a9b60"-
++quarantine:6a2deb13ec8927ed3f82cbdb2f57e680"-
++quarantine:6a54426aa5eefca164ce482e3fb78070"-
++quarantine:6b4c024b9a361dfdff4e76420abe06dc"-
++quarantine:6be1e99610b9c704a11508f88fba6903"-
++quarantine:6beabf3e41e0872c0320d047188740c3"-
++quarantine:6d190cadf823eb49f937abcb8d0e5e43"-
++quarantine:6f7bf1b7cf5c791c00d6fd99a6884009"-
++quarantine:719dc8b850c4a1b42c7fc2bacff64ebb"-
++quarantine:74803ad05b94144a5e62a20a93cc7e20"-
++quarantine:760948b0f754e2c73872999d0ed818b0"-
++quarantine:767a3c894ceab928c6b38adddba5aafa"-
++quarantine:7c4f70359029d84bb98c85b334776269"-
++quarantine:7f642382b03dbc2a80a400acbee7bfd6"-
++quarantine:80556cbdb35062b8603ccfea300a9d56"-
++quarantine:8b1fa5a18cf6d17bc3f7cd57b2a5d5b8"-
++quarantine:8d38a7bb1df785461c31ee954ba55a65"-
++quarantine:8d9f37efc10354238d8543fecead4254"-
++quarantine:8e23ffb1cfff9330648e91dae7032c91"-
++quarantine:909f2cb78b5df22c007f7029241a9bc3"-
++quarantine:9205eb6acce02f2562e64b5fecc765ba"-
++quarantine:94a47be4c5b59fa5916c34f92154a261"-
++quarantine:950563b9274ebc9a6a202ffac99240f2"-
++quarantine:9a9cc6acadb5fb363a033c48e13bbe24"-
++quarantine:9f9f0bc860f6e5bd7bb7aa203c0131e3"-
++quarantine:a1c5df9a86a615328e25fa10213283b6"-
++quarantine:aa9e998ebc70ee95e98eb53a6ff0027b"-
++quarantine:aae9d04bcc36243a071756383ba250b9"-
++quarantine:ab1fd9d45aace0152be7002c2cf25464"-
++quarantine:ab8e6d3bddf8986f1c6c9a369d4a03e9"-
++quarantine:abc5dd8f845aeca866afef3cc785f59d"-
++quarantine:b0c386721e256a44d6d302c85670da77"-
++quarantine:b46e8cb7fcf76b7ccb90d63ee60a2c3b"-
++quarantine:b53e6f47a78667f43dff27098ee3e275"-
++quarantine:b983d0f61ecda6fa88b072a2bac936b3"-
++quarantine:ba165c670196ee28911a3f0cb22caf75"-
++quarantine:bd47468fd7c8d47761450fe574f66841"-
++quarantine:be65a4efbe93c313b36fa099e8c9851a"-
++quarantine:bfc9611d7f34b1fd56c624383f3ff64c"-
++quarantine:c47d820924707a453c97c0a1dd468996"-
++quarantine:c7fc72fc852406461abbd0eb22dfc61b"-
++quarantine:c921966f9f7bdb29371ce47d421c757c"-
++quarantine:c98130f1080ad889b9518ad6c1636876"-
++quarantine:ca4b2d60995a0c61999d42c3c57d0f59"-
++quarantine:cbd8c458d66e22c3f107804f50395f34"-
++quarantine:cc785fb0d2f07a044551a4d97acbf098"-
++quarantine:d0656af4f917b98f1405f16d36f63450"-
++quarantine:d11fd8c36cc0fa28f60651bd49d5a5b5"-
++quarantine:d1d66bc66728c352cf2ac60ddb253a05"-
++quarantine:dd18fb31dca63e5fc059fad994018c50"-
++quarantine:dd341f2fd658e02b8ad21f625b5b99a3"-
++quarantine:e1b686605ff65f25e147d25e4038d63e"-
++quarantine:e24e883677fae7dd299f3d673e4680d4"-
++quarantine:e3fdedf78b60fb3156ae30aa9af054f9"-
++quarantine:e5fe283698ddff03d33c256c7fe251f4"-
++quarantine:e6d16411741b7b87ea8965d0d6f99629"-
++quarantine:e95b0cd54d836412ea6e8226f8496577"-
++quarantine:e9cab965aec33af552b40f28f153ef38"-
++quarantine:eb260243e03d45a6138a5bab6f9613ed"-
++quarantine:ee7d1c66418c707ea4a8da1beac62082"-
++quarantine:ef75ca30106b221f754bb258eca8b5c5"-
++quarantine:f0e0e83f82d702843c694210bc0771d2"-
++quarantine:f1400bb120f025d669be30ce5a3cb8f0"-
++quarantine:f445127083ef50667ba054b2cb507794"-
++quarantine:f4c52f0a524ab5dd46d07b6cd82cc674"-
++quarantine:f4e8509d480d398cf7d597c173558e27"-
++quarantine:f66ea0756d9f6ecae47d782754032eee"-
++quarantine:fa5ce75614badb071374cbe3e0aba002"-
++quarantine:facf408d73b1c65c73fb7d656129112e"-
++quarantine:fb54056d450d72fd04ec7e1822e165c4"-
++quarantine:fbccdd931543630ff54e70a38443628a"-
++quarantine:fedbc8de382064534fa7f3dc4f09d72c"-
++quarantine:ffd13abcbd92d23fed81b2a6eb15abc1"-
++situs_address: 2300 WALNUT ST ‚â† WALNUT ST"-
++situs_address: 4932 DOVER ST ‚â† 4932 DOVER"-
++situs_address: BROADWAY SE ‚â† BROADWAY  SE"/
+-situs_address: 327 42ND ST SW ‚â† 327 42ND ST"/
+-situs_address: 525 75TH ST SE ‚â† 525 75TH ST"0
+.situs_address: 102 E BEECH ST ‚â† 102 BEECH ST"0
+.situs_address: 614 MORGAN CT ‚â† 614 MORGAN RD"1
+/situs_address: 1005 B LANE PL ‚â† 1005B LANE PL"1
+/situs_address: 104 FOREST CT ‚â† 104 FOREST CRT"1
+/situs_address: 106 FOREST CT ‚â† 106 FOREST CRT"1
+/situs_address: 110 FOREST CT ‚â† 110 FOREST CRT"1
+/situs_address: 113 FOREST CT ‚â† 113 FOREST CRT"1
+/situs_address: 114 FOREST CT ‚â† 114 FOREST CRT"1
+/situs_address: 117 FOREST CT ‚â† 117 FOREST CRT"1
+/situs_address: 120 FOREST CT ‚â† 120 FOREST CRT"1
+/situs_address: 122 FOREST CT ‚â† 122 FOREST CRT"1
+/situs_address: 124 FOREST CT ‚â† 124 FOREST CRT"1
+/situs_address: 126 FOREST CT ‚â† 126 FOREST CRT"1
+/situs_address: 260 GRAND AVE ‚â† 260/ GRAND AVE"1
+/situs_address: 3520 PAINE AVE ‚â† 3520 PAINE ST"2
+0situs_address: 1001 SHUKSAN WAY ‚â† 1001 SHUKSAN"2
+0situs_address: 1210 MADRONA AVE ‚â† 1210 MADRONA"2
+0situs_address: 1325 MADRONA AVE ‚â† 1325 MADRONA"2
+0situs_address: 6405 W BEECH ST ‚â† 6405 BEECH ST"2
+0situs_address: 6407 A CADY RD ‚â† 6407-A CADY RD"2
+0situs_address: 6407 B CADY RD ‚â† 6407-B CADY RD"3
+1situs_address: 2106 FULTON ST ‚â† 2106 FULTON AVE"3
+1situs_address: 2405 B STATE ST ‚â† 2405B STATE ST"3
+1situs_address: 3415 HOYT AVE ‚â† 3415 HOYT AVE SE"3
+1situs_address: 710 75TH ST UNIT 8 ‚â† 710 75TH ST"3
+1situs_address: 7414 CASCADE DR UNIT B ‚â† UNKNOWN"4
+2situs_address: 2113 44TH ST SE ‚â† 2113 S 44TH AVE"4
+2situs_address: 2216 BROADWAY ‚â† 2216 BROADWAY AVE"4
+2situs_address: 2620 BROADWAY ‚â† 2620 BROADWAY AVE"4
+2situs_address: 5620 WETMORE AVE UNIT B ‚â† UNKNOWN"5
+3situs_address: 1127 74TH ST UNIT 3 ‚â† 1127 74TH ST"5
+3situs_address: 1406 TTEREVE SE ‚â† 1406 TTEREVE  SE"5
+3situs_address: 1506 26TH ST UNIT 6 ‚â† 1506 26TH ST"5
+3situs_address: 1605 36TH ST UNIT 2 ‚â† 1605 36TH ST"5
+3situs_address: 2720 34TH ST UNIT 6 ‚â† 2720 34TH ST"5
+3situs_address: 5501 COLBY AVE ‚â† 5501 COLBY AVE SE"5
+3situs_address: 5724 LOWELL RD ‚â† 5724 LOWELL RD SE"5
+3situs_address: 6028 OAKES AVE ‚â† 6028 OAKES AVE SE"5
+3situs_address: 6223 CADY RD UNIT A ‚â† 6223 CADY RD"5
+3situs_address: 6304 OAKES AVE ‚â† 6304 OAKES AVE SE"5
+3situs_address: 6520 GATEWAY TER ‚â† 6520 GATEWAY TE"5
+3situs_address: 6525 OLYMPIC CT ‚â† 6525 OLYMPIC CRT"5
+3situs_address: 6610 GATEWAY TER ‚â† 6610 GATEWAY TE"5
+3situs_address: 6626 GATEWAY TER ‚â† 6626 GATEWAY TE"5
+3situs_address: 6627 GATEWAY TER ‚â† 6627 GATEWAY TE"5
+3situs_address: 6628 GATEWAY TER ‚â† 6628 GATEWAY TE"6
+4situs_address: 820 CADY RD UNIT G208 ‚â† 820 CADY RD"7
+5situs_address: 1612 33RD ST UNIT 106 ‚â† 1612 33RD ST"7
+5situs_address: 2117 LINCOLN ST ‚â† 2117 LINCOLN ST SE"7
+5situs_address: 2230 HIGHLAND AVE ‚â† 2230 HIGHLAND ST"7
+5situs_address: 3211 NORTON AVE ‚â† 3211 NORTON AVE SE"7
+5situs_address: 3804 FRIDAY AVE ‚â† 3804 FRIDAY AVE SE"7
+5situs_address: 4319 HOYT AVE UNIT 3 ‚â† 4319 HOYT AVE"7
+5situs_address: 4531 CRESCENT AVE ‚â† 4531 CRESCENT DR"7
+5situs_address: 5401 BROADWAY SE ‚â† 5401 BROADWAY  SE"7
+5situs_address: 5431 BROADWAY SE ‚â† 5431 BROADWAY  SE"7
+5situs_address: 5525 GLENWOOD AVE ‚â† 5525 GLENWOOD DR"7
+5situs_address: 5610 BROADWAY SE ‚â† 5610 BROADWAY  SE"7
+5situs_address: 5613 BROADWAY ‚â† 5613 BROADWAY AVE SE"7
+5situs_address: 5721 BROADWAY SE ‚â† 5721 BROADWAY  SE"7
+5situs_address: 5831 BROADWAY SE ‚â† 5831 BROADWAY  SE"7
+5situs_address: 5904 BROADWAY SE ‚â† 5904 BROADWAY  SE"7
+5situs_address: 5912 BROADWAY SE ‚â† 5912 BROADWAY  SE"7
+5situs_address: 6901 COLUMBIA CT ‚â† 6901 COLUMBIA AVE"7
+5situs_address: 6902 COLUMBIA CT ‚â† 6902 COLUMBIA CRT"7
+5situs_address: 6907 COLUMBIA CT ‚â† 6907 COLUMBIA CRT"7
+5situs_address: 7408 OLYMPIC DR ‚â† 7408 OLYMPIC DR SE"8
+6situs_address: 2210 73RD ST SE UNIT A ‚â† 2210 73RD ST"9
+7situs_address: 1612 HOLBROOK AVE ‚â† 1612 HOLBROOKE AVE"9
+7situs_address: 2025 FAIRFAX AVE ‚â† 2025 FAIRFAX AVE SE"9
+7situs_address: 2325 GRAND AVE UNIT 1 ‚â† 2325 GRAND AVE"9
+7situs_address: 2407 A LOMBARD AVE ‚â† 2407A LOMBARD AVE"9
+7situs_address: 3209 HOYT AVE UNIT 302 ‚â† 3209 HOYT AVE"9
+7situs_address: 3302 LOMBARD AVE ‚â† 3302 LOMBARD AVE SE"9
+7situs_address: 3331 WETMORE AVE ‚â† 3331 WETMORE AVE SE"9
+7situs_address: 3401 OAKES AVE UNIT 2 ‚â† 3401 OAKES AVE"9
+7situs_address: 3731 FEDERAL AVE ‚â† 3731 FEDERAL AVE SE"9
+7situs_address: 4804 COLLEGE AVE ‚â† 4804 COLLEGE AVE SE"9
+7situs_address: 5520 WETMORE AVE ‚â† 5520 WETMORE AVE SE"9
+7situs_address: 6604 B WETMORE AVE ‚â† 6604B WETMORE AVE"9
+7situs_address: 6604 C WETMORE AVE ‚â† 6604C WETMORE AVE":
+8situs_address: 3428 BELL AVE UNIT 3426 ‚â† 3428 BELL AVE";
+9situs_address: 1005 HARBORVIEW LN ‚â† 1005 HARBOR VIEW LN";
+9situs_address: 2130 RUCKER AVE UNIT 4 ‚â† 2130 RUCKER AVE";
+9situs_address: 5301 COLBY AVE UNIT 102 ‚â† 5301 COLBY AVE";
+9situs_address: 901 WESTMINSTER CIR ‚â† 901 WESTMINSTER CI";
+9situs_address: 902 WESTMINSTER CIR ‚â† 902 WESTMINSTER CI";
+9situs_address: 904 WESTMINSTER CIR ‚â† 904 WESTMINSTER CI";
+9situs_address: 905 WESTMINSTER CIR ‚â† 905 WESTMINSTER CI";
+9situs_address: 906 WESTMINSTER CIR ‚â† 906 WESTMINSTER CI";
+9situs_address: 907 WESTMINSTER CIR ‚â† 907 WESTMINSTER CI"<
+:situs_address: 1902 MUKILTEO BLVD ‚â† 1902 W MUKILTEO BLVD"<
+:situs_address: 2619 RUCKER AVE UNIT 11 ‚â† 2619 RUCKER AVE"=
+;situs_address: 1202 A 26TH ST STE 4 ‚â† 1202A 26TH ST STE 4"=
+;situs_address: 2219 RUCKER AVE UNIT 102 ‚â† 2219 RUCKER AVE"=
+;situs_address: 5120 BEAUMONT DR UNIT B ‚â† 5120 BEAUMONT DR"=
+;situs_address: 7405 BEVERLY LN UNIT 201 ‚â† 7405 BEVERLY LN">
+<situs_address: 3326 LOMBARD AVE UNIT 21 ‚â† 3326 LOMBARD AVE">
+<situs_address: 5722 FLEMING ST UNIT A &B ‚â† 5722 FLEMING ST">
+<situs_address: 6310 OLYMPIC DR UNIT A ‚â† 6310 OLYMPIC DR SE"?
+=situs_address: 4510 OLYMPIC BLVD UNIT 2 ‚â† 4510 OLYMPIC BLVD"?
+=situs_address: 4514 OLYMPIC BLVD UNIT 3 ‚â† 4514 OLYMPIC BLVD"?
+=situs_address: 6110 COMMERCIAL AVE ‚â† 6110 COMMERCIAL AVE SE"?
+=situs_address: 6307 BERKSHIRE DR UNIT B ‚â† 6307 BERKSHIRE DR"A
+?situs_address: 7705 EVERGREEN WAY STE G9 ‚â† 7601 EVERGREEN WAY"B
+@situs_address: 2200 W MARINE VIEW DR BLDG A ‚â† 2600 FEDERAL AVE"D
+B061-00439901000006 (17 sqft, 0%); 061-00439901000005 (17 sqft, 0%)"D
+Bsitus_address: 1317 57TH ST SW UNIT X2 ‚â† 1317 56TH ST SW UNIT X2"F
+Dsitus_address: 6901 COMMERCIAL AVE UNIT 6903 ‚â† 6901 COMMERCIAL AVE"F
+Dsitus_address: 7530 CASCADE DR ‚â† 75TH ST SE; landuse_cd: 76 ‚â† 74"J
+H061-00480100301400 (29338 sqft, 34%); 061-29052100201100 (8175 sqft, 6%)"L
+J061-00505700003001 (16413 sqft, 61%); 061-29043500403500 (10669 sqft, 48%)"L
+J061-00601066500202 (3502 sqft, 100%); 061-00439166502804 (1106 sqft, 100%)"N
+L061-29052900200800 (57988 sqft, 100%); 061-00439079700102 (42274 sqft, 100%)"N
+Lsitus_address: 7018 WETMORE AVE ‚â† UNKNOWN; situs_city: EVERETT ‚â† UNKNOWN"V
+Tsitus_address: 5627 WETMORE AVE ‚â† 5627 WETMORE AVE SE; situs_zip5: 98201 ‚â† 98203"[
+Ysitus_address: 2922 W MARINE VIEW DR ‚â† UNKNOWN UNKNOWN; situs_city: EVERETT ‚â† UNKNOWN"\
+Zsitus_address: 5230 FLEMING ST UNIT A ‚â† UNKNOWN UNKNOWN; situs_city: EVERETT ‚â† UNKNOWN"s
+q061-00480100301403 (44812 sqft, 100%); 061-00480100200901 (29338 sqft, 34%); 061-00480100200102 (11177 sqft, 13%)"ó
+î061-29052100201000 (71324 sqft, 51%); 061-29052100200900 (41333 sqft, 30%); 061-00563245900000 (18229 sqft, 13%); 061-00480100200901 (8175 sqft, 6%)"   ?"  Ä>"  ‡?"	
+◊£p=
++@"	
+◊£p=
+∑?"	
+◊£p=
+«?"	
+◊£p=
+◊?"	
+◊£p=
+Á?"	ÆG·z@"	ÆG·z)@"	ÖÎQ∏’?"	ÖÎQ∏˘?"	)\è¬ı(0@"	)\è¬ı(B@"	)\è¬ı(º?"	)\è¬ı(Ã?"	333333*@"	333333√?"	333333”?"	333333„?"	33333≥!@"	=
+◊£p=⁄?"	=
+◊£p]@@"	H·zÆG—?"	R∏ÖÎQ»?"	R∏ÖÎQÿ?"	R∏ÖÎQË?"	\è¬ı(\@"	\è¬ı(\*@"	\è¬ı(‹"@"	ffffff@"	q=
+◊£C@"	q=
+◊£pÕ?"	q=
+◊£p›?"	{ÆG·z
+@"	{ÆG·z§?"	{ÆG·z¥?"	{ÆG·zƒ?"	{ÆG·z‘?"	{ÆG·z¯?"	{ÆG·z¸?"	{ÆG·˙=@"	ÖÎQ∏-@"	ÖÎQ∏Ö€?"	è¬ı(\è“?"	öôôôôô©?"	öôôôôôπ?"	öôôôôô…?"	öôôôôôŸ?"	öôôôôô·?"	öôôôôôÈ?"	§p=
+◊£¿?"	§p=
+◊£–?"	§p=
+◊£‡?"	ÆG·zÆ@"	ÆG·zÆ@"	ÆG·zÆ@"	ÆG·zÆ@"	ÆG·zÆ4@"	∏ÖÎQ∏+@"	∏ÖÎQ∏û?"	∏ÖÎQ∏Æ?"	∏ÖÎQ∏æ?"	∏ÖÎQ∏Œ?"	∏ÖÎQ∏ﬁ?"	√ı(\è¬@"	√ı(\è¬≈?"	√ı(\è¬’?"	◊£p=
+W*@"	◊£p=
+◊$@"	◊£p=
+◊”?"	·zÆG· ?"	·zÆG·⁄?"	·zÆG·˙?"	ÏQ∏ÖÎ@"	ÏQ∏ÖÎ@"	ÏQ∏ÖÎ±?"	ÏQ∏ÖÎ¡?"	ÏQ∏ÖÎ—?"	ÏQ∏ÖÎÈ?"	ˆ(\è¬ı @"  " " " ÄÖ" Äë" Äß" Ä≤" Äµ" Ä∏" Äπ" Ä¿" Ä…	" Ä " Ä”" Ä÷" Äﬁ" Ä‚	" Ä„C" ÄÎ" ÄÙ" Ä˘+" Ä˙" ÑÑ" Ñä" Ññ" Ñô" Ñ¢" Ñπ" Ñ⁄" Ñ„" Ñ‰" Ñ‰ê" à'" àâ
+" àç" àîI" àò" à°" à®S" à¬" à≈¨" àÕ" à–ô" àﬁ" àﬂ" à‰?" àÓ" àÒ" åÄ" åä" å¿" å…" åÃ" åﬂ" åı" ê5" êâ" êï" ê§" êß" ê©" ê≈" ê–" ê‹" ê‡" êÈ" ê˜" ê˛	" îâ" îç1" îì" îù" î´" î’2" îÊ" îÒ" òÑ" òç" òò" òõ" ò§í" òß" ò´" ò≥" ò√" ò≈" ò—ª" ò÷" ò„" òÒ" òÚ" ò˙" úñ	" úüµ" úµ9" ú∫" úæ" ú“" ú˘" ú˝" †" †ò" †ú" †Ø" †∑" †Ω" †ƒ" †◊" †⁄" †€" †‹" †›" †„" †È" †Î" †Û" †ÛH" †˙" §é" §ñH" §µ" §Œ" §–" §÷	" §˙" ®" ®Å" ®ó" ®°" ®¢%" ®®
+" ®∞" ®∫" ®Ω" ®Â" ®ˆ"" ®˚1" ¨â" ¨å" ¨í" ¨ò" ¨≠" ¨∑J" ¨”" ¨‘8" ¨ﬂ" ¨˚" ¨¸" ∞	" ∞;" ∞¶ " ∞ßA" ∞™@" ∞´" ∞Ω" ∞æ" ∞·" ∞Ò " ¥í" ¥®" ¥©˙" ¥π" ¥º" ¥›" ¥Ú¶" ¥˝" ∏¥ " ∏ÕË" ∏’" ∏÷Â" ∏ÿ" ∏€" ∏Ó" ∏Û$" º7" ºëG" ºõ" ºß" º≠" º≤
+" º∫" ºÃ" ºﬁ" ¿à" ¿ã" ¿Øˇ" ¿≤" ¿¥" ¿πU" ¿ª" ¿»" ¿⁄" ¿Ï" ¿Ô" ¿" ¿¸" ¿ˇ" ƒE" ƒÄ" ƒí" ƒÆ" ƒ≥" ƒ¥" ƒø" ƒ»1" ƒ◊" ƒ€" ƒÂ" ƒÈ" ƒÏ" ƒ" ƒ¸¢" »" »â" »ë" »ó" »ò	" »ö" »ù" »¢" »£" »¶" »≤" »∏" »≈" »∆" »÷" »Ú" Ã!" Ãç" Ãô" Ã§" Ã¨" Ã∑" ÃÃ," ÃË" –Ç" –Ö™" –ã®" –ê" –ò" –ô" –†" –£
+" –ß" –√)" –«" ––ë" –Ú" –Ù" ‘å" ‘ç" ‘ò" ‘¢" ‘®" ‘øÃ	" ‘√÷" ‘›" ÿÜ" ÿã" ÿû" ÿû:" ÿØ," ÿø" ÿﬁ_" ÿﬂ" ÿÂ" ÿÓ" ÿˆ" ‹é1" ‹ƒ" ‹»" ‹Ã" ‹Ú" ‹¸" ‡+" ‡å" ‡í" ‡ú" ‡™" ‡∑" ‡’–" ‡‹" ‡Ê" ‡µ" ‰}" ‰Å" ‰ç" ‰ö:" ‰ù" ‰¢" ‰¨" ‰Ø" ‰øO" ‰ﬂ
+" ‰ÛF" ‰˚	" Ë" Ëç" Ëí" Ëì" Ëï" Ë†" Ë£" Ëµ" Ëª" Ëº" Ëø" Ë»" Ë…5" Ë‘" Ë◊" ËŸ" Ë⁄" Ë„" Ë‰" ËÏ" ËÚ" ËÙ" Ï«" Ïˇ" G" ü" •" Ø" »" Õ" ›" ﬂ" ‰" Ê" Ùà" Ùä" Ùå" Ùú" Ùù" Ù†" Ùµ" Ù∂" Ùº" Ùæ" Ù∆" Ù«" Ù”" Ù·" ÙË" ¯Ä" ¯â" ¯â*" ¯∆" ¯Ÿ " ¯ﬁ" ¯˙›" ¯˛˙" ¸" ¸Ä" ¸Ñ´" ¸á" ¸ê" ¸ö" ¸õ" ¸û" ¸≈" ¸ " ¸”" ¸ﬂ" ¸Í" ¸ˆ" ¸˜"8 "8<& ¥%+.“““““	“
+”“Ø1˜C"	¿,è   <& Ô%+.“““““	“
+”“Ø1¯C"	¨0ã   ;& ¿%+.“““““	“
+”“Ø1¸C"	ö2{   =& ù%+.“““““	“
+”“Ø1ıG"	‘"" ,	@& Í%+.“““““	“
+”“Ø1üG"	¯¶*	 	W= ·åå%+Å(ê
+‰
+ñ'““”““	“
+““®ˆ†G"	Ê‹* $9 	g= ‰ìì%+ı(’	ã	§'““”““	“
+““Åˆ∞A"!	ñ+b,	R.|õ$a  í  ü;& ⁄%+.“““““	“
+”“Ø1òA"	ÙVVQ< ∏„„%+T("Ñ
+·‹'““”““	“
+““ÁˆØA"	»V. - S= ≤‡‡%+ƒ(Â	√	·'““”““	“
+““ﬁˆîA"	¬Ù.+ S= ≥··%+ø(Â	„
+·'““”““	“
+““ıˆâA"	Ê¶+ R< ΩËË%+F(ñ
+Ï‹'““”““	“
+““•ˆG"	úƒ 
+- R< ºÁÁ%+)˛
+ı	Ã'““”““	“
+““ÂˆçA"	Ëº   <& ˚%+.“““““	“
+”“Ø1ÒG"	ﬁ⁄
+=& ¢%+.“““““	“
+”“Ø1«G"	î¸
+sîR< ≠ÿÿ%+j(ƒ
+·Ω'““”““	“
+““ﬁˆ‹G"	∂Ü $R< Ø⁄⁄%+k(†
+Ê√'““”““	“
+““Ÿˆ€G"	⁄“.  -R< ÆŸŸ%+V("ï·æ'““”““	“
+““Áˆ⁄G"	å˛ -  S= øÍÍ%+≈(Ωπ
+ﬁ'““”““	“
+““åˆŸG"	êû &+%R< ¿ÎÎ%+s("•·‹'““”““	“
+““Èˆ›G"	î å 
++ 	g9 Óùù%+≠(·∞
+·'“”“	“
+““ñ ¬∆G"%	ÊÓZ‘àÀ§grST èŸÓ› e9 Ìúú%+≠(˝
+Ö
+Ø'“”“	“
+““ó ¬≈G"#	ÊÓR‘àÀ§grST èŸÓ› :& ë%+.“““““	“
+”“Ø1ƒG"	¢‚ è4 Ôûû%+µ("û	·∫'“““	”
+““¥¢G"R	∏ÃÍz )R
+&  	 3  _0∫< ã ))dø«Ãg	80lLI@& Õ%+.“““““	“
+”“Ø1¡G"	ÊË*d3MV< ä∑∑%+X(Á‹	ü'““”““	“
+““ñˆ°G"	¥ﬁ* * )	  <& Ì%+.“““““	“
+”“Ø1öG"	∏Ä 0K1<& Ë%+.“““““	“
+”“Ø1õG"	∏∞2M 1S= Ù°°%+˘(˝	ﬁ
+“'““”““	“
+““Èˆ¬G"	Ü -  R< ±‹‹%+u(è	í›'““”““	“
+““ ˆ»G"	Ïƒ + <& Ó%+.“““““	“
+”“Ø1≥G"	ƒ÷>	  =<& ‚%+.“““““	“
+”“Ø1≤G"	Äﬁ 1 `< …ÙÙ%+)"é	·»'““”““	“
+““Îˆ±G"	ÜÄR fR	;)/ uH& ´%+.“““““	“
+”“Ø1•G"	‘¿:æ~ ì  	´∑<& ÷%+.“““““	“
+”“Ø1§G"	∫÷   S= Ñ±±%+å(‡	º	û'““”““	“
+““‰ˆ¶G"	®®  R< Ã˜˜%+v(ì	Ôû'““”““	“
+““ÀˆßG"	¬‘+ <& È%+.“““““	“
+”“Ø1®G"	ÍÚ 
+- 	R< ˘¶¶%+\(	˙	…
+µ'““”““	“
+““÷ˆòG"	öö
+-  S= ®””%+§(øÜ
+ƒ'““”““	“
+““ÛˆˆG"	∂¥# 4!  -L6 »ˆˆ%+)"¶·‹'“““”“	“
+““,˜G"	‘ $   S= Òûû%+ß("˜	·ƒ'““”““	“
+““ÁˆˇG"	ˆò& .#  -V8 ﬂéé%+É(Ü◊	ß'”““	“
+““á 9ﬂI"	ñÙ!:  ;	%Y7 ·êê%+))!···'”““	“
+““á9ﬁI"	ñÙ!J 7
+ .H )/)U7 ‚çç%+3(≠
+¢	ë'”““	“
+““à 9‡I"	ñ®":( 1 +3S= „éé%+Ç(Ô	«œ'““”““	“
+““©ˆûG"	ÿ§ 465;<& Ã%+.“““““	“
+”“Ø1ùG"	ÏÊ L\K]R< ùù%+)Ö	·ﬁ'““”““	“
+““Œˆ›I"	î $ .%  -S= ‡èè%+¶(á
+Øœ'““”““	“
+““‹ˆŸI"	êà&2! 1F& –%+.“““““	“
+”“Ø1ÿI"	îà&B ^a 	 <& Œ%+.“““““	“
+”“Ø1◊I"	Ù∏& 	  @& Û%+.“““““	“
+”“Ø1⁄I"	§‡%* (M WR< °ŒŒ%+L(™	˜ª'““”““	“
+““îˆáH"	êé)W ä= ©◊◊%+˜(⁄
+â
+·'““”““	“
+““ÉˆÕH"D	∞÷.Ú 	&
+X(	&9G 			+ ' '|<& ö%+.“““““	“
+”“Ø1ŒI"	êÿ)    U& ª%+.“““““	“
+”“Ø1ÃI"&	å∞,zr $PT#"  p›B& ô%+.“““““	“
+”“Ø1ÀI"	Ïñ-2$Kv& Ï%+.“““““	“
+”“Ø1ÿH"G	Ù⁄.J2
+$=  ”	Ùj6æ≠-	'	 
+/
+S= ‰èè%+£(£	ß	”'““”““	“
+““ÍˆúG"	Ç
+ÿ  5<& √%+.“““““	“
+”“Ø1€I"	˙	“& *1 )O& «%+.“““““	“
+”“Ø1‹I" 	à
+Ó$2 - 	6-" 	<& π%+.“““““	“
+”“Ø1·I"	Ë≤" `)![Q& Ç%+.“““““	“
+”“Ø1’I""	Ï¯%2åô z¡	 %		Î D -DT< „íí%+)è
+·∏'““”““	“
+“““ˆ÷I"	Ó¬'º @ª B& à%+.“““““	“
+”“Ø1‚I"	ûÚ$2	
+#  S= ‚ëë%+∞(	ª
+¬
+“'““”““	“
+““÷ˆœI"	“	æ)  # G& ™%+.“““““	“
+”“Ø1ÕI"	¯ˆ+>A	D  *U= ©‘‘%+≤(≠	áµ'““”““	“
+““–ˆ I"	∏Ù-"
+(!M& õ%+.“““““	“
+”“Ø1ŸH"	Ñî/Z HÅ , 	C& ∂%+.“““““	“
+”“Ø1»H"	®î72£H](j->& ˘%+.“““““	“
+”“Ø1ÀH"	ò™6"nj2/∏& ƒ%+.“““““	“
+”“Ø1‘H"à	™¨.‚Çt Ï9	 	B4S "E
+!W	)
+  =	s.J  
+  
+ e	Ω¶   	5"	º)( 	273 _& €%+.“““““	“
+”“Ø1’H"0	»0BL * - ß	j   	C" *a= œ˝˝%+Ä(â	‡
+¶'““”““	“
+““ßˆ€H"	ê‰5B˙Ö31É:’S= –˛˛%+ı(Ñ	˙
+õ'““”““	“
+““◊ˆÌL"	∂ÿ>\6+R[5@& ˆ%+.“““““	“
+”“Ø1÷H"	Ï	∂1*!$T& Á%+.“““““	“
+”“Ø1◊H"%	¬
+¿0*V;.='	WÖ:P  - <& µ%+.“““““	“
+”“Ø1ÈH"	Óÿ5 !  <& ≤%+.“““““	“
+”“Ø1⁄H"	ÊÇ5   R< ëææ%+{(ËŒ	◊'““”““	“
+““™ˆËH"	Ñà63U= êΩΩ%+ú(Î
+À÷'““”““	“
+““¿ˆ‚H"	ƒ‘7"
+ 3R< üÃÃ%+i(	î≥
+°'““”““	“
+““÷ˆÏL"	≤
+>!Y= åππ%+ù(°	©	°'““”““	“
+““¬ˆÁH"	ÜÜ82	+S= èºº%+ü(Î
+∏¢'““”““	“
+““ƒˆÊH"	Ñæ8@)# S= ç∫∫%+û(»´	ß'““”““	“
+““√ˆﬁH"	‹Í8!.S= éªª%+†(¸∂¿'““”““	“
+““≈ˆ›H"	¸8 D7%S= óƒƒ%+Ä(Û
+ô
+·'““”““	“
+““¸ˆ‰I"	¬å" ) S= ñ√√%+Å(Ö	ˇ	·'““”““	“
+““˝ˆËI"	¬¶"6+  3C& ﬂ%+.“““““	“
+”“Ø1ôG"	 ∆ 2Ïw q27
+<& °%+.“““““	“
+”“Ø1I"	“Ç"6  5R< ±ﬂﬂ%+?(◊
+Óµ'““”““	“
+““†ˆıI"	‰¶#$"
+R< ´ŸŸ%+B(»
+Ÿ
+“'““”““	“
+““£ˆÉJ"	ÍÊ#
+.'R< ∆ÒÒ%+/(É˝∂'““”““	“
+““Êˆ„I"	Ñ∫$ D  ;G1 Ü–%•)"ï	·&““““”	“
+““2‘I"	Æ®& "  !=& ’%+.“““““	“
+”“Ø1—I"	ÿÄ' Ö  <& ◊%+.“““““	“
+”“Ø1”I"	ÿà' 
+9 	R< ™ÿÿ%+C(»
+å	ï'““”““	“
+““§ˆÇJ"	ÿÍ#(3 .#T< ¨⁄⁄%+A(¨	úø'““”““	“
+““¢ˆÑJ"	˙‚#"$"- 	-[& ∫%+.“““““	“
+”“Ø1ÙI",	ÃÙ!í R	.9F50 /1&u	R< ∞ﬁﬁ%+=(Ú
+à	›'““”““	“
+““ûˆ˜I"	ÄÇ#T< Ø››%+;(Á	ºµ'““”““	“
+““úˆ¯I"	Ãˆ""8#	T< ≠€€%+@(‰	©ï'““”““	“
+““°ˆÄJ"	à‹#" #!X< Æ‹‹%+>(Á
+ë'““”““	“
+““üˆ˛I"	§∂#2* , V< Ò††%+:(≤	Ó	∞'““”““	“
+““õˆ˘I"	¸å#*  -T< üü%+<(µ	î	ü'““”““	“
+““ùˆ˝I"	‚∫#"#  1D& ¨%+.“““““	“
+”“Ø1ÖJ"	Ãî$: |A  L& ê%+.“““““	“
+”“Ø1ÜJ"	–§%R‰Q1Ib	z˜L& §%+.“““““	“
+”“Ø1áJ"	 à'Z"*    {>& â%+.“““““	“
+”“Ø1–I"	‚Ü(" L !E<& Å%+.“““““	“
+”“Ø1ƒI"	“Ä*D  CG& ˝%+.“““““	“
+”“Ø1√I"	ƒà) JsG	 
+Ho  GI& Ê%+.“““““	“
+”“Ø1≈I"	í˛+"x.g	Q#<& û%+.“““““	“
+”“Ø1…I"	¸∂.63S= ã∏∏%+ê(Õ	∆
+◊'““”““	“
+““ÂˆâJ"	≤ñ' /S= ¡ÔÔ%+è("å
+·æ'““”““	“
+““ËˆñG"	ŒÃ!!
+ S= Ü≥≥%+Æ(§
+–ø'““”““	“
+““ÕˆèJ"	∫ﬁ#"$ S= Ö≤≤%+é(	È•	∞'““”““	“
+““÷ˆïG"	˙˛ B
+?R< ˛´´%+)œπµ'““”““	“
+““‹ˆäJ"	ÿ‰%()<& Ø%+.“““““	“
+”“Ø1çJ"	Ü î$4 3Y= •––%+ß(¶	…≈'““”““	“
+““„ˆåJ"	‰í&2$#=S= ˝™™%+®(ÿ	Ü	ﬂ'““”““	“
+““›ˆãJ"	ê¥'6`5L& ›%+.“““““	“
+”“Ø1àJ"	‡™(Z
+
+8
+	 G 	W= û……%+π(¨
+à£'““”““	“
+““Ìˆ¿I"	ƒ⁄**"01 W= ù»»%+∫(	Ò	ÿ'““”““	“
+““Óˆ∆I"	ˆ∆+*
+* 9U= ü  %+º(Ù	ﬂ
+∂'““”““	“
+““ˆ¡I"	¨˙*">/U= ú««%+ª(ë
+É	ƒ'““”““	“
+““Ôˆ«I"	ò“+" .5 )U= õ∆∆%+Ω(ë
+Æ
+∂'““”““	“
+““Òˆ»I"	∂ +"8/ -U= †ÀÀ%+æ(∏
+èƒ'““”““	“
+““Úˆ¬I"	Æà+"*"R< ΩÎÎ%+P(ò·	Ω'““”““	“
+““öˆæI"	Çà+F& ˙%+.“““““	“
+”“Ø1ΩI"	–Ó)B	 > P #% 1S= îøø%+Ò(ı
+≈
+”'““”““	“
+““çˆ∫I"	¶¬,6	&7S= ìææ%+™(¯	Ï	–'““”““	“
+““€ˆπI"	‡¬.647S= íΩΩ%+©(®À
+÷'““”““	“
+““·ˆªI"	∫ê,:) 9@& ã%+.“““““	“
+”“Ø1°I"	≤÷1*
+ 	 <& ∑%+.“““““	“
+”“Ø1†I"	∆∏2 R< ã∂∂%+Q(Ã	ˇ®'““”““	“
+““òˆ‡H"	∂ﬁ7 6 5:&  %+.“““““	“
+”“Ø1ÏH"	Ùﬁ6 :& ©%+.“““““	“
+”“Ø1¢I"	Ù‰0" N4 «ıı%+”	Ì
+Õ'“““”“	“
+““,üI"	¶ÿ2*     <& ˛%+.“““““	“
+”“Ø1£I"	îÑ0 4' 1R< äµµ%+8(ˆ
+∫	ƒ'““”““	“
+““œˆﬂH"	“ˆ7 ? >& …%+.“““““	“
+”“Ø1‹H"	†‹;"$ 
+M /O8 ªÈÈ%+Ù(Æ	›	·'”““	“
+““˛ 9ËL"	Çﬁ< âO8 å∑∑%+∏( ù	ó'”““	“
+““Ç 9ÍL"	∂˙< Ø@& ·%+.“““““	“
+”“Ø1ÎL"	≤–=* c 	  @& ¡%+.“““““	“
+”“Ø1ÈL"	∂ƒ<* %  &  5@& Ñ%+.“““““	“
+”“Ø1ÂL"	¸‹=* !  D& ±%+.“““““	“
+”“Ø1‰L"	≤‰>:
+P1  @& ‰%+.“““““	“
+”“Ø1„L"	Óú?*2 
+%  D& ı%+.“““““	“
+”“Ø1ÊL"	ñ<: 
+ M<& Ú%+.“““““	“
+”“Ø1ÁL"	Æä<&U %D& Ω%+.“““““	“
+”“Ø1‚L"	⁄∏>:0"  .-O9 …˜˜%+Û(≥–
+¥'“““”“	“
+““, L"	‘®>"  !M7 ñ¡¡%+^(€
+—Œ'”““	“
+““˜ 9˘H"	Ã÷:& 'R& ¬%+.“““““	“
+”“Ø1˜H"#	ûƒ9r
+ 
+  ' 
+M7 ï¿¿%+_(»	€	¡'”““	“
+““¯ 9˙H"	ˆ¢:rR< ó¬¬%+h("À	·∞'““”““	“
+““Áˆ¯H"	í¥;4  3<& ∆%+.“““““	“
+”“Ø1ÀL"	Êö>V 
+SX< ›åå%+N(«	’
+ö'““”““	“
+““œˆÕL"	Ù=2 6~'}%  U< ‹ãã%+O(∑
+¢
+¬'““”““	“
+““ôˆÃL"	ê="¥ } 5U= Êëë%+à(∑¿	∞'““”““	“
+““˙ˆ§I"	öÍ/" "	d& Ü%+.“““““	“
+”“Ø1ÌH"5	î‚5ä4 	        		4   S= •””%+∑(∫í
+·'““”““	“
+““æˆòI"	ú‰4<2;R< ¢ÕÕ%+f(•
+™
+î'““”““	“
+““´ˆÚH"	⁄ƒ6 R< £ŒŒ%+g(ˆ
+¡	œ'““”““	“
+““¨ˆÒH"	ú∆62 3@& ∏%+.“““““	“
+”“Ø1ÓH"	⁄é6* 
+$ -  @& ç%+.“““““	“
+”“Ø1ÙH"	⁄ƒ7* %  N8 πÁÁ%+y(Ç	´
+·'“”“	“
+““Ñ ¬•I"	¯Ã1   <& Ò%+.“““““	“
+”“Ø1ëI"	Ñ∫2¸
+À	N8 ∫ËË%+z(„	Ó·'“”“	“
+““Ö ¬¶I"	äÃ1 c= £——%+Ç(†´·'““”““	“
+““ˇˆíI"	ÙÜ5Z60     % & S= éππ%+Ú(£
+ 	¢'““”““	“
+““˚ˆäI"	§í6: 9D& ‡%+.“““““	“
+”“Ø1ÛH"	‘¸7:H  #V< §œœ%+)£·©'““”““	“
+““’ˆ˚H"	∆‘9*$F R< ëºº%+)—	¢ë'““”““	“
+““⁄ˆˆH"	§∫8 	:S= êªª%+´(Ò
+ˆ	ß'““”““	“
+““⁄ˆıH"	¬‹88
+5	G& ‘%+.“““““	“
+”“Ø1˝H"	‹®;&#	  
+	 ü= õ»»%+ (®	˚·'““”““	“
+““∆ˆ∆L"Y	Ú <ö87FU 
+R 
+
+
+T¨q Wó YRqÇ7	8b`p w 		4?
+		?8<& Ù%+.“““““	“
+”“Ø1¡L"	⁄†=FCR< è∫∫%+|(â
+∆“'““”““	“
+““¡ˆâI"	¯ê8./S= ®÷÷%+∞(Ç˘·'““”““	“
+““∂ˆ√L"	ÆÄ? /  a& ú%+.“““““	“
+”“Ø1æL"2	æÃ? Z=  Y	N"&  - 	   	".  % R< ç∏∏%+l(Ëï
+ß'““”““	“
+““∑ˆ¿L"	¬®=( *' S= π‰‰%+Ì(—
+÷	›'““”““	“
+““ÎˆôA"	˛ö. - S= ¶‘‘%+˛(ÑΩ
+·'““”““	“
+““ˆˆöA"	˛ ê - S= ûÀÀ%+±(§ö·'““”““	“
+““∏ˆéA"	»!¨.+ S= ı¢¢%+á("á	·–'““”““	“
+““Èˆ·G"	Ã#÷. B- R< ∫ÂÂ%+D(Ú	∏	‹'““”““	“
+““≥ˆëD"	∆'û 
+-  	S= ¬%+•(ò≥	Ω'““”““	“
+““ﬂˆßD"	¸&Ê  S= †ÕÕ%+¯(ÖŸ	·'““”““	“
+““Ùˆ‚G"	ƒ ¯.+ W= ¡ÏÏ%+à(Ó
+±	”'““”““	“
+““”ˆÿG"	Ë#÷*. +AR< ¬ÌÌ%+)˚	·›'““”““	“
+““”ˆ◊G"	¸#ñ- N8 ¥‚‚%+))Î·æ'“”“	“
+““à¬≤D"	î%Ó
+  <& “%+.“““““	“
+”“Ø1ØD"	%é   R< ªÊÊ%+G(ñ∑	ª'““”““	“
+““¥ˆ®D"	∫'é<- ;R< æÈÈ%+m(˛	Ì	ø'““”““	“
+““‡ˆÆD"	Í&ê .  -R< ≥ﬁﬁ%+W("ﬂ	·œ'““”““	“
+““Íˆ∫D"	∂%Ñ$-  !<& ”%+.“““““	“
+”“Ø1ªD"	Ü'∫ #  S= ≤››%+¨(“	º
+›'““”““	“
+““œˆ§D"	ò+÷ + Q< Úüü%+S(ëÄ
+Õ'““”““	“
+““≠ˆˆC"	ê,< N8 À˘˘%+E(ÂØ	Õ'“““”“	“
+““,üD"	 -ö   N8  ¯¯%+6(ä	Ù
+Ã'“““”“	“
+““,óD"	Ù-ﬁ 	  S= ¥ﬂﬂ%+Ö(¯≤µ'““”““	“
+““‚ˆΩD"	ƒ(¬. +R< ÇØØ%+H(ü	Ω	æ'““”““	“
+““ÿˆ©D"	‹,‰
+. -N8 ∞€€%+t(Å™•'“”“	“
+““ç ¬÷G"	§ ò:-9S= ï¬¬%+(ˆÌ·'““”““	“
+““‡ˆ…G"	¸!∏ +<& œ%+.“““““	“
+”“Ø1¿G"	Ä!ê - R< ´÷÷%+I(ê	ûæ'““”““	“
+““Øˆ∑G"	à"¬ -  S= î¡¡%+√(Ê	ú	·'““”““	“
+““«ˆπG"	∫#ƒ - R< ¨◊◊%+Y(·ä
+√'““”““	“
+““‘ˆ∏G"	∏"˛)S= ™’’%+ä(ö	Œ›'““”““	“
+““‚ˆ”D"	ä$∆ - R< ∂‰‰%+J(†	˛·'““”““	“
+““–ˆ∞G"	 !§   S= ú……%+≤(√
+ø
+·'““”““	“
+““πˆ¥G"	í#º - <& ¸%+.“““““	“
+”“Ø1ÆG"	¶"÷  R< «ÚÚ%+[(¥	õø'““”““	“
+““—ˆ´G"	ú#Ó + S= ô∆∆%+∆(Ù¯
+·'““”““	“
+““„ˆÕD"	í&Ó -  S= µ‡‡%+â(¿
+ƒ	‹'““”““	“
+““·ˆæD"	¬&∂ 
++ S= ò≈≈%+ˇ(ª	Â
+·'““”““	“
+““˘ˆøD"	∆&® &+%L& é%+.“““““	“
+”“Ø1áG"	Æ'êZ @0  6/  M
+    5R< ß““%+K(¡
+·°'““”““	“
+““‰ˆ©G"	‘!“ /R< »ÛÛ%+)æ·√'““”““	“
+““‰ˆ™G"	ú#ä )R< ˇ¨¨%+w(Û	∂
+›'““”““	“
+““ﬂˆóG"	¨!“ -Q8 ∑‚‚%+)!···'“”“	“
+““é ¬ŸD"	ö)¨"0 h%ó<& ¶%+.“““““	“
+”“Ø1⁄D"	§)¨V UW9 ∂··%+¶(≈¬«'“”“	“
+““â¬ÿD"	†)¨2V  Bÿ+ÔP8 Îöö%+)!···'“”“	“
+““è ¬‘D"	ò)ƒÿ'◊X8 µ„„%+)	Ê
+¶
+∆'“”“	“
+““ï ¬◊D"	÷+®:< d!%!=…\8 Ïõõ%+)"‚
+·™'“”“	“
+““í ¬÷D"	†+®JH6∂ 0ò	<& %+.“““““	“
+”“Ø1’D"	¢)ú V< É∞∞%+Z(ıœ
+·'““”““	“
+““¶ˆÜG"	Ó)∫*  6-M@& º%+.“““““	“
+”“Ø1ÖG"	+Ã*L E#  Y= §““%+≥(÷
+È	Æ'““”““	“
+““∫ˆ‹D"	û,‡2zp @%	<& ß%+.“““““	“
+”“Ø1‚D"	ÿ.ﬁ R8 ¯••%+5(ôÈ
+±'“”“	“
+““å ¬àG"	ê,‹* *  E %<& É%+.“““““	“
+”“Ø1íD"	Ù0– / U< Âîî%+U(ö
+ 
+€'““”““	“
+““ìˆñD"	¬0¶ÿö’S= Àˆˆ%+®(“	‚	›'““”““	“
+““œˆìD"	Ä3¬0- S= Ä≠≠%+©(ª±›'““”““	“
+““…ˆîD"	¨3˙ -  S=  ıı%+™("ü·◊'““”““	“
+““ÁˆïD"	˛2Ó, - R< øÌÌ%+q(ó≤
+≥'““”““	“
+““Æˆ¢D"	2ˆ   :& £%+.“““““	“
+”“Ø1£D"	 3Ê
+ 	S= Âêê%+´("ú
+·›'““”““	“
+““ÁˆÓC"	Æ5⁄ - <& ä%+.“““““	“
+”“Ø1´D"	Ë3¨ 	 T8 ƒÔÔ%+)!µ
+··'“”“	“
+““ê ¬¨D"	ú4í2
+]X$ 9W= ÅÆÆ%+¥(˘	Œ
+·'““”““	“
+““ÿˆÊD"	†4¬
+*P
+ ID N& Ö%+.“““““	“
+”“Ø1ÂD"	Ë5ä2mFSN:3">%	Æo(g(Q7 ≈%+)#ﬁ	·µ'”““	“
+““ˇ 9ÎD"	Í6∞
+*%$3 	P/Q7 ˆ££%+)!···'”““	“
+““É 9ÈD"	Í6ñ
+* )&a3 Û††%+)"√·©'“““	”
+““¥‰D"%	Œ6ö87		
+	" '	V8 ˜§§%+ã("Ú·…'”““	“
+““â 9ÙC"	∞7ó*–òéfücGq7 Ëóó%+)!··≤'”““	“
+““è9ÚC"1	∞7óö
+8Xd* ∫(∏"(, 2o  & %=iõGT8 Áññ%+Ü(ÿ
+ß
+¨'”““	“
+““ã 9ÒC"	∏9Ù"Ã‰∑=3Ö^8 Êïï%+ç(¥
+°π'”““	“
+““ä 9C"	Ó7d:†íæŒ‹VÅÀ„ß"T7 –˚˚%+))à
+æ	’'”““	“
+““Ü9ÔC"	Ñ;ÿ* ÷°  „e7 —¸¸%+)!···'””“	“
+““é9ÌC"%	Ï8òræ&J .Gj Pw51)ã!`8 “˝˝%+)·‚'“”“	“
+““ë ¬ÌD"	‚8æbJ	", .Gj Pw51)%u7 œ˙˙%+7(
+¡ø	ô'”““	“
+““Ü 9ÓD"5	¬9¶*êLô; 	]ãb¢-‰ì   &â,M +
+')a7 √ÓÓ%+)#û
+·⁄'”““	“
+““Ç9ÁD"!	ﬁ8Ç
+"Á<'.	 i*(ª0 JJ@& ∞%+.“““““	“
+”“Ø1ÔD"	ò;ˆ*!ﬁ7 Èòò%+)"ò	·´'”““	“
+““˚ 9„D"ù	∞7™“3; #%#!"$	"8Æ	,#P	2 O7)Ø
+971$',04	Ü	J#”–(	"	>/ 	µ=  	*9	B  A	∂& 	ôÕB €û- ˜4 ∏ÊÊ%+•)"··—'“““	”
+““¥€D"π	¯0Ï⁄ +B+~"|	÷  \
+		%   5  & 
+%0} &
+    k+(Q	õ™2  ,7	{T	x’  -E,Ö$3
+!U &N 0‘¶ '%
+/   
+” 	('B   2=	?éB" 	+A*40  	-EJ 
+ 2  	)E*$ .7W7 Íôô%+)"Ã·ù'”““	“
+““˙ 9ÑG"	¬4∂2º	¸Àá#S= ö««%+¿(õ
+±
+·'““”““	“
+““ÃˆçG"	∫"º  / <& „%+.“““““	“
+”“Ø1éJ"	˙ ä% o7 Áíí%+)··ò'”““	“
+““Å 9åG"/	ƒ$‹í
+ 8¢P"
+É øô7 íøø%+)·· '”““	“
+““Ä 9ãG"Y	Æ&∞≤ 5*‰"9l	
+
+0ñ‘„		'O		;© 	.)D]m05aS= á¥¥%+«(¸
+ü
+–'““”““	“
+““œˆôJ"	Ù%Ú& gS= àµµ%+Ø(	∫
+ƒœ'““”““	“
+““÷ˆòJ"	æ&% 7 R< ¶——%+x(ç	¬	ï'““”““	“
+““œˆºI"	 "æ*-S= ¢œœ%+˙(π	Ï
+·'““”““	“
+““˜ˆõJ"	¢$¢++S= â∂∂%+±(	≤	Ã
+œ'““”““	“
+““÷ˆöJ"	¢&§+(9	 S= ù  %+˚(É
+õ	·'““”““	“
+““ÏˆûJ"	¥$¬,:7  9T< ÷ÅÅ%+a(ß›
+ë'““”““	“
+““ªˆ≠J"	∞$Ç."7 S= ◊ÇÇ%+î(ç	î
+ø'““”““	“
+““ÊˆÆJ"	¥$∞.:7S= ƒÚÚ%+¸("Í
+·Ã'““”““	“
+““µˆÎJ"	∆$§/   :& Æ%+.“““““	“
+”“Ø1ØJ"	æ%».*)U= ŸÑÑ%+ñ(ç	¨ï'““”““	“
+““ãˆÁJ"	¸$º/": -S= ⁄ÖÖ%+Ñ(ç	Ô
+ï'““”““	“
+““›ˆÏJ"	‹%⁄/*O9 Œ¸¸%+¡(«
+∞	¥'“““”“	“
+““,≥J"	˙%÷.R< ›àà%+n(°
+…
+√'““”““	“
+““≤ˆäG"	ñ*Ü!-<& ˇ%+.“““““	“
+”“Ø1êJ"	Ï*æ$  N8 ∆ÙÙ%+](ÒÍ	¥'“““”“	“
+““,îJ"	Ú+¸&% ˝4 ∑ÂÂ%+•)"··‘'“““	”
+““¥ëJ"ø	é.¬∫»&LjV z$Oˆ8n
+	3NC5%EG-?ÉYë!=0B 
+Db=2 ∞$!(F* $
+	,,|^>S!W%7$
+-J€o)(!A'W{)  (8
+ E_	H"*:	2(*	   	>'J8 3	'
+	;. 2 '	ñC*H G	+: 1 ºÍÍ%+)"··∑'“““	”
+““¥íJ"è	¬.∏%jJ4 & 5) 	DçrjT3≤ '  >€		,öE¯ 
+
+##	$
+A%	&
+A#	&
+?	âZ
+'å
+!	"A/2x7 Û¢¢%+)("é
+·ú'”““	“
+““¸ 9ìJ"8	¯-¸$∫H&FòxL;z…[5 ?7
+//!!WP< ﬁââ%+0(˚
+“
+≥'““”““	“
+““ïˆ∑J"	º(, S= ﬂää%+í(æ
+”
+µ'““”““	“
+““Œˆ¥J"	Ó(º-$!U= ‡ãã%+ì(ã
+…	ü'““”““	“
+““œˆµJ"	¯(®."*/R< Ÿáá%+M("∂	·›'““”““	“
+“““ˆÊJ"	Œ)/<& ≥%+.“““““	“
+”“Ø1∂J"	ƒ+Ï,  R< ‹áá%+o(¡
+‘
+›'““”““	“
+““»ˆ‰J"	¨+¶/ +s7 Ú°°%+*)Ä	·†'”““	“
+““˝ 9¿J"3	 -å(rñDj<4b=^ 'É/∑±	.Ó
+	 ?) ≈ÛÛ%+'“““”“	“
+““,∫J"	†,Ã, R< €ÜÜ%+-(Ú	˜
+›'““”““	“
+““ÀˆΩJ"	÷-Ë. +<& ‹%+.“““““	“
+”“Ø1ºJ"	î.ö-<'J& æ%+.“““““	“
+”“Ø1øJ"	∆.∆-R@>>'R	G- C!&:& å%+.“““““	“
+”“Ø1æJ"	–.∫."<& ≈%+.“““““	“
+”“Ø1›J"	‘/å/		O9 Ã˙˙%+…("≠·î'“““”“	“
+““,ãI"	¸"û3   F0 áâ%d(Á
+∆
+&““““”	“
+““2èI"	¸"û3R 2SO9 Õ˚˚%+»("é·ï'“““”“	“
+““,êI"	Œ#†3 2 /S= Íïï%+õ(Ã	§	∞'““”““	“
+““œˆàI"	û †7.-@& Â%+.“““““	“
+”“Ø1áI"	!§7*.7R< ÿÉÉ%+b(ìâ◊'““”““	“
+““ºˆÌJ"	º%∞0."-!N8 ‘ˇˇ%+˝(–	Û√'”““	“
+““˘ 9ÓJ"	†$–3& + R< ”˛˛%+c(ô	Í›'““”““	“
+““ΩˆJ"	»%3 - R< ’ÄÄ%+e(ﬂ	¥◊'““”““	“
+““øˆıJ"	ò%÷5. - >& À%+.“““““	“
+”“Ø1˜J"	Ñ&≤7"		S= Ïôô%+∂(¥	ù	°'““”““	“
+““˛ˆÙJ"	‚'¢401 :& —%+.“““““	“
+”“Ø1ˇH"	† †:  S= Èîî%+≠(•
+ñ	µ'““”““	“
+““ËˆÑI"	Ä#‘8 % H& Ÿ%+.“““““	“
+”“Ø1ÅI"	⁄!Ñ9J21N& •%+.“““““	“
+”“Ø1˛H"	à"‘9b(  4  9 	  1  S= Ëìì%+¨(•
+˙›'““”““	“
+““ÁˆÖI"	†#‘8  W= €ää%+§("ª
+·ß'““”““	“
+““äˆøL"	∏#–<* '  ,1 &1F0 Ññ%)"ä·&““““”	“
+““2ˆJ"	ê%‰8   S= Ìöö%+ˆ(Ã	Æ◊'““”““	“
+““ÑˆÇK"	¸#¨;.- N& ø%+.“““““	“
+”“Ø1áK"	ﬁ$Œ= 	 	   R< Óõõ%+R("∆	·®'““”““	“
+““ÁˆÉK"	¿%ú< *  )<& è%+.“““““	“
+”“Ø1àK"	⁄$Ñ?   >& »%+.“““““	“
+”“Ø1åK"	ò%÷?"* 	 9S= æÏÏ%+Ó(©
+ó
+≥'““”““	“
+““ÃˆÖK"	Ù&Œ<   S= Ôúú%+Ô(â
+œ	“'““”““	“
+““€ˆâK"	˙&‰> .  -R< °ÃÃ%+4(	Ë‰ß'““”““	“
+““÷ˆãK"	Ñ(å? @  ?U= ‘ÇÇ%+ï(ãì
+º'““”““	“
+““—ˆÂJ"	Œ(ÿ/"l 35S= ’ÉÉ%+ô(ó	∞î'““”““	“
+““’ˆﬂJ"	⁄(‰1S= ÿÜÜ%+ó(˘
+å∞'““”““	“
+““”ˆ‡J"	¨)Ã03 S= ◊ÖÖ%+ö(å
+ˇ
+√'““”““	“
+““÷ˆÒJ"	ﬁ(∫2&S= ÷ÑÑ%+ò(¿í	◊'““”““	“
+““‘ˆﬁJ"	∞)1/<& ≠%+.“““““	“
+”“Ø1ÛJ"	æ)ˆ4   <& ®%+.“““““	“
+”“Ø1˘J"	¢(Ë60 /G1 Öò%≥(·Ë	&““““”	“
+““2˙J"	ö)ö66 M& Ä%+.“““““	“
+”“Ø1‹J"	™/í0Z<RÈ
+	@& ü%+.“““““	“
+”“Ø1€J"	æ,Ç4*. (-<& ÿ%+.“““““	“
+”“Ø1¯J"	Œ(‚7P O@& Î%+.“““““	“
+”“Ø1ÄK"	Ó(¸8*    !R< Îóó%+r(⁄	‘	ï'““”““	“
+““œˆÅK"	⁄)Ü: 4 3D& á%+.“““““	“
+”“Ø1˛J"	“)ê;:     	 W= ˙ßß%+¢(Õ
+ùï'““”““	“
+““ÿˆ˝J"	 )¥;*& 
+/U= ¸©©%+°(Ë
+™∞'““”““	“
+““◊ˆˇJ"	¬*¢;" 5[= ˚®®%+£(ç
+®
+÷'““”““	“
+““Ÿˆ¸J"	‘*¨;:
+6   /  c< ⁄àà%+)‹
+·‡'““”““	“
+““Œˆ˚J"	⁄0í7RÇ˜OG+ =: ä	QT< Õ¯¯%+)$Å	·„'““”““	“
+““ÏˆÉG"	 9∞ à xá^= Œ˘˘%+ë(¸	Ø
+ì'““”““	“
+““Õˆ¡J"	Ë7ò(:Í v :◊ ıS< —ˇˇ%+)$≈	·ª'““”““	“
+““Ïˆ¬J"	 ?ú, ≥T8 ”ÅÅ%+)#ı	·Ÿ'“”“	“
+““ì ¬ŸJ"	‚?¢82n  M 	KAX& ﬁ%+.“““““	“
+”“Ø1ÓL")	ò¨?ÇT † 7
+  	 	<& ¯%+.“““““	“
+”“Ø1ﬁL"	™éA ' S= ß’’%+É(Ç
+µ·'““”““	“
+““¯ˆŒL"	∞î@ * )R< ò√√%+`(êÄƒ'““”““	“
+““óˆ‘L"	»ƒ@ > =S= ì¿¿%+Æ(Â
+Î	·'““”““	“
+““∞ˆ÷L"	¸éA -  <& †%+.“““““	“
+”“Ø1’L"	öéA   V= ﬁçç%+â(·
+Å
+À'““”““	“
+““Äˆ‹L"	∫êA" Ì 	R< ö≈≈%+}(Ëë	ƒ'““”““	“
+““⁄ˆΩL"	Ëƒ@ 3  U= √ÒÒ%+Ù("ò
+·¥'““”““	“
+““±ˆºL"	‚‚@"   V< ôƒƒ%+~( ù
+·í'““”““	“
+““Öˆ∫L"	⁄àA* i  <& ˜%+.“““““	“
+”“Ø1∏L"	ﬁ ÜA	 [& í%+.“““““	“
+”“Ø1çK",	≤%†Aâ  !ä	|
+ 		É 2( R< ¿ÓÓ%+p("Õ·ê'““”““	“
+““òˆéK"	å(êA 	  c8 “ÄÄ%+)ç 
+≠'“”“	“
+““î ¬⁄J""	‚?¢82n  M 	KA	î  é£ 	ç

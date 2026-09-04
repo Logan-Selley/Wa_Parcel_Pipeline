@@ -1,0 +1,447 @@
+Р€x
+findings(Ђ 
+feature_idrecord_key_uid
+parcel_uidcounty_fipscounty_namesitus_address
+situs_city
+landuse_cdvalue_land_appraisedvalue_bldg_appraisedacres_reportedgeom_sourceis_encroachmentis_unflagged_coincidentdisagrees_with_stateabsent_from_stateabsent_from_oursgeometry_repairedis_quarantinedstate_duplicate_iddisagreementsfinding_primaryrejection_reason"
+11"
+18"
+19"
+55"
+59"
+67"
+74"
+91"
+061"
+county"
+	Snohomish"
+
+quarantine"
+quarantined"
+GRANITE FALLS"
+34107 102ND ST NE"
+061-00526500000800"
+061-00526500000900"
+061-00526500001000"
+061-00526500001500"
+061-00554300001901"
+061-00554300002001"
+061-00554300002003"
+061-00554300002800"
+061-00554300003200"
+061-00554300004200"
+061-00554300004300"
+061-00554300004400"
+061-00604700001500"
+061-00604700001700"
+061-00604700001800"
+061-00604700002003"
+061-00604700002004"
+061-00604700002100"
+061-30080800100400"
+061-30080800300100"
+061-30080800300200"
+061-30080800300400"
+061-30080800300500"
+061-30080800300600"
+061-30080800300700"
+061-30080800300900"
+061-30080800301000"
+061-30080800301102"
+061-30080800301200"
+061-30080800301400"
+061-30080800301700"
+061-30080800301800"
+061-30080800302300"
+061-30080800302500"
+061-30080800302600"
+061-30080800302800"
+061-30080800303000"
+061-30080800400100"
+061-30080800400500"
+061-30080800400600"
+061-30080800400700"
+061-30080800401000"
+061-30080800401100"
+061-30080800401300"
+061-30080900300600"
+061-30080900301000"
+061-30080900301101"
+061-30080900301200"
+061-30080900301400"
+061-30080900301700"
+061-30080900301800"
+061-30080900302100"
+061-30080900302200"
+061-30080900302800"
+061-30080900302900"
+061-30080900303100"
+061-30080900303200"
+061-30080900303400"
+061-30080900303500"
+061-30081500200600"
+061-30081500201500"
+061-30081500201600"
+061-30081500201900"
+061-30081600100100"
+missing_parcel_uid"
+landuse_cd: 18 в‰  19"
+attribute_disagreement"
+30730 MOUNTAIN LOOP HWY"
+30817 MOUNTAIN LOOP HWY"
+30828 MOUNTAIN LOOP HWY"
+30911 MOUNTAIN LOOP HWY"
+30912 MOUNTAIN LOOP HWY"
+30921 MOUNTAIN LOOP HWY"
+31002 MOUNTAIN LOOP HWY"
+31010 MOUNTAIN LOOP HWY"
+31014 MOUNTAIN LOOP HWY"
+31023 MOUNTAIN LOOP HWY"
+31109 MOUNTAIN LOOP HWY"
+31203 MOUNTAIN LOOP HWY"
+31211 MOUNTAIN LOOP HWY"
+31212 MOUNTAIN LOOP HWY"
+31225 MOUNTAIN LOOP HWY"
+31424 MOUNTAIN LOOP HWY"
+31425 MOUNTAIN LOOP HWY"
+31505 MOUNTAIN LOOP HWY"
+31616 MOUNTAIN LOOP HWY"
+31624 MOUNTAIN LOOP HWY"
+31720 MOUNTAIN LOOP HWY"
+31729 MOUNTAIN LOOP HWY"
+31831 MOUNTAIN LOOP HWY"
+31902 MOUNTAIN LOOP HWY"
+31905 MOUNTAIN LOOP HWY"
+31907 MOUNTAIN LOOP HWY"
+31920 MOUNTAIN LOOP HWY"
+32002 MOUNTAIN LOOP HWY"
+32004 MOUNTAIN LOOP HWY"
+32005 MOUNTAIN LOOP HWY"
+32114 MOUNTAIN LOOP HWY"
+32124 MOUNTAIN LOOP HWY"
+32223 MOUNTAIN LOOP HWY"
+32226 MOUNTAIN LOOP HWY"
+32302 MOUNTAIN LOOP HWY"
+32326 MOUNTAIN LOOP HWY"
+32410 MOUNTAIN LOOP HWY"
+32511 MOUNTAIN LOOP HWY"
+32518 MOUNTAIN LOOP HWY"
+32522 MOUNTAIN LOOP HWY"
+32604 MOUNTAIN LOOP HWY"
+32610 MOUNTAIN LOOP HWY"
+32814 MOUNTAIN LOOP HWY"
+32901 MOUNTAIN LOOP HWY"
+32909 MOUNTAIN LOOP HWY"
+32910 MOUNTAIN LOOP HWY"
+32918 MOUNTAIN LOOP HWY"
+32919 MOUNTAIN LOOP HWY"
+33010 MOUNTAIN LOOP HWY"
+33022 MOUNTAIN LOOP HWY"
+33515 MOUNTAIN LOOP HWY"
+33900 MOUNTAIN LOOP HWY"
+33914 MOUNTAIN LOOP HWY"
+33924 MOUNTAIN LOOP HWY"
+34011 MOUNTAIN LOOP HWY"
+34016 MOUNTAIN LOOP HWY"
+34028 MOUNTAIN LOOP HWY"
+34101 MOUNTAIN LOOP HWY"
+34105 MOUNTAIN LOOP HWY"
+34120 MOUNTAIN LOOP HWY"
+34126 MOUNTAIN LOOP HWY"
+34211 MOUNTAIN LOOP HWY"
+county:061-00526500000800"
+county:061-00526500000900"
+county:061-00526500001000"
+county:061-00526500001500"
+county:061-00554300001901"
+county:061-00554300002001"
+county:061-00554300002003"
+county:061-00554300002800"
+county:061-00554300003200"
+county:061-00554300004200"
+county:061-00554300004300"
+county:061-00554300004400"
+county:061-00604700001500"
+county:061-00604700001700"
+county:061-00604700001800"
+county:061-00604700002003"
+county:061-00604700002004"
+county:061-00604700002100"
+county:061-30080800100400"
+county:061-30080800300100"
+county:061-30080800300200"
+county:061-30080800300400"
+county:061-30080800300500"
+county:061-30080800300600"
+county:061-30080800300700"
+county:061-30080800300900"
+county:061-30080800301000"
+county:061-30080800301102"
+county:061-30080800301200"
+county:061-30080800301400"
+county:061-30080800301700"
+county:061-30080800301800"
+county:061-30080800302300"
+county:061-30080800302500"
+county:061-30080800302600"
+county:061-30080800302800"
+county:061-30080800303000"
+county:061-30080800400100"
+county:061-30080800400500"
+county:061-30080800400600"
+county:061-30080800400700"
+county:061-30080800401000"
+county:061-30080800401100"
+county:061-30080800401300"
+county:061-30080900300600"
+county:061-30080900301000"
+county:061-30080900301101"
+county:061-30080900301200"
+county:061-30080900301400"
+county:061-30080900301700"
+county:061-30080900301800"
+county:061-30080900302100"
+county:061-30080900302200"
+county:061-30080900302800"
+county:061-30080900302900"
+county:061-30080900303100"
+county:061-30080900303200"
+county:061-30080900303400"
+county:061-30080900303500"
+county:061-30081500200600"
+county:061-30081500201500"
+county:061-30081500201600"
+county:061-30081500201900"
+county:061-30081600100100"-
++quarantine:4151a956da648d89cd329d903deb9d9f"-
++quarantine:bfca6f69bd18a9cc6ab236b51b129e1a"-
++quarantine:c3400452dd7173e0d4fedf19131fd230"C
+Asitus_address: 30730 MOUNTAIN LOOP HWY в‰  30730 MOUNTAIN LOOP HW"C
+Asitus_address: 30817 MOUNTAIN LOOP HWY в‰  30817 MOUNTAIN LOOP HW"C
+Asitus_address: 30828 MOUNTAIN LOOP HWY в‰  30828 MOUNTAIN LOOP HW"C
+Asitus_address: 30911 MOUNTAIN LOOP HWY в‰  30911 MOUNTAIN LOOP HW"C
+Asitus_address: 30912 MOUNTAIN LOOP HWY в‰  30912 MOUNTAIN LOOP HW"C
+Asitus_address: 30921 MOUNTAIN LOOP HWY в‰  30921 MOUNTAIN LOOP HW"C
+Asitus_address: 31002 MOUNTAIN LOOP HWY в‰  31002 MOUNTAIN LOOP HW"C
+Asitus_address: 31010 MOUNTAIN LOOP HWY в‰  31010 MOUNTAIN LOOP HW"C
+Asitus_address: 31014 MOUNTAIN LOOP HWY в‰  31014 MOUNTAIN LOOP HW"C
+Asitus_address: 31023 MOUNTAIN LOOP HWY в‰  31023 MOUNTAIN LOOP HW"C
+Asitus_address: 31109 MOUNTAIN LOOP HWY в‰  31109 MOUNTAIN LOOP HW"C
+Asitus_address: 31203 MOUNTAIN LOOP HWY в‰  31203 MOUNTAIN LOOP HW"C
+Asitus_address: 31211 MOUNTAIN LOOP HWY в‰  31211 MOUNTAIN LOOP HW"C
+Asitus_address: 31212 MOUNTAIN LOOP HWY в‰  31212 MOUNTAIN LOOP HW"C
+Asitus_address: 31225 MOUNTAIN LOOP HWY в‰  31225 MOUNTAIN LOOP HW"C
+Asitus_address: 31424 MOUNTAIN LOOP HWY в‰  31424 MOUNTAIN LOOP HW"C
+Asitus_address: 31425 MOUNTAIN LOOP HWY в‰  31425 MOUNTAIN LOOP HW"C
+Asitus_address: 31505 MOUNTAIN LOOP HWY в‰  31505 MOUNTAIN LOOP HW"C
+Asitus_address: 31616 MOUNTAIN LOOP HWY в‰  31616 MOUNTAIN LOOP HW"C
+Asitus_address: 31624 MOUNTAIN LOOP HWY в‰  31624 MOUNTAIN LOOP HW"C
+Asitus_address: 31720 MOUNTAIN LOOP HWY в‰  31720 MOUNTAIN LOOP HW"C
+Asitus_address: 31729 MOUNTAIN LOOP HWY в‰  31729 MOUNTAIN LOOP HW"C
+Asitus_address: 31831 MOUNTAIN LOOP HWY в‰  31831 MOUNTAIN LOOP HW"C
+Asitus_address: 31902 MOUNTAIN LOOP HWY в‰  31902 MOUNTAIN LOOP HW"C
+Asitus_address: 31905 MOUNTAIN LOOP HWY в‰  31905 MOUNTAIN LOOP HW"C
+Asitus_address: 31907 MOUNTAIN LOOP HWY в‰  31907 MOUNTAIN LOOP HW"C
+Asitus_address: 31920 MOUNTAIN LOOP HWY в‰  31920 MOUNTAIN LOOP HW"C
+Asitus_address: 32002 MOUNTAIN LOOP HWY в‰  32002 MOUNTAIN LOOP HW"C
+Asitus_address: 32004 MOUNTAIN LOOP HWY в‰  32004 MOUNTAIN LOOP HW"C
+Asitus_address: 32005 MOUNTAIN LOOP HWY в‰  32005 MOUNTAIN LOOP HW"C
+Asitus_address: 32114 MOUNTAIN LOOP HWY в‰  32114 MOUNTAIN LOOP HW"C
+Asitus_address: 32124 MOUNTAIN LOOP HWY в‰  32124 MOUNTAIN LOOP HW"C
+Asitus_address: 32223 MOUNTAIN LOOP HWY в‰  32223 MOUNTAIN LOOP HW"C
+Asitus_address: 32226 MOUNTAIN LOOP HWY в‰  32226 MOUNTAIN LOOP HW"C
+Asitus_address: 32302 MOUNTAIN LOOP HWY в‰  32302 MOUNTAIN LOOP HW"C
+Asitus_address: 32326 MOUNTAIN LOOP HWY в‰  32326 MOUNTAIN LOOP HW"C
+Asitus_address: 32410 MOUNTAIN LOOP HWY в‰  32410 MOUNTAIN LOOP HW"C
+Asitus_address: 32511 MOUNTAIN LOOP HWY в‰  32511 MOUNTAIN LOOP HW"C
+Asitus_address: 32518 MOUNTAIN LOOP HWY в‰  32518 MOUNTAIN LOOP HW"C
+Asitus_address: 32522 MOUNTAIN LOOP HWY в‰  32522 MOUNTAIN LOOP HW"C
+Asitus_address: 32604 MOUNTAIN LOOP HWY в‰  32604 MOUNTAIN LOOP HW"C
+Asitus_address: 32610 MOUNTAIN LOOP HWY в‰  32610 MOUNTAIN LOOP HW"C
+Asitus_address: 32814 MOUNTAIN LOOP HWY в‰  32814 MOUNTAIN LOOP HW"C
+Asitus_address: 32901 MOUNTAIN LOOP HWY в‰  32901 MOUNTAIN LOOP HW"C
+Asitus_address: 32909 MOUNTAIN LOOP HWY в‰  32909 MOUNTAIN LOOP HW"C
+Asitus_address: 32910 MOUNTAIN LOOP HWY в‰  32910 MOUNTAIN LOOP HW"C
+Asitus_address: 32918 MOUNTAIN LOOP HWY в‰  32918 MOUNTAIN LOOP HW"C
+Asitus_address: 32919 MOUNTAIN LOOP HWY в‰  32919 MOUNTAIN LOOP HW"C
+Asitus_address: 33010 MOUNTAIN LOOP HWY в‰  33010 MOUNTAIN LOOP HW"C
+Asitus_address: 33022 MOUNTAIN LOOP HWY в‰  33022 MOUNTAIN LOOP HW"C
+Asitus_address: 33515 MOUNTAIN LOOP HWY в‰  33515 MOUNTAIN LOOP HW"C
+Asitus_address: 33900 MOUNTAIN LOOP HWY в‰  33900 MOUNTAIN LOOP HW"C
+Asitus_address: 33914 MOUNTAIN LOOP HWY в‰  33914 MOUNTAIN LOOP HW"C
+Asitus_address: 33924 MOUNTAIN LOOP HWY в‰  33924 MOUNTAIN LOOP HW"C
+Asitus_address: 34011 MOUNTAIN LOOP HWY в‰  34011 MOUNTAIN LOOP HW"C
+Asitus_address: 34016 MOUNTAIN LOOP HWY в‰  34016 MOUNTAIN LOOP HW"C
+Asitus_address: 34028 MOUNTAIN LOOP HWY в‰  34028 MOUNTAIN LOOP HW"C
+Asitus_address: 34101 MOUNTAIN LOOP HWY в‰  34101 MOUNTAIN LOOP HW"C
+Asitus_address: 34105 MOUNTAIN LOOP HWY в‰  34105 MOUNTAIN LOOP HW"C
+Asitus_address: 34120 MOUNTAIN LOOP HWY в‰  34120 MOUNTAIN LOOP HW"C
+Asitus_address: 34126 MOUNTAIN LOOP HWY в‰  34126 MOUNTAIN LOOP HW"C
+Asitus_address: 34211 MOUNTAIN LOOP HWY в‰  34211 MOUNTAIN LOOP HW"   ?"  p@"  Ђ>"  ђ@"	
+ЧЈp=
+@"	
+ЧЈp=
+з?"	
+ЧЈp=
+п?"	®Gбzж?"	…лQё@"	…лQёХ?"	…лQёе?"	…лQёоX@"	)\ЏВх(Ь?"	)\ЏВх(ф?"	333333	@"	333333@"	333333У?"	333333у?"	333333ы?"	Hбz®GС?"	Hбz®Gщ?"	Rё…лQИ?"	ffffff@"	ffffffц?"	q=
+ЧЈpЭ?"	{®Gбz
+@"	…лQё…@"	…лQё…@"	ЏВх(\Џв?"	ЏВх(\Џт?"	љ™™™™™@"	љ™™™™™Й?"	љ™™™™™б?"	љ™™™™™й?"	¤p=
+ЧЈ@"	¤p=
+ЧЈш?"	¤p=
+Чг2@"	®Gбz®"@"	ё…лQёЮ?"	ё…лQёт?"	Гх(\ЏВ@"	Гх(\ЏВЕ?"	Гх(\ЏВХ?"	Гх(\ЏВс?"	НМММММ@"	ЧЈp=
+Чч?"	бz®GбК?"	бz®GбЪ?"	мQё…+W@"	мQё…лй?"	ц(\ЏВх
+@"	ц(\ЏВх4@"	ц(\ЏВха?"  " " " " Ђ„" ЂЋ" Ђ­
+" Ђї" „Г" „Ц" „Щ" „Ъ" „ы" €”" €¤" Њ`" Њ‹" ЊЌ" Њ”" Њє" Њх" ђ" ђЈ" ђЇ" ђВ" ”…
+" ””" ”" ”Ё" ”Ї" ”Э" †>" ¦" Ъ	" њ’" њї"  "  8" ¤‘" ¤ћ" ¤Н" ¤Ь" ¤у" ЁЌ" ЁЋ" Ёє" Ёщ" ¬" ¬¶" ¬Н" ¬н" ¬ш" °ѓ" °„
+" °Ы" °в" ґ)" ґ’" ґо" ґц" ґь" ґю" ёЏ" ё®	" ёГ" ёЧ" ёЭ
+" ј™
+" јб" јэ
+" јя" А" АЌ" Ао	" Д‚" Д‹" Д”" ИИ" ИиJ" Мг" Р/" РЇ" РФ" РФ" РШ	" Ф©" ФЮ" Фч" ШЅ" Шй" Шк" Ь…" Ь " ЬЮ" Ьи" аЌ
+" аІ" аё" аї
+" аЫ	" аи" дЊ" дБ" дУ" и·	" мЩ" мб" мщ" р" р€" рБ" рЪ" рЮ	" рс" рт" ф•" фЯ" ш†" шќ" шУ	" шх" ьЂ" ьП."8 "8P9 §&&
+R ¤	ѓ
+Є	ББВБББББУQ­!"	џЊ,$І7n9 «**
+S Ж	Ќ
+Ж	ББВБББББФQ©!",	ф’‚J.l* <PN“\m¤C'E/YI Ј V9 Є))
+T ї	М
+®	ББВБББББХQ®!"	s°:tNf8)X0#=1)X9 ¬++
+W „	э
+‘	ББВБББББШQ±!"	ёћ:Ђ(> 
+ U!M#k9 ¦%%
+[ ў	ћ
+Й	ББВБББББЬQЇ!")	ФЋ‚
+ђI1%O7 /i
+m/ -
+a=I?
+;Q9 ­,,
+U з	а
+¤	ББВБББББЦQ°!"	ѕВЊ	4…O9 ©((
+V є	Я
+“	ББВБББББЧQ!"	’ОF"3`GR9 Ё''
+X …	ѕ
+»	ББВБББББЩQ—!"	Шр"|04‹Q9 ®--
+Yј	Њ
+©	ББВБББББЪQ™!"	Ф "H!JIU9 Ї..
+Z №	н
+ё	ББВБББББЫQ–!"	њ¶2jZ L;	QWj9 ±00
+\ ж	ґ
+¶	ББВБББББЭQґ!"(	аЮ"њ 3g	јх2ИЏ Ф©	Џf9 і22
+^ «	Ј
+¬	ББВБББББЯQµ!"$	И€bаG P
+>  5ЋMPСќ- ЗW9 Ґ$$
+] я	Ы
+Ѕ	ББВБББББЮQІ!"	ЦТ*ћOТЃУU9 ґ33
+_ ’	к
+љ	ББВБББББаQ•!"	аю*ЬђkMa#y% Т
+ББББББВБO”!"K	џак ж2‚d\H`$6J2PL20nF
+¤"< \,Z8F8:DЧ?)9=K‰ќЧ-џX9 Ј""
+b ё	А
+µ	ББВБББББгQ¶!"	єЂ*цN ЏЮЈїY9 °//
+` о	њ
+ј	ББВБББББбQі!"	Фи:а6‹!	AOS9 І11
+a ‹	і
+ѕ	ББВБББББвQ“!"	®Ћ"–ЬsBT9 ¤##
+c д	Ч
+§	ББВБББББдQ·!"	А°"є
+Ё‰O9 ђ
+d џ	—
+є	ББВБББББеQђ!"	¤Z1 QO9 ‘
+d Ф	Ж
+¦	ББВБББББеQ‘!"	¤2j1p9 ў!!
+wЮ	”
+Б	ББВБББББшQј!".	‚шrмаєЯуы ‚ »C
+Ыпй]9 є99
+g Ъ	щ
+Д	ББВБББББиQё!"	Іф:†;иГйэхV9 ё77
+j €	‰
+З	ББВБББББлQ»!"	¤*О нWб]9 ’
+e б	†
+—	ББВБББББжQ’!"	ЦљJ’\
+ –/?#Q9 “
+f Ё	ы
+Е	ББВБББББзQЋ!"	ињ’ \“R9 №88
+h ­	‚
+Ї	ББВБББББйQє!"	–шоЏз:% Р
+ББББББВБO№!"	 т"ф P9 ·66
+kв	К
+А	ББВБББББмQЌ!"	ОвJ„MZ9 »::
+i ·	¦
+В	ББВБББББкQЏ!"	 ўB$ ¬3 #	#=1R9 њ
+l ц	р
+ћ	ББВБББББнQ‹!"	Ђ¤Ъ—X9 µ44
+oЦ	Щ
+•	ББВБББББрQЊ!"	 Ё2ЖХ;(E@-ЊP9 ќ
+m С	й
+›	ББВБББББоQ‰!"	ЁLЮKU9 ћ
+n »	Н
+ћ	ББВБББББпQЉ!"	дЄ* ЦK-Q9  
+pп	Ж
+–	ББВБББББсQ€!"	”° ьK бP9 џ
+q С	Џ
+І	ББВБББББтQ‡!"	”°NњK!Q9 ¶55
+rу	Ж
+ў	ББВБББББуQЅ!"	ЉЊф}пU9 Ў  
+s ¬	“
+Г	ББВБББББфQѕ!"	®ґ*Ю
+†E!i1R9 ВAA
+t г	ч
+Ґ	ББВБББББхQМ!"	Њѕ"`т-1R9 ј;;
+u Ї	–
+џ	ББВБББББцQЛ!"	мА¶І·Cc9 ЙHH
+v ќ	™
+«	ББВБББББчQК!"!	ўДZd†T‚$ љџC	d9 ѕ==
+x Ж	ю
+Ж	ББВБББББщQИ!""	†ЖZ†%¦ ђ1
+™ Ѓ#SS9 ИGG
+y°	Э
+ґ	ББВБББББъQї!"	Њ!М"ўEиK<5 S9 КII
+{ ‘	 
+Ј	ББВБББББьQВ!"	Ь"Рђў»™e9 Ѕ<<
+z У	•
+і	ББВБББББыQГ!"#	®"ОZ.)Њјљ L) •ЃSЏT L;q9 Б@@
+| Ш	Ђ
+И	ББВБББББэQД!"/	м#Ф’рf466 0(46(8g8#ЎЊ!C1+/-1/T9 ГBB
+}µ	л
+±	ББВБББББюQА!"	„)И"Sа':‘“+r9 ДCC
+~Ь	І
+’	ББВБББББяQБ!"0	М+АB ¬u"•/ADЋ9	’П2 ^›\‰:O%#TЯX9 ЗFF
+ Л	Т
+­	ББВБББББЂQЕ!"	р(Т20Vїћ‚k|OR: ЖEE
+Ђ Љ	›
+	ББВБББББЃQЖ!"	 )Ё&B©љ;=T: ЕDD
+‚ ђ	§
+Ё	ББВБББББѓQЗ!"	Ж)к"@hЇ”!)?X: ї>>
+ЃР	Ж
+№	ББВБББББ‚QО!"	М+ш*¬ЧбGђBV: А??
+ѓ Ѓ	ъ
+”	ББВБББББ„QН!"	†*Т"ЬкХG'Џѓ: ПNN
+„¶	е
+њ	ББВБББББ…Q†!"ї	М+°"ЪZ(^2^(b
+6pJћ j\&J(`@.0px$&BF|LЋ`\&<R,ЄХзЩ	Я’lHVPLVFN0R,ТИ ФўР%%I'];'CM/u[__%yg99M5I%Q#a+	OгAСY])!џ	ѕ-jУЎ 
+±ѓ‡;I'E-M=	
+UUi…Q: ”
+… Ґ	±
+·	ББВБББББ†Qх "	ъ:Њ&ЊB)\c7X: •
+† ©	П
+ќ	ББВБББББ‡Qь "	†<О&: %P4,	>E%w: МKK
+Њ	Ж
+ 	ББВБББББЌQч "4	ь?#ЄД Uh4;)mY-515%$S1­`: НLL
+€ ‡	ш
+ѕ	ББВБББББ‰Qц "	Ц=А$RИb{;Н&P: –
+‡ Ћ	с
+ї	ББВБББББ€Qэ "	¦<Ю&4%P3P: —
+‰ ф	О
+¦	ББВБББББЉQы "	Ц=°'*+^)V: ЛJJ
+‹’	х
+‘	ББВБББББЊQш "	¬>к$2.Z*n3<K#P: 
+Љм	Х
+¦	ББВБББББ‹Qъ "	Ё>Ш'*+\)N8 љ
+т	и
+¦	ББВБББББPQю "	М?)(+`)b: ОMM
+Џљ	Ў
+™	ББВБББББђQщ "	 Aм%Z Жџ;	 	8+@9wi V: ™
+Ќ ®	Є
+°	ББВБББББЋQЂ!"	ъ?¶(2:/f	'R: ›
+Ћ Ѕ	ь
+Ў	ББВБББББЏQя "	є@О("@+b/	P% С
+ББББББВБO…!""	ф:к)b4$@<,"N,”JxR@сҐYoCS9

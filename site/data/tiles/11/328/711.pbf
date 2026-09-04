@@ -1,0 +1,1826 @@
+ó¨x
+findings(Ä 
+feature_idcounty_fipscounty_namegeom_sourceis_encroachmentis_unflagged_coincidentdisagrees_with_stateabsent_from_stateabsent_from_oursgeometry_repairedis_quarantinedstate_duplicate_idrejection_reasonfinding_primaryrecord_key_uid
+parcel_uidsitus_address
+situs_city
+landuse_cdvalue_land_appraisedvalue_bldg_appraisedacres_reporteddisagreementsoverlaps_withoverlap_count"
+1"
+2"
+4"
+10"
+11"
+12"
+13"
+14"
+16"
+18"
+19"
+24"
+39"
+42"
+45"
+46"
+48"
+49"
+51"
+53"
+54"
+55"
+58"
+63"
+65"
+67"
+68"
+74"
+85"
+91"
+93"
+94"
+99"
+061"
+2810"
+state"
+county"	
+EVERETT"	
+TULALIP"	
+UNKNOWN"
+
+TULAILIP"
+
+UNKNOWN,"
+	Snohomish"
+	ours_only"
+
+7 B BAY PL"
+
+HAT ISLAND"
+
+MARYSVILLE"
+
+quarantine"
+1609 WALNUT"
+quarantined"
+theirs_only"
+1601 10TH ST"
+23 J VIEW PL"
+2808 10TH ST"
+60 STATE AVE"
+8701 TURK DR"
+96 ALDER AVE"
+encroachment"
+105 MARINE DR"
+1418 MAPLE ST"
+1604 CEDAR ST"
+1612 HOYT AVE"
+1614 BROADWAY"
+17 G SOUND PL"
+1716 BROADWAY"
+1825 BROADWAY"
+2216 BROADWAY"
+29 43RD PL NW"
+7 T MARINA DR"
+942 UNION AVE"
+1 H S BEACH DR"
+1064 ALDER AVE"
+1241 BEACH AVE"
+1258 BEACH AVE"
+1402 STATE AVE"
+17 D MARINA DR"
+1908 BAKER AVE"
+1929 8TH ST NE"
+2 H S BEACH DR"
+2 W GEDNEY WAY"
+2106 FULTON ST"
+26 K BEACH WAY"
+34 K BEACH WAY"
+4 G GEDNEY WAY"
+46 K BEACH WAY"
+64 F BEACH WAY"
+68 A COMANO DR"
+7 W GEDNEY WAY"
+78 A CAMANO DR"
+8 G GEDNEY WAY"
+9 H S BEACH DR"
+9019 STATE AVE"
+915 62ND ST NW"
+1016 43RD ST NW"
+106 G ISLAND PL"
+108 G ISLAND PL"
+11 W GEDNEY WAY"
+12 H S BEACH DR"
+12015 MARINE DR"
+13 G GEDNEY WAY"
+14 W GEDNEY WAY"
+1914 LIBERTY LN"
+25 M CASCADE DR"
+28 H S BEACH DR"
+3 A SARATOGA DR"
+33 H S BEACH DR"
+34 M CASCADE DR"
+3420 60TH PL NE"
+38 M CASCADE DR"
+39 H S BEACH DR"
+40 H S BEACH DR"
+4410 95TH ST NE"
+46 H S BEACH DR"
+46 M CASCADE DR"
+4727 61ST ST NE"
+4730 88TH ST NE"
+4912 89TH PL NE"
+5112 2ND AVE NE"
+5429 6TH AVE NW"
+5729 48TH DR NE"
+6 V TULALIP AVE"
+63 M SKAGIT WAY"
+7120 5TH AVE NE"
+7220 5TH AVE NE"
+7528 45TH DR NW"
+914 124TH PL NW"
+UNKNOWN UNKNOWN"
+1 D SARATOGA WAY"
+100 M CASCADE DR"
+105 M CASCADE DR"
+11501 36TH DR NE"
+12500 45TH DR NE"
+14 A SARATOGA DR"
+14 J EVERETT WAY"
+16 F SARATOGA DR"
+16 U TERRACE AVE"
+18 F SARAGOTA DR"
+19 A SARATOGA DR"
+2224 STURGEON DR"
+2320 RAILWAY AVE"
+2328 116TH ST NE"
+33 F SARATOGA DR"
+34 J EVERETT WAY"
+37 F SARATOGA DR"
+3703 RAILWAY AVE"
+4015 RAILWAY AVE"
+405 MARINE DR NE"
+4129 122ND ST NE"
+42 F SARATOGA DR"
+4915 107TH PL NE"
+50 J EVERETT WAY"
+5438 47TH AVE NE"
+6009 14TH AVE NW"
+62 J SARATOGA DR"
+6905 14TH AVE NE"
+7324 19TH AVE NE"
+7518 14TH AVE NE"
+7714 26TH AVE NW"
+7813 47TH AVE NW"
+813 MARINE DR NE"
+96 F TULALIP WAY"
+9907 35TH AVE NE"
+9909 35TH AVE NE"
+SNOHOMISH COUNTY"
+1001 HIGHWAY 99 N"
+10408 SHOULTES RD"
+10929 47TH AVE NE"
+11500 76TH AVE NW"
+11502 19TH AVE NE"
+17 T SARATOGA WAY"
+2132 HIGHLAND AVE"
+36 G MUKILTEO WAY"
+4 C PORT SUSAN DR"
+401 409 STATE AVE"
+42 G MUKILTEO WAY"
+4313 1 88TH ST NE"
+47 G MUKILTEO WAY"
+53 G ADMIRALTY DR"
+58 F ADMIRALTY DR"
+66 G ADMIRALTY DR"
+75 G MUKILTEO WAY"
+geometry_repaired"
+061-00382000000700"
+061-00382000000800"
+061-00382000001700"
+061-00382100000500"
+061-00382300106800"
+061-00382300107900"
+061-00382500111500"
+061-00382500600100"
+061-00382500600200"
+061-00382501400000"
+061-00384500004601"
+061-00384500010100"
+061-00385300003000"
+061-00385421901501"
+061-00388400001601"
+061-00396600022000"
+061-00412500100401"
+061-00437936301000"
+061-00437938401000"
+061-00438034202600"
+061-00438233602500"
+061-00438235102500"
+061-00438322800700"
+061-00438438702900"
+061-00438728002400"
+061-00438731400100"
+061-00438933002900"
+061-00439143201700"
+061-00439147502500"
+061-00439600001001"
+061-00440000100600"
+061-00440000200200"
+061-00440000200700"
+061-00440000201100"
+061-00440000201400"
+061-00440000600900"
+061-00440000601500"
+061-00440000601600"
+061-00453445303100"
+061-00465300000901"
+061-00466100000300"
+061-00466100001400"
+061-00466100001900"
+061-00466100003900"
+061-00466100006800"
+061-00466100007800"
+061-00466100009400"
+061-00466200000700"
+061-00466200001900"
+061-00466200002700"
+061-00466200004700"
+061-00466200005500"
+061-00466200007400"
+061-00466200010500"
+061-00466200010800"
+061-00466200012400"
+061-00466300000400"
+061-00466300003000"
+061-00466400000100"
+061-00466400001700"
+061-00466500002800"
+061-00466500003300"
+061-00466500005200"
+061-00466600001600"
+061-00466600001800"
+061-00466600003300"
+061-00466600003700"
+061-00466600004200"
+061-00466600005800"
+061-00466600006400"
+061-00466600009600"
+061-00466600010101"
+061-00466700000400"
+061-00466700000800"
+061-00466700001300"
+061-00466700001700"
+061-00466700003600"
+061-00466700004200"
+061-00466700004700"
+061-00466700005300"
+061-00466700006600"
+061-00466700007500"
+061-00466700010600"
+061-00466700010800"
+061-00466800000100"
+061-00466800000200"
+061-00466800000900"
+061-00466800001200"
+061-00466800002800"
+061-00466800003300"
+061-00466800003900"
+061-00466800004000"
+061-00466800004600"
+061-00466900001400"
+061-00466900002300"
+061-00466900003400"
+061-00466900004600"
+061-00466900005000"
+061-00466900006200"
+061-00467000002600"
+061-00467000003400"
+061-00467000004600"
+061-00467100001300"
+061-00467100002500"
+061-00467100003400"
+061-00467100003800"
+061-00467100004600"
+061-00467100006300"
+061-00467100010000"
+061-00467100010500"
+061-00470600003501"
+061-00497600000200"
+061-00511000005300"
+061-00528700901301"
+061-00531100001002"
+061-00547700001201"
+061-00547800000100"
+061-00547900000300"
+061-00548000000402"
+061-00548000000513"
+061-00548000300901"
+061-00548100302700"
+061-00548200000100"
+061-00550600001201"
+061-00553101700200"
+061-00563245900000"
+061-00579800000302"
+061-00579800000706"
+061-00594100601500"
+061-00602500100504"
+061-00602500200401"
+061-00613300004600"
+061-00616500800401"
+061-00616700101100"
+061-00616700200101"
+061-00616700202200"
+061-00619732600400"
+061-00630600000100"
+061-00630600000600"
+061-00630600001300"
+061-00630600001400"
+061-00630600002300"
+061-00630600002700"
+061-00655700001002"
+061-00669600000900"
+061-00736500001100"
+061-00749700000100"
+061-00787200001000"
+061-00820700003900"
+061-00827900010200"
+061-00855400000200"
+061-00953100000200"
+061-00957821500100"
+061-00960001101200"
+061-00960001201700"
+061-00960009200200"
+061-00960014400400"
+061-01123800000100"
+061-01244100000100"
+061-01248900000200"
+061-01254000000200"
+061-01256700000100"
+061-01257400000100"
+061-01257400001900"
+061-01257400002300"
+061-01257400005800"
+061-01257400099600"
+061-29040100201200"
+061-29040900300100"
+061-29040900300200"
+061-29040900300300"
+061-29040900300400"
+061-29040900300600"
+061-29040900300700"
+061-29040900300900"
+061-29040900301000"
+061-29040900301100"
+061-29040900301200"
+061-29050500100500"
+061-29050800100800"
+061-29050900201500"
+061-29051700101600"
+061-29051700103300"
+061-29051700214400"
+061-29051700214600"
+061-29051700214701"
+061-29051700214800"
+061-29051700214900"
+061-29051800400700"
+061-29051900201300"
+061-29052100200900"
+061-29052100201000"
+061-29052100201100"
+061-30040400200200"
+061-30040500100400"
+061-30040700100300"
+061-30040800100200"
+061-30040800300100"
+061-30040800300500"
+061-30040900100100"
+061-30041000100200"
+061-30041000200100"
+061-30041100100200"
+061-30041100200100"
+061-30041200200100"
+061-30041200200200"
+061-30041400100100"
+061-30041500200100"
+061-30041500400600"
+061-30041500401700"
+061-30041600300800"
+061-30042100101500"
+061-30042100200100"
+061-30042200300900"
+061-30042200400500"
+061-30042300100200"
+061-30042300100400"
+061-30042300301401"
+061-30042400200900"
+061-30042400201700"
+061-30042400203100"
+061-30042400203200"
+061-30042400300100"
+061-30042400400300"
+061-30042500100200"
+061-30042500301300"
+061-30042600100200"
+061-30042600400200"
+061-30042600401701"
+061-30042700100301"
+061-30043500200200"
+061-30043500200300"
+061-30043600200400"
+061-30043600205100"
+061-30043600205200"
+061-30043600205300"
+061-30043600300400"
+061-30043600301600"
+061-30043600302500"
+061-30050900204900"
+061-30050900301201"
+061-30050900412300"
+061-30051600100800"
+061-30051600102600"
+061-30051600300700"
+061-30051600304501"
+061-30051600305800"
+061-30051600307100"
+061-30052000300101"
+061-30052000300802"
+061-30052000403200"
+061-30052100106400"
+061-30052100107200"
+061-30052100201200"
+061-30052100312400"
+061-30052800108000"
+061-30052800207300"
+061-30052800215400"
+061-30052800218300"
+061-30052800408500"
+061-30052900302700"
+061-30053000100200"
+061-30053000100300"
+061-30053000100700"
+061-30053000200100"
+061-30053100200300"
+061-30053100200301"
+061-30053100200303"
+061-30053100204800"
+061-30053200100400"
+061-30053300101500"
+061-30053300105500"
+061-30053300105800"
+061-30053300201200"
+061-30053300300100"
+061-30053300300400"
+100 F ADMIRALTY DR"
+1131 PINE ST SPC 2"
+11601 STATE AVE NE"
+23 N SANDPOINT WAY"
+30 C PORT SUSAN DR"
+39 A SNOHOMISH WAY"
+8208 B 27TH AVE NE"
+8323 B 24TH AVE NE"
+9 U SNOQUALMIE AVE"
+9720 WATERWORKS RD"
+missing_parcel_uid"
+1 I HAT ISLAND WALK"
+124 B SNOHOMISH WAY"
+15 U SNOQUALMIE AVE"
+1711 12TH ST UNIT B"
+2909 WHITEHORSE TRL"
+3 I HAT ISLAND WALK"
+3205 19TH ST UNIT B"
+4 I HAT ISLAND WALK"
+4120 MERIDIAN AVE N"
+4912 MERIDIAN AVE N"
+6 I HAT ISLAND WALK"
+6827 TOTEM BEACH RD"
+7 I HAT ISLAND WALK"
+7002 TOTEM BEACH RD"
+7111 TOTEM BEACH RD"
+7615 TOTEM BEACH RD"
+8 I HAT ISLAND WALK"
+9 I HAT ISLAND WALK"
+9632 WATER WORKS RD"
+10 I HAT ISLAND WALK"
+10620 WATER WORKS RD"
+11 I HAT ISLAND WALK"
+12 I HAT ISLAND WALK"
+28 E PORT GARDNER DR"
+2913 THOMAS GOBIN LN"
+33 E PORT GARDNER DR"
+52 E PORT GARDNER DR"
+6323 6325 49TH DR NE"
+unflagged_coincident"
+1 N WHIDBEY ISLAND DR"
+1113 E MARINE VIEW DR"
+1700 W MARINE VIEW DR"
+1930 GRAND AVE UNIT 2"
+3201 MISSION BEACH RD"
+3604 MISSION BEACH RD"
+4026 MISSION BEACH RD"
+4424 84TH ST NE SPC 4"
+6 N WHIDBEY ISLAND DR"
+9810 STATE AVE SPC 17"
+landuse_cd: 11 ‚â† 18"
+landuse_cd: 11 ‚â† 91"
+landuse_cd: 12 ‚â† 11"
+landuse_cd: 12 ‚â† 91"
+landuse_cd: 13 ‚â† 91"
+landuse_cd: 14 ‚â† 91"
+landuse_cd: 18 ‚â† 11"
+landuse_cd: 18 ‚â† 12"
+landuse_cd: 18 ‚â† 91"
+landuse_cd: 19 ‚â† 11"
+landuse_cd: 24 ‚â† 91"
+landuse_cd: 39 ‚â† 91"
+landuse_cd: 45 ‚â† 91"
+landuse_cd: 51 ‚â† 91"
+landuse_cd: 54 ‚â† 55"
+landuse_cd: 54 ‚â† 59"
+landuse_cd: 55 ‚â† 54"
+landuse_cd: 55 ‚â† 65"
+landuse_cd: 91 ‚â† 11"
+landuse_cd: 91 ‚â† 18"
+landuse_cd: 91 ‚â† 24"
+landuse_cd: 91 ‚â† 64"
+landuse_cd: 99 ‚â† 11"
+landuse_cd: 99 ‚â† 74"
+landuse_cd: 99 ‚â† 91"
+1010 HOYT AVE UNIT B-1"
+1102 POTLATCH BEACH RD"
+1113 POTLATCH BEACH RD"
+1128 POTLATCH BEACH RD"
+13 N WHIDBEY ISLAND DR"
+14 N WHIDBEY ISLAND DR"
+1516 POTLATCH BEACH RD"
+19 B WHIDBEY ISLAND DR"
+2130 RUCKER AVE UNIT 4"
+228 PRIEST POINT DR NE"
+27 N WHIDBEY ISLAND DR"
+3006 15TH ST UNIT 3008"
+47 B WHIDBEY ISLAND DR"
+526 PRIEST POINT DR NW"
+74 B WHIDBEY ISLAND DR"
+9416 TULALIP SHORES RD"
+attribute_disagreement"
+105 B WHIDBEY ISLAND DR"
+108 B WHIDBEY ISLAND DR"
+1925 LOMBARD AVE UNIT A"
+27 B WHIDBEY  ISLAND DR"
+4313 PRIEST POINT DR NE"
+8215 47TH AVE NE UNIT 1"
+1031 HIGHWAY 99 N SPC 12"
+12015 MARINE DR LOT 1334"
+2219 RUCKER AVE UNIT 102"
+state:061-00384500004601"
+state:061-00470600003501"
+state:061-00602500100504"
+state:061-30042300301401"
+state:061-30043600200400"
+state:061-30050900301201"
+state:061-30051600304501"
+state:061-30051600305800"
+707 HAWTHORNE ST UNIT ABC"
+9503 35TH AVE NE UNIT 101"
+county:061-00382000000700"
+county:061-00382000000800"
+county:061-00382000001700"
+county:061-00382100000500"
+county:061-00382300106800"
+county:061-00382300107900"
+county:061-00382500111500"
+county:061-00382500600100"
+county:061-00382500600200"
+county:061-00382501400000"
+county:061-00384500010100"
+county:061-00385300003000"
+county:061-00385421901501"
+county:061-00388400001601"
+county:061-00396600022000"
+county:061-00412500100401"
+county:061-00437936301000"
+county:061-00437938401000"
+county:061-00438034202600"
+county:061-00438233602500"
+county:061-00438235102500"
+county:061-00438322800700"
+county:061-00438438702900"
+county:061-00438728002400"
+county:061-00438731400100"
+county:061-00438933002900"
+county:061-00439143201700"
+county:061-00439147502500"
+county:061-00439600001001"
+county:061-00440000100600"
+county:061-00440000200200"
+county:061-00440000200700"
+county:061-00440000201100"
+county:061-00440000201400"
+county:061-00440000600900"
+county:061-00440000601500"
+county:061-00440000601600"
+county:061-00453445303100"
+county:061-00465300000901"
+county:061-00466100000300"
+county:061-00466100001400"
+county:061-00466100001900"
+county:061-00466100003900"
+county:061-00466100006800"
+county:061-00466100007800"
+county:061-00466100009400"
+county:061-00466200000700"
+county:061-00466200001900"
+county:061-00466200002700"
+county:061-00466200004700"
+county:061-00466200005500"
+county:061-00466200007400"
+county:061-00466200010500"
+county:061-00466200010800"
+county:061-00466200012400"
+county:061-00466300000400"
+county:061-00466300003000"
+county:061-00466400000100"
+county:061-00466400001700"
+county:061-00466500002800"
+county:061-00466500003300"
+county:061-00466500005200"
+county:061-00466600001600"
+county:061-00466600001800"
+county:061-00466600003300"
+county:061-00466600003700"
+county:061-00466600004200"
+county:061-00466600005800"
+county:061-00466600006400"
+county:061-00466600009600"
+county:061-00466600010101"
+county:061-00466700000400"
+county:061-00466700000800"
+county:061-00466700001300"
+county:061-00466700001700"
+county:061-00466700003600"
+county:061-00466700004200"
+county:061-00466700004700"
+county:061-00466700005300"
+county:061-00466700006600"
+county:061-00466700007500"
+county:061-00466700010600"
+county:061-00466700010800"
+county:061-00466800000100"
+county:061-00466800000200"
+county:061-00466800000900"
+county:061-00466800001200"
+county:061-00466800002800"
+county:061-00466800003300"
+county:061-00466800003900"
+county:061-00466800004000"
+county:061-00466800004600"
+county:061-00466900001400"
+county:061-00466900002300"
+county:061-00466900003400"
+county:061-00466900004600"
+county:061-00466900005000"
+county:061-00466900006200"
+county:061-00467000002600"
+county:061-00467000003400"
+county:061-00467000004600"
+county:061-00467100001300"
+county:061-00467100002500"
+county:061-00467100003400"
+county:061-00467100003800"
+county:061-00467100004600"
+county:061-00467100006300"
+county:061-00467100010000"
+county:061-00467100010500"
+county:061-00497600000200"
+county:061-00511000005300"
+county:061-00528700901301"
+county:061-00531100001002"
+county:061-00547700001201"
+county:061-00547800000100"
+county:061-00547900000300"
+county:061-00548000000402"
+county:061-00548000000513"
+county:061-00548000300901"
+county:061-00548100302700"
+county:061-00548200000100"
+county:061-00550600001201"
+county:061-00553101700200"
+county:061-00563245900000"
+county:061-00579800000302"
+county:061-00579800000706"
+county:061-00594100601500"
+county:061-00602500200401"
+county:061-00613300004600"
+county:061-00616500800401"
+county:061-00616700101100"
+county:061-00616700200101"
+county:061-00616700202200"
+county:061-00619732600400"
+county:061-00630600000100"
+county:061-00630600000600"
+county:061-00630600001300"
+county:061-00630600001400"
+county:061-00630600002300"
+county:061-00630600002700"
+county:061-00655700001002"
+county:061-00669600000900"
+county:061-00736500001100"
+county:061-00749700000100"
+county:061-00787200001000"
+county:061-00820700003900"
+county:061-00827900010200"
+county:061-00855400000200"
+county:061-00953100000200"
+county:061-00957821500100"
+county:061-00960001101200"
+county:061-00960001201700"
+county:061-00960009200200"
+county:061-00960014400400"
+county:061-01123800000100"
+county:061-01244100000100"
+county:061-01248900000200"
+county:061-01254000000200"
+county:061-01256700000100"
+county:061-01257400000100"
+county:061-01257400001900"
+county:061-01257400002300"
+county:061-01257400005800"
+county:061-01257400099600"
+county:061-29040100201200"
+county:061-29040900300100"
+county:061-29040900300200"
+county:061-29040900300300"
+county:061-29040900300400"
+county:061-29040900300600"
+county:061-29040900300700"
+county:061-29040900300900"
+county:061-29040900301000"
+county:061-29040900301100"
+county:061-29040900301200"
+county:061-29050500100500"
+county:061-29050800100800"
+county:061-29050900201500"
+county:061-29051700101600"
+county:061-29051700103300"
+county:061-29051700214400"
+county:061-29051700214600"
+county:061-29051700214701"
+county:061-29051700214800"
+county:061-29051700214900"
+county:061-29051800400700"
+county:061-29051900201300"
+county:061-29052100200900"
+county:061-29052100201000"
+county:061-29052100201100"
+county:061-30040400200200"
+county:061-30040500100400"
+county:061-30040700100300"
+county:061-30040800100200"
+county:061-30040800300100"
+county:061-30040800300500"
+county:061-30040900100100"
+county:061-30041000100200"
+county:061-30041000200100"
+county:061-30041100100200"
+county:061-30041100200100"
+county:061-30041200200100"
+county:061-30041200200200"
+county:061-30041400100100"
+county:061-30041500200100"
+county:061-30041500400600"
+county:061-30041500401700"
+county:061-30041600300800"
+county:061-30042100101500"
+county:061-30042100200100"
+county:061-30042200300900"
+county:061-30042200400500"
+county:061-30042300100200"
+county:061-30042300100400"
+county:061-30042400200900"
+county:061-30042400201700"
+county:061-30042400203100"
+county:061-30042400203200"
+county:061-30042400300100"
+county:061-30042400400300"
+county:061-30042500100200"
+county:061-30042500301300"
+county:061-30042600100200"
+county:061-30042600400200"
+county:061-30042600401701"
+county:061-30042700100301"
+county:061-30043500200200"
+county:061-30043500200300"
+county:061-30043600205100"
+county:061-30043600205200"
+county:061-30043600205300"
+county:061-30043600300400"
+county:061-30043600301600"
+county:061-30043600302500"
+county:061-30050900204900"
+county:061-30050900412300"
+county:061-30051600100800"
+county:061-30051600102600"
+county:061-30051600300700"
+county:061-30051600307100"
+county:061-30052000300101"
+county:061-30052000300802"
+county:061-30052000403200"
+county:061-30052100106400"
+county:061-30052100107200"
+county:061-30052100201200"
+county:061-30052100312400"
+county:061-30052800108000"
+county:061-30052800207300"
+county:061-30052800215400"
+county:061-30052800218300"
+county:061-30052800408500"
+county:061-30052900302700"
+county:061-30053000100200"
+county:061-30053000100300"
+county:061-30053000100700"
+county:061-30053000200100"
+county:061-30053100200300"
+county:061-30053100200301"
+county:061-30053100200303"
+county:061-30053100204800"
+county:061-30053200100400"
+county:061-30053300101500"
+county:061-30053300105500"
+county:061-30053300105800"
+county:061-30053300201200"
+county:061-30053300300100"
+county:061-30053300300400"
+3027 SANDRA MADISON LOOP RD"
+2200 W MARINE VIEW DR BLDG A" 
+6430 JOSEPH CHARLES JR LOOP RD"!
+061-30053300105500 (2 sqft, 0%)"!
+061-30053300105800 (2 sqft, 0%)"!
+061-30053300300100 (3 sqft, 0%)"!
+061-30053300300400 (3 sqft, 0%)"#
+!061-00382300107900 (300 sqft, 4%)"$
+"061-00439600001001 (1927 sqft, 0%)"$
+"061-29050800100800 (1927 sqft, 0%)"$
+"situs_city: MARYSVILLE ‚â† TULALIP"$
+"situs_city: TULALIP ‚â† MARYSVILLE"%
+#situs_city: TULAILIP ‚â† MARYSVILLE"&
+$061-00382300106801 (4475 sqft, 100%)"&
+$061-00437938401001 (9015 sqft, 100%)"&
+$061-29052100201100 (18229 sqft, 13%)"&
+$061-29052100201100 (41333 sqft, 30%)"&
+$061-29052100201100 (71324 sqft, 51%)"'
+%061-00616500800400 (21559 sqft, 100%)"'
+%061-30053100200301 (19123 sqft, 100%)")
+'061-30053100200301 (5009496 sqft, 100%)"*
+(situs_address: 7 B BAY PL ‚â† 7-B BAY PL"-
++quarantine:0107c3057ab28b7aa51327a4dec65606"-
++quarantine:0323d4a8c722190c3af4fa6e2a011297"-
++quarantine:04f93455ca7875d6953109fc5e2dbd8f"-
++quarantine:05a87529176c0177141d7c6165ff6b1b"-
++quarantine:0a5fd4b6c2e36680139ba6a5fa182587"-
++quarantine:0c594a0ede67288dbd192d25c6f91039"-
++quarantine:12f25b740e1c21f9e029f636d3e30497"-
++quarantine:1470a69010f12937debce7faf99c7bd1"-
++quarantine:1668d3a3380a5c190e157558e4e5c3e4"-
++quarantine:169e3568ac33f8904161080fa04e66f6"-
++quarantine:176affaa539d509494d7bcae136c5d1f"-
++quarantine:17ad356dcf511dfaf2f9f3b83c8a1ab8"-
++quarantine:18c8c0e1be38fcff8931675046c7b7c2"-
++quarantine:214f922941e10d8f3a2d18be1ebddda6"-
++quarantine:2242e6ed8e8aa022c96889d584875cce"-
++quarantine:284d8f3036b480402d7521b906f9af88"-
++quarantine:28c3a087f43935607601470ae814c5f1"-
++quarantine:29fd53fbad9fd7d1ff5f653140cba304"-
++quarantine:2a3cf571439ef122ca872f1946c90dfc"-
++quarantine:331353161c8253411cda68a2ba9c17c7"-
++quarantine:37395eba7ff09fbd950242b3a67caca0"-
++quarantine:380bff44802333b876b2fa767fb6e704"-
++quarantine:3b0de05509abb57e0cbb020afecfefd6"-
++quarantine:3dc90fccfc599505df450ee59d27db57"-
++quarantine:3ef168b0b56b83598ce2566709d4f46b"-
++quarantine:3f8665a242f57ef0f9ff302dd90e6e92"-
++quarantine:4009922c280e0d0d690a0847fcd06a50"-
++quarantine:40a4ba4db35c830634bd2dfeb0af9b0d"-
++quarantine:415fd935583db1cdb5cfb4b87cc947b9"-
++quarantine:41da8168cf6bf1de4577aa79fc1a04d3"-
++quarantine:420211a3e64951d186e8e7b7c674bdc9"-
++quarantine:4938ef0af1c62255c210bd82a1469f3a"-
++quarantine:4d95085d29730dc87d501a5f3409871d"-
++quarantine:4e02f302dfe921325225b06bdaaa4c3b"-
++quarantine:4f61baacc5e81495abf83736a3e52dc4"-
++quarantine:4fa01b33b5fc01ffb63b0f1e4d2a07dd"-
++quarantine:50f573770c106e18b9e55045baf3f02d"-
++quarantine:543ac22a1c70d2fe296677848894d682"-
++quarantine:54a069047c51c0a4d16c3b52f0f57e4d"-
++quarantine:54b2a55607822929da6b7c7302fd928d"-
++quarantine:563690bd1ecaa3547ef65d0fac1d910f"-
++quarantine:57367b120a912a8b261fe4a274961927"-
++quarantine:57e674871bca6744a2b33172e1a10dd2"-
++quarantine:591d320ca0f2ed762068daf573cd83ae"-
++quarantine:5d76a79ec87ed7e29919b73353471a1b"-
++quarantine:5de6c528fb782c514ce5702006595b59"-
++quarantine:62ed3717555796a308c8b4b2957eeed9"-
++quarantine:6c00475edc1e48c69bbd5022825bc66a"-
++quarantine:6c824d7ac55401a53d4b44a8eb3a89b6"-
++quarantine:6cff38e4e8c7018c77e9e249f8727a45"-
++quarantine:6d24b9aba5452eee447cee55d42edeae"-
++quarantine:731b53af92589c7bc9839814923521bf"-
++quarantine:7c6c0235ecc14e8e141f79146a876235"-
++quarantine:7df1a5500da9f229be06b9ee1da99410"-
++quarantine:85accd81669ee856351b38ee7d1432c2"-
++quarantine:85fdc7a16de935e90738f30ac143bae9"-
++quarantine:8d38a7bb1df785461c31ee954ba55a65"-
++quarantine:8fb589416827d9d4649f4f1b89ca489c"-
++quarantine:8fca25ea022c7b22391df0e53baf22c9"-
++quarantine:9111a6f3877c5ee6f85c901205302ff5"-
++quarantine:91c11cfb04969fd6ba799f4f464351ec"-
++quarantine:92ffa7fe5e5b99cead54b573d730b2c7"-
++quarantine:9616c2a2e9cb45fca116a89e1b5feb0f"-
++quarantine:99427da8dd51ccba912ffeb2abcf0ec3"-
++quarantine:a668d88c7b2529940882813303830ea3"-
++quarantine:a69e8a761cf0e1b8a36fc6f58a481e34"-
++quarantine:aacda038a6b393db7eaf11303547be29"-
++quarantine:acb8ef917518aff21133057603056fd8"-
++quarantine:adb45c924500db7018fe14f889a16bc0"-
++quarantine:adc22d68e9b7f56690087fc864e8cfcf"-
++quarantine:ae66c4b914f7ec76e51620d37b0587d6"-
++quarantine:aeec85faaabff026a4123216344a4bb8"-
++quarantine:b09f0863e3e7b3b6ef5f93d9998e55d1"-
++quarantine:b29834eeb731f00dfd048e643f4aeaa7"-
++quarantine:b3d6e1ab0b58cf5561ff669bdf9080d8"-
++quarantine:bc93d0ed9ad61a9a505a6fac94f46524"-
++quarantine:be65a4efbe93c313b36fa099e8c9851a"-
++quarantine:be8bf4b2af8d3ddcae92767161de42ec"-
++quarantine:bea31bfc4c273d2c5faabf568be8dec8"-
++quarantine:c1b106462ab3afc3e8aec724c3b4f84f"-
++quarantine:c1beee04c89d7a2afeffeefac825c2a0"-
++quarantine:c46f530f8d89446164f01457b332d15c"-
++quarantine:c668ce667aae25b2c1336e80634c381f"-
++quarantine:c720e409c05430f7e17e9d5e0ad8a436"-
++quarantine:c8b3ece978a33746cb8721feb09819e0"-
++quarantine:c8b996011fee7cd0d354be9830926d56"-
++quarantine:ccd0e826902f2bc9cd8c756745e76f6e"-
++quarantine:d1e02efca603c00dc25f1101b820c66c"-
++quarantine:d22efd9a4150561f98878fcab13fc186"-
++quarantine:d3bf492ca6b95d27240e22701cbc9479"-
++quarantine:d4bec5d7c85bd89a8d7015dd8ed1c2f0"-
++quarantine:d6fa92877eb721777c06c191c8c19f4a"-
++quarantine:d88401a022742df8cdf36b5d82e76aaf"-
++quarantine:d96ccf4a40e4339e7e879f3444c0407f"-
++quarantine:dbd6339e8fb6d386de946dcd620e6771"-
++quarantine:de6e0f83ccc8e8ffd569e6705e727a60"-
++quarantine:defced925f2f03553de2ebb21228988e"-
++quarantine:e0bea79ac78a358f63f8526f92c4b3ca"-
++quarantine:e0e3077d20c2e87b428774efcf8ac4bb"-
++quarantine:e3588ebd01963b29f7bd33b9494e589f"-
++quarantine:e6034571550234f53ce9173feeb22c5f"-
++quarantine:e67b845e66fd63b09b8b18e0183d7c95"-
++quarantine:e8e136e4b34d8553a1e50a53e9b486ce"-
++quarantine:e9cab965aec33af552b40f28f153ef38"-
++quarantine:ec80f5fb3238d1a042308a73be72d270"-
++quarantine:f2b5f960d2001d2d1451cc5d5ee3af2a"-
++quarantine:f8cec85e417db972b9da50e11c05df04"-
++quarantine:fa96142da3f9f481ec4405754f782b66"-
++quarantine:fe1a85ddbb17c73149f301c1e64a0213"-
++quarantine:fee22860f4bb8af50a1ef3d700649cf8".
+,situs_address: 23 J VIEW PL ‚â† 23-J VIEW PL"/
+-situs_address: 1601 10TH ST ‚â† 1601 10TH AVE"/
+-situs_address: 17 G SOUND PL ‚â† 17G SOUND PL"/
+-situs_address: 7 T MARINA DR ‚â† 7T MARINA DR"0
+.situs_address: 1711 12TH ST UNIT B ‚â† UNKNOWN"1
+/situs_address: 1064 ALDER AVE ‚â† 1064 ALDER ST"1
+/situs_address: 1604 CEDAR ST ‚â† 1604 CEDAR AVE"1
+/situs_address: 17 D MARINA DR ‚â† 17D MARINA DR"1
+/situs_address: 46 K BEACH WAY ‚â† 46K BEACH WAY"1
+/situs_address: 64 F BEACH WAY ‚â† 64F BEACH WAY"1
+/situs_address: 68 A COMANO DR ‚â† 68A COMANO DR"1
+/situs_address: 8 G GEDNEY WAY ‚â† 8G GEDNEY WAY"2
+0situs_address: 1 H S BEACH DR ‚â† 1-H S BEACH DR"2
+0situs_address: 2 H S BEACH DR ‚â† 2-H S BEACH DR"2
+0situs_address: 2 W GEDNEY WAY ‚â† 2-W GEDNEY WAY"2
+0situs_address: 26 K BEACH WAY ‚â† 26-K BEACH WAY"2
+0situs_address: 34 K BEACH WAY ‚â† 34-K BEACH WAY"2
+0situs_address: 7 W GEDNEY WAY ‚â† 7-W GEDNEY WAY"2
+0situs_address: 78 A CAMANO DR ‚â† 78-A CAMANO DR"2
+0situs_address: 9 H S BEACH DR ‚â† 9-H S BEACH DR"3
+1situs_address: 11 W GEDNEY WAY ‚â† 11W GEDNEY WAY"3
+1situs_address: 13 G GEDNEY WAY ‚â† G13 GEDNEY WAY"3
+1situs_address: 14 W GEDNEY WAY ‚â† 14W GEDNEY WAY"3
+1situs_address: 1612 HOYT AVE ‚â† 1612 HOYT AVE SE"3
+1situs_address: 2106 FULTON ST ‚â† 2106 FULTON AVE"3
+1situs_address: 63 M SKAGIT WAY ‚â† 63M SKAGIT WAY"4
+2situs_address: 106 G ISLAND PL ‚â† 106-G ISLAND PL"4
+2situs_address: 108 G ISLAND PL ‚â† 108-G ISLAND PL"4
+2situs_address: 1131 PINE ST SPC 2 ‚â† 1131 PINE ST"4
+2situs_address: 12 H S BEACH DR ‚â† 12-H S BEACH DR"4
+2situs_address: 1614 BROADWAY ‚â† 1614 BROADWAY AVE"4
+2situs_address: 1716 BROADWAY ‚â† 1716 BROADWAY AVE"4
+2situs_address: 2216 BROADWAY ‚â† 2216 BROADWAY AVE"4
+2situs_address: 25 M CASCADE DR ‚â† 25-M CASCADE DR"4
+2situs_address: 28 H S BEACH DR ‚â† 28-H S BEACH DR"4
+2situs_address: 3 A SARATOGA DR ‚â† 3-A SARATOGA DR"4
+2situs_address: 33 H S BEACH DR ‚â† 33-H S BEACH DR"4
+2situs_address: 34 M CASCADE DR ‚â† 34-M CASCADE DR"4
+2situs_address: 38 M CASCADE DR ‚â† 38-M CASCADE DR"4
+2situs_address: 39 H S BEACH DR ‚â† 39-H S BEACH DR"4
+2situs_address: 40 H S BEACH DR ‚â† 40-H S BEACH DR"4
+2situs_address: 46 H S BEACH DR ‚â† 46-H S BEACH DR"4
+2situs_address: 46 M CASCADE DR ‚â† 46-M CASCADE DR"4
+2situs_address: 6 V TULALIP AVE ‚â† 6-V TULALIP AVE"4
+2situs_address: 7120 5TH AVE NE ‚â† 7212 5TH AVE NE"5
+3situs_address: 105 M CASCADE DR ‚â† 105M CASCADE DR"5
+3situs_address: 1908 BAKER AVE ‚â† 1908 BAKER AVE NE"6
+4situs_address: 1 D SARATOGA WAY ‚â† 1-D SARATOGA WAY"6
+4situs_address: 100 M CASCADE DR ‚â† 100-M CASCADE DR"6
+4situs_address: 14 A SARATOGA DR ‚â† 14-A SARATOGA DR"6
+4situs_address: 14 J EVERETT WAY ‚â† 14-J EVERETT WAY"6
+4situs_address: 16 F SARATOGA DR ‚â† 16-F SARATOGA DR"6
+4situs_address: 16 U TERRACE AVE ‚â† 16-U TERRACE AVE"6
+4situs_address: 18 F SARAGOTA DR ‚â† 18-F SARAGOTA DR"6
+4situs_address: 19 A SARATOGA DR ‚â† 19-A SARATOGA DR"6
+4situs_address: 2810 ‚â† 2810 2810 MISSION BEACH WALK"6
+4situs_address: 33 F SARATOGA DR ‚â† 33-F SARATOGA DR"6
+4situs_address: 34 J EVERETT WAY ‚â† 34-J EVERETT WAY"6
+4situs_address: 37 F SARATOGA DR ‚â† 37-F SARATOGA DR"6
+4situs_address: 42 F SARATOGA DR ‚â† 42-F SARATOGA DR"6
+4situs_address: 50 J EVERETT WAY ‚â† 50-J EVERETT WAY"6
+4situs_address: 62 J SARATOGA DR ‚â† 62-J SARATOGA DR"6
+4situs_address: 96 F TULALIP WAY ‚â† 96-F TULALIP WAY"8
+6situs_address: 10929 47TH AVE NE ‚â† 10929 47TH AVE SE"8
+6situs_address: 17 T SARATOGA WAY ‚â† 17-T SARATOGA WAY"8
+6situs_address: 3006 15TH ST UNIT 3008 ‚â† 3006 15TH ST"8
+6situs_address: 36 G MUKILTEO WAY ‚â† 36-G MUKILTEO WAY"8
+6situs_address: 4 C PORT SUSAN DR ‚â† 4-C PORT SUSAN DR"8
+6situs_address: 401 409 STATE AVE ‚â† 401-409 STATE AVE"8
+6situs_address: 42 G MUKILTEO WAY ‚â† 42-G MUKILTEO WAY"8
+6situs_address: 4313 1 88TH ST NE ‚â† 4313-1 88TH ST NE"8
+6situs_address: 47 G MUKILTEO WAY ‚â† 47-G MUKILTEO WAY"8
+6situs_address: 53 G ADMIRALTY DR ‚â† 53-G ADMIRALTY DR"8
+6situs_address: 58 F ADMIRALTY DR ‚â† 58-F ADMIRALTY DR"8
+6situs_address: 66 G ADMIRALTY DR ‚â† 66-G ADMIRALTY DR"8
+6situs_address: 75 G MUKILTEO WAY ‚â† 75-G MUKILTEO WAY"9
+7situs_address: 1001 HIGHWAY 99 N ‚â† 1001 HIGHWAY 99  N"9
+7situs_address: 1010 HOYT AVE UNIT B-1 ‚â† 1010 HOYT AVE"9
+7situs_address: 1930 GRAND AVE UNIT 2 ‚â† 1930 GRAND AVE"9
+7situs_address: 23 N SANDPOINT WAY ‚â† 23N SANDPOINT WAY"9
+7situs_address: 8208 B 27TH AVE NE ‚â† 8208B 27TH AVE NE"9
+7situs_address: 8323 B 24TH AVE NE ‚â† 8323B 24TH AVE NE"9
+7situs_address: 9810 STATE AVE SPC 17 ‚â† 9810 STATE AVE":
+8situs_address: 100 F ADMIRALTY DR ‚â† 100-F ADMIRALTY DR":
+8situs_address: 1258 BEACH AVE ‚â† 1258 TO 1264 BEACH AVE":
+8situs_address: 30 C PORT SUSAN DR ‚â† 30-C PORT SUSAN DR":
+8situs_address: 39 A SNOHOMISH WAY ‚â† 39-A SNOHOMISH WAY":
+8situs_address: 9 U SNOQUALMIE AVE ‚â† 9-U SNOQUALMIE AVE";
+9situs_address: 2130 RUCKER AVE UNIT 4 ‚â† 2130 RUCKER AVE";
+9situs_address: 2909 WHITEHORSE TRL ‚â† 2909 WHITEHORSE TR"<
+:situs_address: 1 I HAT ISLAND WALK ‚â† I-1 HAT ISLAND WALK"<
+:situs_address: 15 U SNOQUALMIE AVE ‚â† 15-U SNOQUALMIE AVE"<
+:situs_address: 3 I HAT ISLAND WALK ‚â† I-3 HAT ISLAND WALK"<
+:situs_address: 4 I HAT ISLAND WALK ‚â† I-4 HAT ISLAND WALK"<
+:situs_address: 4727 61ST ST NE ‚â† 4727 TO 4731 61ST ST NE"<
+:situs_address: 6 I HAT ISLAND WALK ‚â† I-6 HAT ISLAND WALK"<
+:situs_address: 7 I HAT ISLAND WALK ‚â† I-7 HAT ISLAND WALK"<
+:situs_address: 8 I HAT ISLAND WALK ‚â† I-8 HAT ISLAND WALK"<
+:situs_address: 9 I HAT ISLAND WALK ‚â† I-9 HAT ISLAND WALK"=
+;situs_address: 2219 RUCKER AVE UNIT 102 ‚â† 2219 RUCKER AVE"=
+;situs_address: 33 E PORT GARDNER DR ‚â† 33E PORT GARDNER DR">
+<situs_address: 10 I HAT ISLAND WALK ‚â† I-10 HAT ISLAND WALK">
+<situs_address: 11 I HAT ISLAND WALK ‚â† I-11 HAT ISLAND WALK">
+<situs_address: 12 I HAT ISLAND WALK ‚â† I-12 HAT ISLAND WALK">
+<situs_address: 28 E PORT GARDNER DR ‚â† 28-E PORT GARDNER DR">
+<situs_address: 52 E PORT GARDNER DR ‚â† 52-E PORT GARDNER DR">
+<situs_address: 6323 6325 49TH DR NE ‚â† 6323-6325 49TH DR NE"?
+=situs_address: 1 N WHIDBEY ISLAND DR ‚â† 1N WHIDBEY ISLAND DR"?
+=situs_address: 6 N WHIDBEY ISLAND DR ‚â† 6N WHIDBEY ISLAND DR"?
+=situs_address: 707 HAWTHORNE ST UNIT ABC ‚â† 707 HAWTHORNE ST"?
+=situs_address: 9503 35TH AVE NE UNIT 101 ‚â† 9503 35TH AVE NE"A
+?situs_address: 13 N WHIDBEY ISLAND DR ‚â† 13N WHIDBEY ISLAND DR"A
+?situs_address: 14 N WHIDBEY ISLAND DR ‚â† 14N WHIDBEY ISLAND DR"A
+?situs_address: 27 N WHIDBEY ISLAND DR ‚â† 27N WHIDBEY ISLAND DR"A
+?situs_address: 47 B WHIDBEY ISLAND DR ‚â† 47B WHIDBEY ISLAND DR"A
+?situs_address: 74 B WHIDBEY ISLAND DR ‚â† 74B WHIDBEY ISLAND DR"A
+?situs_city: TULALIP ‚â† MARYSVILLE; situs_zip5: 98271 ‚â† 98270"B
+@situs_address: 19 B WHIDBEY ISLAND DR ‚â† 19-B WHIDBEY ISLAND DR"B
+@situs_address: 2200 W MARINE VIEW DR BLDG A ‚â† 2600 FEDERAL AVE"C
+Asitus_address: 105 B WHIDBEY ISLAND DR ‚â† 105B WHIDBEY ISLAND DR"C
+Asitus_address: 108 B WHIDBEY ISLAND DR ‚â† 108B WHIDBEY ISLAND DR"C
+Asitus_address: 27 B WHIDBEY  ISLAND DR ‚â† 27B WHIDBEY  ISLAND DR"G
+Esitus_address: 1031 HIGHWAY 99 N SPC 12 ‚â† 1031 HIGHWAY 99  N SPC 12"I
+G061-00382500400000 (44335 sqft, 100%); 061-00382300107900 (40 sqft, 0%)"I
+G061-00382500600201 (6965 sqft, 100%); 061-00382300107900 (307 sqft, 4%)"P
+N061-30053100200300 (5009496 sqft, 100%); 061-30053100204800 (19123 sqft, 100%)"R
+Psitus_address: 2808 10TH ST ‚â† UNKNOWN UNKNOWN; situs_city: EVERETT ‚â† UNKNOWN"S
+Qsitus_address: 1418 MAPLE ST ‚â† UNKNOWN UNKNOWN; situs_city: EVERETT ‚â† UNKNOWN"W
+Usitus_address: 4 G GEDNEY WAY ‚â† UNKNOWN UNKNOWN; situs_city: HAT ISLAND ‚â† UNKNOWN"[
+Ysitus_address: 1700 W MARINE VIEW DR ‚â† UNKNOWN UNKNOWN; situs_city: EVERETT ‚â† UNKNOWN"`
+^situs_address: 8215 47TH AVE NE UNIT 1 ‚â† UNKNOWN UNKNOWN; situs_city: MARYSVILLE ‚â† UNKNOWN"d
+bsitus_address: 3604 MISSION BEACH RD ‚â† 3604 MISSION BEACH DR; situs_city: TULALIP ‚â† MARYSVILLE"i
+gsitus_address: 1113 POTLATCH BEACH RD ‚â† 1113 POTLATCH BEACH RD NW; situs_city: TULALIP ‚â† MARYSVILLE"ó
+î061-29052100201000 (71324 sqft, 51%); 061-29052100200900 (41333 sqft, 30%); 061-00563245900000 (18229 sqft, 13%); 061-00480100200901 (8175 sqft, 6%)"∞
+≠061-00382500600600 (341 sqft, 5%); 061-00382500500100 (340 sqft, 3%); 061-00382500500201 (330 sqft, 3%); 061-00382500600700 (329 sqft, 5%); 061-00382500600200 (307 sqft, 4%)"  Ä>"  ™A"  »@"	
+◊£p=
+«?"	
+◊£p=
+Á?"	
+◊£p=
+˚?"	
+◊£p=äS@"	
+◊£p=än@"	
+◊£p=™U@"	ÆG·z@"	ÆG·zﬁ?"	ÆG·zÊ?"	ÆG·z˙?"	ÖÎQ∏4@"	ÖÎQ∏’?"	ÖÎQ∏ı?"	ÖÎQ∏¶`@"	)\è¬ı(º?"	)\è¬ı(Ã?"	)\è¬ı(‹?"	)\è¬ı(Ï?"	)\è¬ı(?"	)\è¬ıàT@"	333333√?"	333333”?"	333333Î?"	33333≥!@"	33333ÛB@"	=
+◊£p=@"	=
+◊£p=9@"	=
+◊£p=⁄?"	=
+◊£p=ˆ?"	=
+◊£p]F@"	=
+◊£p]Z@"	=
+◊£p}?@"	=
+◊£p•c@"	H·zÆG—?"	H·zÆG·?"	H·zÆGÈ?"	H·zÆGÒ?"	H·zÆGı?"	R∏ÖÎQ@"	R∏ÖÎQ@"	R∏ÖÎQ»?"	R∏ÖÎQË?"	R∏ÖÎ—?@"	\è¬ı(\@"	\è¬ı(\@"	\è¬ı(\@"	\è¬ı(\@"	\è¬ı(\*@"	\è¬ı(\ﬂ?"	\è¬ı(\Á?"	\è¬ı(\Ô?"	\è¬ı(Ñc@"	fffffY@"	fffffd@"	ffffff÷?"	ffffffÊ?"	ffffffÓ?"	ffffff˛?"	q=
+◊£pÕ?"	q=
+◊£pÂ?"	q=
+◊£p˘?"	q=
+◊£#@"	{ÆG·z @"	{ÆG·z
+@"	{ÆG·zT@"	{ÆG·zÑ?"	{ÆG·z¥?"	{ÆG·zƒ?"	{ÆG·z‘?"	{ÆG·z‰?"	{ÆG·zÏ?"	{ÆG·˙"@"	{ÆG·˙=@"	ÖÎQ∏Ö@"	ÖÎQ∏Ö€?"	ÖÎQ∏µS@"	è¬ı(\è“?"	è¬ı(\èÍ?"	è¬ı(\≥}@"	öôôôôd@"	öôôôô-@"	öôôôôô©?"	öôôôôô…?"	öôôôôôÈ?"	öôôôôπS@"	öôôôôÈc@"	§p=
+◊£@"	§p=
+◊£/@"	§p=
+◊£¿?"	§p=
+◊£–?"	§p=
+◊£‡?"	§p=
+◊£Ë?"	§p=
+◊√K@"	ÆG·znS@"	ÆG·zéc@"	ÆG·zñk@"	ÆG·zÆ@"	ÆG·zÆ@"	ÆG·zÆ◊?"	∏ÖÎQ∏@"	∏ÖÎQ∏@"	∏ÖÎQ∏Æ?"	∏ÖÎQ∏Œ?"	∏ÖÎQ∏ﬁ?"	√ı(\èB3@"	√ı(\èÇC@"	√ı(\è¬@"	√ı(\è¬≈?"	√ı(\è¬’?"	√ı(\è¬Ì?"	ÕÃÃÃÃL(@"	ÕÃÃÃÃÃ@"	ÕÃÃÃÃÃ@"	ÕÃÃÃÃÃ‰?"	ÕÃÃÃÃÃÏ?"	ÕÃÃÃÃÃ?"	◊£p=
+W3@"	◊£p=
+«s@"	◊£p=
+◊@"	◊£p=
+◊@"	◊£p=
+◊”?"	◊£p=
+◊Û?"	·zÆGa6@"	·zÆG· ?"	·zÆG·⁄?"	·zÆG·‚?"	·zÆG·Í?"	·zÆG·˛?"	ÏQ∏Öãc@"	ÏQ∏Ö€r@"	ÏQ∏ÖÎ@"	ÏQ∏ÖÎ@"	ÏQ∏ÖÎ@"	ÏQ∏ÖÎ±?"	ÏQ∏ÖÎ¡?"	ÏQ∏ÖÎ—?"	ÏQ∏ÖÎ·?"	ÏQ∏ÖÎÈ?"	ÏQ∏ÖÎÒ?"	ˆ(\è¬5V@"	ˆ(\è¬µ\@"	ˆ(\è¬ı‡?"	ˆ(\è¬ıË?"  " " " O" d" Äì" Äó"" Ä®" Ä©" ÄÃ" Ä”" Ä÷" Ä⁄" Ä„C" ÄÏ" Ñù" Ñ≥" Ñ¥
+" ÑΩ" Ñæ" Ñ—" ÑŸ" Ñˇ
+" à@" àâ
+" àí" à¡" à–" à–ô" à—$" à˙" å." åÅ" åÇI" åå" åöA" å™" å≤" å∂" å∫." å¿" åƒ" å…" å÷" êg" êÄ" êà" êè" êõ" ê°" ê§" ê©" ê≠" ê∞
+" ê’" ê‡" êÂ;" êÁ" êa" ê˘" ê¸" ê˝" îU" îá" îé" îú" î∑
+" î¡" îÀ" îŒ" î⁄" î⁄A" î„" îË" òì)" òû" òû" ò†" ò±" òº" ò÷" ò◊
+" ò„" úä" úë" úí" ú¶" úÆ" úØ"" úæ" ú¬°" úÂ)" úÓ" †" †" †Ü" †Ã
+" †Œ" †‘" †„" †È" †ÛH" †ı" †˙" §" §&" §å" §ó" §£" §¨" §ø2" §ﬂ" §ˆæ" ®_" ®Å" ®Ñ" ®á" ®é" ®í	" ®ñ" ®¢%" ®£" ®º" ®Ì" ¨" ¨M" ¨ã" ¨í" ¨ò" ¨ö∫" ¨õd" ¨ú" ¨¶&" ¨©%" ¨ƒ" ¨ " ¨ﬁ" ¨ﬂ" ∞Ç" ∞ß" ∞Æ" ∞¥" ∞π	" ∞Ω" ∞…%" ∞Ã$" ∞œ
+" ∞“"" ∞›" ∞ﬂ" ∞È+" ¥" ¥ág" ¥ä" ¥ç" ¥®" ¥Æ(" ¥ÆZ" ¥∑%" ¥¿	" ¥»" ¥”" ¥ÿ" ¥‰" ¥Íı" ¥Ù2" ∏b" ∏ô)" ∏®" ∏™" ∏Æ	" ∏±" ∏º" ∏’" ∏·" ∏ı" ∏˜+" ∏˙" ºè" ºô
+" º°J" ºÿ" ºﬁ%" ¿%" ¿>" ¿Ç-" ¿å" ¿ì8" ¿ó" ¿ö" ¿ß" ¿©" ¿¨" ¿≤" ¿¿" ¿≈" ¿Î#" ¿Ô" ¿¸" ƒE" ƒÄ" ƒã$" ƒ£" ƒ—" ƒŸ
+" ƒ€" ƒﬁ" ƒÊ" ƒı	" ƒ¸¢" »" »å&" »ê" »ù" »£" »Ø" »±	" »≥2" »æ£" »÷" »ˆ$" »¸	" Ã:" Ãç" Ãó" Ãó-" Ã©" Ã " Ã⁄" ÃÙ" –é*" –ò" –õ" –†" –ß*" –≤" –»" – " ––ë" –“=" –Ÿ" –Ë" –Ò	" –˜" –ˇ." ‘õ" ‘™<" ‘π" ‘…" ‘Õ(" ‘“" ‘„" ‘Ê" ‘ı#" ÿh" ÿÜ" ÿ°" ÿ´" ÿ≠" ÿ€" ÿ›%" ÿﬂ" ÿ‡$" ÿË" ÿˆ" ÿ˝" ‹$" ‹=" ‹Ñ" ‹ñ" ‹€" ‹›" ‹·" ‹Û" ‹˜" ‡" ‡è" ‡ó" ‡ò" ‡ô" ‡°" ‡∂" ‡π" ‡¿î" ‡¡" ‡À" ‡—" ‡‘" ‡⁄" ‡Â" ‡Ò#" ‡Û" ‰" ‰Ö" ‰ñ" ‰ó	" ‰¨" ‰¿" ‰¿%" ‰«" ‰÷" ‰ı$" ‰˚	" Ë9" ËÄ" Ëâ" Ëï" Ë§" Ë≠" Ë≥„" Ëµ" Ë¬" Ë√" ËÃ" ËŒ" Ë◊" Ëﬁ." Ë‡" ËÂ" ËÙ" Ëˇ
+" Ïã" Ïë" Ï®" Ïµ" ÏŸ" Ï·'" Ï‰£" Ïˇ" " G" Ñ" ä" ë" ¢" •" Ò" Ù" Ù" Ùç" Ùé" Ùì" Ùî$" Ùù!" Ù≠" ÙÆ" Ù≈" ÙÃ	" Ù–ÿ" Ù◊" Ùÿ" ÙŸ" Ù‹>" Ùﬂ" ¯<" ¯U" ¯Ç" ¯ç1" ¯ú" ¯´" ¯∂" ¯Ω" ¯“" ¯ﬂ" ¯Ì" ¯¸" ¸ã" ¸ê" ¸¶" ¸ß" ¸Ω" ¸‰" ¸Áä"8 "8=& ˙!*/◊◊◊◊◊	◊
+ÿ◊‘1å4"	ö"  U	S< ¯¯¯!*~' ¬‚	≤	$◊◊ÿ◊◊	◊
+◊◊ì•¢("	Äü nıyT= ˜˜˜!*≠& ˙
+‚	‘	$◊◊ÿ◊◊	◊
+◊◊ì•£("	¯üj˘ mE0 ∞§!}.‚	Á	#◊◊◊◊ÿ	◊
+◊◊2ò("	Ù#W  V= ≈≈≈!*É.°çŒ	$◊◊ÿ◊◊	◊
+◊◊˝•˙%"	ä?=* Z< ˘˘˘!*~' Ä‚	ﬁ	$◊◊ÿ◊◊	◊
+◊◊î•†("	i+2Ù Ùâi 5+ —ç& Ç!*/◊◊◊◊◊	◊
+ÿ◊‘1ç4"^	∫‘“–	#&/&0#&)k 767F
+ I8	@%
+ :	$ 	[w]ÆA& ˘!*/◊◊◊◊◊	◊
+ÿ◊‘1ä4"	ÿ2L< 9	/U= «««!*ß&µ
+∏
+Ä	$◊◊ÿ◊◊	◊
+◊◊˝•é4"	ºê"h4 *m; k< ˙˙˙!*b. õÜÜ	$◊◊ÿ◊◊	◊
+◊◊ì•ü("&	Ñ!""f‘Á Û	Í2 2ŒÛe”	W< ¸¸¸!*~' ˆ
+‚	Õ	$◊◊ÿ◊◊	◊
+◊◊î•è4"	í∆*∆Q!S-]! Oz< ˚˚˚!*~' õ‚	ß	$◊◊ÿ◊◊	◊
+◊◊î•ê4"5	∞¿Z*4˝ÑÅ+G#≈	Ù	2 ÜÎ+#!-	L& ú!*/◊◊◊◊◊	◊
+ÿ◊‘1Ö4"	û Z> ;  ^< ˝˝˝!*~' ö
+‚	°	$◊◊ÿ◊◊	◊
+◊◊î•ë4"	˙9: :ºÒ˚ÌÕ 1R< √¡¡!*~' ¥‚	Á$◊◊ÿ◊◊	◊
+◊◊í•Ü4"	û¢∆& Á!*/◊◊◊◊◊	◊
+ÿ◊‘1á4"ñ	¨¬Í0
+4" 
+ "6$%
+%' $&
+0#	3!
+.		-=
+5/	Ñ:	<(	 G1 Ø¿!§.È	‚	#◊◊◊◊ÿ	◊
+◊◊2à4"	∆™
+h< ààà!*~' µ‚	Ò$◊◊ÿ◊◊	◊
+◊◊î•Ñ4"#	à“b0V4,&,,:†ã˚Äj< äää!*~' ø‚	Î$◊◊ÿ◊◊	◊
+◊◊î•É4"%	ÜÑj†d‹Ó &7!9	??)%	9âM]< âââ!*~' ¨
+‚	ﬂ	$◊◊ÿ◊◊	◊
+◊◊î•Ç4"	í¥*XÏÎ∞€Ìó≠^< ˇˇˇ!*~' Ñ‚	◊$◊◊ÿ◊◊	◊
+◊◊î•í4"	ÚC:˛ Bæı˝ ª 9Y= ÖÖÖ!*È& —‚	»	$◊◊ÿ◊◊	◊
+◊◊î•î4"	Ê∫" Ê˘˚˜a= ááá!*Á&ê
+¿ê	$◊◊ÿ◊◊	◊
+◊◊¸•ï4"	‡¥J ä 
+	cÎ 7Z< ˛˛˛!*~' ù
+‚	Ê$◊◊ÿ◊◊	◊
+◊◊î•ì4"	ÓB*˛Ä˝˝Äa< ÅÅÅ!*~' ë‚	¢	$◊◊ÿ◊◊	◊
+◊◊î•õ("	⁄?B @¬˛≥Ω˚« ?T= ÜÜÜ!*”.ìƒ√	$◊◊ÿ◊◊	◊
+◊◊¸•ñ4"	‡≤ã  M7 ¿ΩΩ!*~'¡‚	æ	$ÿ◊◊	◊
+◊◊Ã 9ï8"	®˙  R< øºº!*~'‰‚	Ù$◊◊ÿ◊◊	◊
+◊◊˝•Å4"	¸≤
++  	N8 ¡ææ!*û.Ò
+‚	ñ	$ÿÿ◊	◊
+◊◊≈9ó8"	®Ç 
+  	π7 æªª!*~'ﬁ
+‚	‚	$ÿ◊◊	◊
+◊◊œ9•8"y	Ó™˙ü ‰ ·p   0
+5,°  
+ 	,‰*F
+7	-1*M*B=	*.("3s <& ª!*/◊◊◊◊◊	◊
+ÿ◊‘1†8"	êÃ
+ 	 N8 Ω∫∫!*|.“‚	·$◊ÿ◊	◊
+◊◊“ Ò™8"	¸¶í7 ¬øø!*~'≥‚	ú	$ÿÿ◊	◊
+◊◊ƒ9Æ8"R	†¢˙6 ( (M	Xo ◊  <& ﬂ!*/◊◊◊◊◊	◊
+ÿ◊‘1°8"	å–   F& õ!*/◊◊◊◊◊	◊
+ÿ◊‘1£8"	ƒöB  ◊= ããã!*‰& ó‚	Ú$◊◊ÿ◊◊	◊
+◊◊î•¢8"ê	ÆÄ:|& ?%	% ! 		Œ-b&,* 	[  /	@≈¢xL(} Ç~ BÖ ? !	!  	Ï 1;	<& ö!*/◊◊◊◊◊	◊
+ÿ◊‘1º8"	ƒûS= µ¥¥!*¯& Ç‚	”$◊◊ÿ◊◊	◊
+◊◊î•Ω8"	Ü‹   <& Â!*/◊◊◊◊◊	◊
+ÿ◊‘1æ8"	Çí	S= ∂µµ!*˜&Ã Ô$◊◊ÿ◊◊	◊
+◊◊Ã•ø8"	⁄¬RY< ååå!*~' ¶‚	«	$◊◊ÿ◊◊	◊
+◊◊î•Ø8"	Ó¢*ÏÄ≈3A #G1 ≤è!ù.ø
+‚	#◊◊◊◊ÿ	◊
+◊◊2±8"	⁄¢|@yS= ººº!*„&‚	‚	‚	$◊◊ÿ◊◊	◊
+◊◊–•∫8"	Ï∏©4 öõõ!*Ì.‚	◊‚	$◊◊◊	ÿ
+◊◊µ≥8"l	§¢ 4(67"
+v:
+Y)		G-?	@rûÓ9 	,%uâ+&,%19+&	§&"  S= ªªª!*‚&®‚	π	$◊◊ÿ◊◊	◊
+◊◊–•π8"	Ñí	S= ΩΩΩ!*‡&≠‚	æ	$◊◊ÿ◊◊	◊
+◊◊–•∑8"	Ú÷<& Ü!*/◊◊◊◊◊	◊
+ÿ◊‘1¿8"	æÆO9 ∫∫∫!*ˆ.‚	‚	‚	$◊ÿ◊	◊
+◊◊◊ Ò—8"	‡∏ <& ¯!*/◊◊◊◊◊	◊
+ÿ◊‘1ƒ8"	Æ‚
+<& ∑!*/◊◊◊◊◊	◊
+ÿ◊‘1¬8"	∂¯
+<& â!*/◊◊◊◊◊	◊
+ÿ◊‘1√8"	˙¸Ç= òôô!*«& ¯
+‚	±	$◊◊ÿ◊◊	◊
+◊◊î•∂8"<	ƒ"†Ä— …ˇ	 äjà
+,@ ç	 Q -πS= ¡¡¡!*ô-Ï
+»·$◊◊ÿ◊◊	◊
+◊◊∏•∏@"	åÍ/09S= ¿¿¿!*˙-¯ºŸ	$◊◊ÿ◊◊	◊
+◊◊µ•Ω@"	ﬁú/85S= øøø!*Ú-	˘ 
+¿	$◊◊ÿ◊◊	◊
+◊◊¥•æ@"	êÙ.$P#QT< †ûû!*j-˚˚
+É	$◊◊ÿ◊◊	◊
+◊◊Ó•«@"	Œ»/" 
+)	U= §¢¢!*Ä-Ω†”$◊◊ÿ◊◊	◊
+◊◊˘•»@"	à‹/"R< üùù!*f-ñ
+¶ç	$◊◊ÿ◊◊	◊
+◊◊Í•¬@"	∆ò/
+	S= ÙÚÚ!*Ï-Æı	•	$◊◊ÿ◊◊	◊
+◊◊±•¿@"	öÇ/S= ıÛÛ!*Ó-ã
+‚	–$◊◊ÿ◊◊	◊
+◊◊≠•–@"	¶æ/S= ÓÓ!*¨-‘∫ü	$◊◊ÿ◊◊	◊
+◊◊å•’@"	Í¯.é= ÒÔÔ!*Œ-∑ª 	$◊◊ÿ◊◊	◊
+◊◊û•”@"H	ËÏ.ÇT
+	%R
+ =
+%	'/S= ¬¬¬!*ö-Ï
+Ë·$◊◊ÿ◊◊	◊
+◊◊π•â@"	˛¸/<
+=S= √√√!*Õ-ÖΩ
+‚$◊◊ÿ◊◊	◊
+◊◊ò•á@"	ÙÃ0
+-&õ& €!*/◊◊◊◊◊	◊
+ÿ◊‘1à@"l	Ç‹/ä*vA  '7	j		sö8 
+,	B"
+"	R< °üü!*l-Ûô⁄	$◊◊ÿ◊◊	◊
+◊◊Ô•Ú?"	Ïä0 #R< ¢††!*q-ó
+Ì
+‚$◊◊ÿ◊◊	◊
+◊◊Û•ˆ?"	ÿ0	S= ƒƒƒ!*ü-¡
+ÈÓ$◊◊ÿ◊◊	◊
+◊◊∫•Ç@"	§‡0=6	S= •££!*Å-‚“Œ	$◊◊ÿ◊◊	◊
+◊◊ˆ•Ù?"	í§0  R< £°°!*y-Ù	ßπ	$◊◊ÿ◊◊	◊
+◊◊‚•¯?"	úà1
+R< ÎÈÈ!*~'	£ÜŒ	$◊◊ÿ◊◊	◊
+◊◊Ñ•œ?"	 ‘1	S= ÍËË!*°-·÷π	$◊◊ÿ◊◊	◊
+◊◊ª•Ã?"	àÜ2
+S= ÔÌÌ!*÷-	£ı‚$◊◊ÿ◊◊	◊
+◊◊Ñ•…?"	⁄à2
+	R< ûúú!*~'	ˆ¨π	$◊◊ÿ◊◊	◊
+◊◊Ñ•Ô?"	¯í0S= ˆÙÙ!*Ô-£—
+¨	$◊◊ÿ◊◊	◊
+◊◊≤•˚?"	Ù 1 R< Ê‰‰!*~'	¿
+‚
+–$◊◊ÿ◊◊	◊
+◊◊Ñ•—?"	“Ú1  T< ‡ﬁﬁ!*h-√ªË$◊◊ÿ◊◊	◊
+◊◊Ï•Á?"	ûå0"!R< ‰‚‚!*V-∞ï
+À	$◊◊ÿ◊◊	◊
+◊◊”•‹?"	™ä1R< Â„„!*X-	∞≠
+π	$◊◊ÿ◊◊	◊
+◊◊€•“?"	¸“1  S= ·ﬂﬂ!*Ñ-û≤¨	$◊◊ÿ◊◊	◊
+◊◊˙•ﬂ?"	ﬁÑ1
+S= ÓÏÏ!*ß-Àâ
+µ	$◊◊ÿ◊◊	◊
+◊◊¡•∆?"	é⁄2	S= ÌÎÎ!*¶-Ù	†–$◊◊ÿ◊◊	◊
+◊◊¿•º?"	™Ç3S= ÈÁÁ!*©-”íâ	$◊◊ÿ◊◊	◊
+◊◊¬•ç@"	¢æ3 R< ÁÂÂ!*,-ñ∆Œ	$◊◊ÿ◊◊	◊
+◊◊⁄•π?"	º∆2S= ÏÍÍ!*£-∞ƒπ	$◊◊ÿ◊◊	◊
+◊◊º•é@"	í¢3 S= ËÊÊ!*ú-≥
+Íπ	$◊◊ÿ◊◊	◊
+◊◊æ•ë@"	û 3  R< ÉÅÅ!*?-Û	·⁄	$◊◊ÿ◊◊	◊
+◊◊À•î@"	÷†4   P< åää!*F-ﬂ
+‚	∆	$◊◊ÿ◊◊	◊
+◊◊’•°@"	¥˛4"%JR< çãã!*N-ö‚	¶	$◊◊ÿ◊◊	◊
+◊◊÷•≠@"	÷î5/f	T< ÛÒÒ!*K-¯µô	$◊◊ÿ◊◊	◊
+◊◊–•„?"	¥∂0"QJ	S= ‚‡‡!*â-”°–$◊◊ÿ◊◊	◊
+◊◊ˇ•Ÿ?"	ê™1
+T< Ú!*-üÔ€	$◊◊ÿ◊◊	◊
+◊◊¯•†?"	∂	¨1"@
+  S= „··!*œ-ª
+≈π	$◊◊ÿ◊◊	◊
+◊◊ü•”?"	®ä2  S= ˜ıı!*Ü-”ı
+–$◊◊ÿ◊◊	◊
+◊◊¸•ß?"	¨	1
+	Y= ˇ˝˝!* -Òâä	$◊◊ÿ◊◊	◊
+◊◊ú•∑?"	∆	‹22  %S= ¯ˆˆ!*à-˚ßµ	$◊◊ÿ◊◊	◊
+◊◊˛•™?"	‚	®2 U= ¸˙˙!*≤-Ù	œ–$◊◊ÿ◊◊	◊
+◊◊í•ê?"	Ê	÷3"
+S= ª∏∏!*©-˚	ëæ	$◊◊ÿ◊◊	◊
+◊◊â•¥?"	»
+ÿ2-B(9R< ∫∑∑!*~'ã‚	æ	$◊◊ÿ◊◊	◊
+◊◊˝•≠?"	Çÿ2f	S= ˘˜˜!*ç-î
+ˆ	ﬁ$◊◊ÿ◊◊	◊
+◊◊Å•í?"	÷
+∫3&R< π∂∂!*D-¬
+€
+æ	$◊◊ÿ◊◊	◊
+◊◊Ã•Æ?"	ä⁄2
+f	S= ˙¯¯!*è-	”´ﬁ$◊◊ÿ◊◊	◊
+◊◊É•ï?"	ä»3	&U= ‡‡‡!*’-–‚	ˇ$◊◊ÿ◊◊	◊
+◊◊£•û?"	¬∂3"^&Q 1R< ÇÄÄ!*c-ª
+≠π	$◊◊ÿ◊◊	◊
+◊◊ﬁ•ñ@"	ñ¢4  R< Åˇˇ!*Y-à‚	π	$◊◊ÿ◊◊	◊
+◊◊‘•ï@"	ÿ§4   S= ÑÇÇ!*´-¸∆ó	$◊◊ÿ◊◊	◊
+◊◊ã•¶@"	˙å5!R< éåå!*Z-Ø˙	—	$◊◊ÿ◊◊	◊
+◊◊‹•∞@"	ö∫5
+1j	S= âáá!*¥-Ù	Ì	π	$◊◊ÿ◊◊	◊
+◊◊î•ˆ>"	ﬁê5S= ÖÉÉ!*Æ-Æ›⁄	$◊◊ÿ◊◊	◊
+◊◊é•®@"	»≤5	R< Ä˛˛!*S-à‚	π	$◊◊ÿ◊◊	◊
+◊◊…•å?"	é	§4  U= àÜÜ!*≥-ˆ‚	π	$◊◊ÿ◊◊	◊
+◊◊ì•â?"	‚	÷4"
+   R< äàà!*^-ÄêË$◊◊ÿ◊◊	◊
+◊◊„•˜>"	¶	ê5 	
+S= ÜÑÑ!*∞-¸Ÿ
+À	$◊◊ÿ◊◊	◊
+◊◊ê•>"	Ü	Œ5"R< ãââ!*_-	Á‡π	$◊◊ÿ◊◊	◊
+◊◊‰•Ù>"	≤	ê5 R< èçç!*a-Øì‹	$◊◊ÿ◊◊	◊
+◊◊Ê•≥@"	∏Ã5
+1d	S= áÖÖ!*±-Ù
+Ú
+∫	$◊◊ÿ◊◊	◊
+◊◊ë•Á>"	÷	¸50R< êéé!*g-	¨°
+ä	$◊◊ÿ◊◊	◊
+◊◊Î•⁄@"	÷	®6
+%X	R< ˝˚˚!*U-∞˛
+–$◊◊ÿ◊◊	◊
+◊◊“•é?"	¨
+˛3
+S= ˛¸¸!*†-∞Ü
+π	$◊◊ÿ◊◊	◊
+◊◊á•à?"	‡
+÷4U= ôóó!*ñ-Æ∞
+Ù$◊◊ÿ◊◊	◊
+◊◊Ö•Ó>"	∫
+Ó5" 	S= ˚˘˘!*î-	ˆàπ	$◊◊ÿ◊◊	◊
+◊◊Ñ•á?"	∂é4  V< õôô!*Q-¡è
+ä	$◊◊ÿ◊◊	◊
+◊◊ÿ•Ü?"	ö¨4* #S= öòò!*ô-Ä—À	$◊◊ÿ◊◊	◊
+◊◊Ü•˚>"	»‘5	S= ïìì!*Ö-›
+´⁄$◊◊ÿ◊◊	◊
+◊◊˚•›>"	ö
+å6$	R< ëèè!*i-Ó«’$◊◊ÿ◊◊	◊
+◊◊Ì•‡@"	å
+º6%bR< òññ!*~'	ˆ¸
+π	$◊◊ÿ◊◊	◊
+◊◊Ñ•Ì>"	ÿ
+¸5R< íêê!*m-Í
+¢È$◊◊ÿ◊◊	◊
+◊◊•‰@"	“
+ƒ6
++n	T< ñîî!*4-”∂ü	$◊◊ÿ◊◊	◊
+◊◊…•◊>"	Üæ6"R< ìëë!*n-Ø‚	—	$◊◊ÿ◊◊	◊
+◊◊Ò•Â@"	‹
+ 6
++l	S= óïï!*é-∞Æπ	$◊◊ÿ◊◊	◊
+◊◊Ç•‘>"	ﬁå6   R< ◊’’!*O-Ò
+ïÂ$◊◊ÿ◊◊	◊
+◊◊◊•Ë@"	¿∆6 \R< îíí!*p-Ωπˆ$◊◊ÿ◊◊	◊
+◊◊Ú•Ì@"	òÏ6
+'f	U= ÂÂÂ!*⁄-˙Æ
+ä	$◊◊ÿ◊◊	◊
+◊◊••ü?"	∫ñ3"(O. T= ﬁﬁﬁ!*ﬂ-É˜·	$◊◊ÿ◊◊	◊
+◊◊®•ò?"	ÚË3π  T= ‚‚‚!*·-
+‰Å
+Æ	$◊◊ÿ◊◊	◊
+◊◊©•ô?"	3 
+π  	T= ···!*Â-
+˝	±†	$◊◊ÿ◊◊	◊
+◊◊™•õ?"	˙3 
+π  	S= „„„!*‹-ü¿Ÿ	$◊◊ÿ◊◊	◊
+◊◊¶•ú?"	Ë∫3
+3%
+T= ‰‰‰!*Ê-üÂ
+ã	$◊◊ÿ◊◊	◊
+◊◊´•ö?"	Ñ4 π  T= ÁÁÁ!*Ë-üç‰$◊◊ÿ◊◊	◊
+◊◊Æ•Ñ?"	ê4
+ª U= ﬂﬂﬂ!*Í-ü¢¶	$◊◊ÿ◊◊	◊
+◊◊Ø•Ö?"	∂ò4ºΩ T= ÊÊÊ!*Î-Í
+	‘$◊◊ÿ◊◊	◊
+◊◊∞•É?"	Ù¢4 
+ø 	P< ºππ!*~'
+∑
+ü
+‚$◊◊ÿ◊◊	◊
+◊◊Ö•Ç?"	Ó“4S R< úöö!*R-¥
+éµ	$◊◊ÿ◊◊	◊
+◊◊Ÿ•Ä?"	®Ñ5$	R< ÿ÷÷!*W-Ï	éÃ	$◊◊ÿ◊◊	◊
+◊◊⁄•Ó@"	ñÓ6
+ pR< ÷‘‘!*x-°∫é	$◊◊ÿ◊◊	◊
+◊◊Ù•@"	ÚÙ6&7 	R< Ÿ◊◊!*`-	Ë
+”
+˜$◊◊ÿ◊◊	◊
+◊◊›•÷@"	⁄ê7 bR< ùõõ!*T-´
+‚	¨	$◊◊ÿ◊◊	◊
+◊◊—•Õ>"	ñÇ6
+W= ›€€!*á-≤ì
+ò	$◊◊ÿ◊◊	◊
+◊◊˝•œ>"	‡®6*!R< ⁄ÿÿ!*d-‚	Ê
+ã	$◊◊ÿ◊◊	◊
+◊◊ﬂ•ÅA"	é®7 VS= €ŸŸ!*“-Œﬁ‡	$◊◊ÿ◊◊	◊
+◊◊†•ı@"	§⁄6
+D	S= ‹⁄⁄!*◊-ŒÅ€$◊◊ÿ◊◊	◊
+◊◊§•¸@"	–Í6-B:& ≥!*/◊◊◊◊◊	◊
+ÿ◊‘1Œ8"	ÙÇ Y& ê!*/◊◊◊◊◊	◊
+ÿ◊‘1«8"*	‹¯äX$*,@"	/!	%	5R< πππ!*".Ë	‚	Ó$◊◊ÿ◊◊	◊
+◊◊Ä•…8"	ÿ 	
+Z< úùù!*~' æ
+‚	$◊◊ÿ◊◊	◊
+◊◊î•Õ8"	“¢!* ÓãmOΩÖn< õúú!*~' π‚	∞	$◊◊ÿ◊◊	◊
+◊◊î•Ã8")	Ãö:^"($: :0dﬂ
+á	ﬁ*åË'U9%9^< ÄÄÄ!*~' á‚	”	$◊◊ÿ◊◊	◊
+◊◊î•ö("	Ã"?: @∞ÛÒ¡ ?ˆY< ÇÇÇ!*~' Ø
+‚	Â	$◊◊ÿ◊◊	◊
+◊◊î•ô("	Ã"?*¯ 8¿Ûª`< ÉÉÉ!*~' €‚	á	$◊◊ÿ◊◊	◊
+◊◊î•ò4"	Œ"º:ˆ ˛| Ä˜ ˝˜U< ÑÑÑ!*~' ë‚	à	$◊◊ÿ◊◊	◊
+◊◊î•ó4"	 "∫˛ıı?& Û!*/◊◊◊◊◊	◊
+ÿ◊‘1ó("	Ë)*
+		<& ≈!*/◊◊◊◊◊	◊
+ÿ◊‘1ö4"	 / x wz3 ççç!*~'„‚	Ø	$◊◊◊	ÿ
+◊◊µè8">	‘!¶*réôEA	ÉZ»  lLHÕã~	¶	"  ! i< ééé!*7. å‚	÷$◊◊ÿ◊◊	◊
+◊◊î•é8"$	™!¥"ö ¸π á	¡w"ŒvàØS< èêê!*~' À
+‚	≥	$◊◊ÿ◊◊	◊
+◊◊î•â8"	Ç#∂ Ä= R< êëë!*~' ô‚	Ï$◊◊ÿ◊◊	◊
+◊◊î•ä8"	Ç#∂ |=  {S< íìì!*~' À
+‚	∑	$◊◊ÿ◊◊	◊
+◊◊î•ã8"	Ç#≤ Ä=  R< ëíí!*~' Ï‚	…	$◊◊ÿ◊◊	◊
+◊◊î•å8"	æ#∏ |; y@& ò!*/◊◊◊◊◊	◊
+ÿ◊‘1≤8"	ƒ ™* 8  /Ç< ìîî!*~' ò‚	®	$◊◊ÿ◊◊	◊
+◊◊î•ç8"=	ƒ"≤ ‹ ¸á +_ /#1% 6** U< îïï!*~' ë‚	Û$◊◊ÿ◊◊	◊
+◊◊î•Ü8"	¬"∞ﬁ˙€U< óòò!*~' æ‚	û	$◊◊ÿ◊◊	◊
+◊◊î•µ8"	ƒ®˛Ùı O9 ôöö!*ò.¥‚	œ	$◊◊◊ÿ◊	◊
+◊◊+Û8"	¿"ﬁ @}  =T< ñóó!*\.à
+˘	˙$◊◊ÿ◊◊	◊
+◊◊¸•Ù8"	Œ#¬"\r#%x= ∑ºº!*ú&õ
+‚	ª	$◊◊ÿ◊◊	◊
+◊◊˝•á8"2	».ñ
+>/=	Ç	>¡=		{<) ;	à>œ;U< ïññ!*z&Ä
+‚	º	$◊◊ÿ◊◊	◊
+◊◊ı•Ö8"	®(®ˆ ¸Ò U< πææ!*{& ø‚	ì	$◊◊ÿ◊◊	◊
+◊◊î•Ñ8"	¢,§¯ˇ
+ ˘Æ4 ∂ªª!*ö.è‚	ÿ$◊◊◊	ÿ
+◊◊µÉ8"q	⁄.˙ä&∞! &$G JÒ Ä ?ˇüÇ 	,~-20	“·"∫É_-◊	»Ö@œ?	~3 	(@' ?S= ß¶¶!*®& ı‚	¬	$◊◊ÿ◊◊	◊
+◊◊î•ô4"	ú2Í&_ %F0 ±∑!''É‚	#◊◊◊◊ÿ	◊
+◊◊2ú4"	û4“T SU= ∏∏∏!*å&¶
+Ç
+ë	$◊◊ÿ◊◊	◊
+◊◊–•ù4"	⁄4ÿ	∂
+≥;& ï!*/◊◊◊◊◊	◊
+ÿ◊‘1Ä&"	î:N  =& ó!*/◊◊◊◊◊	◊
+ÿ◊‘1˚%"	¯:V"   :& ¶!*/◊◊◊◊◊	◊
+ÿ◊‘1ˇ%"	é:vÄ ;& ∞!*/◊◊◊◊◊	◊
+ÿ◊‘1¸%"	‡;2@ ?S1 ¥¶!Ç.‚	‚	#◊◊◊◊ÿ	◊
+◊◊2∑4"	˙:êJ      - R=    !*ì.	Î±‚$◊◊ÿ◊◊	◊
+◊◊Ç•˝%"	∆=t S= £••!*Ã.ñÉ
+¯$◊◊ÿ◊◊	◊
+◊◊å•π4"	®=“*2'<& «!*/◊◊◊◊◊	◊
+ÿ◊‘1ª4"	Ï>à   >& È!*/◊◊◊◊◊	◊
+ÿ◊‘1∫4"	ä?ú"  <& æ!*/◊◊◊◊◊	◊
+ÿ◊‘1∏4"	§>î0 /<& ë!*/◊◊◊◊◊	◊
+ÿ◊‘1∂4"	¢>‡   R< ∆ƒƒ!*~'¥‚	ó	$◊◊ÿ◊◊	◊
+◊◊à•¥4"	ˆ>ŒX W@& Ø!*/◊◊◊◊◊	◊
+ÿ◊‘1û4"	û>∞* 	    M& ©!*/◊◊◊◊◊	◊
+ÿ◊‘1∞4"	‹>à: *  /	0#  <& ‹!*/◊◊◊◊◊	◊
+ÿ◊‘1£4"	‚>í   D& √!*/◊◊◊◊◊	◊
+ÿ◊‘1Ü6"	ñ;‰	:, /		?) ÿÿÿ!*$◊◊◊ÿ◊	◊
+◊◊+ö6"	¶:–	  K1 µ´!¢.‚	Ú	#◊◊◊◊ÿ	◊
+◊◊2ﬂ5"	‚:–*6 6} H L1 ∂¨!°.∂‚	#◊◊◊◊ÿ	◊
+◊◊2Â5"	ò;“*~ <˚ ~?) €€€!*$◊◊◊ÿ◊	◊
+◊◊+Ÿ5"	†:å 
+ d) ‹‹‹!*$◊◊◊ÿ◊	◊
+◊◊+ÿ5"2	†;æ%	 	7=*J 9 	t9   S= ®≠≠!*∏.Ñ
+œ‹$◊◊ÿ◊◊	◊
+◊◊∑•¡5"	ƒ;ﬁR Q I& ô!*/◊◊◊◊◊	◊
+ÿ◊‘1¿5"	ñ<ò   	Y"   F& ≠!*/◊◊◊◊◊	◊
+ÿ◊‘1Õ6"	¸;ÚB :5 	@& ¸!*/◊◊◊◊◊	◊
+ÿ◊‘1†4"	Ó=Ä*>  <& §!*/◊◊◊◊◊	◊
+ÿ◊‘1°4"	Ç>Än CC) ŸŸŸ!*$◊◊◊ÿ◊	◊
+◊◊+â6"	ñ<‘*   
+ S& ˇ!*/◊◊◊◊◊	◊
+ÿ◊‘1á6"$	¨=Æ
+:  9	B J: 	 	B& Ó!*/◊◊◊◊◊	◊
+ÿ◊‘1à6"	Ù=‡
+2   
+  	L& ç!*/◊◊◊◊◊	◊
+ÿ◊‘1¢4"	∏>ÇZ     +    L& Ê!*/◊◊◊◊◊	◊
+ÿ◊‘1Ö6"	Æ>Ó	Z<   5 G& ±!*/◊◊◊◊◊	◊
+ÿ◊‘1É6"	å@ÙB Ä G,=)&  3T< ¶©©!*~' ≥‚	∫	$◊◊ÿ◊◊	◊
+◊◊î•Å6"	 >Í
+" C) ⁄⁄⁄!*$◊◊◊ÿ◊	◊
+◊◊+Ô5"	˛;¯*
+   e= –––!*˚.‚	‚	‚	$◊◊ÿ◊◊	◊
+◊◊õ•Û5"	ú>Üb  	2- 7% 	
+
+r< ß™™!*~'¯	‚	’	$◊◊ÿ◊◊	◊
+◊◊è•¬5"-	Æ=˛j¢ E)%' *	L KP8 ◊◊◊!*o.ü•
+Á$◊◊◊ÿ◊	◊
+◊◊+º5"	†?Ó" 	  Ö& Ô!*/◊◊◊◊◊	◊
+ÿ◊‘1ø5"V	ê?¿Z>   
+ @  	)j     #    	"  	 	"  <& Ù!*/◊◊◊◊◊	◊
+ÿ◊‘1Œ6"	¶?º   S= ™ØØ!*—.‚	ˇ‚	$◊◊ÿ◊◊	◊
+◊◊ö•ü6"	‡4í@|? S= ©ÆÆ!*–&‚	Ì‚	$◊◊ÿ◊◊	◊
+◊◊ô•ù6"	ö6 "+  !S= ´∞∞!*≈(úû
+€	$◊◊ÿ◊◊	◊
+◊◊—•Å8"	⁄7Ú  T= ∏ΩΩ!*õ&Ã
+ûÅ	$◊◊ÿ◊◊	◊
+◊◊˝•à8"	ñ2Ç  Û
+ S= µ∫∫!*ä&ãÊµ	$◊◊ÿ◊◊	◊
+◊◊¸•ı8"	Ú3≤ <& £!*/◊◊◊◊◊	◊
+ÿ◊‘1 6"	Ù:¶  <& á!*/◊◊◊◊◊	◊
+ÿ◊‘1˚7"	æ;Ê %  H& ù!*/◊◊◊◊◊	◊
+ÿ◊‘1°6"	˛;§J2     <& π!*/◊◊◊◊◊	◊
+ÿ◊‘1¸7"	“:í  <& Ä!*/◊◊◊◊◊	◊
+ÿ◊‘1˘7"	æ;å   Z< ≤∑∑!*I.ˇ	ˇ
+¸$◊◊ÿ◊◊	◊
+◊◊ù•˛7"	¶;Ê: /     R< Æ≥≥!*[.‘‚	ﬁ$◊◊ÿ◊◊	◊
+◊◊ë•Ã6"	∆=¯ z& û!*/◊◊◊◊◊	◊
+ÿ◊‘1†6"K	Í=Ü⁄           	 " 
+  	 W= ÕÕÕ!*Ø.»
+˜	‚	$◊◊ÿ◊◊	◊
+◊◊è•…6"	∏>ä*    <& ‡!*/◊◊◊◊◊	◊
+ÿ◊‘1√6"	∂?¥ 6  5R< Ø¥¥!*J.®î–	$◊◊ÿ◊◊	◊
+◊◊ç•£6"	‰<¥4 3 ?) ≤±±!*$◊◊◊ÿ◊	◊
+◊◊+Æ6"	ú=–   <& Ì!*/◊◊◊◊◊	◊
+ÿ◊‘1¶6"	ú=ƒ   <& ®!*/◊◊◊◊◊	◊
+ÿ◊‘1˜7"	“=ê   <& ¥!*/◊◊◊◊◊	◊
+ÿ◊‘1ˆ7"	‹=˙   J& •!*/◊◊◊◊◊	◊
+ÿ◊‘1±6"	î>ÑR     # \= “““!*˘.‚	¢‚	$◊◊ÿ◊◊	◊
+◊◊˝•≤6"	Ú>∞:?  w   gR& ∆!*/◊◊◊◊◊	◊
+ÿ◊‘1˝7"#	∆:ˆr 
+    	    
+  	<& É!*/◊◊◊◊◊	◊
+ÿ◊‘1Ä8"	¥:ÿ   R< ±∂∂!*H.ò
+˛Œ	$◊◊ÿ◊◊	◊
+◊◊Ä•ˇ7"	Ê:§ 
+# :& Ñ!*/◊◊◊◊◊	◊
+ÿ◊‘1Ê7"	ÿ;Ã ]< æ√√!*k.ó‚	—$◊◊ÿ◊◊	◊
+◊◊œ•ˆ8"	»9ÑB<6Ñ#Uwg e:& Æ!*/◊◊◊◊◊	◊
+ÿ◊‘1Ü9"	ê;§. -:& ´!*/◊◊◊◊◊	◊
+ÿ◊‘1à9"	Í;¶ R< ≥∏∏!*3.§£
+”$◊◊ÿ◊◊	◊
+◊◊ •Ë7"	ƒ=÷ 	 <& à!*/◊◊◊◊◊	◊
+ÿ◊‘1Ï7"	Æ>∫   R< ¶••!*e.	Ô
+˜
+˚$◊◊ÿ◊◊	◊
+◊◊Ç•Ì7"	Ê?Œ   R< ∞µµ!*G.èŒø	$◊◊ÿ◊◊	◊
+◊◊Œ•Ó7"	º>ñ #  <& ¿!*/◊◊◊◊◊	◊
+ÿ◊‘1Á7"	¥>Ñ   >& Î!*/◊◊◊◊◊	◊
+ÿ◊‘1Ô7"	Ä@Ñ"   R< ﬂ››!*E.ê◊
+´	$◊◊ÿ◊◊	◊
+◊◊˝•‚7"	–?˙ 
+  	<& ﬁ!*/◊◊◊◊◊	◊
+ÿ◊‘1Â7"	®=ä   <& å!*/◊◊◊◊◊	◊
+ÿ◊‘1‰7"	∂=äT S[= ®ßß!*≠.‘
+ŸÁ$◊◊ÿ◊◊	◊
+◊◊ç•Ö9"	¿<à:       	<& ¢!*/◊◊◊◊◊	◊
+ÿ◊‘1¯8"	Ü<Ï   R< ∑∂∂!*M.∂
+∞π	$◊◊ÿ◊◊	◊
+◊◊˛•„7"	Ü@í   R< øƒƒ!*8.‚	‚	˚$◊◊ÿ◊◊	◊
+◊◊à•˘8"	ê>Ú   w< û††!*~' Ã‚	˝$◊◊ÿ◊◊	◊
+◊◊î•8"2	¿"û¢˙ ,
+9X
+  Fı S= ƒ¬¬!*õ&Ó	Á
+Ó$◊◊ÿ◊◊	◊
+◊◊˝•”8"	Ù ñ%1.S= ›››!*ò. ¥‚	”$◊◊ÿ◊◊	◊
+◊◊í•›8"	 "é'  	[= °££!*ó&Ó
+ú÷	$◊◊ÿ◊◊	◊
+◊◊Õ•Ÿ8"	∏#ê&:(9&! 3 #Q= ¢§§!*ñ& Ê	‚	§	$◊◊ÿ◊◊	◊
+◊◊í•‹8"	˙"Ñ'
+ R< ©®®!*].
+≈©ƒ	$◊◊ÿ◊◊	◊
+◊◊Ö•€8"	ñ#“'
+ ≤< ùüü!*~' Ò	‚	›$◊◊ÿ◊◊	◊
+◊◊î•Ú8"m	»$¿ J
+"d 
+y E		©∫˙Ùw	l  5 F ïw
+
+2H (;C15%	0&2		%+ç& î!*/◊◊◊◊◊	◊
+ÿ◊‘1Ò8"^	™&Æ⁄ 8	I4	( G%)%	
+
+  D"3; 	<D6!7N8 ü°°!*v&âá
+Ñ	$◊◊◊ÿ◊	◊
+◊◊+Ô8"	‚%‡! -  F0 ≥û!v.»
+#◊◊◊◊ÿ	◊
+◊◊2Ì8"	∞&⁄!  {  V< †¢¢!*~'Ã
+‚	©	$◊◊ÿ◊◊	◊
+◊◊é•’8"	Æ%ñ$* /  &I  =S= ≠¨¨!*ﬁ.Â‹
+˘$◊◊ÿ◊◊	◊
+◊◊¸•◊8"	¢(¨$ &w  %R< ´™™!*C&í
+π
+µ	$◊◊ÿ◊◊	◊
+◊◊Ω•‚8"	ˆ'ê'  <& ˛!*/◊◊◊◊◊	◊
+ÿ◊‘1ﬂ8"	∏$∂(zT iKS= ±∞∞!*¢&ö‚	œ	$◊◊ÿ◊◊	◊
+◊◊˝•ﬁ8"	∆%ÿ(
+,U= ¨´´!*›&ó
+í„$◊◊ÿ◊◊	◊
+◊◊˝•‡8"	Ä(ñ(" R< ™©©!*u.	á¿ı$◊◊ÿ◊◊	◊
+◊◊Ç•÷8"	‹)∫# ; R< Æ≠≠!*:.©
+ù	$◊◊ÿ◊◊	◊
+◊◊ä•ÿ8"	é)Ä% $ )@& °!*/◊◊◊◊◊	◊
+ÿ◊‘1·8"	‰(÷'* 2; 6 +[= ∞ØØ!*™&Õ‚	›	$◊◊ÿ◊◊	◊
+◊◊é•„8"	ä*é':
+‚B ∫øø!*ü&∫
+‚	‡$◊ÿÿ◊◊	ÿ
+◊◊˝Ÿ ÒË8"ñ	ÿ,ä#267>ñq 	:*	/ , 	∆â:byb 	I4#  ˜	ˆÅÇ`% (  H% .'á ,'	>"&	.◊j ≤." ôI @-   .  rWHë‹8 ª¿¿!*~'ƒ
+‚	“$◊ÿ◊	ÿ
+◊◊∆ÒÈ8"ö	ÿ,ä#267>ñq 	:*	/ , 	∆â:byb 	I4#  ˜	ˆÅí`% 
+
+  H% .'á ,'	>"&	.◊j ≤." ôI @-   .  rWHëŒ4 º¡¡!*í.‚	Œ
+‚	$◊◊◊	ÿ
+◊◊µÁ8"ê	ÿ,ä#267>ñq 	:*	/ , 	∆â*bânG2#  ˜	ˆÅz`%*6 H% .'á ,'	>"&	.◊j ≤." ôI @-   .  rWHëN8 Ω¬¬!*)'˝
+À„$◊ÿ◊	◊
+◊◊ÿ ÒÂ8"	Ó-§" 
+P< »∆∆!*~' ‚	‚	î	$◊◊ÿ◊◊	◊
+◊◊î• >"	û)¨)> S= ØÆÆ!*û.	ﬂ‚	≠	$◊◊ÿ◊◊	◊
+◊◊Ç•…>"	ò*æ)
+		[= ÚÚÚ!*Ù%ÿ‚	ﬂ$◊◊ÿ◊◊	◊
+◊◊ •±A"	¢/Ü=: E 	  +  S= ÃÃÃ!*ı%⁄Í	‚	$◊◊ÿ◊◊	◊
+◊◊ó•≠A"	º/î?  Q& ™!*/◊◊◊◊◊	◊
+ÿ◊‘1Ê8""	ñ2∏ j  $M71 ;∞cl& ä!*/◊◊◊◊◊	◊
+ÿ◊‘1‰8"=	†2‘#™™L-G'A/7-*+,%.R9	(® _7 ’””!*~'Ù‚	™	$ÿ◊◊	◊
+◊◊Œ 9•<"	å5Ñ/ZxJ& >(
+*˘ç`7 ÈÈÈ!*~'º
+∑¡	$ÿ◊◊	◊
+◊◊Õ 9§<" 	¯4 .ZBh$¨(z@V≥w«/3
+	í7 √»»!*~' ‚	Ì$ÿ◊◊	◊
+◊◊À 9°<"R	¶:˙ z:! vJ|rp^
+ 	BÖ  3	rËZ¢$ æ		4Õ" > Eo7 ƒ……!*~'À
+‚	∂	$ÿ◊◊	◊
+◊◊  9¢<"/	∫<Ü&B.6*'%	!	ÔSJUj< ¬««!*6.„
+‚	ö	$◊◊ÿ◊◊	◊
+◊◊ê•˙8"%	Æ=ê z lhMM
+- * C<& ∏!*/◊◊◊◊◊	◊
+ÿ◊‘1˛8"	†?Ü  -  X< ËËË!*~'–
+‚	Ÿ$◊◊ÿ◊◊	◊
+◊◊â•£<"	Í9∂)2H(+ \< ÍÍÍ!*~'†
+‚	Ω	$◊◊ÿ◊◊	◊
+◊◊Ü•¶<"	˙:¬/:Ü.
+2≥ 	+@& »!*/◊◊◊◊◊	◊
+ÿ◊‘1æ>"	‚4à1*T"TV
+QS[= ÌÌÌ!*§%º™
+å	$◊◊ÿ◊◊	◊
+◊◊ï•«A"	®5∫7:LB'.  	 %%I& ≤!*/◊◊◊◊◊	◊
+ÿ◊‘1¡>"	Œ6‹4"	   U= «≈≈!*Ÿ%ÖÎ	‚$◊◊ÿ◊◊	◊
+◊◊¢•ø>"	™7¶4" >& ·!*/◊◊◊◊◊	◊
+ÿ◊‘1¬>"	∂7∂5"$<& Í!*/◊◊◊◊◊	◊
+ÿ◊‘1∆>"	¿7à5 	∞& ∫!*/◊◊◊◊◊	◊
+ÿ◊‘1ƒ>"Ä	®7∆52
+	tB   	?+: %	d		 		 	 	)	,
+	S= ………!*ï%·
+å
+‚	$◊◊ÿ◊◊	◊
+◊◊ñ•øA"	÷0ò8 ?) ≈√√!*$◊◊◊ÿ◊	◊
+◊◊+≈A"	¿2ú8  S= ’’’!*ÿ%•‚	ï	$◊◊ÿ◊◊	◊
+◊◊Õ•óB"	¢2º9
+  	<& ñ!*/◊◊◊◊◊	◊
+ÿ◊‘1íB"	û3∏8
+  	R< À……!*=%√
+¬Ÿ	$◊◊ÿ◊◊	◊
+◊◊‡•æA"	Ã0ÿ<  <& ¡!*/◊◊◊◊◊	◊
+ÿ◊‘1ΩA"	à1®>   R< Ã  !*>%§Û
+Ÿ	$◊◊ÿ◊◊	◊
+◊◊Á•ôB"	÷3‰<  R< ÕÀÀ!*@%§îŸ	$◊◊ÿ◊◊	◊
+◊◊Ë•ÉD"	Í3¿= 
+  	S= ‘‘‘!*®%ùå§	$◊◊ÿ◊◊	◊
+◊◊Å•ÑD"	¿3é?  S= ÒÒÒ!*§%Ö
+È
+é	$◊◊ÿ◊◊	◊
+◊◊ï•„A"	 4®8
+-]= !*§%©˝“	$◊◊ÿ◊◊	◊
+◊◊ï•‚A"	ﬁ4ú8BJ@_    [= œœœ!*¨%‚	˘
+‚	$◊◊ÿ◊◊	◊
+◊◊√•‰A"	»4Ê8:@%    	[= ÓÓÓ!*§%÷‚	è	$◊◊ÿ◊◊	◊
+◊◊ï•∆A"	¸4Ï7:(   
+ KAY= ÔÔÔ!*§%‚	‚	‚	$◊◊ÿ◊◊	◊
+◊◊ï•‡A"	4¸72LB  I?n< ÏÏÏ!*5%“
+¢
+◊	$◊◊ÿ◊◊	◊
+◊◊«•ÃA")	¸6≤82  & , #9	"8[		(?
+1& 1S= ———!*À%‚	‚	‚	$◊◊ÿ◊◊	◊
+◊◊Â•œA"	»7û96 5G& ã!*/◊◊◊◊◊	◊
+ÿ◊‘1†B"	ö6∞:   	?: 9<& ¨!*/◊◊◊◊◊	◊
+ÿ◊‘1üB"	ä6î;   R< –ŒŒ!*;%’
+¸	Ÿ	$◊◊ÿ◊◊	◊
+◊◊»•ûB"	‹7∫;   S= —œœ!*†%ÇÚŒ	$◊◊ÿ◊◊	◊
+◊◊ä•öB"	Ç8ˆ;  ]< …««!*A%ú
+‰
+≈	$◊◊ÿ◊◊	◊
+◊◊ã•ÇD"	í4¨>    	2  N8  »»!*~'Ò
+é
+Œ	$◊ÿ◊	◊
+◊◊” ÒÜD"	í4Ü?  R< œÕÕ!*L%÷
+ïŸ	$◊◊ÿ◊◊	◊
+◊◊˜•äD"	Ú5Ë> 
+  	R< “––!*<%’
+‹Ÿ	$◊◊ÿ◊◊	◊
+◊◊œ•õB"	ÿ6ÿ< 
+  	<& Ú!*/◊◊◊◊◊	◊
+ÿ◊‘1ÅD"	§6ñ>   @& ›!*/◊◊◊◊◊	◊
+ÿ◊‘1√>"	Ü8»5* S= ÎÎÎ!*∑%•æñ	$◊◊ÿ◊◊	◊
+◊◊∂•»A"	í8–6 
+ :& Ω!*/◊◊◊◊◊	◊
+ÿ◊‘1 A"	Ê86 S= ŒÃÃ!*Û%•
+§
+·$◊◊ÿ◊◊	◊
+◊◊˛•ÕA"	»8∂9   R< æææ!*0%±
+ä´	$◊◊ÿ◊◊	◊
+◊◊˛•úB"	¬8‡<   O9 ÷÷÷!*€%ÿ
+‚	ÿ	$◊◊◊ÿ◊	◊
+◊◊+ÄD"	Ù8ƒ>   <& ß!*/◊◊◊◊◊	◊
+ÿ◊‘1¯C"	ò8æ?   :& Ö!*/◊◊◊◊◊	◊
+ÿ◊‘1¸C"	Ç9¬? G& ∂!*/◊◊◊◊◊	◊
+ÿ◊‘1˘%"	†Aü Q	; M& Ï!*/◊◊◊◊◊	◊
+ÿ◊‘1¯%"	†Ao & 	
+% 		 @& ˚!*/◊◊◊◊◊	◊
+ÿ◊‘1ø4"	Ï@Ä*4 <& ü!*/◊◊◊◊◊	◊
+ÿ◊‘1æ4"	†A¬ * '<& Ò!*/◊◊◊◊◊	◊
+ÿ◊‘1Ω4"	†Aˆ $ !>& í!*/◊◊◊◊◊	◊
+ÿ◊‘1≤4"	†A‰";	S= ”””!*¶.…®
+‚	$◊◊ÿ◊◊	◊
+◊◊à•ß4"	†@ú  D& ‚!*/◊◊◊◊◊	◊
+ÿ◊‘1®4"	Ó@ :2 &/ 
+Z& é!*/◊◊◊◊◊	◊
+ÿ◊‘1Ç6"+	å@§äå	   		!#    S= •®®!*•.ç
+ù„	$◊◊ÿ◊◊	◊
+◊◊ˇ•Ñ6"	å@ÿ	B1 S= §ßß!*ï.	ß
+∏ç	$◊◊ÿ◊◊	◊
+◊◊Ñ•©4"	†Aö   L& „!*/◊◊◊◊◊	◊
+ÿ◊‘1Ä6"	é@∫Z   		     <& µ!*/◊◊◊◊◊	◊
+ÿ◊‘1ˇ5"	‹@æ   @& ‰!*/◊◊◊◊◊	◊
+ÿ◊‘1˝5"	‡@¸*& 
+	 D& Ë!*/◊◊◊◊◊	◊
+ÿ◊‘1∫5"	†A‰:       <& !*/◊◊◊◊◊	◊
+ÿ◊‘1»6"	†@Ú   R< ¨±±!*s.	œ
+ô
+Ö	$◊◊ÿ◊◊	◊
+◊◊Ç•∆6"	∏@∫ 6 P< ≠≤≤!*t.	ë
+√À	$◊◊ÿ◊◊	◊
+◊◊É•«6"	†A⁄ & <& º!*/◊◊◊◊◊	◊
+ÿ◊‘1≈6"	í@‡   G& ƒ!*/◊◊◊◊◊	◊
+ÿ◊‘1¡6"	‘@ÿ  	 W= ŒŒŒ!*´.’’‚	$◊◊ÿ◊◊	◊
+◊◊À•≥6"	ƒ@* &/   @& è!*/◊◊◊◊◊	◊
+ÿ◊‘1µ6"	Æ@ÿ*     D& ı!*/◊◊◊◊◊	◊
+ÿ◊‘1Ω6"	÷@à:
+   :& ˜!*/◊◊◊◊◊	◊
+ÿ◊‘1∂6"	Ó@Í <& Å!*/◊◊◊◊◊	◊
+ÿ◊‘1Ù7"	¯@å   O& †!*/◊◊◊◊◊	◊
+ÿ◊‘1Û7" 	∫@û:       	   T& ø!*/◊◊◊◊◊	◊
+ÿ◊‘1â9"%	¿@∞z      	   
+S= ∆∆∆!*.≈
+‡
+•	$◊◊ÿ◊◊	◊
+◊◊≥•ä9"	†A¶ 
+ R< ¥ππ!*r.ä
+Åœ	$◊◊ÿ◊◊	◊
+◊◊ß•Ñ9"	–@¬ "  !X< »»»!*w.Õ
+‚	˛$◊◊ÿ◊◊	◊
+◊◊á•ˇ8"	Ê@¨2: *) 
+ :& ˝!*/◊◊◊◊◊	◊
+ÿ◊‘1˝8"	ä@Ü z N8 ¡∆∆!*ó.«Õ‰	$ÿ◊◊	◊
+◊◊» 9¸8"	˛@Í $O %<& ˆ!*/◊◊◊◊◊	◊
+ÿ◊‘1˚8"	î@Ä!z yX8 ¿≈≈!*.£Ñ‚	£	$ÿ◊◊	◊
+◊◊… 9Ä9"	†Aú B `/ 1  `= ÛÛÛ!*∆%«
+˛	Í$◊◊ÿ◊◊	◊
+◊◊ø•∞A"	å/Í?J(	@ç/H  O<& ì!*/◊◊◊◊◊	◊
+ÿ◊‘1òA"	∫/™@,  S= ”——!*ù%……
+Ÿ	$◊◊ÿ◊◊	◊
+◊◊°•ôA"	ñ0Œ@ 
+S= ÀÀÀ!*Æ%ä∏‚	$◊◊ÿ◊◊	◊
+◊◊¨•öA"	æ0àA   R< ‘““!*B%Î
+≤
+ÿ	$◊◊ÿ◊◊	◊
+◊◊È•ëD"	‚3êA   R< ≥≤≤!*P%ò˝
+∏	$◊◊ÿ◊◊	◊
+◊◊·•ˆC"	î6û@   <& ¬!*/◊◊◊◊◊	◊
+ÿ◊‘1íD"	∫8Ë@   S= ﬁ‹‹!*™%∆
+⁄
+Ÿ	$◊◊ÿ◊◊	◊
+◊◊˛•ìD"	ÿ9‚@ 
+ S8 ¥≥≥!*ê%Ô	‚	¥	$ÿ◊◊	◊
+◊◊‘ 9ÙC"	ÿ;¥?*hLF4è1	#Z7 ˆˆˆ!*~'‚	‚	í	$ÿ◊◊	◊
+◊◊Œ9ÚC"	ÿ;¥?J
+
+,
+2 \ üN8 ııı!*ã%–™Ç	$ÿ◊◊	◊
+◊◊÷ 9ÒC"	‹<˙@&e X8 ÙÙÙ!*ë%≥™õ	$ÿ◊◊	◊
+◊◊’ 9C"	ˆ;≤@:êjH © %S
