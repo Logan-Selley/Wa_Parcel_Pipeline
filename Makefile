@@ -1,4 +1,4 @@
-# WA Parcel Reconciliation — task runner
+# WA Parcel Reconciliation -- task runner
 #
 # Exists for two reasons, both of which have already cost time:
 #
@@ -28,7 +28,7 @@ ENV := set -a; . $(ROOT)/.env; set +a;
 
 # --- export / static site ----------------------------------------------------
 # The warehouse is a build tool, not a service: gold tables export to static
-# artifacts (parquet for analysis, csv for Tableau, fgb -> pmtiles for the
+# artifacts (parquet for analysis, csv for Tableau, fgb -> vector tiles for the
 # map). Nothing needs to be hosted for the outputs to exist.
 
 export:  ## Export gold tables to parquet/csv/json + FlatGeobuf (exports/)
@@ -132,7 +132,7 @@ help:  ## Show available targets
 #
 # tag:overlaps stays, for iterating on the overlap logic alone.
 
-build:  ## Full build — every model and test (~8m20s, 64 nodes, 4 threads)
+build:  ## Full build -- every model and test (~8m20s, 64 nodes, 4 threads)
 	@$(ENV) cd $(ROOT)/parcels && $(DBT) build
 
 test:  ## Run tests only

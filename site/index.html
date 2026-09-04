@@ -94,14 +94,14 @@
 </main>
 
 <script>
-// Map: a plain z/x/y tile directory — no server, no tile host, no build step.
+// Map: a plain z/x/y tile directory -- no server, no tile host, no build step.
 //
 // This was a single .pmtiles archive, which is the tidier artifact but does not
 // work on GitHub Pages: Pages advertises `accept-ranges: bytes` and then answers
 // a Range request with 200 and the entire 17.8 MB body. PMTiles is built on byte
 // serving, so pmtiles.js refuses it and the map renders a basemap and nothing
-// else. A tile directory needs no range requests at all — every tile is its own
-// ordinary GET — at the cost of 4,522 files instead of one.
+// else. A tile directory needs no range requests at all -- every tile is its own
+// ordinary GET -- at the cost of 4,522 files instead of one.
 
 // A basemap is not decoration here: findings are ~55k small polygons scattered
 // across four counties, and without streets and coastlines underneath there is
@@ -163,9 +163,9 @@ const map = new maplibregl.Map({
 map.addControl(new maplibregl.NavigationControl({ showCompass: false }), 'top-right');
 map.addControl(new maplibregl.ScaleControl({ maxWidth: 100, unit: 'imperial' }));
 
-// Every polygon on this map is a finding — a claim the pipeline is making.
+// Every polygon on this map is a finding -- a claim the pipeline is making.
 // It is deliberately NOT a statewide parcel map: the state already publishes
-// one, and ~54k features is a map you can read against 1.5M that you cannot.
+// one, and ~55k features is a map you can read against 1.5M that you cannot.
 // Colour therefore encodes the FINDING, not the county; county is one click away.
 const FINDINGS = [
   ['quarantined',            '#ef4444', 'Valid shape, no usable parcel id'],

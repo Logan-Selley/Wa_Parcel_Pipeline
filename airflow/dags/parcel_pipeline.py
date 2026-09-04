@@ -1,4 +1,4 @@
-"""WA parcel reconciliation — ingest, transform, export.
+"""WA parcel reconciliation -- ingest, transform, export.
 
 WHY DockerOperator AND NOT BashOperator / PythonOperator
 --------------------------------------------------------

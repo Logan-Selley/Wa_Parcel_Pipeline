@@ -4,7 +4,7 @@
 # ---------------------------------------------------
 # Branch-based Pages serves either the repository root or /docs -- nothing else.
 # This site lives in site/, and /docs is already the project's written
-# documentation (design.md, tableau.md, build-plan.md). Restructuring the repo
+# documentation (design.md, tableau.md, design-history.md). Restructuring the repo
 # to satisfy a hosting default would be the wrong way round; uploading an
 # arbitrary directory as an artifact is what this workflow does instead.
 #
@@ -55,7 +55,7 @@ jobs:
       - name: Upload site/
         uses: actions/upload-pages-artifact@v3
         with:
-          # index.html requests data/*.json and data/pmtiles/*.pmtiles by
+          # index.html requests data/*.json and data/tiles/{z}/{x}/{y}.pbf by
           # RELATIVE path, so serving site/ as the Pages root resolves them
           # correctly under the /Wa_Parcel_Pipeline/ project sub-path. No base
           # href needed -- and none should be added, or local `make site`

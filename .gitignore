@@ -43,15 +43,15 @@ logs/
 exports/*
 
 # site/data IS tracked -- it is what makes site/ a self-contained publishable
-# directory. index.html fetches data/*.json and data/pmtiles/*.pmtiles by
+# directory. index.html fetches data/*.json and data/tiles/{z}/{x}/{y}.pbf by
 # relative path, so ignoring this directory meant GitHub Pages would serve the
 # page and 404 every request it made.
 #
-# Only viable because the map was cut to findings: the old full-parcel archive
+# Only viable because the map was cut to findings: the full-parcel tile set
 # would have been 150-400 MB against GitHub's hard 100 MB file limit. The
-# findings archive is ~18 MB.
+# findings tiles are 52 MB across 4,522 files.
 #
-# The cost is real and worth knowing: the .pmtiles is a binary that changes
-# wholesale on every rebuild, so each committed refresh adds its full size to
-# git history permanently. Commit it when publishing, not on every run --
+# The cost is real and worth knowing: the tiles are binaries that mostly
+# change on every rebuild, so each committed refresh adds their full size to
+# git history permanently. Commit them when publishing, not on every run --
 # which is also why the DAG generates artifacts but never commits them.

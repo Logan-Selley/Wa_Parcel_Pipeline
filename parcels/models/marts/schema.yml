@@ -5,7 +5,7 @@ models:
     description: >
       The published parcel dimension: one row per published record
       (record_key_uid = parcel + unit + unit_type + level, A3b grain).
-      Nearly a projection of int_parcels_conformed BY DESIGN — this is the
+      Nearly a projection of int_parcels_conformed BY DESIGN -- this is the
       consumer-facing contract, not the computation.
     columns:
       - name: record_key_uid
@@ -18,7 +18,7 @@ models:
       - name: parcel_uid
         description: >
           State-format join key (state PARCEL_ID_NR format). INTENTIONALLY
-          NOT UNIQUE — Pierce publishes multiple unit records per tax parcel;
+          NOT UNIQUE -- Pierce publishes multiple unit records per tax parcel;
           the state carries the same duplicates. Duplication is confined to
           Pierce by tests/dup_parcel_uids_confined_to_pierce.sql.
         data_tests:
@@ -28,7 +28,7 @@ models:
     description: >
       Parcel-grain reconciliation against the answer key. Both sides
       aggregated to parcel_uid (symmetric sums; corr 0.9548 measured on
-      Pierce). Value fields carry drift:true in comparable_fields() — their
+      Pierce). Value fields carry drift:true in comparable_fields() -- their
       disagreement is expected against a 167-216 day stale key and surfaces
       as value_drift, not as class.
     columns:
@@ -50,13 +50,13 @@ models:
 
   - name: bi_findings_extract
     description: >
-      The map-facing extract: only records this pipeline has a finding about —
-      about — encroachments, unflagged coincident pairs, coverage gaps in either
+      The map-facing extract: only records this pipeline has a finding about --
+      encroachments, unflagged coincident pairs, coverage gaps in either
       direction, attribute disagreements with the answer key, repaired
       geometry, and quarantined shapes. 55,589 features against dim's 1.5M,
       because the state already publishes a statewide parcel map and
       re-publishing it asserts nothing. Reprojected to WGS84 and simplified
-      (~1 m, topology-preserving). A presentation projection — droppable and
+      (~1 m, topology-preserving). A presentation projection -- droppable and
       rebuildable at any time. Geometry contract in
       tests/bi_extract_contract.sql; the known simplification artifact in
       tests/bi_geom_validity.sql (warn).
@@ -65,7 +65,7 @@ models:
         description: >
           Source-prefixed stable id. NOT record_key_uid: theirs_only rows have
           none, and quarantined rows have neither record_key_uid nor
-          parcel_uid — being unidentifiable is why they were rejected. Falls
+          parcel_uid -- being unidentifiable is why they were rejected. Falls
           back to record_signature for those, verified distinct on all 4,598.
         data_tests:
           - not_null
@@ -75,7 +75,8 @@ models:
         data_tests:
           - not_null
           - accepted_values:
-              values: ['county', 'state', 'quarantine']
+              arguments:
+                values: ['county', 'state', 'quarantine']
       - name: finding_primary
         description: >
           The single finding to colour by. A feature may carry several; the
@@ -83,9 +84,10 @@ models:
         data_tests:
           - not_null
           - accepted_values:
-              values: ['quarantined', 'encroachment', 'unflagged_coincident',
-                       'theirs_only', 'ours_only', 'attribute_disagreement',
-                       'geometry_repaired']
+              arguments:
+                values: ['quarantined', 'encroachment', 'unflagged_coincident',
+                         'theirs_only', 'ours_only', 'attribute_disagreement',
+                         'geometry_repaired']
       - name: geom
         data_tests:
           - not_null

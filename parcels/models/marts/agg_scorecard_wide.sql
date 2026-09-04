@@ -127,7 +127,7 @@ merged_rows as (
 
     -- Merged-source provenance: how many published rows the merged records
     -- absorbed. Not available in the long scorecard (it carries parcel
-    -- counts), so taken from conformed — the same figure the A4 canary
+    -- counts), so taken from conformed -- the same figure the A4 canary
     -- reconciles through.
     select
         county_fips,

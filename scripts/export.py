@@ -1,4 +1,4 @@
-# scripts/export.py — warehouse -> static-site artifacts.
+# scripts/export.py -- warehouse -> static-site artifacts.
 #
 # Reads the gold tables through duckdb's postgres extension and writes:
 #   exports/parquet/   fct, dim, the three scorecard tables (zstd parquet)
