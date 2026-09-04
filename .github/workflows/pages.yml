@@ -1,0 +1,66 @@
+# Publish site/ to GitHub Pages.
+#
+# WHY AN ACTIONS DEPLOY AND NOT "DEPLOY FROM A BRANCH"
+# ---------------------------------------------------
+# Branch-based Pages serves either the repository root or /docs -- nothing else.
+# This site lives in site/, and /docs is already the project's written
+# documentation (design.md, tableau.md, build-plan.md). Restructuring the repo
+# to satisfy a hosting default would be the wrong way round; uploading an
+# arbitrary directory as an artifact is what this workflow does instead.
+#
+# It also means NO JEKYLL. A branch deploy would run the site through Jekyll,
+# which silently drops files and directories beginning with an underscore. The
+# artifact path is served exactly as uploaded.
+#
+# ONE-TIME MANUAL STEP: Settings -> Pages -> Source -> "GitHub Actions".
+# Without it this workflow runs and the deploy step fails; there is no way to
+# set it from a workflow file.
+
+name: Pages
+
+on:
+  push:
+    branches: [main]
+    # Only redeploy when the published artifact actually changes. A README edit
+    # should not re-upload an 18 MB tile archive.
+    paths:
+      - 'site/**'
+      - '.github/workflows/pages.yml'
+  workflow_dispatch:   # and a manual trigger, for the first run and for reruns
+
+# The tokens deploy-pages needs. `contents: read` only -- this workflow
+# publishes, it never writes back to the repo.
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# One deploy at a time. cancel-in-progress is false deliberately: cancelling a
+# half-finished Pages deploy can leave the site serving a partial upload.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/configure-pages@v5
+
+      - name: Upload site/
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # index.html requests data/*.json and data/pmtiles/*.pmtiles by
+          # RELATIVE path, so serving site/ as the Pages root resolves them
+          # correctly under the /Wa_Parcel_Pipeline/ project sub-path. No base
+          # href needed -- and none should be added, or local `make site`
+          # previews break.
+          path: site
+
+      - id: deployment
+        uses: actions/deploy-pages@v4
