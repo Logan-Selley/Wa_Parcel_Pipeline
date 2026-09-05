@@ -76,7 +76,7 @@
   <h1>WA Parcel Reconciliation</h1>
   <p>Four Washington counties conformed and reconciled against the statewide answer key.
      King · Pierce · Snohomish · Spokane.</p>
-  <p class="note">The map shows only records with a <strong>finding</strong> — not every
+  <p class="note">The map shows only records with a <strong>finding</strong>, not every
      parcel. Washington already publishes a statewide parcel map; this one shows
      what reconciliation surfaced.</p>
 </header>
@@ -87,7 +87,7 @@
 <main>
   <div class="kpi" id="kpi"></div>
   <h2>Quality scorecard</h2>
-  <p class="note">A summary. The full scorecard is 33 columns across 19 checks —
+  <p class="note">A summary. The full scorecard is 33 columns across 19 checks,
      see <code>exports/csv/agg_quality_scorecard.csv</code> in the repo, and the
      definition of every check with it.</p>
   <div class="table-wrap"><table id="scorecard"></table></div>
@@ -304,7 +304,7 @@ map.on('load', () => {
     if (!list) return '';
     const items = String(list).split('; ');
     const n = Number(count) || items.length;
-    const more = n > items.length ? ` — largest ${items.length}` : '';
+    const more = n > items.length ? `, largest ${items.length}` : '';
     return `<div class="pf-o"><div class="pf-lbl">overlaps ${n} parcel${n === 1 ? '' : 's'}${more}</div>`
       + items.map(i => `<div>${esc(i)}</div>`).join('') + '</div>';
   }
@@ -345,7 +345,7 @@ map.on('load', () => {
     const shown = feats.slice(0, 6);
     const header = feats.length > 1
       ? `<div class="pf-n">${feats.length} findings at this point${
-           feats.length > shown.length ? ` — showing ${shown.length}` : ''}</div>`
+           feats.length > shown.length ? `, showing ${shown.length}` : ''}</div>`
       : '';
 
     new maplibregl.Popup({ maxWidth: '360px' })
