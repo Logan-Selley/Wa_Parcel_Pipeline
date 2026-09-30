@@ -84,7 +84,12 @@ site: tiles  ## Assemble the static site (data into site/data/)
 	@cp $(ROOT)/exports/json/*.json $(ROOT)/site/data/
 	@echo "site/ ready -- serve with any static file server"
 
-.PHONY: export tiles site tippecanoe-image
+# The card is rendered from site/data, so it cannot advertise a number the page
+# does not show. Chromium is the only renderer the project needs.
+og-card:  ## Render site/og-card.png from site/data with headless Chromium
+	@$(PY) $(ROOT)/scripts/make_card.py
+
+.PHONY: export tiles site og-card tippecanoe-image
 
 # --- orchestration -----------------------------------------------------------
 # Airflow runs in its OWN containers and its OWN metadata database, and invokes
