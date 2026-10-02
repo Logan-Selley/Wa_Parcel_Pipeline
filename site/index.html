@@ -215,14 +215,21 @@ map.addControl(new maplibregl.ScaleControl({ maxWidth: 100, unit: 'imperial' }))
 // It is deliberately NOT a statewide parcel map: the state already publishes
 // one, and ~55k features is a map you can read against 1.5M that you cannot.
 // Colour therefore encodes the FINDING, not the county; county is one click away.
+// The ramp is spaced deliberately, not decorated: every pair of these seven is
+// at least 25 dE (CIE76) apart, where the nearest pair in the first cut was 9,
+// and each is at least 38 from the dark ground. Warm trio for our own data
+// problems (rust for quarantined, orange for unflagged duplicates, gold for the
+// encroachments worth clicking), paper for the layer comparison, the dimmest
+// tone on the most numerous class, and green, which appears nowhere else, only
+// for geometry repaired. The gold also clears the page's amber accent by 28.
 const FINDINGS = [
-  ['quarantined',            '#b5643a', 'Valid shape, no usable parcel id'],
-  ['encroachment',           '#e2a85c', 'Partial overlap with a neighbour'],
-  ['unflagged_coincident',   '#cf9142', 'Duplicate footprint, neither flagged'],
-  ['theirs_only',            '#ece5d8', 'In the state layer, absent from ours'],
-  ['ours_only',              '#b3a892', 'In ours, absent from the state layer'],
-  ['attribute_disagreement', '#8d8371', 'Attributes differ from the answer key'],
-  ['geometry_repaired',      '#7fb069', 'Geometry was invalid and repaired'],
+  ['quarantined',            '#a1372b', 'Valid shape, no usable parcel id'],
+  ['encroachment',           '#ffce47', 'Partial overlap with a neighbour'],
+  ['unflagged_coincident',   '#e95c20', 'Duplicate footprint, neither flagged'],
+  ['theirs_only',            '#f4f2eb', 'In the state layer, absent from ours'],
+  ['ours_only',              '#b1a68b', 'In ours, absent from the state layer'],
+  ['attribute_disagreement', '#6e6553', 'Attributes differ from the answer key'],
+  ['geometry_repaired',      '#77af64', 'Geometry was invalid and repaired'],
 ];
 
 map.on('load', () => {
@@ -256,7 +263,7 @@ map.on('load', () => {
     id: 'findings-fill', type: 'fill', source: 'findings', 'source-layer': 'findings',
     paint: {
       'fill-color': ['match', ['get', 'finding_primary'],
-        ...FINDINGS.flatMap(([k, c]) => [k, c]), '#8d8371'],
+        ...FINDINGS.flatMap(([k, c]) => [k, c]), '#6e6553'],
       // Encroachments get the MOST transparent fill, not the least. An
       // encroachment is a relationship between two parcels -- an opaque fill
       // hides the neighbour it overlaps, which is the half of the finding a
@@ -276,7 +283,7 @@ map.on('load', () => {
     id: 'findings-line', type: 'line', source: 'findings', 'source-layer': 'findings',
     paint: {
       'line-color': ['match', ['get', 'finding_primary'],
-        ...FINDINGS.flatMap(([k, c]) => [k, c]), '#8d8371'],
+        ...FINDINGS.flatMap(([k, c]) => [k, c]), '#6e6553'],
       // Wide at low zoom so a speck is still locatable, narrower once the
       // polygon itself carries the shape -- but never below ~1px, or the
       // border disappears exactly when you have zoomed in to inspect it.
@@ -298,7 +305,7 @@ map.on('load', () => {
     source: 'findings', 'source-layer': 'findings',
     filter: ['==', ['get', 'finding_primary'], 'encroachment'],
     paint: {
-      'line-color': '#e2a85c',
+      'line-color': '#ffce47',
       'line-width': ['interpolate', ['linear'], ['zoom'], 6, 2.2, 13, 1.8],
       'line-opacity': 1
     }
@@ -362,7 +369,7 @@ map.on('load', () => {
     // not carry, so we have no county record to name them from.
     const who = p.county_name ?? `FIPS ${p.county_fips}`;
     const id = p.parcel_uid ?? '(no parcel id)';
-    const colour = (FINDINGS.find(([k]) => k === p.finding_primary) || [, '#8d8371'])[1];
+    const colour = (FINDINGS.find(([k]) => k === p.finding_primary) || [, '#6e6553'])[1];
     return `<div class="pf">
       <div class="pf-h"><span style="background:${colour}"></span>
         ${p.finding_primary.replace(/_/g, ' ')}</div>
